@@ -1,0 +1,1046 @@
+﻿{
+    "AccessToken": {
+        "Invalidate": {
+            "url": "/access-tokens/{accessTokens}/invalidate",
+            "description": "Allows an application to dispose of access_tokens when it is done with them.",
+            "isNetworkMethod": true,
+            "hasPaging": true,
+            "required": {
+                "accessTokens": "IEnumerable<string>"
+            }
+        },
+        "Get": {
+            "url": "/access-tokens/{accessTokens}",
+            "description": "Allows an application to inspect access_tokens it has, useful for debugging.",
+            "isNetworkMethod": true,
+            "hasPaging": true,
+            "required": {
+                "accessTokens": "IEnumerable<string>"
+            }
+        }
+    },
+    "Answer": {
+        "GetAll": {
+            "url": "/answers",
+            "description": "Get all answers on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort"
+        },
+        "GetByIds": {
+            "url": "/answers/{ids}",
+            "description": "Get answers identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetComments": {
+            "url": "/answers/{ids}/comments",
+            "description": "Get comments on the answers identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Comment"
+        }
+    },
+    "Application": {
+        "Deauthenticate": {
+            "url": "/apps/{accessTokens}/de-authenticate",
+            "description": "Allows an application to de-authorize itself for a set of users.",
+            "isNetworkMethod": true,
+            "hasPaging": true,
+            "required": {
+                "accessTokens": "IEnumerable<string>"
+            },
+            "returnType": "AccessToken"
+        }
+    },
+    "Badge": {
+        "GetAll": {
+            "url": "/badges",
+            "description": "Get all badges on the site, in alphabetical order.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Badges.AllSort",
+            "optional": {
+                "inname": "string"
+            }
+        },
+        "GetByIds": {
+            "url": "/badges/{ids}",
+            "description": "Get the badges identified by ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Badges.AllSort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetNamed": {
+            "url": "/badges/name",
+            "description": "Get all non-tagged-based badges in alphabetical order.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Badges.Sort",
+            "optional": {
+                "inname": "string"
+            }
+        },
+        "GetRecent": {
+            "url": "/badges/recipients",
+            "description": "Get badges recently awarded on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true
+        },
+        "GetRecentByIds": {
+            "url": "/badges/{ids}/recipients",
+            "description": "Get the recent recipients of the given badges.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetTagBased": {
+            "url": "/badges/tags",
+            "description": "Get all tagged-based badges in alphabetical order.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Badges.Sort",
+            "optional": {
+                "inname": "string"
+            }
+        }
+    },
+    "Comment": {
+        "GetAll": {
+            "url": "/comments",
+            "description": "Get all comments on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort"
+        },
+        "GetByIds": {
+            "url": "/comments/{ids}",
+            "description": "Get comments identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        }
+    },
+    "Error": {
+        "GetAll": {
+            "url": "/errors",
+            "description": "Get descriptions of all the errors that the API could return.",
+            "isNetworkMethod": true,
+            "hasPaging": true
+        },
+        "Simulate": {
+            "url": "/errors/{id}",
+            "description": "Simulate an API error for testing purposes.",
+            "isNetworkMethod": true,
+            "required": {
+                "id": "int"
+            }
+        }
+    },
+    "Event": {
+        "GetRecent": {
+            "url": "/events",
+            "description": "Get recent events that have occurred on the site. Effectively a stream of new users and content.",
+            "authRequired": true,
+            "hasPaging": true,
+            "optional": {
+                "since": "DateTime?"
+            }
+        }
+    },
+    "Filter": {
+        "Read": {
+            "url": "/filters/{filters}",
+            "description": "Decode a set of filters, useful for debugging purposes.",
+            "isNetworkMethod": true,
+            "required": {
+                "filters": "IEnumerable<string>"
+            }
+        },
+        "Create": {
+            "url": "/filters/create",
+            "description": "Create a new filter.",
+            "isNetworkMethod": true,
+            "optional": {
+                "include": "IEnumerable<string>",
+                "exclude": "IEnumerable<string>",
+                "base": "string",
+                "unsafe": "bool?"
+            }
+        }
+    },
+    "Inbox": {
+        "Get": {
+            "url": "/inbox",
+            "description": "Get a user's inbox, outside of the context of a site.",
+            "isNetworkMethod": true,
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "InboxItem"
+        },
+        "GetUnread": {
+            "url": "/inbox/unread",
+            "description": "Get the unread items in a user's inbox, outside of the context of a site.",
+            "isNetworkMethod": true,
+            "authRequired": true,
+            "hasPaging": true,
+            "optional": {
+                "since": "DateTime?"
+            },
+            "returnType": "InboxItem"
+        }
+    },
+    "Info": {
+        "Get": {
+            "url": "/info",
+            "description": "Get information about the entire site."
+        }
+    },
+    "Post": {
+        "GetAll": {
+            "url": "/posts",
+            "description": "Get all posts (questions and answers) in the system.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Posts.Sort"
+        },
+        "GetByIds": {
+            "url": "/posts/{ids}",
+            "description": "Get all posts identified by a set of ids. Useful for when the type of post (question or answer) is not known.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Posts.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetComments": {
+            "url": "/posts/{ids}/comments",
+            "description": "Get comments on the posts (question or answer) identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Comment"
+        },
+        "GetRevisions": {
+            "url": "/posts/{ids}/revisions",
+            "description": "Get revisions on the set of posts in ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Revision"
+        },
+        "GetSuggestedEdits": {
+            "url": "/posts/{ids}/suggested-edits",
+            "description": "Get suggested edits on the set of posts in ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "SuggestedEdits.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "SuggestedEdit"
+        }
+    },
+    "Privilege": {
+        "GetAll": {
+            "url": "/privileges",
+            "description": "Get all the privileges available on the site.",
+            "hasPaging": true
+        }
+    },
+    "Question": {
+        "GetAll": {
+            "url": "/questions",
+            "description": "Get all questions on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.AllSort",
+            "optional": {
+                "tagged": "string"
+            }
+        },
+        "GetByIds": {
+            "url": "/questions/{ids}",
+            "description": "Get the questions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetAnswers": {
+            "url": "/questions/{ids}/answers",
+            "description": "Get the answers to the questions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Answer"
+        },
+        "GetComments": {
+            "url": "/questions/{ids}/comments",
+            "description": "Get the comments on the questions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Comment"
+        },
+        "GetLinked": {
+            "url": "/questions/{ids}/linked",
+            "description": "Get the questions that link to the questions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.RelatedSort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetRelated": {
+            "url": "/questions/{ids}/related",
+            "description": "Get the questions that are related to the questions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.RelatedSort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetTimelines": {
+            "url": "/questions/{ids}/timeline",
+            "description": "Get the timelines of the questions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "QuestionTimeline"
+        },
+        "GetFeatured": {
+            "url": "/questions/unanswered",
+            "description": "Get all questions on the site with active bounties.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "optional": {
+                "tagged": "string"
+            }
+        },
+        "GetUnanswered": {
+            "url": "/questions/featured",
+            "description": "Get all questions the site considers unanswered.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "optional": {
+                "tagged": "string"
+            }
+        },
+        "GetWithNoAnswers": {
+            "url": "/questions/no-answers",
+            "description": "Get all questions on the site with no answers.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "optional": {
+                "tagged": "string"
+            }
+        }
+    },
+    "Revision": {
+        "GetByIds": {
+            "url": "/revisions/{ids}",
+            "description": "Get all revisions identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "required": {
+                "ids": "IEnumerable<Guid>"
+            }
+        }
+    },
+    "Search": {
+        "GetMatches": {
+            "url": "/search",
+            "description": "Search the site for questions meeting certain criteria.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.SearchSort",
+            "optional": {
+                "tagged": "string",
+                "nottagged": "string",
+                "inttitle": "string"
+            },
+            "returnType": "Question"
+        },
+        "GetSimilar": {
+            "url": "/similar",
+            "description": "Search the site based on similarity to a title.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.SearchSort",
+            "optional": {
+                "tagged": "string",
+                "nottagged": "string",
+                "inttitle": "string"
+            },
+            "returnType": "Question"
+        }
+    },
+    "Site": {
+        "GetAll": {
+            "url": "/sites",
+            "description": "Get all the sites in the Stack Exchange network.",
+            "isNetworkMethod": true,
+            "hasPaging": true
+        }
+    },
+    "SuggestedEdit": {
+        "GetAll": {
+            "url": "/suggested-edits",
+            "description": "Get all the suggested edits on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "SuggestedEdits.Sort"
+        },
+        "GetByIds": {
+            "url": "/suggested-edits/{ids}",
+            "description": "Get the suggested edits identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "SuggestedEdits.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        }
+    },
+    "Tag": {
+        "GetAll": {
+            "url": "/tags",
+            "description": "Get the tags on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Tags.Sort",
+            "optional": {
+                "inname": "string"
+            }
+        },
+        "GetByName": {
+            "url": "/tags/{tags}/info",
+            "description": "Get tags on the site by their names.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Tags.Sort",
+            "required": {
+                "tags": "IEnumerable<string>"
+            }
+        },
+        "GetModeratorOnly": {
+            "url": "/tags/moderator-only",
+            "description": "Get the tags on the site that only moderators can use.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Tags.Sort",
+            "optional": {
+                "inname": "string"
+            }
+        },
+        "GetRequired": {
+            "url": "/tags/required",
+            "description": "Get the tags on the site that fulfill required tag constraints.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Tags.Sort",
+            "optional": {
+                "inname": "string"
+            }
+        },
+        "GetAllSynonyms": {
+            "url": "/tags/synonyms",
+            "description": "Get all the tag synonyms on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "TagSynonyms.Sort",
+            "returnType": "TagSynonym"
+        },
+        "GetFrequentlyAsked": {
+            "url": "/tags/{tags}/faq",
+            "description": "Get frequently asked questions in a set of tags.",
+            "hasPaging": true,
+            "required": {
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "Question"
+        },
+        "GetRelated": {
+            "url": "/tags/{tags}/related",
+            "description": "/tags/{tags}/related",
+            "hasPaging": true,
+            "required": {
+                "tags": "IEnumerable<string>"
+            }
+        },
+        "GetSynonymsForTags": {
+            "url": "/tags/{tags}/synonyms",
+            "description": "Get the synonyms for a specific set of tags.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "TagSynonyms.Sort",
+            "required": {
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "TagSynonym"
+        },
+        "GetTopAnswerers": {
+            "url": "/tags/{tag}/top-answerers/{period}",
+            "description": "Get the top answer posters in a specific tag, either in the last month or for all time.",
+            "hasPaging": true,
+            "required": {
+                "tag": "string",
+                "period": "Tags.Period"
+            },
+            "returnType": "TagScore"
+        },
+        "GetTopAskers": {
+            "url": "/tags/{tag}/top-askers/{period}",
+            "description": "Get the top question askers in a specific tag, either in the last month or for all time.",
+            "hasPaging": true,
+            "required": {
+                "tag": "string",
+                "period": "Tags.Period"
+            },
+            "returnType": "TagScore"
+        },
+        "GetTagWikis": {
+            "url": "/tags/{tags}/wikis",
+            "description": "Get the wiki entries for a set of tags.",
+            "hasPaging": true,
+            "required": {
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "TagWiki"
+        }
+    },
+    "User": {
+        "GetAll": {
+            "url": "/users",
+            "description": "Get all users on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Users.Sort",
+            "optional": {
+                "inname": "string"
+            }
+        },
+        "GetByIds": {
+            "url": "/users/{ids}",
+            "description": "Get the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Users.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            }
+        },
+        "GetMe": {
+            "url": "/me",
+            "description": "Get the authenticated user",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Users.Sort"
+        },
+        "GetAnswers": {
+            "url": "/users/{ids}/answers",
+            "description": "Get the answers posted by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Answer"
+        },
+        "GetMyAnswers": {
+            "url": "/me/answers",
+            "description": "Get the answers posted by the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort",
+            "returnType": "Answer"
+        },
+        "GetBadges": {
+            "url": "/users/{ids}/badges",
+            "description": "Get the badges earned by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Badges.UserSort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Badge"
+        },
+        "GetMyBadges": {
+            "url": "/me/badges",
+            "description": "Get the badges earned by the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Badges.UserSort",
+            "returnType": "Badge"
+        },
+        "GetComments": {
+            "url": "/users/{ids}/comments",
+            "description": "Get the comments posted by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Comment"
+        },
+        "GetMyComments": {
+            "url": "/me/comments",
+            "description": "Get the comments posted by the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "returnType": "Comment"
+        },
+        "GetCommentsToUser": {
+            "url": "/users/{ids}/comments/{toid}",
+            "description": "Get the comments posted by a set of users in reply to another user.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>",
+                "toid": "int"
+            },
+            "returnType": "Comment"
+        },
+        "GetMyCommentsToUser": {
+            "url": "/me/comments/{toid}",
+            "description": "Get the comments posted by the authenticated user in reply to another user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "toid": "int"
+            },
+            "returnType": "Comment"
+        },
+        "GetFavorites": {
+            "url": "/users/{ids}/favorites",
+            "description": "Get the questions favorited by users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.FavoriteSort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyFavorites": {
+            "url": "/me/favorites",
+            "description": "Get the questions favorited by the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.FavoriteSort",
+            "returnType": "Question"
+        },
+        "GetCommentsMentionedIn": {
+            "url": "/users/{ids}/mentioned",
+            "description": "Get the comments that mention one of the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Comment"
+        },
+        "GetMyCommentsMentionedIn": {
+            "url": "/me/mentioned",
+            "description": "Get the comments that mention the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Comments.Sort",
+            "returnType": "Comment"
+        },
+        "GetPrivileges": {
+            "url": "/users/{id}/privileges",
+            "description": "Get the privileges the given user has on the site.",
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "Privilege"
+        },
+        "GetMyPrivileges": {
+            "url": "/me/privileges",
+            "description": "Get the privileges the authenticated user has on the site.",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "Privilege"
+        },
+        "GetQuestions": {
+            "url": "/users/{ids}/questions",
+            "description": "Get the questions asked by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyQuestions": {
+            "url": "/me/questions",
+            "description": "Get the questions asked by the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "returnType": "Question"
+        },
+        "GetFeaturedQuestions": {
+            "url": "/users/{ids}/questions/featured",
+            "description": "Get the questions on which a set of users have active bounties.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyFeaturedQuestions": {
+            "url": "/me/questions/featured",
+            "description": "Get the questions on which the authenticated user has active bounties.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "returnType": "Question"
+        },
+        "GetQuestionsWithNoAnswers": {
+            "url": "/users/{ids}/questions/featured",
+            "description": "Get the questions asked by a set of users which have no answers.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyQuestionsWithNoAnswers": {
+            "url": "/me/questions/featured",
+            "description": "Get the questions asked by the authenticated user which have no answers.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "returnType": "Question"
+        },
+        "GetQuestionsWithUnaccepted": {
+            "url": "/users/{ids}/questions/unaccepted",
+            "description": "Get the questions asked by a set of users which have at least one answer but no accepted answer.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyQuestionsWithUnaccepted": {
+            "url": "/me/questions/unaccepted",
+            "description": "Get the questions asked by the authenticated user which have at least one answer but no accepted answer.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "returnType": "Question"
+        },
+        "GetUnansweredQuestions": {
+            "url": "/users/{ids}/questions/unanswered",
+            "description": "Get the questions asked by a set of users which are not considered to be adequately answered.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyUnansweredQuestions": {
+            "url": "/me/questions/unanswered",
+            "description": "Get the questions asked by the authenticated user which are not considered to be adequately answered.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "returnType": "Question"
+        },
+        "GetReputation": {
+            "url": "/users/{ids}/reputation",
+            "description": "Get a subset of the reputation changes experienced by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Reputation"
+        },
+        "GetMyReputation": {
+            "url": "/me/reputation",
+            "description": "Get a subset of the reputation changes experienced by the authenticated user.",
+            "authRequired": true,
+            "returnType": "Reputation"
+        },
+        "GetSuggestedEdits": {
+            "url": "/users/{ids}/suggested-edits",
+            "description": "Get the suggested edits provided by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "SuggestedEdits.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "SuggestedEdit"
+        },
+        "GetMySuggestedEdits": {
+            "url": "/me/suggested-edits",
+            "description": "Get the suggested edits provided by the authenticated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "SuggestedEdits.Sort",
+            "returnType": "SuggestedEdit"
+        },
+        "GetTags": {
+            "url": "/users/{ids}/tags",
+            "description": "Get the tags that the users (identified by a set of ids) have been active in.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Tags.Sort",
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "Tag"
+        },
+        "GetMyTags": {
+            "url": "/me/tags",
+            "description": "Get the tags that the authenticated user has been active in.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Tags.Sort",
+            "returnType": "Tag"
+        },
+        "GetTopAnswers": {
+            "url": "/users/{id}/tags/{tags}/top-answers",
+            "description": "Get the top answers a user has posted on questions with a set of tags.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort",
+            "required": {
+                "id": "int",
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "Answer"
+        },
+        "GetMyTopAnswers": {
+            "url": "/me/tags/{tags}/top-answers",
+            "description": "Get the top answers the authenticated user has posted on questions with a set of tags.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Answers.Sort",
+            "required": {
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "Answer"
+        },
+        "GetTopQuestions": {
+            "url": "/users/{id}/tags/{tags}/top-questions",
+            "description": "Get the top questions a user has posted with a set of tags.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "id": "int",
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "Question"
+        },
+        "GetMyTopQuestions": {
+            "url": "/me/tags/{tags}/top-questions",
+            "description": "Get the top questions the authenticated user has posted with a set of tags.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.Sort",
+            "required": {
+                "tags": "IEnumerable<string>"
+            },
+            "returnType": "Question"
+        },
+        "GetTimelines": {
+            "url": "/users/{ids}/timeline",
+            "description": "Get a subset of the actions of that have been taken by the users identified by a set of ids.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "UserTimeline"
+        },
+        "GetMyTimeline": {
+            "url": "/me/timeline",
+            "description": "Get a subset of the actions of that have been taken by the authenicated user.",
+            "authRequired": true,
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "returnType": "UserTimeline"
+        },
+        "GetTopAnswerTags": {
+            "url": "/users/{id}/top-answer-tags",
+            "description": "Get the top tags (by score) a single user has posted answers in.",
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "TopTag"
+        },
+        "GetMyTopAnswerTags": {
+            "url": "/me/top-answer-tags",
+            "description": "Get the top tags (by score) the authenticated user has posted answers in.",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "TopTag"
+        },
+        "GetTopQuestionTags": {
+            "url": "/users/{id}/top-question-tags",
+            "description": "Get the top tags (by score) a single user has asked questions in.",
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "TopTag"
+        },
+        "GetMyTopQuestionTags": {
+            "url": "/me/top-question-tags",
+            "description": "Get the top tags (by score) the authenticated user has asked questions in.",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "TopTag"
+        },
+        "GetModerators": {
+            "url": "/users/moderators",
+            "description": "Get the users who have moderation powers on the site.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Users.Sort"
+        },
+        "GetElectedModerators": {
+            "url": "/users/moderators/elected",
+            "description": "Get the users who have moderation powers on the site, and were actually elected.",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Users.Sort"
+        },
+        "GetInbox": {
+            "url": "/users/{id}/inbox",
+            "description": "Get a user's inbox.",
+            "authRequired": true,
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "InboxItem"
+        },
+        "GetMyInbox": {
+            "url": "/me/inbox",
+            "description": "Get the authenticated user's inbox.",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "InboxItem"
+        },
+        "GetInboxUnread": {
+            "url": "/users/{id}/inbox/unread",
+            "description": "Get the unread items in a user's inbox.",
+            "authRequired": true,
+            "hasPaging": true,
+            "optional": {
+                "since": "DateTime?"
+            },
+            "required": {
+                "id": "int"
+            },
+            "returnType": "InboxItem"
+        },
+        "GetMyInboxUnread": {
+            "url": "/me/inbox/unread",
+            "description": "Get the unread items in the authenticated user's inbox.",
+            "authRequired": true,
+            "hasPaging": true,
+            "optional": {
+                "since": "DateTime?"
+            },
+            "returnType": "InboxItem"
+        },
+        "GetAssociated": {
+            "url": "/users/{ids}/associated",
+            "description": "Get a user's associated accounts.",
+            "isNetworkMethod": true,
+            "hasPaging": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "NetworkUser"
+        },
+        "GetMyAssociated": {
+            "url": "/me/associated",
+            "description": "Get the associated user's associated accounts.",
+            "isNetworkMethod": true,
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "NetworkUser"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacMan", "StacMan\StacMan.csproj", "{3C310AC6-6229-41FB-B33F-8381CF4FECBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacMan.Tests", "StacMan.Tests\StacMan.Tests.csproj", "{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{940A5141-7F86-40E6-BB3D-046EE0A79FB7}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		StacMan.vsmdi = StacMan.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = StacMan.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C310AC6-6229-41FB-B33F-8381CF4FECBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C310AC6-6229-41FB-B33F-8381CF4FECBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C310AC6-6229-41FB-B33F-8381CF4FECBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C310AC6-6229-41FB-B33F-8381CF4FECBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal
