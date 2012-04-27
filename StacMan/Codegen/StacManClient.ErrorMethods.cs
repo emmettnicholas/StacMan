@@ -35,7 +35,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Error>(ub, filterObj);
+            return CreateApiTask<Error>(ub, filterObj, "/errors");
         }
 
         Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter = null)
@@ -47,7 +47,7 @@ namespace StackExchange.StacMan
 
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Error>(ub, filterObj);
+            return CreateApiTask<Error>(ub, filterObj, "/errors/{id}");
         }
     }
 

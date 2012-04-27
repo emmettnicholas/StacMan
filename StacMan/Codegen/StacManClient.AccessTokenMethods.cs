@@ -36,7 +36,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, filterObj);
+            return CreateApiTask<AccessToken>(ub, filterObj, "/access-tokens/{accessTokens}/invalidate");
         }
 
         Task<StacManResponse<AccessToken>> IAccessTokenMethods.Get(IEnumerable<string> accessTokens, string filter = null, int? page = null, int? pagesize = null)
@@ -52,7 +52,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, filterObj);
+            return CreateApiTask<AccessToken>(ub, filterObj, "/access-tokens/{accessTokens}");
         }
     }
 

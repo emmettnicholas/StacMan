@@ -40,7 +40,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Revision>(ub, filterObj);
+            return CreateApiTask<Revision>(ub, filterObj, "/revisions/{ids}");
         }
     }
 

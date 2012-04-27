@@ -33,7 +33,7 @@ namespace StackExchange.StacMan
 
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Filter>(ub, filterObj);
+            return CreateApiTask<Filter>(ub, filterObj, "/filters/{filters}");
         }
 
         Task<StacManResponse<Filter>> IFilterMethods.Create(string filter = null, IEnumerable<string> include = null, IEnumerable<string> exclude = null, string @base = null, bool? @unsafe = null)
@@ -49,7 +49,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("base", @base);
             ub.AddParameter("unsafe", @unsafe);
 
-            return CreateApiTask<Filter>(ub, filterObj);
+            return CreateApiTask<Filter>(ub, filterObj, "/filters/create");
         }
     }
 

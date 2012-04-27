@@ -45,6 +45,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackoffTests.cs" />
     <Compile Include="FilterRegistrationTests.cs" />
     <Compile Include="InfoMethodTests.cs" />
     <Compile Include="QuestionMethodTests.cs" />

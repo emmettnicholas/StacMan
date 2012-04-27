@@ -34,7 +34,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Info>(ub, filterObj);
+            return CreateApiTask<Info>(ub, filterObj, "/info");
         }
     }
 

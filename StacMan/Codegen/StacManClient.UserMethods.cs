@@ -49,7 +49,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<User>(ub, filterObj);
+            return CreateApiTask<User>(ub, filterObj, "/users");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Users.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -78,7 +78,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, filterObj);
+            return CreateApiTask<User>(ub, filterObj, "/_users");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetMe(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Users.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -108,7 +108,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, filterObj);
+            return CreateApiTask<User>(ub, filterObj, "/_users");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetAnswers(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Answers.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -135,7 +135,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, filterObj);
+            return CreateApiTask<Answer>(ub, filterObj, "/_users/answers");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetMyAnswers(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Answers.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -163,7 +163,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, filterObj);
+            return CreateApiTask<Answer>(ub, filterObj, "/_users/answers");
         }
 
         Task<StacManResponse<Badge>> IUserMethods.GetBadges(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.UserSort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Badges.BadgeType? mintype = null, Badges.BadgeType? maxtype = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
@@ -194,7 +194,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Badge>(ub, filterObj);
+            return CreateApiTask<Badge>(ub, filterObj, "/_users/badges");
         }
 
         Task<StacManResponse<Badge>> IUserMethods.GetMyBadges(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.UserSort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Badges.BadgeType? mintype = null, Badges.BadgeType? maxtype = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
@@ -226,7 +226,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Badge>(ub, filterObj);
+            return CreateApiTask<Badge>(ub, filterObj, "/_users/badges");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetComments(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -253,7 +253,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/_users/comments");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetMyComments(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -281,7 +281,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/_users/comments");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetCommentsToUser(string site, IEnumerable<int> ids, int toid, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -308,7 +308,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/_users/comments/{toid}");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetMyCommentsToUser(string site, string access_token, int toid, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -336,7 +336,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/_users/comments/{toid}");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetFavorites(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.FavoriteSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -363,7 +363,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/favorites");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyFavorites(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.FavoriteSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -391,7 +391,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/favorites");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetCommentsMentionedIn(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -418,7 +418,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/_users/mentioned");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetMyCommentsMentionedIn(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -446,7 +446,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/_users/mentioned");
         }
 
         Task<StacManResponse<Privilege>> IUserMethods.GetPrivileges(string site, int id, string filter = null, int? page = null, int? pagesize = null)
@@ -463,7 +463,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, filterObj);
+            return CreateApiTask<Privilege>(ub, filterObj, "/_users/privileges");
         }
 
         Task<StacManResponse<Privilege>> IUserMethods.GetMyPrivileges(string site, string access_token, string filter = null, int? page = null, int? pagesize = null)
@@ -482,7 +482,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, filterObj);
+            return CreateApiTask<Privilege>(ub, filterObj, "/_users/privileges");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetQuestions(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -509,7 +509,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyQuestions(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -537,7 +537,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetFeaturedQuestions(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -564,7 +564,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyFeaturedQuestions(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -592,7 +592,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetQuestionsWithNoAnswers(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -619,7 +619,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyQuestionsWithNoAnswers(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -647,7 +647,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetQuestionsWithUnaccepted(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -674,7 +674,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/unaccepted");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyQuestionsWithUnaccepted(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -702,7 +702,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/unaccepted");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetUnansweredQuestions(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -729,7 +729,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/unanswered");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyUnansweredQuestions(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -757,7 +757,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/questions/unanswered");
         }
 
         Task<StacManResponse<Reputation>> IUserMethods.GetReputation(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
@@ -777,7 +777,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Reputation>(ub, filterObj);
+            return CreateApiTask<Reputation>(ub, filterObj, "/_users/reputation");
         }
 
         Task<StacManResponse<Reputation>> IUserMethods.GetMyReputation(string site, string access_token, string filter = null)
@@ -793,7 +793,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Reputation>(ub, filterObj);
+            return CreateApiTask<Reputation>(ub, filterObj, "/_users/reputation");
         }
 
         Task<StacManResponse<SuggestedEdit>> IUserMethods.GetSuggestedEdits(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
@@ -818,7 +818,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj);
+            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/_users/suggested-edits");
         }
 
         Task<StacManResponse<SuggestedEdit>> IUserMethods.GetMySuggestedEdits(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
@@ -844,7 +844,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj);
+            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/_users/suggested-edits");
         }
 
         Task<StacManResponse<Tag>> IUserMethods.GetTags(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -873,7 +873,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/_users/tags");
         }
 
         Task<StacManResponse<Tag>> IUserMethods.GetMyTags(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -903,7 +903,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/_users/tags");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetTopAnswers(string site, int id, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Answers.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -930,7 +930,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, filterObj);
+            return CreateApiTask<Answer>(ub, filterObj, "/_users/tags/{tags}/top-answers");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetMyTopAnswers(string site, string access_token, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Answers.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -959,7 +959,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, filterObj);
+            return CreateApiTask<Answer>(ub, filterObj, "/_users/tags/{tags}/top-answers");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetTopQuestions(string site, int id, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -986,7 +986,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/tags/{tags}/top-questions");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyTopQuestions(string site, string access_token, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -1015,7 +1015,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/_users/tags/{tags}/top-questions");
         }
 
         Task<StacManResponse<UserTimeline>> IUserMethods.GetTimelines(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
@@ -1035,7 +1035,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<UserTimeline>(ub, filterObj);
+            return CreateApiTask<UserTimeline>(ub, filterObj, "/_users/timeline");
         }
 
         Task<StacManResponse<UserTimeline>> IUserMethods.GetMyTimeline(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
@@ -1056,7 +1056,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<UserTimeline>(ub, filterObj);
+            return CreateApiTask<UserTimeline>(ub, filterObj, "/_users/timeline");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetTopAnswerTags(string site, int id, string filter = null, int? page = null, int? pagesize = null)
@@ -1073,7 +1073,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, filterObj);
+            return CreateApiTask<TopTag>(ub, filterObj, "/_users/top-answer-tags");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetMyTopAnswerTags(string site, string access_token, string filter = null, int? page = null, int? pagesize = null)
@@ -1092,7 +1092,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, filterObj);
+            return CreateApiTask<TopTag>(ub, filterObj, "/_users/top-answer-tags");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetTopQuestionTags(string site, int id, string filter = null, int? page = null, int? pagesize = null)
@@ -1109,7 +1109,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, filterObj);
+            return CreateApiTask<TopTag>(ub, filterObj, "/_users/top-question-tags");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetMyTopQuestionTags(string site, string access_token, string filter = null, int? page = null, int? pagesize = null)
@@ -1128,7 +1128,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, filterObj);
+            return CreateApiTask<TopTag>(ub, filterObj, "/_users/top-question-tags");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetModerators(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Users.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -1156,7 +1156,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, filterObj);
+            return CreateApiTask<User>(ub, filterObj, "/users/moderators");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetElectedModerators(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Users.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -1184,7 +1184,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, filterObj);
+            return CreateApiTask<User>(ub, filterObj, "/users/moderators/elected");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetInbox(string site, string access_token, int id, string filter = null, int? page = null, int? pagesize = null)
@@ -1203,7 +1203,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, filterObj);
+            return CreateApiTask<InboxItem>(ub, filterObj, "/_users/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetMyInbox(string site, string access_token, string filter = null, int? page = null, int? pagesize = null)
@@ -1222,7 +1222,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, filterObj);
+            return CreateApiTask<InboxItem>(ub, filterObj, "/_users/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetInboxUnread(string site, string access_token, int id, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
@@ -1242,7 +1242,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, filterObj);
+            return CreateApiTask<InboxItem>(ub, filterObj, "/_users/inbox/unread");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetMyInboxUnread(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
@@ -1262,7 +1262,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, filterObj);
+            return CreateApiTask<InboxItem>(ub, filterObj, "/_users/inbox/unread");
         }
 
         Task<StacManResponse<NetworkUser>> IUserMethods.GetAssociated(IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null)
@@ -1278,7 +1278,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<NetworkUser>(ub, filterObj);
+            return CreateApiTask<NetworkUser>(ub, filterObj, "/_users/associated");
         }
 
         Task<StacManResponse<NetworkUser>> IUserMethods.GetMyAssociated(string access_token, string filter = null, int? page = null, int? pagesize = null)
@@ -1295,7 +1295,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<NetworkUser>(ub, filterObj);
+            return CreateApiTask<NetworkUser>(ub, filterObj, "/_users/associated");
         }
     }
 

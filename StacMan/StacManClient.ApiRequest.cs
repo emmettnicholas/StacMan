@@ -10,15 +10,17 @@ namespace StackExchange.StacMan
         private interface IApiRequest
         {
             void GetResponse(Action callback);
+            string BackoffKey { get; }
         }
 
         private class ApiRequest<T> : IApiRequest where T : StacManType
         {
-            public ApiRequest(StacManClient client, ApiUrlBuilder ub, Filter filter)
+            public ApiRequest(StacManClient client, ApiUrlBuilder ub, Filter filter, string backoffKey)
             {
                 Client = client;
                 UrlBuilder = ub;
                 Filter = filter;
+                BackoffKey = backoffKey;
             }
 
             private readonly StacManClient Client;
@@ -36,7 +38,7 @@ namespace StackExchange.StacMan
             {
                 try
                 {
-                    Client.GetApiResponse<T>(UrlBuilder, Filter, response =>
+                    Client.GetApiResponse<T>(UrlBuilder, Filter, BackoffKey, response =>
                         {
                             try
                             {
@@ -55,6 +57,8 @@ namespace StackExchange.StacMan
                     Tcs.SetException(ex);
                 }
             }
+
+            public string BackoffKey { get; private set; }
         }
     }
 }

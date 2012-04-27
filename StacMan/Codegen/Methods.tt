@@ -191,7 +191,7 @@ namespace StackExchange.StacMan
         }
 #>
 
-            return CreateApiTask<<#= returnTypeName #>>(ub, filterObj);
+            return CreateApiTask<<#= returnTypeName #>>(ub, filterObj, "<#= GetBackoffKey(url) #>");
         }
 <#
         var summary = String.Format("{0}{1} (API Method: \"{2}\")", description, authRequired ? " [auth required]" : "", url);
@@ -377,5 +377,16 @@ string GetUrlTemplate(string url, out IEnumerable<string> paramNames)
 
     paramNames = urlParamNames;
     return template;
+}
+
+string GetBackoffKey(string url)
+{
+    if (url == "/users/{ids}" || url == "/me")
+        return "/_users";
+
+    return url
+        .Replace("/users/{ids}/", "/_users/")
+        .Replace("/users/{id}/", "/_users/")
+        .Replace("/me/", "/_users/");
 }
 #>

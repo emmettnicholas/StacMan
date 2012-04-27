@@ -19,12 +19,15 @@ namespace StackExchange.StacMan
             Key = key;
             ApiTimeoutMs = 5000;
             MaxSimultaneousRequests = 10;
+            RespectBackoffs = true;
         }
 
         private readonly FilterBehavior FilterBehavior;
         private readonly string Key;
 
         private readonly IDictionary<string, Filter> RegisteredFilters = new Dictionary<string, Filter> { { Filter.Default.FilterName, Filter.Default } };
+
+        private readonly IDictionary<string, DateTime> BackoffUntil = new Dictionary<string, DateTime>();
 
         private int ActiveRequests = 0;
         private readonly Queue<IApiRequest> QueuedRequests = new Queue<IApiRequest>();
@@ -39,6 +42,12 @@ namespace StackExchange.StacMan
         /// Additional requests are queued up. Default is 10.
         /// </summary>
         public int MaxSimultaneousRequests { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether StacMan should automatically abide by the "backoff" returned by the API (https://api.stackexchange.com/docs/throttle).
+        /// Default is true.
+        /// </summary>
+        public bool RespectBackoffs { get; set; }
 
         public bool IsFilterRegistered(string filter)
         {
@@ -78,9 +87,9 @@ namespace StackExchange.StacMan
                 throw new Exceptions.FilterException("Failed to register invalid filters: {0}", String.Join(", ", items.Where(f => f.FilterType == StacMan.Filters.FilterType.Invalid).Select(f => f.FilterName)));
         }
 
-        private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, Filter filter) where T : StacManType
+        private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, Filter filter, string backoffKey) where T : StacManType
         {
-            var request = new ApiRequest<T>(this, ub, filter);
+            var request = new ApiRequest<T>(this, ub, filter, backoffKey);
 
             if (ActiveRequests >= MaxSimultaneousRequests || QueuedRequests.Count > 0)
             {
@@ -116,14 +125,51 @@ namespace StackExchange.StacMan
         {
             Interlocked.Increment(ref ActiveRequests);
 
-            request.GetResponse(() =>
+            Action send = () =>
+                {
+                    request.GetResponse(() =>
+                    {
+                        Interlocked.Decrement(ref ActiveRequests);
+                        ProcessQueue();
+                    });
+                };
+
+            if (RespectBackoffs && BackoffUntil.ContainsKey(request.BackoffKey))
             {
-                Interlocked.Decrement(ref ActiveRequests);
-                ProcessQueue();
-            });
+                lock (BackoffUntil)
+                {
+                    if (BackoffUntil.ContainsKey(request.BackoffKey))
+                    {
+                        var until = BackoffUntil[request.BackoffKey];
+                        var seconds = (until - DateTime.Now).TotalSeconds;
+
+                        if (seconds > 0)
+                        {
+                            var timer = new System.Timers.Timer(seconds * 1000);
+
+                            timer.AutoReset = false;
+                            timer.Elapsed += (sender, e) => send();
+                            timer.Start();
+                        }
+                        else
+                        {
+                            BackoffUntil.Remove(request.BackoffKey);
+                            send();
+                        }
+                    }
+                    else
+                    {
+                        send();
+                    }
+                }
+            }
+            else
+            {
+                send();
+            }
         }
 
-        private void GetApiResponse<T>(ApiUrlBuilder ub, Filter filter, Action<StacManResponse<T>> callback) where T : StacManType
+        private void GetApiResponse<T>(ApiUrlBuilder ub, Filter filter, string backoffKey, Action<StacManResponse<T>> callback) where T : StacManType
         {
             var response = new StacManResponse<T>();
 
@@ -137,7 +183,7 @@ namespace StackExchange.StacMan
                     try
                     {
                         response.RawData = rawData;
-                        response.Data = ParseApiResponse<Wrapper<T>>(JsonObject.Parse(response.RawData), filter);
+                        response.Data = ParseApiResponse<Wrapper<T>>(JsonObject.Parse(response.RawData), filter, backoffKey);
 
                         if (response.Data.ErrorId.HasValue)
                             throw new Exceptions.StackExchangeApiException(response.Data.ErrorId.Value, response.Data.ErrorName, response.Data.ErrorMessage);
@@ -189,7 +235,7 @@ namespace StackExchange.StacMan
                 request);
         }
 
-        private T ParseApiResponse<T>(JsonObject jsonObject, Filter filter) where T : StacManType
+        private T ParseApiResponse<T>(JsonObject jsonObject, Filter filter, string backoffKey) where T : StacManType
         {
             var ret = (T)Activator.CreateInstance(typeof(T), BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { FilterBehavior, filter }, null);
             var apiFieldsByName = ReflectionCache.ApiFieldsByName<T>.Value;
@@ -218,7 +264,7 @@ namespace StackExchange.StacMan
                 {
                     value = ReflectionCache.StacManClientParseApiResponse
                         .MakeGenericMethod(property.PropertyType)
-                        .Invoke(this, new object[] { jsonObject.Object(fieldName), filter });
+                        .Invoke(this, new object[] { jsonObject.Object(fieldName), filter, backoffKey });
                 }
                 else if (property.PropertyType.IsArray && property.PropertyType.GetElementType().BaseType == typeof(StacManType))
                 {
@@ -228,7 +274,7 @@ namespace StackExchange.StacMan
                         .ArrayObjects(fieldName)
                         .ConvertAll(i => ReflectionCache.StacManClientParseApiResponse
                             .MakeGenericMethod(elementType)
-                            .Invoke(this, new object[] { i, filter }))
+                            .Invoke(this, new object[] { i, filter, backoffKey }))
                         .ToArray();
 
                     value = Array.CreateInstance(elementType, objArr.Length);
@@ -239,6 +285,14 @@ namespace StackExchange.StacMan
                     value = ReflectionCache.JsonObjectGet
                         .MakeGenericMethod(property.PropertyType)
                         .Invoke(null, new object[] { jsonObject, fieldName });
+                }
+
+                if (fieldName == "backoff")
+                {
+                    lock (BackoffUntil)
+                    {
+                        BackoffUntil[backoffKey] = DateTime.Now.AddSeconds((int)value);
+                    }
                 }
 
                 property.SetValue(ret, value, null);

@@ -37,7 +37,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, filterObj);
+            return CreateApiTask<InboxItem>(ub, filterObj, "/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IInboxMethods.GetUnread(string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
@@ -55,7 +55,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, filterObj);
+            return CreateApiTask<InboxItem>(ub, filterObj, "/inbox/unread");
         }
     }
 

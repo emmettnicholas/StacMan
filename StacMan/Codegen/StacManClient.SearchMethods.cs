@@ -49,7 +49,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("nottagged", nottagged);
             ub.AddParameter("inttitle", inttitle);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/search");
         }
 
         Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string inttitle = null)
@@ -78,7 +78,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("nottagged", nottagged);
             ub.AddParameter("inttitle", inttitle);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/similar");
         }
     }
 

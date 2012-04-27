@@ -37,7 +37,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, filterObj);
+            return CreateApiTask<Privilege>(ub, filterObj, "/privileges");
         }
     }
 

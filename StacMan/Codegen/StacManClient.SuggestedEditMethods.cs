@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj);
+            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/suggested-edits");
         }
 
         Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
@@ -69,7 +69,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj);
+            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/suggested-edits/{ids}");
         }
     }
 

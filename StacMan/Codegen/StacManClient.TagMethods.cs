@@ -49,7 +49,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/tags");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetByName(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
@@ -78,7 +78,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/tags/{tags}/info");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetModeratorOnly(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
@@ -107,7 +107,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/tags/moderator-only");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetRequired(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
@@ -136,7 +136,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/tags/required");
         }
 
         Task<StacManResponse<TagSynonym>> ITagMethods.GetAllSynonyms(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, TagSynonyms.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -162,7 +162,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<TagSynonym>(ub, filterObj);
+            return CreateApiTask<TagSynonym>(ub, filterObj, "/tags/synonyms");
         }
 
         Task<StacManResponse<Question>> ITagMethods.GetFrequentlyAsked(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null)
@@ -180,7 +180,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Question>(ub, filterObj);
+            return CreateApiTask<Question>(ub, filterObj, "/tags/{tags}/faq");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetRelated(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null)
@@ -198,7 +198,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Tag>(ub, filterObj);
+            return CreateApiTask<Tag>(ub, filterObj, "/tags/{tags}/related");
         }
 
         Task<StacManResponse<TagSynonym>> ITagMethods.GetSynonymsForTags(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, TagSynonyms.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -225,7 +225,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<TagSynonym>(ub, filterObj);
+            return CreateApiTask<TagSynonym>(ub, filterObj, "/tags/{tags}/synonyms");
         }
 
         Task<StacManResponse<TagScore>> ITagMethods.GetTopAnswerers(string site, string tag, Tags.Period period, string filter = null, int? page = null, int? pagesize = null)
@@ -243,7 +243,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagScore>(ub, filterObj);
+            return CreateApiTask<TagScore>(ub, filterObj, "/tags/{tag}/top-answerers/{period}");
         }
 
         Task<StacManResponse<TagScore>> ITagMethods.GetTopAskers(string site, string tag, Tags.Period period, string filter = null, int? page = null, int? pagesize = null)
@@ -261,7 +261,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagScore>(ub, filterObj);
+            return CreateApiTask<TagScore>(ub, filterObj, "/tags/{tag}/top-askers/{period}");
         }
 
         Task<StacManResponse<TagWiki>> ITagMethods.GetTagWikis(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null)
@@ -279,7 +279,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagWiki>(ub, filterObj);
+            return CreateApiTask<TagWiki>(ub, filterObj, "/tags/{tags}/wikis");
         }
     }
 

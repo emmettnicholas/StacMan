@@ -46,7 +46,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Post>(ub, filterObj);
+            return CreateApiTask<Post>(ub, filterObj, "/posts");
         }
 
         Task<StacManResponse<Post>> IPostMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Posts.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -73,7 +73,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Post>(ub, filterObj);
+            return CreateApiTask<Post>(ub, filterObj, "/posts/{ids}");
         }
 
         Task<StacManResponse<Comment>> IPostMethods.GetComments(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
@@ -100,7 +100,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj);
+            return CreateApiTask<Comment>(ub, filterObj, "/posts/{ids}/comments");
         }
 
         Task<StacManResponse<Revision>> IPostMethods.GetRevisions(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
@@ -120,7 +120,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Revision>(ub, filterObj);
+            return CreateApiTask<Revision>(ub, filterObj, "/posts/{ids}/revisions");
         }
 
         Task<StacManResponse<SuggestedEdit>> IPostMethods.GetSuggestedEdits(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
@@ -145,7 +145,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj);
+            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/posts/{ids}/suggested-edits");
         }
     }
 

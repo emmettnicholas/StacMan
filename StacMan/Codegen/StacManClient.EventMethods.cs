@@ -40,7 +40,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<Event>(ub, filterObj);
+            return CreateApiTask<Event>(ub, filterObj, "/events");
         }
     }
 
