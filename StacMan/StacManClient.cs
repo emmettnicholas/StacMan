@@ -13,6 +13,11 @@ namespace StackExchange.StacMan
 {
     public partial class StacManClient
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StacManClient"/> class.
+        /// </summary>
+        /// <param name="filterBehavior">Desired level of filter validation.</param>
+        /// <param name="key">Your app's Stack Exchange API V2 key (optional)</param>
         public StacManClient(FilterBehavior filterBehavior, string key = null)
         {   
             FilterBehavior = filterBehavior;
@@ -33,28 +38,43 @@ namespace StackExchange.StacMan
         private readonly Queue<IApiRequest> QueuedRequests = new Queue<IApiRequest>();
 
         /// <summary>
-        /// Gets or sets the number of milliseconds to wait before a request to the Stack Exchange API times out. Default is 5000.
+        /// Gets or sets the number of milliseconds to wait before a request to the Stack Exchange API times out.
+        /// <para>Default is 5000.</para>
         /// </summary>
         public int ApiTimeoutMs { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of simultaneous requests to the Stack Exchange API that can be active at any given time.
-        /// Additional requests are queued up. Default is 10.
+        /// Additional requests are queued up.
+        /// <para>Default is 10.</para>
         /// </summary>
         public int MaxSimultaneousRequests { get; set; }
 
         /// <summary>
-        /// Gets or sets whether StacMan should automatically abide by the "backoff" returned by the API (https://api.stackexchange.com/docs/throttle).
-        /// Default is true.
+        /// Gets or sets whether StacMan should automatically abide by the "backoff" returned by the API (http://api.stackexchange.com/docs/throttle).
+        /// <para>Default is true.</para>
         /// </summary>
         public bool RespectBackoffs { get; set; }
 
+        /// <summary>
+        /// Check whether a filter has been registered. This is only valid when FilterBehavior is Strict.
+        /// </summary>
+        /// <param name="filter">The filter to check.</param>
+        /// <returns>True if <paramref name="filter"/> is registered.</returns>
         public bool IsFilterRegistered(string filter)
         {
             return RegisteredFilters.ContainsKey(filter);
         }
 
         // TODO async version of RegisterFilters?
+        /// <summary>
+        /// Register filters with StacManClient. Once a filter has been registered, getting a property not included in the filter (on an object returned using
+        /// the filter) throws a FilterException.
+        /// <para>Filter registration is only necessary (or possible) when FilterBehavior is Strict.</para>
+        /// <remarks>IMPORTANT: <see cref="RegisterFilters"/> incurs one API call (per 20 unregistered filters) each time it's called, so for best performance,
+        /// it should be called sparingly and at most once per filter, e.g. once only when your app starts.</remarks>
+        /// </summary>
+        /// <param name="filters">The filter(s) to register.</param>
         public void RegisterFilters(params string[] filters)
         {
             if (FilterBehavior != FilterBehavior.Strict)
