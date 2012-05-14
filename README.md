@@ -6,8 +6,16 @@
 * Validates that fields are included in the [filter](http://api.stackexchange.com/docs/filters) *(optional &ndash; see [FilterBehavior](#filter-behavior) below)*
 * Adheres to the [API's throttling rules](http://api.stackexchange.com/docs/throttle)
 
+## Get StacMan
+
+[StacMan is available on NuGet](https://nuget.org/packages/StacMan):
+
+    PM> Install-Package StacMan
+
 ## Example Usage
 
+    using StackExchange.StacMan;
+    ...
     var client = new StacManClient(FilterBehavior.Strict, key: "my-app-key");
     client.RegisterFilters("!mDO35lQRaz");
 

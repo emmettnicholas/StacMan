@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Emmett Nicholas</authors>
+    <owners>Emmett Nicholas</owners>
+    <licenseUrl>https://github.com/emmettnicholas/StacMan/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/emmettnicholas/StacMan</projectUrl>
+    <iconUrl>http://i.stack.imgur.com/M3cQG.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>StacMan is a .NET client for Stack Exchange API v2</description>
+    <copyright>Copyright 2012</copyright>
+    <tags>Stack Exchange Overflow API StackExchange StackOverflow</tags>
+  </metadata>
+</package>
