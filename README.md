@@ -72,7 +72,7 @@ The `StacManClient` constructor takes a `FilterBehavior` enum, which can be eith
 **FilterBehavior.Strict**
 * Getting a property not included in the [filter](http://api.stackexchange.com/docs/filters) throws a `FilterException`.
 * All filters must be "registered" (with the `RegisterFilters` method) prior to being used.
-  * IMPORTANT: `RegisterFilters` incurs one [API call](http://api.stackexchange.com/docs/read-filter) (per 20 unregistered filters) each time it's called, so for best performance, it should be called sparingly and at most once per filter, e.g. once only when your app starts. (The "default" filter does not need to be registered.)
+  * IMPORTANT: `RegisterFilters` incurs one [API call](http://api.stackexchange.com/docs/read-filter) (per 20 unregistered filters) each time it's called, so for best performance, it should be called sparingly and at most once per filter, e.g. once only when your app starts. (Built-in filters such as "default" do not need to be registered.)
 
 **FilterBehavior.Loose**
 * Getting a property not included in the [filter](http://api.stackexchange.com/docs/filters) returns that property type's default value.
