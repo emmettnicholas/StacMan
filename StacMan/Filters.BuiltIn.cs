@@ -4,7 +4,7 @@
     {
         private Filter() : this(FilterBehavior.Loose, null) { }
 
-        public static Filter Default = new Filter
+        public static readonly Filter Default = new Filter
         {
             FilterName = "default",
             FilterType = Filters.FilterType.Safe,
@@ -254,7 +254,7 @@
             },
         };
 
-        public static Filter WithBody = new Filter
+        public static readonly Filter WithBody = new Filter
         {
             FilterName = "withbody",
             FilterType = Filters.FilterType.Safe,
@@ -512,14 +512,14 @@
             },
         };
 
-        public static Filter None = new Filter
+        public static readonly Filter None = new Filter
         {
             FilterName = "none",
             FilterType = Filters.FilterType.Safe,
             IncludedFields = new string[0],
         };
 
-        public static Filter Total = new Filter
+        public static readonly Filter Total = new Filter
         {
             FilterName = "total",
             FilterType = Filters.FilterType.Safe,
