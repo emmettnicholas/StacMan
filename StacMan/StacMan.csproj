@@ -201,6 +201,7 @@
     <Compile Include="Exceptions\FilterException.cs" />
     <Compile Include="Exceptions\StackExchangeApiException.cs" />
     <Compile Include="FilterBehavior.cs" />
+    <Compile Include="Filters.BuiltIn.cs" />
     <Compile Include="Filters\FilterType.cs" />
     <Compile Include="InboxItems\ItemType.cs" />
     <Compile Include="Order.cs" />
@@ -232,7 +233,6 @@
     <Compile Include="Users\UserType.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="FieldAttribute.cs" />
-    <Compile Include="Filters.Default.cs" />
     <Compile Include="StacManResponse.cs" />
     <Compile Include="StacManType.cs" />
     <Compile Include="StacManClient.cs" />

@@ -30,7 +30,13 @@ namespace StackExchange.StacMan
         private readonly FilterBehavior FilterBehavior;
         private readonly string Key;
 
-        private readonly IDictionary<string, Filter> RegisteredFilters = new Dictionary<string, Filter> { { Filter.Default.FilterName, Filter.Default } };
+        private readonly IDictionary<string, Filter> RegisteredFilters = new Dictionary<string, Filter>
+        {
+            { Filter.Default.FilterName, Filter.Default },
+            { Filter.WithBody.FilterName, Filter.WithBody },
+            { Filter.None.FilterName, Filter.None },
+            { Filter.Total.FilterName, Filter.Total },
+        };
 
         private readonly IDictionary<string, DateTime> BackoffUntil = new Dictionary<string, DateTime>();
 
