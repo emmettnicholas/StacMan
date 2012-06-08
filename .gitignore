@@ -4,3 +4,4 @@ obj/
 TestResults/
 *.nupkg
 _ReSharper.*
+*.csproj.user
