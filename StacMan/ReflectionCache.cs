@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using ServiceStack.Text;
 
 namespace StackExchange.StacMan
 {
     internal static class ReflectionCache
     {
         public static readonly MethodInfo StacManClientParseApiResponse = typeof(StacManClient).GetMethod("ParseApiResponse", BindingFlags.NonPublic | BindingFlags.Instance);
-
-        public static readonly MethodInfo JsonObjectGet = typeof(JsonExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static).Single(m => m.Name == "Get" && m.IsGenericMethod);
 
         public static class ApiFieldsByName<T> where T : StacManType
         {

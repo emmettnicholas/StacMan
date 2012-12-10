@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,8 +7,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-
-using ServiceStack.Text;
+using System.Web.Script.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -19,7 +19,7 @@ namespace StackExchange.StacMan
         /// <param name="filterBehavior">Desired level of filter validation.</param>
         /// <param name="key">Your app's Stack Exchange API V2 key (optional)</param>
         public StacManClient(FilterBehavior filterBehavior, string key = null)
-        {   
+        {
             FilterBehavior = filterBehavior;
             Key = key;
             ApiTimeoutMs = 5000;
@@ -62,6 +62,8 @@ namespace StackExchange.StacMan
         /// </summary>
         public bool RespectBackoffs { get; set; }
 
+        private readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
+
         /// <summary>
         /// Check whether a filter has been registered. This is only valid when FilterBehavior is Strict.
         /// </summary>
@@ -88,7 +90,7 @@ namespace StackExchange.StacMan
 
             var tasks = new List<Task<StacManResponse<Filter>>>(filters.Length);
             const int batchSize = 20; // the "/filters/{filters}" API method takes max 20 filters
-            
+
             while (filters.Any())
             {
                 var batch = filters.Take(batchSize);
@@ -152,13 +154,13 @@ namespace StackExchange.StacMan
             Interlocked.Increment(ref ActiveRequests);
 
             Action send = () =>
+            {
+                request.GetResponse(() =>
                 {
-                    request.GetResponse(() =>
-                    {
-                        Interlocked.Decrement(ref ActiveRequests);
-                        ProcessQueue();
-                    });
-                };
+                    Interlocked.Decrement(ref ActiveRequests);
+                    ProcessQueue();
+                });
+            };
 
             if (RespectBackoffs && BackoffUntil.ContainsKey(request.BackoffKey))
             {
@@ -209,7 +211,7 @@ namespace StackExchange.StacMan
                     try
                     {
                         response.RawData = rawData;
-                        response.Data = ParseApiResponse<Wrapper<T>>(JsonObject.Parse(response.RawData), filter, backoffKey);
+                        response.Data = ParseApiResponse<Wrapper<T>>(Serializer.Deserialize<Dictionary<string, object>>(response.RawData), filter, backoffKey);
 
                         if (response.Data.ErrorId.HasValue)
                             throw new Exceptions.StackExchangeApiException(response.Data.ErrorId.Value, response.Data.ErrorName, response.Data.ErrorMessage);
@@ -261,7 +263,7 @@ namespace StackExchange.StacMan
                 request);
         }
 
-        private T ParseApiResponse<T>(JsonObject jsonObject, Filter filter, string backoffKey) where T : StacManType
+        private T ParseApiResponse<T>(Dictionary<string, object> jsonObject, Filter filter, string backoffKey) where T : StacManType
         {
             var ret = (T)Activator.CreateInstance(typeof(T), BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { FilterBehavior, filter }, null);
             var apiFieldsByName = ReflectionCache.ApiFieldsByName<T>.Value;
@@ -274,43 +276,42 @@ namespace StackExchange.StacMan
                 var property = apiFieldsByName[fieldName];
                 object value;
 
-                if (property.PropertyType == typeof(DateTime))
+                if (property.PropertyType == typeof(DateTime) || Nullable.GetUnderlyingType(property.PropertyType) == typeof(DateTime))
                 {
-                    value = jsonObject.Get<long>(fieldName).ToDateTime();
+                    value = Convert.ToInt64(jsonObject[fieldName]).ToDateTime();
                 }
-                else if (Nullable.GetUnderlyingType(property.PropertyType) == typeof(DateTime))
+                else if (property.PropertyType == typeof(Guid) || Nullable.GetUnderlyingType(property.PropertyType) == typeof(Guid))
                 {
-                    value = jsonObject.Get<long?>(fieldName).ToNullableDateTime();
+                    value = Guid.Parse((string)jsonObject[fieldName]);
                 }
                 else if (property.PropertyType.IsEnum)
                 {
-                    value = Enum.Parse(property.PropertyType, jsonObject.Get(fieldName).Replace("_", String.Empty), true);
+                    value = Enum.Parse(property.PropertyType, ((string)jsonObject[fieldName]).Replace("_", String.Empty), true);
                 }
                 else if (property.PropertyType.BaseType == typeof(StacManType))
                 {
                     value = ReflectionCache.StacManClientParseApiResponse
                         .MakeGenericMethod(property.PropertyType)
-                        .Invoke(this, new object[] { jsonObject.Object(fieldName), filter, backoffKey });
+                        .Invoke(this, new object[] { (Dictionary<string, object>)jsonObject[fieldName], filter, backoffKey });
                 }
-                else if (property.PropertyType.IsArray && property.PropertyType.GetElementType().BaseType == typeof(StacManType))
+                else if (property.PropertyType.IsArray)
                 {
                     var elementType = property.PropertyType.GetElementType();
 
-                    var objArr = jsonObject
-                        .ArrayObjects(fieldName)
-                        .ConvertAll(i => ReflectionCache.StacManClientParseApiResponse
-                            .MakeGenericMethod(elementType)
-                            .Invoke(this, new object[] { i, filter, backoffKey }))
-                        .ToArray();
+                    Func<object, object> selector;
+                    if (elementType.BaseType == typeof(StacManType))
+                        selector = o => ReflectionCache.StacManClientParseApiResponse.MakeGenericMethod(elementType).Invoke(this, new object[] { o, filter, backoffKey });
+                    else
+                        selector = o => Convert.ChangeType(o, elementType.BaseType);
+
+                    var objArr = ((ArrayList)jsonObject[fieldName]).Cast<object>().Select(selector).ToArray();
 
                     value = Array.CreateInstance(elementType, objArr.Length);
                     Array.Copy(objArr, (Array)value, objArr.Length);
                 }
                 else
                 {
-                    value = ReflectionCache.JsonObjectGet
-                        .MakeGenericMethod(property.PropertyType)
-                        .Invoke(null, new object[] { jsonObject, fieldName });
+                    value = Convert.ChangeType(jsonObject[fieldName], Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
                 }
 
                 if (fieldName == "backoff")

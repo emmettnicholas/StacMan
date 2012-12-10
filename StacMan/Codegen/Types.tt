@@ -1,10 +1,10 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ include file="Manager.ttinclude" #>
-<#@ assembly name="$(SolutionDir)packages\ServiceStack.Text.3.6.3\lib\net35\ServiceStack.Text.dll" #>
+<#@ assembly name="System.Web.Extensions" #>
 <#@ output extension=".ignore" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="ServiceStack.Text" #>
+<#@ import namespace="System.Web.Script.Serialization" #>
 <# // To debug, uncomment the next two lines
 // System.Diagnostics.Debugger.Launch();
 // System.Diagnostics.Debugger.Break();
@@ -23,7 +23,8 @@ manager.StartHeader();
 manager.EndBlock();
 
 var typesJson = File.ReadAllText(this.Host.ResolvePath("Types.json"));
-var typesObj = JsonObject.Parse(typesJson);
+var serializer = new JavaScriptSerializer();
+var typesObj = serializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(typesJson);
 
 foreach (var typeName in typesObj.Keys)
 {
@@ -41,7 +42,7 @@ namespace StackExchange.StacMan
     {
         internal <#= className.Replace("<T>", "") #>(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "<#= typeName #>") { }
 <# 
-    var fieldsObj = typesObj.Object(typeName);
+    var fieldsObj = typesObj[typeName];
         
     foreach (var field in fieldsObj)
     {

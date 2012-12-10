@@ -1,7 +1,7 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ include file="Manager.ttinclude" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)packages\ServiceStack.Text.3.6.3\lib\net35\ServiceStack.Text.dll" #>
+<#@ assembly name="System.Web.Extensions" #>
 <#@ assembly name="Microsoft.VisualStudio.Shell.Interop.8.0" #>
 <#@ assembly name="EnvDTE" #>
 <#@ assembly name="EnvDTE80" #>
@@ -10,7 +10,7 @@
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
-<#@ import namespace="ServiceStack.Text" #>
+<#@ import namespace="System.Web.Script.Serialization" #>
 <#@ import namespace="Microsoft.VisualStudio.Shell.Interop" #>
 <#@ import namespace="EnvDTE" #>
 <#@ import namespace="EnvDTE80" #>
@@ -32,13 +32,14 @@ manager.StartHeader();
 manager.EndBlock();
 
 var methodsJson = File.ReadAllText(this.Host.ResolvePath("Methods.json"));
-var typesObj = JsonObject.Parse(methodsJson);
+var serializer = new JavaScriptSerializer();
+var typesObj = serializer.Deserialize<Dictionary<string, object>>(methodsJson);
 
 foreach (var typeName in typesObj.Keys)
 {
     var interfaceName = "I" + typeName + "Methods";
     var methodsPropertyName = typeName + (typeName == "Info" || typeName == "Search" || typeName == "Inbox" ? "" : "s");
-    var methodsObj = typesObj.Object(typeName);
+    var methodsObj = (Dictionary<string, object>)typesObj[typeName];
     var interfaceSignatures = new List<InterfaceSignature>();
 
     manager.StartNewFile("StacManClient." + typeName + "Methods.cs");
@@ -69,51 +70,55 @@ namespace StackExchange.StacMan
 
         optionalParams.Add(new Parameter("filter", "string"));
 
-        var methodObj = methodsObj.Object(methodName);
-        var description = methodObj.Get("description");
-        var url = methodObj.Get("url");
-        var returnTypeName = methodObj.Get("returnType") ?? typeName;
+        var methodObj = (Dictionary<string, object>)methodsObj[methodName];
+        var description = (string)methodObj["description"];
+        var url = (string)methodObj["url"];
+        var returnTypeName = methodObj.ContainsKey("returnType") ? (string)methodObj["returnType"] : typeName;
 
-        var isNetworkMethod = methodObj.Get<bool>("isNetworkMethod");
+        var isNetworkMethod = methodObj.ContainsKey("isNetworkMethod") && (bool)methodObj["isNetworkMethod"];
         if (!isNetworkMethod)
             requiredParams.Add(new Parameter("site", "string"));
 
-        var authRequired = methodObj.Get<bool>("authRequired");
+        var authRequired = methodObj.ContainsKey("authRequired") && (bool)methodObj["authRequired"];
         if (authRequired)
             requiredParams.Add(new Parameter("access_token", "string"));
 
-        var requiredObj = methodObj.Object("required");
-        if (requiredObj != null)
-            requiredParams.AddRange(requiredObj.Select(p => new Parameter(p.Key, p.Value)));
+        if (methodObj.ContainsKey("required"))
+        {
+            var requiredObj = (Dictionary<string, object>)methodObj["required"];
+            requiredParams.AddRange(requiredObj.Select(p => new Parameter(p.Key, (string)p.Value)));
+        }
 
-        var hasPaging = methodObj.Get<bool>("hasPaging");
+        var hasPaging = methodObj.ContainsKey("hasPaging") && (bool)methodObj["hasPaging"];
         if (hasPaging)
         {
             optionalParams.Add(new Parameter("page", "int?"));
             optionalParams.Add(new Parameter("pagesize", "int?"));
         }
 
-        var hasFromToDate = methodObj.Get<bool>("hasFromToDate");
+        var hasFromToDate = methodObj.ContainsKey("hasFromToDate") && (bool)methodObj["hasFromToDate"];
         if (hasFromToDate)
         {
             optionalParams.Add(new Parameter("fromdate", "DateTime?"));
             optionalParams.Add(new Parameter("todate", "DateTime?"));
         }
 
-        var sortType = methodObj.Get("sortType");
-        var hasSort = !String.IsNullOrEmpty(sortType);
         IEnumerable<Parameter> sortParams = null;
+        var hasSort = methodObj.ContainsKey("sortType");
         if (hasSort)
         {
+            var sortType = (string)methodObj["sortType"];
             optionalParams.Add(new Parameter("sort", sortType + "?"));
             sortParams = GetSortParameters(sortType);
             optionalParams.AddRange(sortParams);
             optionalParams.Add(new Parameter("order", "Order?"));
         }
 
-        var optionalObj = methodObj.Object("optional");
-        if (optionalObj != null)
-            optionalParams.AddRange(optionalObj.Select(p => new Parameter(p.Key, p.Value)));
+        if (methodObj.ContainsKey("optional"))
+        {
+            var optionalObj = (Dictionary<string, object>)methodObj["optional"];
+            optionalParams.AddRange(optionalObj.Select(p => new Parameter(p.Key, (string)p.Value)));
+        }
 
         var paramsString = String.Join(", ", 
             requiredParams.Select(p => p.Type + " " + p.VariableName)
