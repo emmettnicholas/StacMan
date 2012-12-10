@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacMan", "StacMan\StacMan.csproj", "{3C310AC6-6229-41FB-B33F-8381CF4FECBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacMan.Tests", "StacMan.Tests\StacMan.Tests.csproj", "{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}"
