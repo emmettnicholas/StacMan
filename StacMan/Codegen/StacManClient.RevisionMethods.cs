@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Revision>> IRevisionMethods.GetByIds(string site, IEnumerable<Guid> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -40,7 +38,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Revision>(ub, filterObj, "/revisions/{ids}");
+            return CreateApiTask<Revision>(ub, "/revisions/{ids}");
         }
     }
 

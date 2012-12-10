@@ -13,71 +13,30 @@ namespace StackExchange.StacMan
 {
     public partial class Reputation : StacManType
     {
-        internal Reputation(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "reputation") { }
-
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private DateTime _OnDate;
         [Field("on_date")]
-        public DateTime OnDate
-        {
-            get { EnsureFilterContainsField("on_date"); return _OnDate; }
-            internal set { _OnDate = value; }
-        }
+        public DateTime OnDate { get; internal set; }
 
-        private int _PostId;
         [Field("post_id")]
-        public int PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int PostId { get; internal set; }
 
-        private Posts.PostType _PostType;
         [Field("post_type")]
-        public Posts.PostType PostType
-        {
-            get { EnsureFilterContainsField("post_type"); return _PostType; }
-            internal set { _PostType = value; }
-        }
+        public Posts.PostType PostType { get; internal set; }
 
-        private int _ReputationChange;
         [Field("reputation_change")]
-        public int ReputationChange
-        {
-            get { EnsureFilterContainsField("reputation_change"); return _ReputationChange; }
-            internal set { _ReputationChange = value; }
-        }
+        public int ReputationChange { get; internal set; }
 
-        private string _Title;
         [Field("title")]
-        public string Title
-        {
-            get { EnsureFilterContainsField("title"); return _Title; }
-            internal set { _Title = value; }
-        }
+        public string Title { get; internal set; }
 
-        private int _UserId;
         [Field("user_id")]
-        public int UserId
-        {
-            get { EnsureFilterContainsField("user_id"); return _UserId; }
-            internal set { _UserId = value; }
-        }
+        public int UserId { get; internal set; }
 
-        private Reputations.VoteType _VoteType;
         [Field("vote_type")]
-        public Reputations.VoteType VoteType
-        {
-            get { EnsureFilterContainsField("vote_type"); return _VoteType; }
-            internal set { _VoteType = value; }
-        }
+        public Reputations.VoteType VoteType { get; internal set; }
+
     }
 }
 

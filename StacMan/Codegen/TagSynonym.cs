@@ -13,47 +13,21 @@ namespace StackExchange.StacMan
 {
     public partial class TagSynonym : StacManType
     {
-        internal TagSynonym(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "tag_synonym") { }
-
-        private int _AppliedCount;
         [Field("applied_count")]
-        public int AppliedCount
-        {
-            get { EnsureFilterContainsField("applied_count"); return _AppliedCount; }
-            internal set { _AppliedCount = value; }
-        }
+        public int AppliedCount { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private string _FromTag;
         [Field("from_tag")]
-        public string FromTag
-        {
-            get { EnsureFilterContainsField("from_tag"); return _FromTag; }
-            internal set { _FromTag = value; }
-        }
+        public string FromTag { get; internal set; }
 
-        private DateTime? _LastAppliedDate;
         [Field("last_applied_date")]
-        public DateTime? LastAppliedDate
-        {
-            get { EnsureFilterContainsField("last_applied_date"); return _LastAppliedDate; }
-            internal set { _LastAppliedDate = value; }
-        }
+        public DateTime? LastAppliedDate { get; internal set; }
 
-        private string _ToTag;
         [Field("to_tag")]
-        public string ToTag
-        {
-            get { EnsureFilterContainsField("to_tag"); return _ToTag; }
-            internal set { _ToTag = value; }
-        }
+        public string ToTag { get; internal set; }
+
     }
 }
 

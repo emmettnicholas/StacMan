@@ -13,95 +13,39 @@ namespace StackExchange.StacMan
 {
     public partial class Post : StacManType
     {
-        internal Post(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "post") { }
-
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private Comment[] _Comments;
         [Field("comments")]
-        public Comment[] Comments
-        {
-            get { EnsureFilterContainsField("comments"); return _Comments; }
-            internal set { _Comments = value; }
-        }
+        public Comment[] Comments { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private int _DownVoteCount;
         [Field("down_vote_count")]
-        public int DownVoteCount
-        {
-            get { EnsureFilterContainsField("down_vote_count"); return _DownVoteCount; }
-            internal set { _DownVoteCount = value; }
-        }
+        public int DownVoteCount { get; internal set; }
 
-        private DateTime _LastActivityDate;
         [Field("last_activity_date")]
-        public DateTime LastActivityDate
-        {
-            get { EnsureFilterContainsField("last_activity_date"); return _LastActivityDate; }
-            internal set { _LastActivityDate = value; }
-        }
+        public DateTime LastActivityDate { get; internal set; }
 
-        private DateTime? _LastEditDate;
         [Field("last_edit_date")]
-        public DateTime? LastEditDate
-        {
-            get { EnsureFilterContainsField("last_edit_date"); return _LastEditDate; }
-            internal set { _LastEditDate = value; }
-        }
+        public DateTime? LastEditDate { get; internal set; }
 
-        private ShallowUser _Owner;
         [Field("owner")]
-        public ShallowUser Owner
-        {
-            get { EnsureFilterContainsField("owner"); return _Owner; }
-            internal set { _Owner = value; }
-        }
+        public ShallowUser Owner { get; internal set; }
 
-        private int _PostId;
         [Field("post_id")]
-        public int PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int PostId { get; internal set; }
 
-        private Posts.PostType _PostType;
         [Field("post_type")]
-        public Posts.PostType PostType
-        {
-            get { EnsureFilterContainsField("post_type"); return _PostType; }
-            internal set { _PostType = value; }
-        }
+        public Posts.PostType PostType { get; internal set; }
 
-        private int _Score;
         [Field("score")]
-        public int Score
-        {
-            get { EnsureFilterContainsField("score"); return _Score; }
-            internal set { _Score = value; }
-        }
+        public int Score { get; internal set; }
 
-        private int _UpVoteCount;
         [Field("up_vote_count")]
-        public int UpVoteCount
-        {
-            get { EnsureFilterContainsField("up_vote_count"); return _UpVoteCount; }
-            internal set { _UpVoteCount = value; }
-        }
+        public int UpVoteCount { get; internal set; }
+
     }
 }
 

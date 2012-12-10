@@ -14,7 +14,7 @@ namespace StackExchange.StacMan.Tests
         [TestMethod]
         public void Sites_get_all_test()
         {
-            var mock = new Mock<StacManClient>(FilterBehavior.Strict, null);
+            var mock = new Mock<StacManClient>(null);
 
             //http://api.stackexchange.com/2.0/sites?page=1&pagesize=1
             mock.FakeFetch(response: @"{""items"":[{""site_type"":""main_site"",""name"":""Stack Overflow"",""logo_url"":""http://cdn.sstatic.net/stackoverflow/img/logo.png"",""api_site_parameter"":""stackoverflow"",""site_url"":""http://stackoverflow.com"",""audience"":""professional and enthusiast programmers"",""icon_url"":""http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png"",""aliases"":[""http://www.stackoverflow.com""],""site_state"":""normal"",""styling"":{""link_color"":""#0077CC"",""tag_foreground_color"":""#3E6D8E"",""tag_background_color"":""#E0EAF1""},""launch_date"":1221436800,""favicon_url"":""http://cdn.sstatic.net/stackoverflow/img/favicon.ico"",""related_sites"":[{""name"":""Stack Overflow Chat"",""site_url"":""http://chat.stackoverflow.com"",""relation"":""chat""}],""markdown_extensions"":[""Prettify""]}],""quota_remaining"":-50833,""quota_max"":300,""has_more"":true}");

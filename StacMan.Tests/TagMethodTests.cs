@@ -14,7 +14,7 @@ namespace StackExchange.StacMan.Tests
         [TestMethod]
         public void Tags_get_all_test()
         {
-            var mock = new Mock<StacManClient>(FilterBehavior.Strict, null);
+            var mock = new Mock<StacManClient>(null);
 
             //http://api.stackexchange.com/2.0/tags?page=3&pagesize=2&order=desc&sort=popular&site=gaming
             mock.FakeFetch(response: @"{""items"":[{""name"":""league-of-legends"",""count"":768,""is_required"":false,""is_moderator_only"":false,""has_synonyms"":true},{""name"":""pc"",""count"":607,""is_required"":false,""is_moderator_only"":false,""has_synonyms"":false}],""quota_remaining"":-47478,""quota_max"":300,""has_more"":true}");
@@ -32,7 +32,7 @@ namespace StackExchange.StacMan.Tests
             Assert.IsFalse(tag.IsModeratorOnly);
             Assert.IsFalse(tag.HasSynonyms);
             Assert.IsNull(tag.UserId);
-            Assert2.Throws<Exceptions.FilterException>(() => { var d = tag.LastActivityDate; });
+            Assert.IsNull(tag.LastActivityDate);
         }
     }
 }

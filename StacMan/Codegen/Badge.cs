@@ -13,71 +13,30 @@ namespace StackExchange.StacMan
 {
     public partial class Badge : StacManType
     {
-        internal Badge(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "badge") { }
-
-        private int _AwardCount;
         [Field("award_count")]
-        public int AwardCount
-        {
-            get { EnsureFilterContainsField("award_count"); return _AwardCount; }
-            internal set { _AwardCount = value; }
-        }
+        public int AwardCount { get; internal set; }
 
-        private int _BadgeId;
         [Field("badge_id")]
-        public int BadgeId
-        {
-            get { EnsureFilterContainsField("badge_id"); return _BadgeId; }
-            internal set { _BadgeId = value; }
-        }
+        public int BadgeId { get; internal set; }
 
-        private Badges.BadgeType _BadgeType;
         [Field("badge_type")]
-        public Badges.BadgeType BadgeType
-        {
-            get { EnsureFilterContainsField("badge_type"); return _BadgeType; }
-            internal set { _BadgeType = value; }
-        }
+        public Badges.BadgeType BadgeType { get; internal set; }
 
-        private string _Description;
         [Field("description")]
-        public string Description
-        {
-            get { EnsureFilterContainsField("description"); return _Description; }
-            internal set { _Description = value; }
-        }
+        public string Description { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private string _Name;
         [Field("name")]
-        public string Name
-        {
-            get { EnsureFilterContainsField("name"); return _Name; }
-            internal set { _Name = value; }
-        }
+        public string Name { get; internal set; }
 
-        private Badges.Rank _Rank;
         [Field("rank")]
-        public Badges.Rank Rank
-        {
-            get { EnsureFilterContainsField("rank"); return _Rank; }
-            internal set { _Rank = value; }
-        }
+        public Badges.Rank Rank { get; internal set; }
 
-        private ShallowUser _User;
         [Field("user")]
-        public ShallowUser User
-        {
-            get { EnsureFilterContainsField("user"); return _User; }
-            internal set { _User = value; }
-        }
+        public ShallowUser User { get; internal set; }
+
     }
 }
 

@@ -13,39 +13,18 @@ namespace StackExchange.StacMan
 {
     public partial class AccessToken : StacManType
     {
-        internal AccessToken(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "access_token") { }
-
-        private string _AccessTokenName;
         [Field("access_token")]
-        public string AccessTokenName
-        {
-            get { EnsureFilterContainsField("access_token"); return _AccessTokenName; }
-            internal set { _AccessTokenName = value; }
-        }
+        public string AccessTokenName { get; internal set; }
 
-        private int _AccountId;
         [Field("account_id")]
-        public int AccountId
-        {
-            get { EnsureFilterContainsField("account_id"); return _AccountId; }
-            internal set { _AccountId = value; }
-        }
+        public int AccountId { get; internal set; }
 
-        private DateTime? _ExpiresOnDate;
         [Field("expires_on_date")]
-        public DateTime? ExpiresOnDate
-        {
-            get { EnsureFilterContainsField("expires_on_date"); return _ExpiresOnDate; }
-            internal set { _ExpiresOnDate = value; }
-        }
+        public DateTime? ExpiresOnDate { get; internal set; }
 
-        private string[] _Scope;
         [Field("scope")]
-        public string[] Scope
-        {
-            get { EnsureFilterContainsField("scope"); return _Scope; }
-            internal set { _Scope = value; }
-        }
+        public string[] Scope { get; internal set; }
+
     }
 }
 

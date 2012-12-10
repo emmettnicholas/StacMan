@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Event>> IEventMethods.GetRecent(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
@@ -40,7 +38,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<Event>(ub, filterObj, "/events");
+            return CreateApiTask<Event>(ub, "/events");
         }
     }
 

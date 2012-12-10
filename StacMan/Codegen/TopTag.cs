@@ -13,47 +13,21 @@ namespace StackExchange.StacMan
 {
     public partial class TopTag : StacManType
     {
-        internal TopTag(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "top_tag") { }
-
-        private int _AnswerCount;
         [Field("answer_count")]
-        public int AnswerCount
-        {
-            get { EnsureFilterContainsField("answer_count"); return _AnswerCount; }
-            internal set { _AnswerCount = value; }
-        }
+        public int AnswerCount { get; internal set; }
 
-        private int _AnswerScore;
         [Field("answer_score")]
-        public int AnswerScore
-        {
-            get { EnsureFilterContainsField("answer_score"); return _AnswerScore; }
-            internal set { _AnswerScore = value; }
-        }
+        public int AnswerScore { get; internal set; }
 
-        private int _QuestionCount;
         [Field("question_count")]
-        public int QuestionCount
-        {
-            get { EnsureFilterContainsField("question_count"); return _QuestionCount; }
-            internal set { _QuestionCount = value; }
-        }
+        public int QuestionCount { get; internal set; }
 
-        private int _QuestionScore;
         [Field("question_score")]
-        public int QuestionScore
-        {
-            get { EnsureFilterContainsField("question_score"); return _QuestionScore; }
-            internal set { _QuestionScore = value; }
-        }
+        public int QuestionScore { get; internal set; }
 
-        private string _TagName;
         [Field("tag_name")]
-        public string TagName
-        {
-            get { EnsureFilterContainsField("tag_name"); return _TagName; }
-            internal set { _TagName = value; }
-        }
+        public string TagName { get; internal set; }
+
     }
 }
 

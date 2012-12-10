@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<AccessToken>> IApplicationMethods.Deauthenticate(IEnumerable<string> accessTokens, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
 
@@ -36,7 +34,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, filterObj, "/apps/{accessTokens}/de-authenticate");
+            return CreateApiTask<AccessToken>(ub, "/apps/{accessTokens}/de-authenticate");
         }
     }
 

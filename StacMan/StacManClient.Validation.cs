@@ -6,23 +6,6 @@ namespace StackExchange.StacMan
 {
     public partial class StacManClient
     {
-        private Filter ValidateAndGetFilter(string filter)
-        {
-            var filterActual = String.IsNullOrEmpty(filter) ? Filter.Default.FilterName : filter;
-
-            if (FilterBehavior == FilterBehavior.Strict)
-            {
-                if (!IsFilterRegistered(filterActual))
-                    throw new ArgumentException(String.Format("\"{0}\" filter isn't registered", filter), "filter");
-
-                return RegisteredFilters[filterActual];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         private void ValidatePaging(int? page, int? pagesize)
         {
             if (page.HasValue && page.Value < 1)

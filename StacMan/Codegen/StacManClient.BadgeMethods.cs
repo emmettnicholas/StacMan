@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.AllSort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Badges.BadgeType? mintype = null, Badges.BadgeType? maxtype = null, Order? order = null, string inname = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype);
@@ -49,13 +47,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Badge>(ub, filterObj, "/badges");
+            return CreateApiTask<Badge>(ub, "/badges");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.AllSort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Badges.BadgeType? mintype = null, Badges.BadgeType? maxtype = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -78,13 +74,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxtype);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Badge>(ub, filterObj, "/badges/{ids}");
+            return CreateApiTask<Badge>(ub, "/badges/{ids}");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetNamed(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.Sort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname);
@@ -105,13 +99,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Badge>(ub, filterObj, "/badges/name");
+            return CreateApiTask<Badge>(ub, "/badges/name");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetRecent(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
@@ -124,13 +116,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Badge>(ub, filterObj, "/badges/recipients");
+            return CreateApiTask<Badge>(ub, "/badges/recipients");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetRecentByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -144,13 +134,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Badge>(ub, filterObj, "/badges/{ids}/recipients");
+            return CreateApiTask<Badge>(ub, "/badges/{ids}/recipients");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetTagBased(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.Sort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname);
@@ -171,7 +159,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Badge>(ub, filterObj, "/badges/tags");
+            return CreateApiTask<Badge>(ub, "/badges/tags");
         }
     }
 

@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class Styling : StacManType
     {
-        internal Styling(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "styling") { }
-
-        private string _LinkColor;
         [Field("link_color")]
-        public string LinkColor
-        {
-            get { EnsureFilterContainsField("link_color"); return _LinkColor; }
-            internal set { _LinkColor = value; }
-        }
+        public string LinkColor { get; internal set; }
 
-        private string _TagBackgroundColor;
         [Field("tag_background_color")]
-        public string TagBackgroundColor
-        {
-            get { EnsureFilterContainsField("tag_background_color"); return _TagBackgroundColor; }
-            internal set { _TagBackgroundColor = value; }
-        }
+        public string TagBackgroundColor { get; internal set; }
 
-        private string _TagForegroundColor;
         [Field("tag_foreground_color")]
-        public string TagForegroundColor
-        {
-            get { EnsureFilterContainsField("tag_foreground_color"); return _TagForegroundColor; }
-            internal set { _TagForegroundColor = value; }
-        }
+        public string TagForegroundColor { get; internal set; }
+
     }
 }
 

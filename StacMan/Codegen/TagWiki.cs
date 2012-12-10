@@ -13,63 +13,27 @@ namespace StackExchange.StacMan
 {
     public partial class TagWiki : StacManType
     {
-        internal TagWiki(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "tag_wiki") { }
-
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private DateTime? _BodyLastEditDate;
         [Field("body_last_edit_date")]
-        public DateTime? BodyLastEditDate
-        {
-            get { EnsureFilterContainsField("body_last_edit_date"); return _BodyLastEditDate; }
-            internal set { _BodyLastEditDate = value; }
-        }
+        public DateTime? BodyLastEditDate { get; internal set; }
 
-        private string _Excerpt;
         [Field("excerpt")]
-        public string Excerpt
-        {
-            get { EnsureFilterContainsField("excerpt"); return _Excerpt; }
-            internal set { _Excerpt = value; }
-        }
+        public string Excerpt { get; internal set; }
 
-        private DateTime? _ExcerptLastEditDate;
         [Field("excerpt_last_edit_date")]
-        public DateTime? ExcerptLastEditDate
-        {
-            get { EnsureFilterContainsField("excerpt_last_edit_date"); return _ExcerptLastEditDate; }
-            internal set { _ExcerptLastEditDate = value; }
-        }
+        public DateTime? ExcerptLastEditDate { get; internal set; }
 
-        private ShallowUser _LastBodyEditor;
         [Field("last_body_editor")]
-        public ShallowUser LastBodyEditor
-        {
-            get { EnsureFilterContainsField("last_body_editor"); return _LastBodyEditor; }
-            internal set { _LastBodyEditor = value; }
-        }
+        public ShallowUser LastBodyEditor { get; internal set; }
 
-        private ShallowUser _LastExcerptEditor;
         [Field("last_excerpt_editor")]
-        public ShallowUser LastExcerptEditor
-        {
-            get { EnsureFilterContainsField("last_excerpt_editor"); return _LastExcerptEditor; }
-            internal set { _LastExcerptEditor = value; }
-        }
+        public ShallowUser LastExcerptEditor { get; internal set; }
 
-        private string _TagName;
         [Field("tag_name")]
-        public string TagName
-        {
-            get { EnsureFilterContainsField("tag_name"); return _TagName; }
-            internal set { _TagName = value; }
-        }
+        public string TagName { get; internal set; }
+
     }
 }
 

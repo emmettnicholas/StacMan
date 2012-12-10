@@ -13,47 +13,21 @@ namespace StackExchange.StacMan
 {
     public partial class Event : StacManType
     {
-        internal Event(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "event") { }
-
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private int _EventId;
         [Field("event_id")]
-        public int EventId
-        {
-            get { EnsureFilterContainsField("event_id"); return _EventId; }
-            internal set { _EventId = value; }
-        }
+        public int EventId { get; internal set; }
 
-        private Events.EventType _EventType;
         [Field("event_type")]
-        public Events.EventType EventType
-        {
-            get { EnsureFilterContainsField("event_type"); return _EventType; }
-            internal set { _EventType = value; }
-        }
+        public Events.EventType EventType { get; internal set; }
 
-        private string _Excerpt;
         [Field("excerpt")]
-        public string Excerpt
-        {
-            get { EnsureFilterContainsField("excerpt"); return _Excerpt; }
-            internal set { _Excerpt = value; }
-        }
+        public string Excerpt { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
+
     }
 }
 

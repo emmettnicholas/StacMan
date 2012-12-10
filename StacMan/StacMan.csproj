@@ -199,9 +199,7 @@
     </Compile>
     <Compile Include="Comments\Sort.cs" />
     <Compile Include="Events\EventType.cs" />
-    <Compile Include="Exceptions\FilterException.cs" />
     <Compile Include="Exceptions\StackExchangeApiException.cs" />
-    <Compile Include="FilterBehavior.cs" />
     <Compile Include="Filters.BuiltIn.cs" />
     <Compile Include="Filters\FilterType.cs" />
     <Compile Include="InboxItems\ItemType.cs" />

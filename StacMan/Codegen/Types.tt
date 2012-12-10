@@ -40,7 +40,6 @@ namespace StackExchange.StacMan
 {
     public partial class <#= className #> : StacManType
     {
-        internal <#= className.Replace("<T>", "") #>(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "<#= typeName #>") { }
 <# 
     var fieldsObj = typesObj[typeName];
         
@@ -53,17 +52,11 @@ namespace StackExchange.StacMan
         if (propertyName == className)
             propertyName += "Name";
 
-        var backingFieldName = "_" + propertyName;
         var propertyTypeName = field.Value;
 #>
-
-        private <#= propertyTypeName #> <#= backingFieldName #>;
         [Field("<#= fieldName #>")]
-        public <#= propertyTypeName #> <#= propertyName #>
-        {
-            get { EnsureFilterContainsField("<#= fieldName #>"); return <#= backingFieldName #>; }
-            internal set { <#= backingFieldName #> = value; }
-        }
+        public <#= propertyTypeName #> <#= propertyName #> { get; internal set; }
+
 <#
     }
 #>

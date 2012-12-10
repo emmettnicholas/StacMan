@@ -13,95 +13,39 @@ namespace StackExchange.StacMan
 {
     public partial class SuggestedEdit : StacManType
     {
-        internal SuggestedEdit(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "suggested_edit") { }
-
-        private DateTime? _ApprovalDate;
         [Field("approval_date")]
-        public DateTime? ApprovalDate
-        {
-            get { EnsureFilterContainsField("approval_date"); return _ApprovalDate; }
-            internal set { _ApprovalDate = value; }
-        }
+        public DateTime? ApprovalDate { get; internal set; }
 
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private string _Comment;
         [Field("comment")]
-        public string Comment
-        {
-            get { EnsureFilterContainsField("comment"); return _Comment; }
-            internal set { _Comment = value; }
-        }
+        public string Comment { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private int _PostId;
         [Field("post_id")]
-        public int PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int PostId { get; internal set; }
 
-        private Posts.PostType _PostType;
         [Field("post_type")]
-        public Posts.PostType PostType
-        {
-            get { EnsureFilterContainsField("post_type"); return _PostType; }
-            internal set { _PostType = value; }
-        }
+        public Posts.PostType PostType { get; internal set; }
 
-        private ShallowUser _ProposingUser;
         [Field("proposing_user")]
-        public ShallowUser ProposingUser
-        {
-            get { EnsureFilterContainsField("proposing_user"); return _ProposingUser; }
-            internal set { _ProposingUser = value; }
-        }
+        public ShallowUser ProposingUser { get; internal set; }
 
-        private DateTime? _RejectionDate;
         [Field("rejection_date")]
-        public DateTime? RejectionDate
-        {
-            get { EnsureFilterContainsField("rejection_date"); return _RejectionDate; }
-            internal set { _RejectionDate = value; }
-        }
+        public DateTime? RejectionDate { get; internal set; }
 
-        private int _SuggestedEditId;
         [Field("suggested_edit_id")]
-        public int SuggestedEditId
-        {
-            get { EnsureFilterContainsField("suggested_edit_id"); return _SuggestedEditId; }
-            internal set { _SuggestedEditId = value; }
-        }
+        public int SuggestedEditId { get; internal set; }
 
-        private string[] _Tags;
         [Field("tags")]
-        public string[] Tags
-        {
-            get { EnsureFilterContainsField("tags"); return _Tags; }
-            internal set { _Tags = value; }
-        }
+        public string[] Tags { get; internal set; }
 
-        private string _Title;
         [Field("title")]
-        public string Title
-        {
-            get { EnsureFilterContainsField("title"); return _Title; }
-            internal set { _Title = value; }
-        }
+        public string Title { get; internal set; }
+
     }
 }
 

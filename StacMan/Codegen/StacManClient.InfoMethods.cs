@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Info>> IInfoMethods.Get(string site, string filter = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
 
             var ub = new ApiUrlBuilder("/info", useHttps: false);
@@ -34,7 +32,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Info>(ub, filterObj, "/info");
+            return CreateApiTask<Info>(ub, "/info");
         }
     }
 

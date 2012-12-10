@@ -13,63 +13,27 @@ namespace StackExchange.StacMan
 {
     public partial class ShallowUser : StacManType
     {
-        internal ShallowUser(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "shallow_user") { }
-
-        private int? _AcceptRate;
         [Field("accept_rate")]
-        public int? AcceptRate
-        {
-            get { EnsureFilterContainsField("accept_rate"); return _AcceptRate; }
-            internal set { _AcceptRate = value; }
-        }
+        public int? AcceptRate { get; internal set; }
 
-        private string _DisplayName;
         [Field("display_name")]
-        public string DisplayName
-        {
-            get { EnsureFilterContainsField("display_name"); return _DisplayName; }
-            internal set { _DisplayName = value; }
-        }
+        public string DisplayName { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private string _ProfileImage;
         [Field("profile_image")]
-        public string ProfileImage
-        {
-            get { EnsureFilterContainsField("profile_image"); return _ProfileImage; }
-            internal set { _ProfileImage = value; }
-        }
+        public string ProfileImage { get; internal set; }
 
-        private int? _Reputation;
         [Field("reputation")]
-        public int? Reputation
-        {
-            get { EnsureFilterContainsField("reputation"); return _Reputation; }
-            internal set { _Reputation = value; }
-        }
+        public int? Reputation { get; internal set; }
 
-        private int? _UserId;
         [Field("user_id")]
-        public int? UserId
-        {
-            get { EnsureFilterContainsField("user_id"); return _UserId; }
-            internal set { _UserId = value; }
-        }
+        public int? UserId { get; internal set; }
 
-        private Users.UserType _UserType;
         [Field("user_type")]
-        public Users.UserType UserType
-        {
-            get { EnsureFilterContainsField("user_type"); return _UserType; }
-            internal set { _UserType = value; }
-        }
+        public Users.UserType UserType { get; internal set; }
+
     }
 }
 

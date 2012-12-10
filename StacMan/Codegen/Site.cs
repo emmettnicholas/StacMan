@@ -13,143 +13,57 @@ namespace StackExchange.StacMan
 {
     public partial class Site : StacManType
     {
-        internal Site(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "site") { }
-
-        private string[] _Aliases;
         [Field("aliases")]
-        public string[] Aliases
-        {
-            get { EnsureFilterContainsField("aliases"); return _Aliases; }
-            internal set { _Aliases = value; }
-        }
+        public string[] Aliases { get; internal set; }
 
-        private string _ApiSiteParameter;
         [Field("api_site_parameter")]
-        public string ApiSiteParameter
-        {
-            get { EnsureFilterContainsField("api_site_parameter"); return _ApiSiteParameter; }
-            internal set { _ApiSiteParameter = value; }
-        }
+        public string ApiSiteParameter { get; internal set; }
 
-        private string _Audience;
         [Field("audience")]
-        public string Audience
-        {
-            get { EnsureFilterContainsField("audience"); return _Audience; }
-            internal set { _Audience = value; }
-        }
+        public string Audience { get; internal set; }
 
-        private DateTime? _ClosedBetaDate;
         [Field("closed_beta_date")]
-        public DateTime? ClosedBetaDate
-        {
-            get { EnsureFilterContainsField("closed_beta_date"); return _ClosedBetaDate; }
-            internal set { _ClosedBetaDate = value; }
-        }
+        public DateTime? ClosedBetaDate { get; internal set; }
 
-        private string _FaviconUrl;
         [Field("favicon_url")]
-        public string FaviconUrl
-        {
-            get { EnsureFilterContainsField("favicon_url"); return _FaviconUrl; }
-            internal set { _FaviconUrl = value; }
-        }
+        public string FaviconUrl { get; internal set; }
 
-        private string _IconUrl;
         [Field("icon_url")]
-        public string IconUrl
-        {
-            get { EnsureFilterContainsField("icon_url"); return _IconUrl; }
-            internal set { _IconUrl = value; }
-        }
+        public string IconUrl { get; internal set; }
 
-        private DateTime _LaunchDate;
         [Field("launch_date")]
-        public DateTime LaunchDate
-        {
-            get { EnsureFilterContainsField("launch_date"); return _LaunchDate; }
-            internal set { _LaunchDate = value; }
-        }
+        public DateTime LaunchDate { get; internal set; }
 
-        private string _LogoUrl;
         [Field("logo_url")]
-        public string LogoUrl
-        {
-            get { EnsureFilterContainsField("logo_url"); return _LogoUrl; }
-            internal set { _LogoUrl = value; }
-        }
+        public string LogoUrl { get; internal set; }
 
-        private string[] _MarkdownExtensions;
         [Field("markdown_extensions")]
-        public string[] MarkdownExtensions
-        {
-            get { EnsureFilterContainsField("markdown_extensions"); return _MarkdownExtensions; }
-            internal set { _MarkdownExtensions = value; }
-        }
+        public string[] MarkdownExtensions { get; internal set; }
 
-        private string _Name;
         [Field("name")]
-        public string Name
-        {
-            get { EnsureFilterContainsField("name"); return _Name; }
-            internal set { _Name = value; }
-        }
+        public string Name { get; internal set; }
 
-        private DateTime? _OpenBetaDate;
         [Field("open_beta_date")]
-        public DateTime? OpenBetaDate
-        {
-            get { EnsureFilterContainsField("open_beta_date"); return _OpenBetaDate; }
-            internal set { _OpenBetaDate = value; }
-        }
+        public DateTime? OpenBetaDate { get; internal set; }
 
-        private RelatedSite[] _RelatedSites;
         [Field("related_sites")]
-        public RelatedSite[] RelatedSites
-        {
-            get { EnsureFilterContainsField("related_sites"); return _RelatedSites; }
-            internal set { _RelatedSites = value; }
-        }
+        public RelatedSite[] RelatedSites { get; internal set; }
 
-        private Sites.SiteState _SiteState;
         [Field("site_state")]
-        public Sites.SiteState SiteState
-        {
-            get { EnsureFilterContainsField("site_state"); return _SiteState; }
-            internal set { _SiteState = value; }
-        }
+        public Sites.SiteState SiteState { get; internal set; }
 
-        private string _SiteType;
         [Field("site_type")]
-        public string SiteType
-        {
-            get { EnsureFilterContainsField("site_type"); return _SiteType; }
-            internal set { _SiteType = value; }
-        }
+        public string SiteType { get; internal set; }
 
-        private string _SiteUrl;
         [Field("site_url")]
-        public string SiteUrl
-        {
-            get { EnsureFilterContainsField("site_url"); return _SiteUrl; }
-            internal set { _SiteUrl = value; }
-        }
+        public string SiteUrl { get; internal set; }
 
-        private Styling _Styling;
         [Field("styling")]
-        public Styling Styling
-        {
-            get { EnsureFilterContainsField("styling"); return _Styling; }
-            internal set { _Styling = value; }
-        }
+        public Styling Styling { get; internal set; }
 
-        private string _TwitterAccount;
         [Field("twitter_account")]
-        public string TwitterAccount
-        {
-            get { EnsureFilterContainsField("twitter_account"); return _TwitterAccount; }
-            internal set { _TwitterAccount = value; }
-        }
+        public string TwitterAccount { get; internal set; }
+
     }
 }
 

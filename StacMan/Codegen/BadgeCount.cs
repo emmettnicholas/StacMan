@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class BadgeCount : StacManType
     {
-        internal BadgeCount(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "badge_count") { }
-
-        private int _Bronze;
         [Field("bronze")]
-        public int Bronze
-        {
-            get { EnsureFilterContainsField("bronze"); return _Bronze; }
-            internal set { _Bronze = value; }
-        }
+        public int Bronze { get; internal set; }
 
-        private int _Gold;
         [Field("gold")]
-        public int Gold
-        {
-            get { EnsureFilterContainsField("gold"); return _Gold; }
-            internal set { _Gold = value; }
-        }
+        public int Gold { get; internal set; }
 
-        private int _Silver;
         [Field("silver")]
-        public int Silver
-        {
-            get { EnsureFilterContainsField("silver"); return _Silver; }
-            internal set { _Silver = value; }
-        }
+        public int Silver { get; internal set; }
+
     }
 }
 

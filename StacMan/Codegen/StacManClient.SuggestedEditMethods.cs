@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
@@ -44,13 +42,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/suggested-edits");
+            return CreateApiTask<SuggestedEdit>(ub, "/suggested-edits");
         }
 
         Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -69,7 +65,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, filterObj, "/suggested-edits/{ids}");
+            return CreateApiTask<SuggestedEdit>(ub, "/suggested-edits/{ids}");
         }
     }
 

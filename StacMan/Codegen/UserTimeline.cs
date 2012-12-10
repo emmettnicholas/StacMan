@@ -13,95 +13,39 @@ namespace StackExchange.StacMan
 {
     public partial class UserTimeline : StacManType
     {
-        internal UserTimeline(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "user_timeline") { }
-
-        private int? _BadgeId;
         [Field("badge_id")]
-        public int? BadgeId
-        {
-            get { EnsureFilterContainsField("badge_id"); return _BadgeId; }
-            internal set { _BadgeId = value; }
-        }
+        public int? BadgeId { get; internal set; }
 
-        private int? _CommentId;
         [Field("comment_id")]
-        public int? CommentId
-        {
-            get { EnsureFilterContainsField("comment_id"); return _CommentId; }
-            internal set { _CommentId = value; }
-        }
+        public int? CommentId { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private string _Detail;
         [Field("detail")]
-        public string Detail
-        {
-            get { EnsureFilterContainsField("detail"); return _Detail; }
-            internal set { _Detail = value; }
-        }
+        public string Detail { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private int? _PostId;
         [Field("post_id")]
-        public int? PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int? PostId { get; internal set; }
 
-        private Posts.PostType _PostType;
         [Field("post_type")]
-        public Posts.PostType PostType
-        {
-            get { EnsureFilterContainsField("post_type"); return _PostType; }
-            internal set { _PostType = value; }
-        }
+        public Posts.PostType PostType { get; internal set; }
 
-        private int? _SuggestedEditId;
         [Field("suggested_edit_id")]
-        public int? SuggestedEditId
-        {
-            get { EnsureFilterContainsField("suggested_edit_id"); return _SuggestedEditId; }
-            internal set { _SuggestedEditId = value; }
-        }
+        public int? SuggestedEditId { get; internal set; }
 
-        private UserTimelines.TimelineType _TimelineType;
         [Field("timeline_type")]
-        public UserTimelines.TimelineType TimelineType
-        {
-            get { EnsureFilterContainsField("timeline_type"); return _TimelineType; }
-            internal set { _TimelineType = value; }
-        }
+        public UserTimelines.TimelineType TimelineType { get; internal set; }
 
-        private string _Title;
         [Field("title")]
-        public string Title
-        {
-            get { EnsureFilterContainsField("title"); return _Title; }
-            internal set { _Title = value; }
-        }
+        public string Title { get; internal set; }
 
-        private int _UserId;
         [Field("user_id")]
-        public int UserId
-        {
-            get { EnsureFilterContainsField("user_id"); return _UserId; }
-            internal set { _UserId = value; }
-        }
+        public int UserId { get; internal set; }
+
     }
 }
 

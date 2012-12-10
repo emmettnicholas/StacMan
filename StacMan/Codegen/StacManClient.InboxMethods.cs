@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<InboxItem>> IInboxMethods.Get(string access_token, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
@@ -37,13 +35,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, filterObj, "/inbox");
+            return CreateApiTask<InboxItem>(ub, "/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IInboxMethods.GetUnread(string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
@@ -55,7 +51,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, filterObj, "/inbox/unread");
+            return CreateApiTask<InboxItem>(ub, "/inbox/unread");
         }
     }
 

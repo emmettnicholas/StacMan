@@ -2,8 +2,6 @@
 {
     public partial class Filter
     {
-        private Filter() : this(FilterBehavior.Loose, null) { }
-
         public static readonly Filter Default = new Filter
         {
             FilterName = "default",

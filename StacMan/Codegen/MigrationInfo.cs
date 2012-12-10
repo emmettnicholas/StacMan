@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class MigrationInfo : StacManType
     {
-        internal MigrationInfo(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "migration_info") { }
-
-        private DateTime _OnDate;
         [Field("on_date")]
-        public DateTime OnDate
-        {
-            get { EnsureFilterContainsField("on_date"); return _OnDate; }
-            internal set { _OnDate = value; }
-        }
+        public DateTime OnDate { get; internal set; }
 
-        private Site _OtherSite;
         [Field("other_site")]
-        public Site OtherSite
-        {
-            get { EnsureFilterContainsField("other_site"); return _OtherSite; }
-            internal set { _OtherSite = value; }
-        }
+        public Site OtherSite { get; internal set; }
 
-        private int _QuestionId;
         [Field("question_id")]
-        public int QuestionId
-        {
-            get { EnsureFilterContainsField("question_id"); return _QuestionId; }
-            internal set { _QuestionId = value; }
-        }
+        public int QuestionId { get; internal set; }
+
     }
 }
 

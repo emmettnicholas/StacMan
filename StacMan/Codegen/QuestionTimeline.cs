@@ -13,87 +13,36 @@ namespace StackExchange.StacMan
 {
     public partial class QuestionTimeline : StacManType
     {
-        internal QuestionTimeline(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "question_timeline") { }
-
-        private int? _CommentId;
         [Field("comment_id")]
-        public int? CommentId
-        {
-            get { EnsureFilterContainsField("comment_id"); return _CommentId; }
-            internal set { _CommentId = value; }
-        }
+        public int? CommentId { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private int? _DownVoteCount;
         [Field("down_vote_count")]
-        public int? DownVoteCount
-        {
-            get { EnsureFilterContainsField("down_vote_count"); return _DownVoteCount; }
-            internal set { _DownVoteCount = value; }
-        }
+        public int? DownVoteCount { get; internal set; }
 
-        private ShallowUser _Owner;
         [Field("owner")]
-        public ShallowUser Owner
-        {
-            get { EnsureFilterContainsField("owner"); return _Owner; }
-            internal set { _Owner = value; }
-        }
+        public ShallowUser Owner { get; internal set; }
 
-        private int? _PostId;
         [Field("post_id")]
-        public int? PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int? PostId { get; internal set; }
 
-        private int _QuestionId;
         [Field("question_id")]
-        public int QuestionId
-        {
-            get { EnsureFilterContainsField("question_id"); return _QuestionId; }
-            internal set { _QuestionId = value; }
-        }
+        public int QuestionId { get; internal set; }
 
-        private Guid? _RevisionGuid;
         [Field("revision_guid")]
-        public Guid? RevisionGuid
-        {
-            get { EnsureFilterContainsField("revision_guid"); return _RevisionGuid; }
-            internal set { _RevisionGuid = value; }
-        }
+        public Guid? RevisionGuid { get; internal set; }
 
-        private QuestionTimelines.TimelineType _TimelineType;
         [Field("timeline_type")]
-        public QuestionTimelines.TimelineType TimelineType
-        {
-            get { EnsureFilterContainsField("timeline_type"); return _TimelineType; }
-            internal set { _TimelineType = value; }
-        }
+        public QuestionTimelines.TimelineType TimelineType { get; internal set; }
 
-        private int? _UpVoteCount;
         [Field("up_vote_count")]
-        public int? UpVoteCount
-        {
-            get { EnsureFilterContainsField("up_vote_count"); return _UpVoteCount; }
-            internal set { _UpVoteCount = value; }
-        }
+        public int? UpVoteCount { get; internal set; }
 
-        private ShallowUser _User;
         [Field("user")]
-        public ShallowUser User
-        {
-            get { EnsureFilterContainsField("user"); return _User; }
-            internal set { _User = value; }
-        }
+        public ShallowUser User { get; internal set; }
+
     }
 }
 

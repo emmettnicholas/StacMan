@@ -13,87 +13,36 @@ namespace StackExchange.StacMan
 {
     public partial class InboxItem : StacManType
     {
-        internal InboxItem(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "inbox_item") { }
-
-        private int? _AnswerId;
         [Field("answer_id")]
-        public int? AnswerId
-        {
-            get { EnsureFilterContainsField("answer_id"); return _AnswerId; }
-            internal set { _AnswerId = value; }
-        }
+        public int? AnswerId { get; internal set; }
 
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private int? _CommentId;
         [Field("comment_id")]
-        public int? CommentId
-        {
-            get { EnsureFilterContainsField("comment_id"); return _CommentId; }
-            internal set { _CommentId = value; }
-        }
+        public int? CommentId { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private bool _IsUnread;
         [Field("is_unread")]
-        public bool IsUnread
-        {
-            get { EnsureFilterContainsField("is_unread"); return _IsUnread; }
-            internal set { _IsUnread = value; }
-        }
+        public bool IsUnread { get; internal set; }
 
-        private InboxItems.ItemType _ItemType;
         [Field("item_type")]
-        public InboxItems.ItemType ItemType
-        {
-            get { EnsureFilterContainsField("item_type"); return _ItemType; }
-            internal set { _ItemType = value; }
-        }
+        public InboxItems.ItemType ItemType { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private int? _QuestionId;
         [Field("question_id")]
-        public int? QuestionId
-        {
-            get { EnsureFilterContainsField("question_id"); return _QuestionId; }
-            internal set { _QuestionId = value; }
-        }
+        public int? QuestionId { get; internal set; }
 
-        private Site _Site;
         [Field("site")]
-        public Site Site
-        {
-            get { EnsureFilterContainsField("site"); return _Site; }
-            internal set { _Site = value; }
-        }
+        public Site Site { get; internal set; }
 
-        private string _Title;
         [Field("title")]
-        public string Title
-        {
-            get { EnsureFilterContainsField("title"); return _Title; }
-            internal set { _Title = value; }
-        }
+        public string Title { get; internal set; }
+
     }
 }
 

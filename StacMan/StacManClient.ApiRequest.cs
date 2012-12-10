@@ -15,17 +15,15 @@ namespace StackExchange.StacMan
 
         private class ApiRequest<T> : IApiRequest where T : StacManType
         {
-            public ApiRequest(StacManClient client, ApiUrlBuilder ub, Filter filter, string backoffKey)
+            public ApiRequest(StacManClient client, ApiUrlBuilder ub, string backoffKey)
             {
                 Client = client;
                 UrlBuilder = ub;
-                Filter = filter;
                 BackoffKey = backoffKey;
             }
 
             private readonly StacManClient Client;
             private readonly ApiUrlBuilder UrlBuilder;
-            private readonly Filter Filter;
 
             private readonly TaskCompletionSource<StacManResponse<T>> Tcs = new TaskCompletionSource<StacManResponse<T>>();
 
@@ -38,7 +36,7 @@ namespace StackExchange.StacMan
             {
                 try
                 {
-                    Client.GetApiResponse<T>(UrlBuilder, Filter, BackoffKey, response =>
+                    Client.GetApiResponse<T>(UrlBuilder, BackoffKey, response =>
                         {
                             try
                             {

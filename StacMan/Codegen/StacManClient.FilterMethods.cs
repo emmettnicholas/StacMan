@@ -25,21 +25,17 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Filter>> IFilterMethods.Read(IEnumerable<string> filters, string filter = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateEnumerable(filters, "filters");
 
             var ub = new ApiUrlBuilder(String.Format("/filters/{0}", String.Join(";", filters)), useHttps: false);
 
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Filter>(ub, filterObj, "/filters/{filters}");
+            return CreateApiTask<Filter>(ub, "/filters/{filters}");
         }
 
         Task<StacManResponse<Filter>> IFilterMethods.Create(string filter = null, IEnumerable<string> include = null, IEnumerable<string> exclude = null, string @base = null, bool? @unsafe = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
 
             var ub = new ApiUrlBuilder("/filters/create", useHttps: false);
 
@@ -49,7 +45,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("base", @base);
             ub.AddParameter("unsafe", @unsafe);
 
-            return CreateApiTask<Filter>(ub, filterObj, "/filters/create");
+            return CreateApiTask<Filter>(ub, "/filters/create");
         }
     }
 

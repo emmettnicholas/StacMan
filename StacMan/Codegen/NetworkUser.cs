@@ -13,95 +13,39 @@ namespace StackExchange.StacMan
 {
     public partial class NetworkUser : StacManType
     {
-        internal NetworkUser(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "network_user") { }
-
-        private int _AccountId;
         [Field("account_id")]
-        public int AccountId
-        {
-            get { EnsureFilterContainsField("account_id"); return _AccountId; }
-            internal set { _AccountId = value; }
-        }
+        public int AccountId { get; internal set; }
 
-        private int _AnswerCount;
         [Field("answer_count")]
-        public int AnswerCount
-        {
-            get { EnsureFilterContainsField("answer_count"); return _AnswerCount; }
-            internal set { _AnswerCount = value; }
-        }
+        public int AnswerCount { get; internal set; }
 
-        private BadgeCount _BadgeCounts;
         [Field("badge_counts")]
-        public BadgeCount BadgeCounts
-        {
-            get { EnsureFilterContainsField("badge_counts"); return _BadgeCounts; }
-            internal set { _BadgeCounts = value; }
-        }
+        public BadgeCount BadgeCounts { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private DateTime _LastAccessDate;
         [Field("last_access_date")]
-        public DateTime LastAccessDate
-        {
-            get { EnsureFilterContainsField("last_access_date"); return _LastAccessDate; }
-            internal set { _LastAccessDate = value; }
-        }
+        public DateTime LastAccessDate { get; internal set; }
 
-        private int _QuestionCount;
         [Field("question_count")]
-        public int QuestionCount
-        {
-            get { EnsureFilterContainsField("question_count"); return _QuestionCount; }
-            internal set { _QuestionCount = value; }
-        }
+        public int QuestionCount { get; internal set; }
 
-        private int _Reputation;
         [Field("reputation")]
-        public int Reputation
-        {
-            get { EnsureFilterContainsField("reputation"); return _Reputation; }
-            internal set { _Reputation = value; }
-        }
+        public int Reputation { get; internal set; }
 
-        private string _SiteName;
         [Field("site_name")]
-        public string SiteName
-        {
-            get { EnsureFilterContainsField("site_name"); return _SiteName; }
-            internal set { _SiteName = value; }
-        }
+        public string SiteName { get; internal set; }
 
-        private string _SiteUrl;
         [Field("site_url")]
-        public string SiteUrl
-        {
-            get { EnsureFilterContainsField("site_url"); return _SiteUrl; }
-            internal set { _SiteUrl = value; }
-        }
+        public string SiteUrl { get; internal set; }
 
-        private int _UserId;
         [Field("user_id")]
-        public int UserId
-        {
-            get { EnsureFilterContainsField("user_id"); return _UserId; }
-            internal set { _UserId = value; }
-        }
+        public int UserId { get; internal set; }
 
-        private Users.UserType _UserType;
         [Field("user_type")]
-        public Users.UserType UserType
-        {
-            get { EnsureFilterContainsField("user_type"); return _UserType; }
-            internal set { _UserType = value; }
-        }
+        public Users.UserType UserType { get; internal set; }
+
     }
 }
 

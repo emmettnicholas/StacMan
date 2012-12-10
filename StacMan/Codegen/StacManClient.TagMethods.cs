@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Tag>> ITagMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
@@ -49,13 +47,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, filterObj, "/tags");
+            return CreateApiTask<Tag>(ub, "/tags");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetByName(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
@@ -78,13 +74,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, filterObj, "/tags/{tags}/info");
+            return CreateApiTask<Tag>(ub, "/tags/{tags}/info");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetModeratorOnly(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
@@ -107,13 +101,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, filterObj, "/tags/moderator-only");
+            return CreateApiTask<Tag>(ub, "/tags/moderator-only");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetRequired(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Tags.Sort? sort = null, int? min = null, int? max = null, DateTime? mindate = null, DateTime? maxdate = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
@@ -136,13 +128,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, filterObj, "/tags/required");
+            return CreateApiTask<Tag>(ub, "/tags/required");
         }
 
         Task<StacManResponse<TagSynonym>> ITagMethods.GetAllSynonyms(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, TagSynonyms.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
@@ -162,13 +152,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<TagSynonym>(ub, filterObj, "/tags/synonyms");
+            return CreateApiTask<TagSynonym>(ub, "/tags/synonyms");
         }
 
         Task<StacManResponse<Question>> ITagMethods.GetFrequentlyAsked(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
@@ -180,13 +168,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Question>(ub, filterObj, "/tags/{tags}/faq");
+            return CreateApiTask<Question>(ub, "/tags/{tags}/faq");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetRelated(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
@@ -198,13 +184,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Tag>(ub, filterObj, "/tags/{tags}/related");
+            return CreateApiTask<Tag>(ub, "/tags/{tags}/related");
         }
 
         Task<StacManResponse<TagSynonym>> ITagMethods.GetSynonymsForTags(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, TagSynonyms.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
@@ -225,13 +209,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<TagSynonym>(ub, filterObj, "/tags/{tags}/synonyms");
+            return CreateApiTask<TagSynonym>(ub, "/tags/{tags}/synonyms");
         }
 
         Task<StacManResponse<TagScore>> ITagMethods.GetTopAnswerers(string site, string tag, Tags.Period period, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateString(tag, "tag");
             ValidatePaging(page, pagesize);
@@ -243,13 +225,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagScore>(ub, filterObj, "/tags/{tag}/top-answerers/{period}");
+            return CreateApiTask<TagScore>(ub, "/tags/{tag}/top-answerers/{period}");
         }
 
         Task<StacManResponse<TagScore>> ITagMethods.GetTopAskers(string site, string tag, Tags.Period period, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateString(tag, "tag");
             ValidatePaging(page, pagesize);
@@ -261,13 +241,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagScore>(ub, filterObj, "/tags/{tag}/top-askers/{period}");
+            return CreateApiTask<TagScore>(ub, "/tags/{tag}/top-askers/{period}");
         }
 
         Task<StacManResponse<TagWiki>> ITagMethods.GetTagWikis(string site, IEnumerable<string> tags, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
@@ -279,7 +257,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagWiki>(ub, filterObj, "/tags/{tags}/wikis");
+            return CreateApiTask<TagWiki>(ub, "/tags/{tags}/wikis");
         }
     }
 

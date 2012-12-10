@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class Filter : StacManType
     {
-        internal Filter(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "filter") { }
-
-        private string _FilterName;
         [Field("filter")]
-        public string FilterName
-        {
-            get { EnsureFilterContainsField("filter"); return _FilterName; }
-            internal set { _FilterName = value; }
-        }
+        public string FilterName { get; internal set; }
 
-        private Filters.FilterType _FilterType;
         [Field("filter_type")]
-        public Filters.FilterType FilterType
-        {
-            get { EnsureFilterContainsField("filter_type"); return _FilterType; }
-            internal set { _FilterType = value; }
-        }
+        public Filters.FilterType FilterType { get; internal set; }
 
-        private string[] _IncludedFields;
         [Field("included_fields")]
-        public string[] IncludedFields
-        {
-            get { EnsureFilterContainsField("included_fields"); return _IncludedFields; }
-            internal set { _IncludedFields = value; }
-        }
+        public string[] IncludedFields { get; internal set; }
+
     }
 }
 

@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class Error : StacManType
     {
-        internal Error(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "error") { }
-
-        private string _Description;
         [Field("description")]
-        public string Description
-        {
-            get { EnsureFilterContainsField("description"); return _Description; }
-            internal set { _Description = value; }
-        }
+        public string Description { get; internal set; }
 
-        private int _ErrorId;
         [Field("error_id")]
-        public int ErrorId
-        {
-            get { EnsureFilterContainsField("error_id"); return _ErrorId; }
-            internal set { _ErrorId = value; }
-        }
+        public int ErrorId { get; internal set; }
 
-        private string _ErrorName;
         [Field("error_name")]
-        public string ErrorName
-        {
-            get { EnsureFilterContainsField("error_name"); return _ErrorName; }
-            internal set { _ErrorName = value; }
-        }
+        public string ErrorName { get; internal set; }
+
     }
 }
 

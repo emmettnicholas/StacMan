@@ -13,39 +13,18 @@ namespace StackExchange.StacMan
 {
     public partial class RelatedSite : StacManType
     {
-        internal RelatedSite(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "related_site") { }
-
-        private string _ApiSiteParameter;
         [Field("api_site_parameter")]
-        public string ApiSiteParameter
-        {
-            get { EnsureFilterContainsField("api_site_parameter"); return _ApiSiteParameter; }
-            internal set { _ApiSiteParameter = value; }
-        }
+        public string ApiSiteParameter { get; internal set; }
 
-        private string _Name;
         [Field("name")]
-        public string Name
-        {
-            get { EnsureFilterContainsField("name"); return _Name; }
-            internal set { _Name = value; }
-        }
+        public string Name { get; internal set; }
 
-        private string _Relation;
         [Field("relation")]
-        public string Relation
-        {
-            get { EnsureFilterContainsField("relation"); return _Relation; }
-            internal set { _Relation = value; }
-        }
+        public string Relation { get; internal set; }
 
-        private string _SiteUrl;
         [Field("site_url")]
-        public string SiteUrl
-        {
-            get { EnsureFilterContainsField("site_url"); return _SiteUrl; }
-            internal set { _SiteUrl = value; }
-        }
+        public string SiteUrl { get; internal set; }
+
     }
 }
 

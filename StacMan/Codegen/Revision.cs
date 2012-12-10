@@ -13,135 +13,54 @@ namespace StackExchange.StacMan
 {
     public partial class Revision : StacManType
     {
-        internal Revision(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "revision") { }
-
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private string _Comment;
         [Field("comment")]
-        public string Comment
-        {
-            get { EnsureFilterContainsField("comment"); return _Comment; }
-            internal set { _Comment = value; }
-        }
+        public string Comment { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private bool _IsRollback;
         [Field("is_rollback")]
-        public bool IsRollback
-        {
-            get { EnsureFilterContainsField("is_rollback"); return _IsRollback; }
-            internal set { _IsRollback = value; }
-        }
+        public bool IsRollback { get; internal set; }
 
-        private string _LastBody;
         [Field("last_body")]
-        public string LastBody
-        {
-            get { EnsureFilterContainsField("last_body"); return _LastBody; }
-            internal set { _LastBody = value; }
-        }
+        public string LastBody { get; internal set; }
 
-        private string[] _LastTags;
         [Field("last_tags")]
-        public string[] LastTags
-        {
-            get { EnsureFilterContainsField("last_tags"); return _LastTags; }
-            internal set { _LastTags = value; }
-        }
+        public string[] LastTags { get; internal set; }
 
-        private string _LastTitle;
         [Field("last_title")]
-        public string LastTitle
-        {
-            get { EnsureFilterContainsField("last_title"); return _LastTitle; }
-            internal set { _LastTitle = value; }
-        }
+        public string LastTitle { get; internal set; }
 
-        private int _PostId;
         [Field("post_id")]
-        public int PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int PostId { get; internal set; }
 
-        private Posts.PostType _PostType;
         [Field("post_type")]
-        public Posts.PostType PostType
-        {
-            get { EnsureFilterContainsField("post_type"); return _PostType; }
-            internal set { _PostType = value; }
-        }
+        public Posts.PostType PostType { get; internal set; }
 
-        private Guid _RevisionGuid;
         [Field("revision_guid")]
-        public Guid RevisionGuid
-        {
-            get { EnsureFilterContainsField("revision_guid"); return _RevisionGuid; }
-            internal set { _RevisionGuid = value; }
-        }
+        public Guid RevisionGuid { get; internal set; }
 
-        private int _RevisionNumber;
         [Field("revision_number")]
-        public int RevisionNumber
-        {
-            get { EnsureFilterContainsField("revision_number"); return _RevisionNumber; }
-            internal set { _RevisionNumber = value; }
-        }
+        public int RevisionNumber { get; internal set; }
 
-        private Revisions.RevisionType _RevisionType;
         [Field("revision_type")]
-        public Revisions.RevisionType RevisionType
-        {
-            get { EnsureFilterContainsField("revision_type"); return _RevisionType; }
-            internal set { _RevisionType = value; }
-        }
+        public Revisions.RevisionType RevisionType { get; internal set; }
 
-        private bool _SetCommunityWiki;
         [Field("set_community_wiki")]
-        public bool SetCommunityWiki
-        {
-            get { EnsureFilterContainsField("set_community_wiki"); return _SetCommunityWiki; }
-            internal set { _SetCommunityWiki = value; }
-        }
+        public bool SetCommunityWiki { get; internal set; }
 
-        private string[] _Tags;
         [Field("tags")]
-        public string[] Tags
-        {
-            get { EnsureFilterContainsField("tags"); return _Tags; }
-            internal set { _Tags = value; }
-        }
+        public string[] Tags { get; internal set; }
 
-        private string _Title;
         [Field("title")]
-        public string Title
-        {
-            get { EnsureFilterContainsField("title"); return _Title; }
-            internal set { _Title = value; }
-        }
+        public string Title { get; internal set; }
 
-        private ShallowUser _User;
         [Field("user")]
-        public ShallowUser User
-        {
-            get { EnsureFilterContainsField("user"); return _User; }
-            internal set { _User = value; }
-        }
+        public ShallowUser User { get; internal set; }
+
     }
 }
 

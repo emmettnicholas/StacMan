@@ -13,87 +13,36 @@ namespace StackExchange.StacMan
 {
     public partial class Comment : StacManType
     {
-        internal Comment(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "comment") { }
-
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private int _CommentId;
         [Field("comment_id")]
-        public int CommentId
-        {
-            get { EnsureFilterContainsField("comment_id"); return _CommentId; }
-            internal set { _CommentId = value; }
-        }
+        public int CommentId { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private bool _Edited;
         [Field("edited")]
-        public bool Edited
-        {
-            get { EnsureFilterContainsField("edited"); return _Edited; }
-            internal set { _Edited = value; }
-        }
+        public bool Edited { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private ShallowUser _Owner;
         [Field("owner")]
-        public ShallowUser Owner
-        {
-            get { EnsureFilterContainsField("owner"); return _Owner; }
-            internal set { _Owner = value; }
-        }
+        public ShallowUser Owner { get; internal set; }
 
-        private int _PostId;
         [Field("post_id")]
-        public int PostId
-        {
-            get { EnsureFilterContainsField("post_id"); return _PostId; }
-            internal set { _PostId = value; }
-        }
+        public int PostId { get; internal set; }
 
-        private Posts.PostType _PostType;
         [Field("post_type")]
-        public Posts.PostType PostType
-        {
-            get { EnsureFilterContainsField("post_type"); return _PostType; }
-            internal set { _PostType = value; }
-        }
+        public Posts.PostType PostType { get; internal set; }
 
-        private ShallowUser _ReplyToUser;
         [Field("reply_to_user")]
-        public ShallowUser ReplyToUser
-        {
-            get { EnsureFilterContainsField("reply_to_user"); return _ReplyToUser; }
-            internal set { _ReplyToUser = value; }
-        }
+        public ShallowUser ReplyToUser { get; internal set; }
 
-        private int _Score;
         [Field("score")]
-        public int Score
-        {
-            get { EnsureFilterContainsField("score"); return _Score; }
-            internal set { _Score = value; }
-        }
+        public int Score { get; internal set; }
+
     }
 }
 

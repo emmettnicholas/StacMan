@@ -13,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     {
         public ValidationTests()
         {
-            var mock = new Mock<StacManClient>(FilterBehavior.Strict, null);
+            var mock = new Mock<StacManClient>(null);
             mock.FakeFetch(response: "{}");
             Client = mock.Object;
         }

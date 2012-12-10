@@ -13,103 +13,42 @@ namespace StackExchange.StacMan
 {
     public partial class Wrapper<T> : StacManType
     {
-        internal Wrapper(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "") { }
-
-        private int? _Backoff;
         [Field("backoff")]
-        public int? Backoff
-        {
-            get { EnsureFilterContainsField("backoff"); return _Backoff; }
-            internal set { _Backoff = value; }
-        }
+        public int? Backoff { get; internal set; }
 
-        private int? _ErrorId;
         [Field("error_id")]
-        public int? ErrorId
-        {
-            get { EnsureFilterContainsField("error_id"); return _ErrorId; }
-            internal set { _ErrorId = value; }
-        }
+        public int? ErrorId { get; internal set; }
 
-        private string _ErrorMessage;
         [Field("error_message")]
-        public string ErrorMessage
-        {
-            get { EnsureFilterContainsField("error_message"); return _ErrorMessage; }
-            internal set { _ErrorMessage = value; }
-        }
+        public string ErrorMessage { get; internal set; }
 
-        private string _ErrorName;
         [Field("error_name")]
-        public string ErrorName
-        {
-            get { EnsureFilterContainsField("error_name"); return _ErrorName; }
-            internal set { _ErrorName = value; }
-        }
+        public string ErrorName { get; internal set; }
 
-        private bool _HasMore;
         [Field("has_more")]
-        public bool HasMore
-        {
-            get { EnsureFilterContainsField("has_more"); return _HasMore; }
-            internal set { _HasMore = value; }
-        }
+        public bool HasMore { get; internal set; }
 
-        private T[] _Items;
         [Field("items")]
-        public T[] Items
-        {
-            get { EnsureFilterContainsField("items"); return _Items; }
-            internal set { _Items = value; }
-        }
+        public T[] Items { get; internal set; }
 
-        private int _Page;
         [Field("page")]
-        public int Page
-        {
-            get { EnsureFilterContainsField("page"); return _Page; }
-            internal set { _Page = value; }
-        }
+        public int Page { get; internal set; }
 
-        private int _PageSize;
         [Field("page_size")]
-        public int PageSize
-        {
-            get { EnsureFilterContainsField("page_size"); return _PageSize; }
-            internal set { _PageSize = value; }
-        }
+        public int PageSize { get; internal set; }
 
-        private int _QuotaMax;
         [Field("quota_max")]
-        public int QuotaMax
-        {
-            get { EnsureFilterContainsField("quota_max"); return _QuotaMax; }
-            internal set { _QuotaMax = value; }
-        }
+        public int QuotaMax { get; internal set; }
 
-        private int _QuotaRemaining;
         [Field("quota_remaining")]
-        public int QuotaRemaining
-        {
-            get { EnsureFilterContainsField("quota_remaining"); return _QuotaRemaining; }
-            internal set { _QuotaRemaining = value; }
-        }
+        public int QuotaRemaining { get; internal set; }
 
-        private int _Total;
         [Field("total")]
-        public int Total
-        {
-            get { EnsureFilterContainsField("total"); return _Total; }
-            internal set { _Total = value; }
-        }
+        public int Total { get; internal set; }
 
-        private string _Type;
         [Field("type")]
-        public string Type
-        {
-            get { EnsureFilterContainsField("type"); return _Type; }
-            internal set { _Type = value; }
-        }
+        public string Type { get; internal set; }
+
     }
 }
 

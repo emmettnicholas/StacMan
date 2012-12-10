@@ -13,119 +13,48 @@ namespace StackExchange.StacMan
 {
     public partial class Info : StacManType
     {
-        internal Info(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "info") { }
-
-        private decimal _AnswersPerMinute;
         [Field("answers_per_minute")]
-        public decimal AnswersPerMinute
-        {
-            get { EnsureFilterContainsField("answers_per_minute"); return _AnswersPerMinute; }
-            internal set { _AnswersPerMinute = value; }
-        }
+        public decimal AnswersPerMinute { get; internal set; }
 
-        private string _ApiRevision;
         [Field("api_revision")]
-        public string ApiRevision
-        {
-            get { EnsureFilterContainsField("api_revision"); return _ApiRevision; }
-            internal set { _ApiRevision = value; }
-        }
+        public string ApiRevision { get; internal set; }
 
-        private decimal _BadgesPerMinute;
         [Field("badges_per_minute")]
-        public decimal BadgesPerMinute
-        {
-            get { EnsureFilterContainsField("badges_per_minute"); return _BadgesPerMinute; }
-            internal set { _BadgesPerMinute = value; }
-        }
+        public decimal BadgesPerMinute { get; internal set; }
 
-        private int _NewActiveUsers;
         [Field("new_active_users")]
-        public int NewActiveUsers
-        {
-            get { EnsureFilterContainsField("new_active_users"); return _NewActiveUsers; }
-            internal set { _NewActiveUsers = value; }
-        }
+        public int NewActiveUsers { get; internal set; }
 
-        private decimal _QuestionsPerMinute;
         [Field("questions_per_minute")]
-        public decimal QuestionsPerMinute
-        {
-            get { EnsureFilterContainsField("questions_per_minute"); return _QuestionsPerMinute; }
-            internal set { _QuestionsPerMinute = value; }
-        }
+        public decimal QuestionsPerMinute { get; internal set; }
 
-        private Site _Site;
         [Field("site")]
-        public Site Site
-        {
-            get { EnsureFilterContainsField("site"); return _Site; }
-            internal set { _Site = value; }
-        }
+        public Site Site { get; internal set; }
 
-        private int _TotalAccepted;
         [Field("total_accepted")]
-        public int TotalAccepted
-        {
-            get { EnsureFilterContainsField("total_accepted"); return _TotalAccepted; }
-            internal set { _TotalAccepted = value; }
-        }
+        public int TotalAccepted { get; internal set; }
 
-        private int _TotalAnswers;
         [Field("total_answers")]
-        public int TotalAnswers
-        {
-            get { EnsureFilterContainsField("total_answers"); return _TotalAnswers; }
-            internal set { _TotalAnswers = value; }
-        }
+        public int TotalAnswers { get; internal set; }
 
-        private int _TotalBadges;
         [Field("total_badges")]
-        public int TotalBadges
-        {
-            get { EnsureFilterContainsField("total_badges"); return _TotalBadges; }
-            internal set { _TotalBadges = value; }
-        }
+        public int TotalBadges { get; internal set; }
 
-        private int _TotalComments;
         [Field("total_comments")]
-        public int TotalComments
-        {
-            get { EnsureFilterContainsField("total_comments"); return _TotalComments; }
-            internal set { _TotalComments = value; }
-        }
+        public int TotalComments { get; internal set; }
 
-        private int _TotalQuestions;
         [Field("total_questions")]
-        public int TotalQuestions
-        {
-            get { EnsureFilterContainsField("total_questions"); return _TotalQuestions; }
-            internal set { _TotalQuestions = value; }
-        }
+        public int TotalQuestions { get; internal set; }
 
-        private int _TotalUnanswered;
         [Field("total_unanswered")]
-        public int TotalUnanswered
-        {
-            get { EnsureFilterContainsField("total_unanswered"); return _TotalUnanswered; }
-            internal set { _TotalUnanswered = value; }
-        }
+        public int TotalUnanswered { get; internal set; }
 
-        private int _TotalUsers;
         [Field("total_users")]
-        public int TotalUsers
-        {
-            get { EnsureFilterContainsField("total_users"); return _TotalUsers; }
-            internal set { _TotalUsers = value; }
-        }
+        public int TotalUsers { get; internal set; }
 
-        private int _TotalVotes;
         [Field("total_votes")]
-        public int TotalVotes
-        {
-            get { EnsureFilterContainsField("total_votes"); return _TotalVotes; }
-            internal set { _TotalVotes = value; }
-        }
+        public int TotalVotes { get; internal set; }
+
     }
 }
 

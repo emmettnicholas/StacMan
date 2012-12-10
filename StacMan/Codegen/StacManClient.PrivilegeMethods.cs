@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Privilege>> IPrivilegeMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
@@ -37,7 +35,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, filterObj, "/privileges");
+            return CreateApiTask<Privilege>(ub, "/privileges");
         }
     }
 

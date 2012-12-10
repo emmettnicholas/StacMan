@@ -13,231 +13,90 @@ namespace StackExchange.StacMan
 {
     public partial class Question : StacManType
     {
-        internal Question(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "question") { }
-
-        private int? _AcceptedAnswerId;
         [Field("accepted_answer_id")]
-        public int? AcceptedAnswerId
-        {
-            get { EnsureFilterContainsField("accepted_answer_id"); return _AcceptedAnswerId; }
-            internal set { _AcceptedAnswerId = value; }
-        }
+        public int? AcceptedAnswerId { get; internal set; }
 
-        private int _AnswerCount;
         [Field("answer_count")]
-        public int AnswerCount
-        {
-            get { EnsureFilterContainsField("answer_count"); return _AnswerCount; }
-            internal set { _AnswerCount = value; }
-        }
+        public int AnswerCount { get; internal set; }
 
-        private Answer[] _Answers;
         [Field("answers")]
-        public Answer[] Answers
-        {
-            get { EnsureFilterContainsField("answers"); return _Answers; }
-            internal set { _Answers = value; }
-        }
+        public Answer[] Answers { get; internal set; }
 
-        private string _Body;
         [Field("body")]
-        public string Body
-        {
-            get { EnsureFilterContainsField("body"); return _Body; }
-            internal set { _Body = value; }
-        }
+        public string Body { get; internal set; }
 
-        private int? _BountyAmount;
         [Field("bounty_amount")]
-        public int? BountyAmount
-        {
-            get { EnsureFilterContainsField("bounty_amount"); return _BountyAmount; }
-            internal set { _BountyAmount = value; }
-        }
+        public int? BountyAmount { get; internal set; }
 
-        private DateTime? _BountyClosesDate;
         [Field("bounty_closes_date")]
-        public DateTime? BountyClosesDate
-        {
-            get { EnsureFilterContainsField("bounty_closes_date"); return _BountyClosesDate; }
-            internal set { _BountyClosesDate = value; }
-        }
+        public DateTime? BountyClosesDate { get; internal set; }
 
-        private DateTime? _ClosedDate;
         [Field("closed_date")]
-        public DateTime? ClosedDate
-        {
-            get { EnsureFilterContainsField("closed_date"); return _ClosedDate; }
-            internal set { _ClosedDate = value; }
-        }
+        public DateTime? ClosedDate { get; internal set; }
 
-        private string _ClosedReason;
         [Field("closed_reason")]
-        public string ClosedReason
-        {
-            get { EnsureFilterContainsField("closed_reason"); return _ClosedReason; }
-            internal set { _ClosedReason = value; }
-        }
+        public string ClosedReason { get; internal set; }
 
-        private Comment[] _Comments;
         [Field("comments")]
-        public Comment[] Comments
-        {
-            get { EnsureFilterContainsField("comments"); return _Comments; }
-            internal set { _Comments = value; }
-        }
+        public Comment[] Comments { get; internal set; }
 
-        private DateTime? _CommunityOwnedDate;
         [Field("community_owned_date")]
-        public DateTime? CommunityOwnedDate
-        {
-            get { EnsureFilterContainsField("community_owned_date"); return _CommunityOwnedDate; }
-            internal set { _CommunityOwnedDate = value; }
-        }
+        public DateTime? CommunityOwnedDate { get; internal set; }
 
-        private DateTime _CreationDate;
         [Field("creation_date")]
-        public DateTime CreationDate
-        {
-            get { EnsureFilterContainsField("creation_date"); return _CreationDate; }
-            internal set { _CreationDate = value; }
-        }
+        public DateTime CreationDate { get; internal set; }
 
-        private int _DownVoteCount;
         [Field("down_vote_count")]
-        public int DownVoteCount
-        {
-            get { EnsureFilterContainsField("down_vote_count"); return _DownVoteCount; }
-            internal set { _DownVoteCount = value; }
-        }
+        public int DownVoteCount { get; internal set; }
 
-        private int _FavoriteCount;
         [Field("favorite_count")]
-        public int FavoriteCount
-        {
-            get { EnsureFilterContainsField("favorite_count"); return _FavoriteCount; }
-            internal set { _FavoriteCount = value; }
-        }
+        public int FavoriteCount { get; internal set; }
 
-        private bool _IsAnswered;
         [Field("is_answered")]
-        public bool IsAnswered
-        {
-            get { EnsureFilterContainsField("is_answered"); return _IsAnswered; }
-            internal set { _IsAnswered = value; }
-        }
+        public bool IsAnswered { get; internal set; }
 
-        private DateTime _LastActivityDate;
         [Field("last_activity_date")]
-        public DateTime LastActivityDate
-        {
-            get { EnsureFilterContainsField("last_activity_date"); return _LastActivityDate; }
-            internal set { _LastActivityDate = value; }
-        }
+        public DateTime LastActivityDate { get; internal set; }
 
-        private DateTime? _LastEditDate;
         [Field("last_edit_date")]
-        public DateTime? LastEditDate
-        {
-            get { EnsureFilterContainsField("last_edit_date"); return _LastEditDate; }
-            internal set { _LastEditDate = value; }
-        }
+        public DateTime? LastEditDate { get; internal set; }
 
-        private string _Link;
         [Field("link")]
-        public string Link
-        {
-            get { EnsureFilterContainsField("link"); return _Link; }
-            internal set { _Link = value; }
-        }
+        public string Link { get; internal set; }
 
-        private DateTime? _LockedDate;
         [Field("locked_date")]
-        public DateTime? LockedDate
-        {
-            get { EnsureFilterContainsField("locked_date"); return _LockedDate; }
-            internal set { _LockedDate = value; }
-        }
+        public DateTime? LockedDate { get; internal set; }
 
-        private MigrationInfo _MigratedFrom;
         [Field("migrated_from")]
-        public MigrationInfo MigratedFrom
-        {
-            get { EnsureFilterContainsField("migrated_from"); return _MigratedFrom; }
-            internal set { _MigratedFrom = value; }
-        }
+        public MigrationInfo MigratedFrom { get; internal set; }
 
-        private MigrationInfo _MigratedTo;
         [Field("migrated_to")]
-        public MigrationInfo MigratedTo
-        {
-            get { EnsureFilterContainsField("migrated_to"); return _MigratedTo; }
-            internal set { _MigratedTo = value; }
-        }
+        public MigrationInfo MigratedTo { get; internal set; }
 
-        private ShallowUser _Owner;
         [Field("owner")]
-        public ShallowUser Owner
-        {
-            get { EnsureFilterContainsField("owner"); return _Owner; }
-            internal set { _Owner = value; }
-        }
+        public ShallowUser Owner { get; internal set; }
 
-        private DateTime? _ProtectedDate;
         [Field("protected_date")]
-        public DateTime? ProtectedDate
-        {
-            get { EnsureFilterContainsField("protected_date"); return _ProtectedDate; }
-            internal set { _ProtectedDate = value; }
-        }
+        public DateTime? ProtectedDate { get; internal set; }
 
-        private int _QuestionId;
         [Field("question_id")]
-        public int QuestionId
-        {
-            get { EnsureFilterContainsField("question_id"); return _QuestionId; }
-            internal set { _QuestionId = value; }
-        }
+        public int QuestionId { get; internal set; }
 
-        private int _Score;
         [Field("score")]
-        public int Score
-        {
-            get { EnsureFilterContainsField("score"); return _Score; }
-            internal set { _Score = value; }
-        }
+        public int Score { get; internal set; }
 
-        private string[] _Tags;
         [Field("tags")]
-        public string[] Tags
-        {
-            get { EnsureFilterContainsField("tags"); return _Tags; }
-            internal set { _Tags = value; }
-        }
+        public string[] Tags { get; internal set; }
 
-        private string _Title;
         [Field("title")]
-        public string Title
-        {
-            get { EnsureFilterContainsField("title"); return _Title; }
-            internal set { _Title = value; }
-        }
+        public string Title { get; internal set; }
 
-        private int _UpVoteCount;
         [Field("up_vote_count")]
-        public int UpVoteCount
-        {
-            get { EnsureFilterContainsField("up_vote_count"); return _UpVoteCount; }
-            internal set { _UpVoteCount = value; }
-        }
+        public int UpVoteCount { get; internal set; }
 
-        private int _ViewCount;
         [Field("view_count")]
-        public int ViewCount
-        {
-            get { EnsureFilterContainsField("view_count"); return _ViewCount; }
-            internal set { _ViewCount = value; }
-        }
+        public int ViewCount { get; internal set; }
+
     }
 }
 

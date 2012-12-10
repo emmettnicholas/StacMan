@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class TagScore : StacManType
     {
-        internal TagScore(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "tag_score") { }
-
-        private int _PostCount;
         [Field("post_count")]
-        public int PostCount
-        {
-            get { EnsureFilterContainsField("post_count"); return _PostCount; }
-            internal set { _PostCount = value; }
-        }
+        public int PostCount { get; internal set; }
 
-        private int _Score;
         [Field("score")]
-        public int Score
-        {
-            get { EnsureFilterContainsField("score"); return _Score; }
-            internal set { _Score = value; }
-        }
+        public int Score { get; internal set; }
 
-        private ShallowUser _User;
         [Field("user")]
-        public ShallowUser User
-        {
-            get { EnsureFilterContainsField("user"); return _User; }
-            internal set { _User = value; }
-        }
+        public ShallowUser User { get; internal set; }
+
     }
 }
 

@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Question>> IQuestionMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.AllSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
@@ -47,13 +45,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions");
+            return CreateApiTask<Question>(ub, "/questions");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -74,13 +70,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions/{ids}");
+            return CreateApiTask<Question>(ub, "/questions/{ids}");
         }
 
         Task<StacManResponse<Answer>> IQuestionMethods.GetAnswers(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Answers.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -101,13 +95,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, filterObj, "/questions/{ids}/answers");
+            return CreateApiTask<Answer>(ub, "/questions/{ids}/answers");
         }
 
         Task<StacManResponse<Comment>> IQuestionMethods.GetComments(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -128,13 +120,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, filterObj, "/questions/{ids}/comments");
+            return CreateApiTask<Comment>(ub, "/questions/{ids}/comments");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetLinked(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.RelatedSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -155,13 +145,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions/{ids}/linked");
+            return CreateApiTask<Question>(ub, "/questions/{ids}/linked");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetRelated(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.RelatedSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -182,13 +170,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions/{ids}/related");
+            return CreateApiTask<Question>(ub, "/questions/{ids}/related");
         }
 
         Task<StacManResponse<QuestionTimeline>> IQuestionMethods.GetTimelines(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
@@ -202,13 +188,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<QuestionTimeline>(ub, filterObj, "/questions/{ids}/timeline");
+            return CreateApiTask<QuestionTimeline>(ub, "/questions/{ids}/timeline");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetFeatured(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
@@ -229,13 +213,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions/unanswered");
+            return CreateApiTask<Question>(ub, "/questions/unanswered");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetUnanswered(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
@@ -256,13 +238,11 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions/featured");
+            return CreateApiTask<Question>(ub, "/questions/featured");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetWithNoAnswers(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
@@ -283,7 +263,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, filterObj, "/questions/no-answers");
+            return CreateApiTask<Question>(ub, "/questions/no-answers");
         }
     }
 

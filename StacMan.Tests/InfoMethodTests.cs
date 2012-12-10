@@ -14,7 +14,7 @@ namespace StackExchange.StacMan.Tests
         [TestMethod]
         public void Info_get_test()
         {
-            var mock = new Mock<StacManClient>(FilterBehavior.Strict, null);
+            var mock = new Mock<StacManClient>(null);
 
             //http://api.stackexchange.com/2.0/info?site=english
             mock.FakeFetch(response: @"{""items"":[{""total_questions"":14647,""total_unanswered"":15,""total_accepted"":10674,""total_answers"":41975,""questions_per_minute"":0.01,""answers_per_minute"":0.02,""total_comments"":112674,""total_votes"":251459,""total_badges"":41800,""badges_per_minute"":0.02,""total_users"":17118,""new_active_users"":1,""api_revision"":""2012.4.12.2100""}],""quota_remaining"":291,""quota_max"":300,""has_more"":false}");
@@ -38,7 +38,7 @@ namespace StackExchange.StacMan.Tests
             Assert.AreEqual(17118, info.TotalUsers);
             Assert.AreEqual(1, info.NewActiveUsers);
             Assert.AreEqual("2012.4.12.2100", info.ApiRevision);
-            Assert2.Throws<Exceptions.FilterException>(() => { var s = info.Site; });
+            Assert.IsNull(info.Site);
         }
     }
 }

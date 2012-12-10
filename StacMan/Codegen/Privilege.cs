@@ -13,31 +13,15 @@ namespace StackExchange.StacMan
 {
     public partial class Privilege : StacManType
     {
-        internal Privilege(FilterBehavior filterBehavior, Filter filter) : base(filterBehavior, filter, "privilege") { }
-
-        private string _Description;
         [Field("description")]
-        public string Description
-        {
-            get { EnsureFilterContainsField("description"); return _Description; }
-            internal set { _Description = value; }
-        }
+        public string Description { get; internal set; }
 
-        private int _Reputation;
         [Field("reputation")]
-        public int Reputation
-        {
-            get { EnsureFilterContainsField("reputation"); return _Reputation; }
-            internal set { _Reputation = value; }
-        }
+        public int Reputation { get; internal set; }
 
-        private string _ShortDescription;
         [Field("short_description")]
-        public string ShortDescription
-        {
-            get { EnsureFilterContainsField("short_description"); return _ShortDescription; }
-            internal set { _ShortDescription = value; }
-        }
+        public string ShortDescription { get; internal set; }
+
     }
 }
 

@@ -25,8 +25,6 @@ namespace StackExchange.StacMan
 
         Task<StacManResponse<Site>> ISiteMethods.GetAll(string filter = null, int? page = null, int? pagesize = null)
         {
-            var filterObj = ValidateAndGetFilter(filter);
-
             ValidatePaging(page, pagesize);
 
             var ub = new ApiUrlBuilder("/sites", useHttps: false);
@@ -35,7 +33,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Site>(ub, filterObj, "/sites");
+            return CreateApiTask<Site>(ub, "/sites");
         }
     }
 
