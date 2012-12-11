@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<InboxItem>> IInboxMethods.Get(string access_token, string filter = null, int? page = null, int? pagesize = null)
+        Task<StacManResponse<InboxItem>> IInboxMethods.Get(string access_token, string filter, int? page, int? pagesize)
         {
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
@@ -38,7 +38,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<InboxItem>(ub, "/inbox");
         }
 
-        Task<StacManResponse<InboxItem>> IInboxMethods.GetUnread(string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
+        Task<StacManResponse<InboxItem>> IInboxMethods.GetUnread(string access_token, string filter, int? page, int? pagesize, DateTime? since)
         {
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);

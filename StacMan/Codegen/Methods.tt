@@ -120,7 +120,9 @@ namespace StackExchange.StacMan
             optionalParams.AddRange(optionalObj.Select(p => new Parameter(p.Key, (string)p.Value)));
         }
 
-        var paramsString = String.Join(", ", 
+        var paramsString = String.Join(", ", requiredParams.Concat(optionalParams).Select(p => p.Type + " " + p.VariableName));
+
+        var interfaceParamsString = String.Join(", ", 
             requiredParams.Select(p => p.Type + " " + p.VariableName)
                 .Concat(optionalParams.Select(p => p.Type + " " + p.VariableName + " = null")));
 #>
@@ -198,7 +200,7 @@ namespace StackExchange.StacMan
         }
 <#
         var summary = String.Format("{0}{1} (API Method: \"{2}\")", description, authRequired ? " [auth required]" : "", url);
-        interfaceSignatures.Add(new InterfaceSignature(methodName, paramsString, returnTypeName, summary));
+        interfaceSignatures.Add(new InterfaceSignature(methodName, interfaceParamsString, returnTypeName, summary));
     }
 #>
     }

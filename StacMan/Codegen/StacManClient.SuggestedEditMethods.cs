@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
+        Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -45,7 +45,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<SuggestedEdit>(ub, "/suggested-edits");
         }
 
-        Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null)
+        Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");

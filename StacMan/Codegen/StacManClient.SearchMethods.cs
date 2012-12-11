@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Question>> ISearchMethods.GetMatches(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string inttitle = null)
+        Task<StacManResponse<Question>> ISearchMethods.GetMatches(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string inttitle)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -50,7 +50,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Question>(ub, "/search");
         }
 
-        Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string inttitle = null)
+        Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string inttitle)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);

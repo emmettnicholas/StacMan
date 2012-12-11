@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Error>> IErrorMethods.GetAll(string filter = null, int? page = null, int? pagesize = null)
+        Task<StacManResponse<Error>> IErrorMethods.GetAll(string filter, int? page, int? pagesize)
         {
             ValidatePaging(page, pagesize);
 
@@ -36,7 +36,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Error>(ub, "/errors");
         }
 
-        Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter = null)
+        Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter)
         {
 
             var ub = new ApiUrlBuilder(String.Format("/errors/{0}", id), useHttps: false);

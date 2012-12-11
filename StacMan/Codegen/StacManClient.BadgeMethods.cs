@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Badge>> IBadgeMethods.GetAll(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.AllSort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Badges.BadgeType? mintype = null, Badges.BadgeType? maxtype = null, Order? order = null, string inname = null)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order, string inname)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -50,7 +50,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Badge>(ub, "/badges");
         }
 
-        Task<StacManResponse<Badge>> IBadgeMethods.GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.AllSort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Badges.BadgeType? mintype = null, Badges.BadgeType? maxtype = null, Order? order = null)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -77,7 +77,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Badge>(ub, "/badges/{ids}");
         }
 
-        Task<StacManResponse<Badge>> IBadgeMethods.GetNamed(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.Sort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetNamed(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -102,7 +102,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Badge>(ub, "/badges/name");
         }
 
-        Task<StacManResponse<Badge>> IBadgeMethods.GetRecent(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetRecent(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -119,7 +119,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Badge>(ub, "/badges/recipients");
         }
 
-        Task<StacManResponse<Badge>> IBadgeMethods.GetRecentByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetRecentByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -137,7 +137,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Badge>(ub, "/badges/{ids}/recipients");
         }
 
-        Task<StacManResponse<Badge>> IBadgeMethods.GetTagBased(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Badges.Sort? sort = null, Badges.Rank? minrank = null, Badges.Rank? maxrank = null, string minname = null, string maxname = null, Order? order = null, string inname = null)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetTagBased(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);

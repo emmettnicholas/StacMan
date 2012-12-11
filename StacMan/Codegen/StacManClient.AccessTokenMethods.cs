@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<AccessToken>> IAccessTokenMethods.Invalidate(IEnumerable<string> accessTokens, string filter = null, int? page = null, int? pagesize = null)
+        Task<StacManResponse<AccessToken>> IAccessTokenMethods.Invalidate(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
@@ -37,7 +37,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<AccessToken>(ub, "/access-tokens/{accessTokens}/invalidate");
         }
 
-        Task<StacManResponse<AccessToken>> IAccessTokenMethods.Get(IEnumerable<string> accessTokens, string filter = null, int? page = null, int? pagesize = null)
+        Task<StacManResponse<AccessToken>> IAccessTokenMethods.Get(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);

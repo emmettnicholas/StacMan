@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<AccessToken>> IApplicationMethods.Deauthenticate(IEnumerable<string> accessTokens, string filter = null, int? page = null, int? pagesize = null)
+        Task<StacManResponse<AccessToken>> IApplicationMethods.Deauthenticate(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);

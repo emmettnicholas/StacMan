@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Info>> IInfoMethods.Get(string site, string filter = null)
+        Task<StacManResponse<Info>> IInfoMethods.Get(string site, string filter)
         {
             ValidateString(site, "site");
 

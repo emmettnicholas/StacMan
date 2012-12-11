@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Event>> IEventMethods.GetRecent(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? since = null)
+        Task<StacManResponse<Event>> IEventMethods.GetRecent(string site, string access_token, string filter, int? page, int? pagesize, DateTime? since)
         {
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");

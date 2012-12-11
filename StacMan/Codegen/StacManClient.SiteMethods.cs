@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Site>> ISiteMethods.GetAll(string filter = null, int? page = null, int? pagesize = null)
+        Task<StacManResponse<Site>> ISiteMethods.GetAll(string filter, int? page, int? pagesize)
         {
             ValidatePaging(page, pagesize);
 

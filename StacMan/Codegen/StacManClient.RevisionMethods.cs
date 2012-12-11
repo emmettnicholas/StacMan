@@ -23,7 +23,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Revision>> IRevisionMethods.GetByIds(string site, IEnumerable<Guid> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null)
+        Task<StacManResponse<Revision>> IRevisionMethods.GetByIds(string site, IEnumerable<Guid> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
