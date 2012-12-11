@@ -249,7 +249,7 @@
                 "user_timeline.timeline_type",
                 "user_timeline.title",
                 "user_timeline.user_id",
-            },
+            }
         };
 
         public static readonly Filter WithBody = new Filter
@@ -507,14 +507,14 @@
                 "user_timeline.timeline_type",
                 "user_timeline.title",
                 "user_timeline.user_id",
-            },
+            }
         };
 
         public static readonly Filter None = new Filter
         {
             FilterName = "none",
             FilterType = Filters.FilterType.Safe,
-            IncludedFields = new string[0],
+            IncludedFields = new string[0]
         };
 
         public static readonly Filter Total = new Filter
@@ -524,7 +524,7 @@
             IncludedFields = new string[]
             {
                 ".total"
-            },
+            }
         };
     }
 }
