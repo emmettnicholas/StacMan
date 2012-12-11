@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Posts
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum Sort
     {
         /// <summary>

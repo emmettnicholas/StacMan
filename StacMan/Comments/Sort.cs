@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Comments
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum Sort
     {
         /// <summary>

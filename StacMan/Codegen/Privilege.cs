@@ -4,25 +4,33 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Privilege, corresponding to Stack Exchange API v2's privilege type
+    /// http://api.stackexchange.com/docs/types/privilege
+    /// </summary>
     public partial class Privilege : StacManType
     {
+        /// <summary>
+        /// description
+        /// </summary>
         [Field("description")]
         public string Description { get; internal set; }
 
+        /// <summary>
+        /// reputation
+        /// </summary>
         [Field("reputation")]
         public int Reputation { get; internal set; }
 
+        /// <summary>
+        /// short_description
+        /// </summary>
         [Field("short_description")]
         public string ShortDescription { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.SuggestedEdits
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum Sort
     {
         /// <summary>

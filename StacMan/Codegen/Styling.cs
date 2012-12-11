@@ -4,25 +4,33 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Styling, corresponding to Stack Exchange API v2's styling type
+    /// http://api.stackexchange.com/docs/types/styling
+    /// </summary>
     public partial class Styling : StacManType
     {
+        /// <summary>
+        /// link_color
+        /// </summary>
         [Field("link_color")]
         public string LinkColor { get; internal set; }
 
+        /// <summary>
+        /// tag_background_color
+        /// </summary>
         [Field("tag_background_color")]
         public string TagBackgroundColor { get; internal set; }
 
+        /// <summary>
+        /// tag_foreground_color
+        /// </summary>
         [Field("tag_foreground_color")]
         public string TagForegroundColor { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

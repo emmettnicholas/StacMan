@@ -4,49 +4,81 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan SuggestedEdit, corresponding to Stack Exchange API v2's suggested_edit type
+    /// http://api.stackexchange.com/docs/types/suggested-edit
+    /// </summary>
     public partial class SuggestedEdit : StacManType
     {
+        /// <summary>
+        /// approval_date
+        /// </summary>
         [Field("approval_date")]
         public DateTime? ApprovalDate { get; internal set; }
 
+        /// <summary>
+        /// body
+        /// </summary>
         [Field("body")]
         public string Body { get; internal set; }
 
+        /// <summary>
+        /// comment
+        /// </summary>
         [Field("comment")]
         public string Comment { get; internal set; }
 
+        /// <summary>
+        /// creation_date
+        /// </summary>
         [Field("creation_date")]
         public DateTime CreationDate { get; internal set; }
 
+        /// <summary>
+        /// post_id
+        /// </summary>
         [Field("post_id")]
         public int PostId { get; internal set; }
 
+        /// <summary>
+        /// post_type
+        /// </summary>
         [Field("post_type")]
         public Posts.PostType PostType { get; internal set; }
 
+        /// <summary>
+        /// proposing_user
+        /// </summary>
         [Field("proposing_user")]
         public ShallowUser ProposingUser { get; internal set; }
 
+        /// <summary>
+        /// rejection_date
+        /// </summary>
         [Field("rejection_date")]
         public DateTime? RejectionDate { get; internal set; }
 
+        /// <summary>
+        /// suggested_edit_id
+        /// </summary>
         [Field("suggested_edit_id")]
         public int SuggestedEditId { get; internal set; }
 
+        /// <summary>
+        /// tags
+        /// </summary>
         [Field("tags")]
         public string[] Tags { get; internal set; }
 
+        /// <summary>
+        /// title
+        /// </summary>
         [Field("title")]
         public string Title { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

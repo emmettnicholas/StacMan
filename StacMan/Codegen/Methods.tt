@@ -44,9 +44,6 @@ foreach (var typeName in typesObj.Keys)
 
     manager.StartNewFile("StacManClient." + typeName + "Methods.cs");
 #>
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -205,6 +202,9 @@ namespace StackExchange.StacMan
 #>
     }
 
+    /// <summary>
+    /// Stack Exchange API <#= methodsPropertyName #> methods
+    /// </summary>
     public interface <#= interfaceName #>
     {
 <#
@@ -221,8 +221,6 @@ namespace StackExchange.StacMan
 #>
     }
 }
-
-#pragma warning restore 1591
 <#
     manager.EndBlock();
 }

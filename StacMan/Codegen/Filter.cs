@@ -4,25 +4,33 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Filter, corresponding to Stack Exchange API v2's filter type
+    /// http://api.stackexchange.com/docs/types/filter
+    /// </summary>
     public partial class Filter : StacManType
     {
+        /// <summary>
+        /// filter
+        /// </summary>
         [Field("filter")]
         public string FilterName { get; internal set; }
 
+        /// <summary>
+        /// filter_type
+        /// </summary>
         [Field("filter_type")]
         public Filters.FilterType FilterType { get; internal set; }
 
+        /// <summary>
+        /// included_fields
+        /// </summary>
         [Field("included_fields")]
         public string[] IncludedFields { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

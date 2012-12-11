@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Questions
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum RelatedSort
     {
         /// <summary>

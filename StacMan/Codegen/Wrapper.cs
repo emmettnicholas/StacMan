@@ -4,52 +4,87 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Wrapper, corresponding to Stack Exchange API v2's common wrapper type
+    /// http://api.stackexchange.com/docs/wrapper
+    /// </summary>
     public partial class Wrapper<T> : StacManType
     {
+        /// <summary>
+        /// backoff
+        /// </summary>
         [Field("backoff")]
         public int? Backoff { get; internal set; }
 
+        /// <summary>
+        /// error_id
+        /// </summary>
         [Field("error_id")]
         public int? ErrorId { get; internal set; }
 
+        /// <summary>
+        /// error_message
+        /// </summary>
         [Field("error_message")]
         public string ErrorMessage { get; internal set; }
 
+        /// <summary>
+        /// error_name
+        /// </summary>
         [Field("error_name")]
         public string ErrorName { get; internal set; }
 
+        /// <summary>
+        /// has_more
+        /// </summary>
         [Field("has_more")]
         public bool HasMore { get; internal set; }
 
+        /// <summary>
+        /// items
+        /// </summary>
         [Field("items")]
         public T[] Items { get; internal set; }
 
+        /// <summary>
+        /// page
+        /// </summary>
         [Field("page")]
         public int Page { get; internal set; }
 
+        /// <summary>
+        /// page_size
+        /// </summary>
         [Field("page_size")]
         public int PageSize { get; internal set; }
 
+        /// <summary>
+        /// quota_max
+        /// </summary>
         [Field("quota_max")]
         public int QuotaMax { get; internal set; }
 
+        /// <summary>
+        /// quota_remaining
+        /// </summary>
         [Field("quota_remaining")]
         public int QuotaRemaining { get; internal set; }
 
+        /// <summary>
+        /// total
+        /// </summary>
         [Field("total")]
         public int Total { get; internal set; }
 
+        /// <summary>
+        /// type
+        /// </summary>
         [Field("type")]
         public string Type { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

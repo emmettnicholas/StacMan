@@ -11,6 +11,9 @@ using System.Web.Script.Serialization;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// Client for Stack Exchange API v2
+    /// </summary>
     public partial class StacManClient
     {
         /// <summary>
@@ -172,7 +175,9 @@ namespace StackExchange.StacMan
                 });
         }
 
-        // this is "internal protected virtual" so it can be mocked in unit tests
+        /// <summary>
+        /// this is "internal protected virtual" so it can be mocked in unit tests
+        /// </summary>
         internal protected virtual void FetchApiResponse(string url, Action<string> success, Action<Exception> error)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);

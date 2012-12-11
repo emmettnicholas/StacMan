@@ -4,49 +4,81 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Post, corresponding to Stack Exchange API v2's post type
+    /// http://api.stackexchange.com/docs/types/post
+    /// </summary>
     public partial class Post : StacManType
     {
+        /// <summary>
+        /// body
+        /// </summary>
         [Field("body")]
         public string Body { get; internal set; }
 
+        /// <summary>
+        /// comments
+        /// </summary>
         [Field("comments")]
         public Comment[] Comments { get; internal set; }
 
+        /// <summary>
+        /// creation_date
+        /// </summary>
         [Field("creation_date")]
         public DateTime CreationDate { get; internal set; }
 
+        /// <summary>
+        /// down_vote_count
+        /// </summary>
         [Field("down_vote_count")]
         public int DownVoteCount { get; internal set; }
 
+        /// <summary>
+        /// last_activity_date
+        /// </summary>
         [Field("last_activity_date")]
         public DateTime LastActivityDate { get; internal set; }
 
+        /// <summary>
+        /// last_edit_date
+        /// </summary>
         [Field("last_edit_date")]
         public DateTime? LastEditDate { get; internal set; }
 
+        /// <summary>
+        /// owner
+        /// </summary>
         [Field("owner")]
         public ShallowUser Owner { get; internal set; }
 
+        /// <summary>
+        /// post_id
+        /// </summary>
         [Field("post_id")]
         public int PostId { get; internal set; }
 
+        /// <summary>
+        /// post_type
+        /// </summary>
         [Field("post_type")]
         public Posts.PostType PostType { get; internal set; }
 
+        /// <summary>
+        /// score
+        /// </summary>
         [Field("score")]
         public int Score { get; internal set; }
 
+        /// <summary>
+        /// up_vote_count
+        /// </summary>
         [Field("up_vote_count")]
         public int UpVoteCount { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

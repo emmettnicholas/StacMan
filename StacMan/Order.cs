@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// order
+    /// </summary>
     public enum Order
     {
         /// <summary>

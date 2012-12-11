@@ -4,9 +4,6 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -38,6 +35,9 @@ namespace StackExchange.StacMan
         }
     }
 
+    /// <summary>
+    /// Stack Exchange API Applications methods
+    /// </summary>
     public interface IApplicationMethods
     {
         /// <summary>
@@ -47,5 +47,3 @@ namespace StackExchange.StacMan
 
     }
 }
-
-#pragma warning restore 1591

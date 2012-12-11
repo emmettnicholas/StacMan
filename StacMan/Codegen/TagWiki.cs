@@ -4,37 +4,57 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan TagWiki, corresponding to Stack Exchange API v2's tag_wiki type
+    /// http://api.stackexchange.com/docs/types/tag-wiki
+    /// </summary>
     public partial class TagWiki : StacManType
     {
+        /// <summary>
+        /// body
+        /// </summary>
         [Field("body")]
         public string Body { get; internal set; }
 
+        /// <summary>
+        /// body_last_edit_date
+        /// </summary>
         [Field("body_last_edit_date")]
         public DateTime? BodyLastEditDate { get; internal set; }
 
+        /// <summary>
+        /// excerpt
+        /// </summary>
         [Field("excerpt")]
         public string Excerpt { get; internal set; }
 
+        /// <summary>
+        /// excerpt_last_edit_date
+        /// </summary>
         [Field("excerpt_last_edit_date")]
         public DateTime? ExcerptLastEditDate { get; internal set; }
 
+        /// <summary>
+        /// last_body_editor
+        /// </summary>
         [Field("last_body_editor")]
         public ShallowUser LastBodyEditor { get; internal set; }
 
+        /// <summary>
+        /// last_excerpt_editor
+        /// </summary>
         [Field("last_excerpt_editor")]
         public ShallowUser LastExcerptEditor { get; internal set; }
 
+        /// <summary>
+        /// tag_name
+        /// </summary>
         [Field("tag_name")]
         public string TagName { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

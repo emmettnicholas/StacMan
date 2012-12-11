@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Answers
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum Sort
     {
         /// <summary>

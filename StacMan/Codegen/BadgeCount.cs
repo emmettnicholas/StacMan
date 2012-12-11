@@ -4,25 +4,33 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan BadgeCount, corresponding to Stack Exchange API v2's badge_count type
+    /// http://api.stackexchange.com/docs/types/badge-count
+    /// </summary>
     public partial class BadgeCount : StacManType
     {
+        /// <summary>
+        /// bronze
+        /// </summary>
         [Field("bronze")]
         public int Bronze { get; internal set; }
 
+        /// <summary>
+        /// gold
+        /// </summary>
         [Field("gold")]
         public int Gold { get; internal set; }
 
+        /// <summary>
+        /// silver
+        /// </summary>
         [Field("silver")]
         public int Silver { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

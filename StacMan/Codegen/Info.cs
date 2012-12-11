@@ -4,58 +4,99 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Info, corresponding to Stack Exchange API v2's info type
+    /// http://api.stackexchange.com/docs/types/info
+    /// </summary>
     public partial class Info : StacManType
     {
+        /// <summary>
+        /// answers_per_minute
+        /// </summary>
         [Field("answers_per_minute")]
         public decimal AnswersPerMinute { get; internal set; }
 
+        /// <summary>
+        /// api_revision
+        /// </summary>
         [Field("api_revision")]
         public string ApiRevision { get; internal set; }
 
+        /// <summary>
+        /// badges_per_minute
+        /// </summary>
         [Field("badges_per_minute")]
         public decimal BadgesPerMinute { get; internal set; }
 
+        /// <summary>
+        /// new_active_users
+        /// </summary>
         [Field("new_active_users")]
         public int NewActiveUsers { get; internal set; }
 
+        /// <summary>
+        /// questions_per_minute
+        /// </summary>
         [Field("questions_per_minute")]
         public decimal QuestionsPerMinute { get; internal set; }
 
+        /// <summary>
+        /// site
+        /// </summary>
         [Field("site")]
         public Site Site { get; internal set; }
 
+        /// <summary>
+        /// total_accepted
+        /// </summary>
         [Field("total_accepted")]
         public int TotalAccepted { get; internal set; }
 
+        /// <summary>
+        /// total_answers
+        /// </summary>
         [Field("total_answers")]
         public int TotalAnswers { get; internal set; }
 
+        /// <summary>
+        /// total_badges
+        /// </summary>
         [Field("total_badges")]
         public int TotalBadges { get; internal set; }
 
+        /// <summary>
+        /// total_comments
+        /// </summary>
         [Field("total_comments")]
         public int TotalComments { get; internal set; }
 
+        /// <summary>
+        /// total_questions
+        /// </summary>
         [Field("total_questions")]
         public int TotalQuestions { get; internal set; }
 
+        /// <summary>
+        /// total_unanswered
+        /// </summary>
         [Field("total_unanswered")]
         public int TotalUnanswered { get; internal set; }
 
+        /// <summary>
+        /// total_users
+        /// </summary>
         [Field("total_users")]
         public int TotalUsers { get; internal set; }
 
+        /// <summary>
+        /// total_votes
+        /// </summary>
         [Field("total_votes")]
         public int TotalVotes { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

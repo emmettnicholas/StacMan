@@ -4,31 +4,45 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Event, corresponding to Stack Exchange API v2's event type
+    /// http://api.stackexchange.com/docs/types/event
+    /// </summary>
     public partial class Event : StacManType
     {
+        /// <summary>
+        /// creation_date
+        /// </summary>
         [Field("creation_date")]
         public DateTime CreationDate { get; internal set; }
 
+        /// <summary>
+        /// event_id
+        /// </summary>
         [Field("event_id")]
         public int EventId { get; internal set; }
 
+        /// <summary>
+        /// event_type
+        /// </summary>
         [Field("event_type")]
         public Events.EventType EventType { get; internal set; }
 
+        /// <summary>
+        /// excerpt
+        /// </summary>
         [Field("excerpt")]
         public string Excerpt { get; internal set; }
 
+        /// <summary>
+        /// link
+        /// </summary>
         [Field("link")]
         public string Link { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

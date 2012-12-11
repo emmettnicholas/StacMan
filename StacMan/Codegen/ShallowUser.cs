@@ -4,37 +4,57 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan ShallowUser, corresponding to Stack Exchange API v2's shallow_user type
+    /// http://api.stackexchange.com/docs/types/shallow-user
+    /// </summary>
     public partial class ShallowUser : StacManType
     {
+        /// <summary>
+        /// accept_rate
+        /// </summary>
         [Field("accept_rate")]
         public int? AcceptRate { get; internal set; }
 
+        /// <summary>
+        /// display_name
+        /// </summary>
         [Field("display_name")]
         public string DisplayName { get; internal set; }
 
+        /// <summary>
+        /// link
+        /// </summary>
         [Field("link")]
         public string Link { get; internal set; }
 
+        /// <summary>
+        /// profile_image
+        /// </summary>
         [Field("profile_image")]
         public string ProfileImage { get; internal set; }
 
+        /// <summary>
+        /// reputation
+        /// </summary>
         [Field("reputation")]
         public int? Reputation { get; internal set; }
 
+        /// <summary>
+        /// user_id
+        /// </summary>
         [Field("user_id")]
         public int? UserId { get; internal set; }
 
+        /// <summary>
+        /// user_type
+        /// </summary>
         [Field("user_type")]
         public Users.UserType UserType { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

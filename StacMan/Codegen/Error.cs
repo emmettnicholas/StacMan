@@ -4,25 +4,33 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Error, corresponding to Stack Exchange API v2's error type
+    /// http://api.stackexchange.com/docs/types/error
+    /// </summary>
     public partial class Error : StacManType
     {
+        /// <summary>
+        /// description
+        /// </summary>
         [Field("description")]
         public string Description { get; internal set; }
 
+        /// <summary>
+        /// error_id
+        /// </summary>
         [Field("error_id")]
         public int ErrorId { get; internal set; }
 
+        /// <summary>
+        /// error_name
+        /// </summary>
         [Field("error_name")]
         public string ErrorName { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

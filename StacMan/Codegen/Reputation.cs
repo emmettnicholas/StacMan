@@ -4,40 +4,63 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Reputation, corresponding to Stack Exchange API v2's reputation type
+    /// http://api.stackexchange.com/docs/types/reputation
+    /// </summary>
     public partial class Reputation : StacManType
     {
+        /// <summary>
+        /// link
+        /// </summary>
         [Field("link")]
         public string Link { get; internal set; }
 
+        /// <summary>
+        /// on_date
+        /// </summary>
         [Field("on_date")]
         public DateTime OnDate { get; internal set; }
 
+        /// <summary>
+        /// post_id
+        /// </summary>
         [Field("post_id")]
         public int PostId { get; internal set; }
 
+        /// <summary>
+        /// post_type
+        /// </summary>
         [Field("post_type")]
         public Posts.PostType PostType { get; internal set; }
 
+        /// <summary>
+        /// reputation_change
+        /// </summary>
         [Field("reputation_change")]
         public int ReputationChange { get; internal set; }
 
+        /// <summary>
+        /// title
+        /// </summary>
         [Field("title")]
         public string Title { get; internal set; }
 
+        /// <summary>
+        /// user_id
+        /// </summary>
         [Field("user_id")]
         public int UserId { get; internal set; }
 
+        /// <summary>
+        /// vote_type
+        /// </summary>
         [Field("vote_type")]
         public Reputations.VoteType VoteType { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

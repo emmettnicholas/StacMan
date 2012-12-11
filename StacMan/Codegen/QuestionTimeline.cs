@@ -4,46 +4,75 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan QuestionTimeline, corresponding to Stack Exchange API v2's question_timeline type
+    /// http://api.stackexchange.com/docs/types/question-timeline
+    /// </summary>
     public partial class QuestionTimeline : StacManType
     {
+        /// <summary>
+        /// comment_id
+        /// </summary>
         [Field("comment_id")]
         public int? CommentId { get; internal set; }
 
+        /// <summary>
+        /// creation_date
+        /// </summary>
         [Field("creation_date")]
         public DateTime CreationDate { get; internal set; }
 
+        /// <summary>
+        /// down_vote_count
+        /// </summary>
         [Field("down_vote_count")]
         public int? DownVoteCount { get; internal set; }
 
+        /// <summary>
+        /// owner
+        /// </summary>
         [Field("owner")]
         public ShallowUser Owner { get; internal set; }
 
+        /// <summary>
+        /// post_id
+        /// </summary>
         [Field("post_id")]
         public int? PostId { get; internal set; }
 
+        /// <summary>
+        /// question_id
+        /// </summary>
         [Field("question_id")]
         public int QuestionId { get; internal set; }
 
+        /// <summary>
+        /// revision_guid
+        /// </summary>
         [Field("revision_guid")]
         public Guid? RevisionGuid { get; internal set; }
 
+        /// <summary>
+        /// timeline_type
+        /// </summary>
         [Field("timeline_type")]
         public QuestionTimelines.TimelineType TimelineType { get; internal set; }
 
+        /// <summary>
+        /// up_vote_count
+        /// </summary>
         [Field("up_vote_count")]
         public int? UpVoteCount { get; internal set; }
 
+        /// <summary>
+        /// user
+        /// </summary>
         [Field("user")]
         public ShallowUser User { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

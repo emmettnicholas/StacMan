@@ -4,37 +4,57 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan Tag, corresponding to Stack Exchange API v2's tag type
+    /// http://api.stackexchange.com/docs/types/tag
+    /// </summary>
     public partial class Tag : StacManType
     {
+        /// <summary>
+        /// count
+        /// </summary>
         [Field("count")]
         public int Count { get; internal set; }
 
+        /// <summary>
+        /// has_synonyms
+        /// </summary>
         [Field("has_synonyms")]
         public bool HasSynonyms { get; internal set; }
 
+        /// <summary>
+        /// is_moderator_only
+        /// </summary>
         [Field("is_moderator_only")]
         public bool IsModeratorOnly { get; internal set; }
 
+        /// <summary>
+        /// is_required
+        /// </summary>
         [Field("is_required")]
         public bool IsRequired { get; internal set; }
 
+        /// <summary>
+        /// last_activity_date
+        /// </summary>
         [Field("last_activity_date")]
         public DateTime? LastActivityDate { get; internal set; }
 
+        /// <summary>
+        /// name
+        /// </summary>
         [Field("name")]
         public string Name { get; internal set; }
 
+        /// <summary>
+        /// user_id
+        /// </summary>
         [Field("user_id")]
         public int? UserId { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

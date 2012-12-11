@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Tags
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum Sort
     {
         /// <summary>

@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Badges
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum AllSort
     {
         /// <summary>

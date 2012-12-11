@@ -4,31 +4,45 @@
 //     to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 // </auto-generated>
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
-
 using System;
 
 namespace StackExchange.StacMan
 {
+    /// <summary>
+    /// StacMan TagSynonym, corresponding to Stack Exchange API v2's tag_synonym type
+    /// http://api.stackexchange.com/docs/types/tag-synonym
+    /// </summary>
     public partial class TagSynonym : StacManType
     {
+        /// <summary>
+        /// applied_count
+        /// </summary>
         [Field("applied_count")]
         public int AppliedCount { get; internal set; }
 
+        /// <summary>
+        /// creation_date
+        /// </summary>
         [Field("creation_date")]
         public DateTime CreationDate { get; internal set; }
 
+        /// <summary>
+        /// from_tag
+        /// </summary>
         [Field("from_tag")]
         public string FromTag { get; internal set; }
 
+        /// <summary>
+        /// last_applied_date
+        /// </summary>
         [Field("last_applied_date")]
         public DateTime? LastAppliedDate { get; internal set; }
 
+        /// <summary>
+        /// to_tag
+        /// </summary>
         [Field("to_tag")]
         public string ToTag { get; internal set; }
 
     }
 }
-
-#pragma warning restore 1591

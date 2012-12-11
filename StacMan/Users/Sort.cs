@@ -1,5 +1,8 @@
 ﻿namespace StackExchange.StacMan.Users
 {
+    /// <summary>
+    /// sort
+    /// </summary>
     public enum Sort
     {
         /// <summary>

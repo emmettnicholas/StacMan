@@ -2,6 +2,10 @@
 {
     public partial class Filter
     {
+        /// <summary>
+        /// "default" filter
+        /// (each type documents which fields are returned under the default filter)
+        /// </summary>
         public static readonly Filter Default = new Filter
         {
             FilterName = "default",
@@ -252,6 +256,10 @@
             }
         };
 
+        /// <summary>
+        /// "withbody" filter
+        /// ("default" plus the *.body fields)
+        /// </summary>
         public static readonly Filter WithBody = new Filter
         {
             FilterName = "withbody",
@@ -510,6 +518,10 @@
             }
         };
 
+        /// <summary>
+        /// "none" filter
+        /// (empty)
+        /// </summary>
         public static readonly Filter None = new Filter
         {
             FilterName = "none",
@@ -517,6 +529,10 @@
             IncludedFields = new string[0]
         };
 
+        /// <summary>
+        /// "total" filter
+        /// (just .total)
+        /// </summary>
         public static readonly Filter Total = new Filter
         {
             FilterName = "total",
