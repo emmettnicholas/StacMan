@@ -344,7 +344,7 @@
             "returnType": "QuestionTimeline"
         },
         "GetFeatured": {
-            "url": "/questions/unanswered",
+            "url": "/questions/featured",
             "description": "Get all questions on the site with active bounties.",
             "hasPaging": true,
             "hasFromToDate": true,
@@ -354,7 +354,7 @@
             }
         },
         "GetUnanswered": {
-            "url": "/questions/featured",
+            "url": "/questions/unanswered",
             "description": "Get all questions the site considers unanswered.",
             "hasPaging": true,
             "hasFromToDate": true,

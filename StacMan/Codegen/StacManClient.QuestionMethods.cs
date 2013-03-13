@@ -194,31 +194,6 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/questions/unanswered", useHttps: false);
-
-            ub.AddParameter("site", site);
-            ub.AddParameter("filter", filter);
-            ub.AddParameter("page", page);
-            ub.AddParameter("pagesize", pagesize);
-            ub.AddParameter("fromdate", fromdate);
-            ub.AddParameter("todate", todate);
-            ub.AddParameter("sort", sort);
-            ub.AddParameter("min", mindate);
-            ub.AddParameter("max", maxdate);
-            ub.AddParameter("min", min);
-            ub.AddParameter("max", max);
-            ub.AddParameter("order", order);
-            ub.AddParameter("tagged", tagged);
-
-            return CreateApiTask<Question>(ub, "/questions/unanswered");
-        }
-
-        Task<StacManResponse<Question>> IQuestionMethods.GetUnanswered(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
-        {
-            ValidateString(site, "site");
-            ValidatePaging(page, pagesize);
-            ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
-
             var ub = new ApiUrlBuilder("/questions/featured", useHttps: false);
 
             ub.AddParameter("site", site);
@@ -236,6 +211,31 @@ namespace StackExchange.StacMan
             ub.AddParameter("tagged", tagged);
 
             return CreateApiTask<Question>(ub, "/questions/featured");
+        }
+
+        Task<StacManResponse<Question>> IQuestionMethods.GetUnanswered(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
+        {
+            ValidateString(site, "site");
+            ValidatePaging(page, pagesize);
+            ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
+
+            var ub = new ApiUrlBuilder("/questions/unanswered", useHttps: false);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+            ub.AddParameter("fromdate", fromdate);
+            ub.AddParameter("todate", todate);
+            ub.AddParameter("sort", sort);
+            ub.AddParameter("min", mindate);
+            ub.AddParameter("max", maxdate);
+            ub.AddParameter("min", min);
+            ub.AddParameter("max", max);
+            ub.AddParameter("order", order);
+            ub.AddParameter("tagged", tagged);
+
+            return CreateApiTask<Question>(ub, "/questions/unanswered");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetWithNoAnswers(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
@@ -305,12 +305,12 @@ namespace StackExchange.StacMan
         Task<StacManResponse<QuestionTimeline>> GetTimelines(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null);
 
         /// <summary>
-        /// Get all questions on the site with active bounties. (API Method: "/questions/unanswered")
+        /// Get all questions on the site with active bounties. (API Method: "/questions/featured")
         /// </summary>
         Task<StacManResponse<Question>> GetFeatured(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null);
 
         /// <summary>
-        /// Get all questions the site considers unanswered. (API Method: "/questions/featured")
+        /// Get all questions the site considers unanswered. (API Method: "/questions/unanswered")
         /// </summary>
         Task<StacManResponse<Question>> GetUnanswered(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null);
 
