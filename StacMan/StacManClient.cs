@@ -210,6 +210,24 @@ namespace StackExchange.StacMan
                             success(reader.ReadToEnd());
                         }
                     }
+                    catch (WebException webex)
+                    {
+                        if (webex.Status == WebExceptionStatus.ProtocolError)
+                        {
+                            var response = webex.Response as HttpWebResponse;
+                            if (response != null && response.StatusCode == HttpStatusCode.BadRequest)
+                            {
+                                using (var stream = response.GetResponseStream())
+                                using (var reader = new StreamReader(stream))
+                                {
+                                    success(reader.ReadToEnd());
+                                    return;
+                                }
+                            }
+                        }
+
+                        error(webex);
+                    }
                     catch (Exception ex)
                     {
                         error(ex);
@@ -258,6 +276,24 @@ namespace StackExchange.StacMan
                                     {
                                         success(reader.ReadToEnd());
                                     }
+                                }
+                                catch (WebException webex)
+                                {
+                                    if (webex.Status == WebExceptionStatus.ProtocolError)
+                                    {
+                                        var response = webex.Response as HttpWebResponse;
+                                        if (response != null && response.StatusCode == HttpStatusCode.BadRequest)
+                                        {
+                                            using (var stream = response.GetResponseStream())
+                                            using (var reader = new StreamReader(stream))
+                                            {
+                                                success(reader.ReadToEnd());
+                                                return;
+                                            }
+                                        }
+                                    }
+
+                                    error(webex);
                                 }
                                 catch (Exception ex)
                                 {
