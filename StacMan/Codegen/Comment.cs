@@ -21,6 +21,12 @@ namespace StackExchange.StacMan
         public string Body { get; internal set; }
 
         /// <summary>
+        /// body_markdown -- introduced in API version 2.1
+        /// </summary>
+        [Field("body_markdown")]
+        public string BodyMarkdown { get; internal set; }
+
+        /// <summary>
         /// comment_id
         /// </summary>
         [Field("comment_id")]

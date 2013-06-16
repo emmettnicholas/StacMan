@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/answers", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/answers", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -41,7 +41,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/answers");
         }
 
         Task<StacManResponse<Answer>> IAnswerMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -51,7 +51,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/answers/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/answers/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -66,7 +66,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/answers/{ids}");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/answers/{ids}");
         }
 
         Task<StacManResponse<Comment>> IAnswerMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -76,7 +76,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/answers/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/answers/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -91,7 +91,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/answers/{ids}/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/answers/{ids}/comments");
         }
     }
 

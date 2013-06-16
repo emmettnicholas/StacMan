@@ -99,6 +99,12 @@ namespace StackExchange.StacMan
         public int Score { get; internal set; }
 
         /// <summary>
+        /// tags -- introduced in API version 2.1
+        /// </summary>
+        [Field("tags")]
+        public string[] Tags { get; internal set; }
+
+        /// <summary>
         /// title
         /// </summary>
         [Field("title")]

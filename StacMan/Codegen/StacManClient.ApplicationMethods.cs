@@ -25,13 +25,13 @@ namespace StackExchange.StacMan
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/apps/{0}/de-authenticate", String.Join(";", accessTokens)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/apps/{0}/de-authenticate", String.Join(";", accessTokens)), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, "/apps/{accessTokens}/de-authenticate");
+            return CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/apps/{accessTokens}/de-authenticate");
         }
     }
 

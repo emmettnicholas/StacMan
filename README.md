@@ -1,6 +1,6 @@
 ## Features
 
-* Supports [**all** Stack Exchange API V2 methods](http://api.stackexchange.com/docs)
+* Supports [**all** Stack Exchange API V2 methods](http://api.stackexchange.com/docs) through version 2.1
 * **Easy to use**: one-to-one mapping between StacMan and API methods/params
 * **Async is easy**: methods return [`Task<T>`](http://msdn.microsoft.com/en-us/library/dd321424.aspx) so they're [ready for C# 5's `await`](http://msdn.microsoft.com/en-us/vstudio/hh533273)
 * Adheres to the [API's throttling rules](http://api.stackexchange.com/docs/throttle)

@@ -24,23 +24,23 @@ namespace StackExchange.StacMan
         {
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/errors", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/errors", useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Error>(ub, "/errors");
+            return CreateApiTask<Error>(ub, HttpMethod.GET, "/errors");
         }
 
         Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter)
         {
 
-            var ub = new ApiUrlBuilder(String.Format("/errors/{0}", id), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/errors/{0}", id), useHttps: false);
 
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Error>(ub, "/errors/{id}");
+            return CreateApiTask<Error>(ub, HttpMethod.GET, "/errors/{id}");
         }
     }
 

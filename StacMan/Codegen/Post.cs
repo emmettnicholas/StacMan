@@ -51,6 +51,12 @@ namespace StackExchange.StacMan
         public DateTime? LastEditDate { get; internal set; }
 
         /// <summary>
+        /// link -- introduced in API version 2.1
+        /// </summary>
+        [Field("link")]
+        public string Link { get; internal set; }
+
+        /// <summary>
         /// owner
         /// </summary>
         [Field("owner")]

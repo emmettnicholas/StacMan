@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/tags", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/tags", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, "/tags");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/tags");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetByName(string site, IEnumerable<string> tags, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Tags.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -54,7 +54,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/info", String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/info", String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -71,7 +71,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, "/tags/{tags}/info");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/tags/{tags}/info");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetModeratorOnly(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Tags.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order, string inname)
@@ -80,7 +80,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/tags/moderator-only", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/tags/moderator-only", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -98,7 +98,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, "/tags/moderator-only");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/tags/moderator-only");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetRequired(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Tags.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order, string inname)
@@ -107,7 +107,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/tags/required", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/tags/required", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -125,7 +125,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Tag>(ub, "/tags/required");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/tags/required");
         }
 
         Task<StacManResponse<TagSynonym>> ITagMethods.GetAllSynonyms(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, TagSynonyms.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -134,7 +134,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/tags/synonyms", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/tags/synonyms", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -149,7 +149,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<TagSynonym>(ub, "/tags/synonyms");
+            return CreateApiTask<TagSynonym>(ub, HttpMethod.GET, "/tags/synonyms");
         }
 
         Task<StacManResponse<Question>> ITagMethods.GetFrequentlyAsked(string site, IEnumerable<string> tags, string filter, int? page, int? pagesize)
@@ -158,14 +158,14 @@ namespace StackExchange.StacMan
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/faq", String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/faq", String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Question>(ub, "/tags/{tags}/faq");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/tags/{tags}/faq");
         }
 
         Task<StacManResponse<Tag>> ITagMethods.GetRelated(string site, IEnumerable<string> tags, string filter, int? page, int? pagesize)
@@ -174,14 +174,14 @@ namespace StackExchange.StacMan
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/related", String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/related", String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Tag>(ub, "/tags/{tags}/related");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/tags/{tags}/related");
         }
 
         Task<StacManResponse<TagSynonym>> ITagMethods.GetSynonymsForTags(string site, IEnumerable<string> tags, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, TagSynonyms.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -191,7 +191,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/synonyms", String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/synonyms", String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -206,7 +206,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<TagSynonym>(ub, "/tags/{tags}/synonyms");
+            return CreateApiTask<TagSynonym>(ub, HttpMethod.GET, "/tags/{tags}/synonyms");
         }
 
         Task<StacManResponse<TagScore>> ITagMethods.GetTopAnswerers(string site, string tag, Tags.Period period, string filter, int? page, int? pagesize)
@@ -215,14 +215,14 @@ namespace StackExchange.StacMan
             ValidateString(tag, "tag");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/top-answerers/{1}", tag, period), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/top-answerers/{1}", tag, period), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagScore>(ub, "/tags/{tag}/top-answerers/{period}");
+            return CreateApiTask<TagScore>(ub, HttpMethod.GET, "/tags/{tag}/top-answerers/{period}");
         }
 
         Task<StacManResponse<TagScore>> ITagMethods.GetTopAskers(string site, string tag, Tags.Period period, string filter, int? page, int? pagesize)
@@ -231,14 +231,14 @@ namespace StackExchange.StacMan
             ValidateString(tag, "tag");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/top-askers/{1}", tag, period), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/top-askers/{1}", tag, period), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagScore>(ub, "/tags/{tag}/top-askers/{period}");
+            return CreateApiTask<TagScore>(ub, HttpMethod.GET, "/tags/{tag}/top-askers/{period}");
         }
 
         Task<StacManResponse<TagWiki>> ITagMethods.GetTagWikis(string site, IEnumerable<string> tags, string filter, int? page, int? pagesize)
@@ -247,14 +247,14 @@ namespace StackExchange.StacMan
             ValidateEnumerable(tags, "tags");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/tags/{0}/wikis", String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/wikis", String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TagWiki>(ub, "/tags/{tags}/wikis");
+            return CreateApiTask<TagWiki>(ub, HttpMethod.GET, "/tags/{tags}/wikis");
         }
     }
 

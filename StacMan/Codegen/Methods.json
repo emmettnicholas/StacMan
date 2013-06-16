@@ -135,6 +135,33 @@
             "required": {
                 "ids": "IEnumerable<int>"
             }
+        },
+        "Delete": {
+            "url": "/comments/{id}/delete",
+            "description": "Delete a comment identified by its id.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "httpMethod": "POST",
+            "required": {
+                "id": "int"
+            },
+            "optional": {
+                "preview": "bool?"
+            }
+        },
+        "Edit": {
+            "url": "/comments/{id}/edit",
+            "description": "Edit a comment identified by its id.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "httpMethod": "POST",
+            "required": {
+                "id": "int",
+                "body": "string"
+            },
+            "optional": {
+                "preview": "bool?"
+            }
         }
     },
     "Error": {
@@ -212,6 +239,24 @@
             "description": "Get information about the entire site."
         }
     },
+    "Notification": {
+        "Get": {
+            "url": "/notifications",
+            "description": "Get a user's notifications, outside of the context of a site.",
+            "minApiVersion": "2.1",
+            "isNetworkMethod": true,
+            "authRequired": true,
+            "hasPaging": true
+        },
+        "GetUnread": {
+            "url": "/notifications/unread",
+            "description": "Get a user's unread notifications, outside of the context of a site.",
+            "minApiVersion": "2.1",
+            "isNetworkMethod": true,
+            "authRequired": true,
+            "hasPaging": true
+        }
+    },
     "Post": {
         "GetAll": {
             "url": "/posts",
@@ -238,6 +283,21 @@
             "sortType": "Comments.Sort",
             "required": {
                 "ids": "IEnumerable<int>"
+            },
+            "returnType": "Comment"
+        },
+        "AddComment": {
+            "url": "/posts/{id}/comments/add",
+            "description": "Create a new comment on the post identified by id.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "httpMethod": "POST",
+            "required": {
+                "id": "int",
+                "body": "string"
+            },
+            "optional": {
+                "preview": "bool?"
             },
             "returnType": "Comment"
         },
@@ -396,6 +456,31 @@
                 "tagged": "string",
                 "nottagged": "string",
                 "inttitle": "string"
+            },
+            "returnType": "Question"
+        },
+        "GetMatchesAdvanced": {
+            "url": "/search/advanced",
+            "description": "Search the site for questions using most of the on-site search options.",
+            "minApiVersion": "2.1",
+            "hasPaging": true,
+            "hasFromToDate": true,
+            "sortType": "Questions.SearchSort",
+            "optional": {
+                "q": "string",
+                "accepted": "bool?",
+                "answers": "int?",
+                "body": "string",
+                "closed": "bool?",
+                "migrated": "bool?",
+                "notice": "bool?",
+                "nottagged": "string",
+                "tagged": "string",
+                "title": "string",
+                "user": "int?",
+                "url": "string",
+                "views": "int?",
+                "wiki": "bool?"
             },
             "returnType": "Question"
         },
@@ -700,6 +785,64 @@
             "sortType": "Comments.Sort",
             "returnType": "Comment"
         },
+        "GetMerges": {
+            "url": "/users/{ids}/merges",
+            "description": "Get the merges a user's accounts has undergone.",
+            "minApiVersion": "2.1",
+            "isNetworkMethod": true,
+            "hasPaging": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "AccountMerge"
+        },
+        "GetMyMerges": {
+            "url": "/me/merges",
+            "description": "Get the merges the authenticated user's accounts has undergone.",
+            "minApiVersion": "2.1",
+            "isNetworkMethod": true,
+            "hasPaging": true,
+            "authRequired": true,
+            "returnType": "AccountMerge"
+        },
+        "GetNotifications": {
+            "url": "/users/{id}/notifications",
+            "description": "Get a user's notifications.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "Notification"
+        },
+        "GetMyNotifications": {
+            "url": "/me/notifications",
+            "description": "Get the authenticated user's notifications.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "Notification"
+        },
+        "GetUnreadNotifications": {
+            "url": "/users/{id}/notifications/unread",
+            "description": "Get a user's unread notifications.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "Notification"
+        },
+        "GetMyUnreadNotifications": {
+            "url": "/me/notifications/unread",
+            "description": "Get the authenticated user's unread notifications.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "Notification"
+        },
         "GetPrivileges": {
             "url": "/users/{id}/privileges",
             "description": "Get the privileges the given user has on the site.",
@@ -832,6 +975,43 @@
             "authRequired": true,
             "returnType": "Reputation"
         },
+        "GetReputationHistory": {
+            "url": "/users/{ids}/reputation-history",
+            "description": "Get a history of a user's reputation, excluding private events.",
+            "minApiVersion": "2.1",
+            "hasPaging": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "ReputationHistory"
+        },
+        "GetMyReputationHistory": {
+            "url": "/me/reputation-history",
+            "description": "Get a history of the authenticated user's reputation, excluding private events.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "ReputationHistory"
+        },
+        "GetReputationHistoryFull": {
+            "url": "/users/{id}/reputation-history/full",
+            "description": "Get a full history of a user's reputation.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "ReputationHistory"
+        },
+        "GetMyReputationHistoryFull": {
+            "url": "/me/reputation-history/full",
+            "description": "Get a full history of the authenticated user's reputation.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "ReputationHistory"
+        },
         "GetSuggestedEdits": {
             "url": "/users/{ids}/suggested-edits",
             "description": "Get the suggested edits provided by the users identified by a set of ids.",
@@ -947,6 +1127,16 @@
             },
             "returnType": "TopTag"
         },
+        "GetTopAnswerTags(overload)": {
+            "url": "/users/{ids}/top-answer-tags",
+            "description": "Get the top tags (by score) that users identified by a set of ids have posted answers in.",
+            "minApiVersion": "2.1",
+            "hasPaging": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "TopTag"
+        },
         "GetMyTopAnswerTags": {
             "url": "/me/top-answer-tags",
             "description": "Get the top tags (by score) the authenticated user has posted answers in.",
@@ -963,12 +1153,40 @@
             },
             "returnType": "TopTag"
         },
+        "GetTopQuestionTags(overload)": {
+            "url": "/users/{ids}/top-question-tags",
+            "description": "Get the top tags (by score) that users identified by a set of ids have asked questions in.",
+            "minApiVersion": "2.1",
+            "hasPaging": true,
+            "required": {
+                "ids": "IEnumerable<int>"
+            },
+            "returnType": "TopTag"
+        },
         "GetMyTopQuestionTags": {
             "url": "/me/top-question-tags",
             "description": "Get the top tags (by score) the authenticated user has asked questions in.",
             "authRequired": true,
             "hasPaging": true,
             "returnType": "TopTag"
+        },
+        "GetWritePermissions": {
+            "url": "/users/{id}/write-permissions",
+            "description": "Get the write access a user has via the API.",
+            "minApiVersion": "2.1",
+            "hasPaging": true,
+            "required": {
+                "id": "int"
+            },
+            "returnType": "WritePermission"
+        },
+        "GetMyWritePermissions": {
+            "url": "/me/write-permissions",
+            "description": "Get the write access the authenticated user has via the API.",
+            "minApiVersion": "2.1",
+            "authRequired": true,
+            "hasPaging": true,
+            "returnType": "WritePermission"
         },
         "GetModerators": {
             "url": "/users/moderators",

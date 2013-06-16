@@ -48,6 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiVersion21Tests.cs" />
     <Compile Include="BackoffTests.cs" />
     <Compile Include="InfoMethodTests.cs" />
     <Compile Include="QuestionMethodTests.cs" />

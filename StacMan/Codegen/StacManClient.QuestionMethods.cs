@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/questions", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/questions", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -42,7 +42,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, "/questions");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -52,7 +52,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/questions/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/questions/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -67,7 +67,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/questions/{ids}");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}");
         }
 
         Task<StacManResponse<Answer>> IQuestionMethods.GetAnswers(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -77,7 +77,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/questions/{0}/answers", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/questions/{0}/answers", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -92,7 +92,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/questions/{ids}/answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/questions/{ids}/answers");
         }
 
         Task<StacManResponse<Comment>> IQuestionMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -102,7 +102,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/questions/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/questions/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -117,7 +117,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/questions/{ids}/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/questions/{ids}/comments");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetLinked(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.RelatedSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -127,7 +127,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/questions/{0}/linked", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/questions/{0}/linked", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -142,7 +142,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/questions/{ids}/linked");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}/linked");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetRelated(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.RelatedSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -152,7 +152,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/questions/{0}/related", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/questions/{0}/related", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -167,7 +167,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/questions/{ids}/related");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}/related");
         }
 
         Task<StacManResponse<QuestionTimeline>> IQuestionMethods.GetTimelines(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
@@ -176,7 +176,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/questions/{0}/timeline", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/questions/{0}/timeline", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -185,7 +185,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<QuestionTimeline>(ub, "/questions/{ids}/timeline");
+            return CreateApiTask<QuestionTimeline>(ub, HttpMethod.GET, "/questions/{ids}/timeline");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetFeatured(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
@@ -194,7 +194,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/questions/featured", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/questions/featured", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -210,7 +210,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, "/questions/featured");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/featured");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetUnanswered(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
@@ -219,7 +219,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/questions/unanswered", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/questions/unanswered", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -235,7 +235,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, "/questions/unanswered");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/unanswered");
         }
 
         Task<StacManResponse<Question>> IQuestionMethods.GetWithNoAnswers(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
@@ -244,7 +244,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/questions/no-answers", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/questions/no-answers", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -260,7 +260,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return CreateApiTask<Question>(ub, "/questions/no-answers");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/no-answers");
         }
     }
 

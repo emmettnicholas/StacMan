@@ -24,13 +24,13 @@ namespace StackExchange.StacMan
         {
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/sites", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/sites", useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Site>(ub, "/sites");
+            return CreateApiTask<Site>(ub, HttpMethod.GET, "/sites");
         }
     }
 

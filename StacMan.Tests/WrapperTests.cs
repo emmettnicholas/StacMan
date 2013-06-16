@@ -14,13 +14,13 @@ namespace StackExchange.StacMan.Tests
         [TestMethod]
         public void Wrapper_fields_test()
         {
-            var mock = new Mock<StacManClient>(null);
+            var mock = new Mock<StacManClient>(null, null);
 
             //http://api.stackexchange.com/2.0/filters/!*bOpvmsY(F)
-            mock.FakeFetchForRegex("filters", response: @"{""items"":[{""filter"":""!*bOpvmsY(F)"",""included_fields"":["".backoff"","".error_id"","".error_message"","".error_name"","".has_more"","".items"","".page"","".page_size"","".quota_max"","".quota_remaining"","".total"","".type"",""badge.badge_id""],""filter_type"":""safe""}],""quota_remaining"":271,""quota_max"":300,""has_more"":false}");
+            mock.FakeGETForUrlPattern("filters", response: @"{""items"":[{""filter"":""!*bOpvmsY(F)"",""included_fields"":["".backoff"","".error_id"","".error_message"","".error_name"","".has_more"","".items"","".page"","".page_size"","".quota_max"","".quota_remaining"","".total"","".type"",""badge.badge_id""],""filter_type"":""safe""}],""quota_remaining"":271,""quota_max"":300,""has_more"":false}");
 
             //http://api.stackexchange.com/2.0/badges?page=2&pagesize=5&site=stackoverflow&filter=!*bOpvmsY(F)
-            mock.FakeFetchForRegex("badges", @"{""total"":1713,""page_size"":5,""page"":2,""type"":""badge"",""items"":[{""badge_id"":460},{""badge_id"":461},{""badge_id"":462},{""badge_id"":463},{""badge_id"":464}],""quota_remaining"":273,""quota_max"":300,""has_more"":true}");
+            mock.FakeGETForUrlPattern("badges", @"{""total"":1713,""page_size"":5,""page"":2,""type"":""badge"",""items"":[{""badge_id"":460},{""badge_id"":461},{""badge_id"":462},{""badge_id"":463},{""badge_id"":464}],""quota_remaining"":273,""quota_max"":300,""has_more"":true}");
 
             var client = mock.Object;
             var result = client.Badges.GetAll("stackoverflow", page: 2, pagesize: 5, filter: "!*bOpvmsY(F)").Result;

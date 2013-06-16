@@ -24,12 +24,12 @@ namespace StackExchange.StacMan
         {
             ValidateString(site, "site");
 
-            var ub = new ApiUrlBuilder("/info", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/info", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Info>(ub, "/info");
+            return CreateApiTask<Info>(ub, HttpMethod.GET, "/info");
         }
     }
 

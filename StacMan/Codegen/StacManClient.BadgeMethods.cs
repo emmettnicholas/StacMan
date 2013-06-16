@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype);
 
-            var ub = new ApiUrlBuilder("/badges", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/badges", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Badge>(ub, "/badges");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order)
@@ -54,7 +54,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype);
 
-            var ub = new ApiUrlBuilder(String.Format("/badges/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/badges/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -71,7 +71,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxtype);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Badge>(ub, "/badges/{ids}");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/{ids}");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetNamed(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
@@ -80,7 +80,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/badges/name", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/badges/name", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -96,7 +96,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Badge>(ub, "/badges/name");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/name");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetRecent(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
@@ -104,7 +104,7 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/badges/recipients", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/badges/recipients", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -113,7 +113,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Badge>(ub, "/badges/recipients");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/recipients");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetRecentByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
@@ -122,7 +122,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/badges/{0}/recipients", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/badges/{0}/recipients", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -131,7 +131,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Badge>(ub, "/badges/{ids}/recipients");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/{ids}/recipients");
         }
 
         Task<StacManResponse<Badge>> IBadgeMethods.GetTagBased(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
@@ -140,7 +140,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/badges/tags", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/badges/tags", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -156,7 +156,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<Badge>(ub, "/badges/tags");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/tags");
         }
     }
 

@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder("/suggested-edits", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/suggested-edits", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -39,7 +39,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, "/suggested-edits");
+            return CreateApiTask<SuggestedEdit>(ub, HttpMethod.GET, "/suggested-edits");
         }
 
         Task<StacManResponse<SuggestedEdit>> ISuggestedEditMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
@@ -49,7 +49,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(String.Format("/suggested-edits/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/suggested-edits/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -62,7 +62,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, "/suggested-edits/{ids}");
+            return CreateApiTask<SuggestedEdit>(ub, HttpMethod.GET, "/suggested-edits/{ids}");
         }
     }
 

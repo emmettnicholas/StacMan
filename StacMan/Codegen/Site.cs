@@ -45,6 +45,12 @@ namespace StackExchange.StacMan
         public string FaviconUrl { get; internal set; }
 
         /// <summary>
+        /// high_resolution_icon_url -- introduced in API version 2.1
+        /// </summary>
+        [Field("high_resolution_icon_url")]
+        public string HighResolutionIconUrl { get; internal set; }
+
+        /// <summary>
         /// icon_url
         /// </summary>
         [Field("icon_url")]

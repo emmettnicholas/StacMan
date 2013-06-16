@@ -60,16 +60,20 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 <#
-    foreach (var methodName in methodsObj.Keys)
+    foreach (var methodKey in methodsObj.Keys)
     {
+        string methodName = OverloadRegex.Replace(methodKey, "");
+
         var requiredParams = new List<Parameter>();
         var optionalParams = new List<Parameter>();
 
         optionalParams.Add(new Parameter("filter", "string"));
 
-        var methodObj = (Dictionary<string, object>)methodsObj[methodName];
+        var methodObj = (Dictionary<string, object>)methodsObj[methodKey];
         var description = (string)methodObj["description"];
         var url = (string)methodObj["url"];
+        var minApiVersion = methodObj.ContainsKey("minApiVersion") ? (string)methodObj["minApiVersion"] : "2.0";
+        var httpMethod = methodObj.ContainsKey("httpMethod") ? (string)methodObj["httpMethod"] : "GET";
         var returnTypeName = methodObj.ContainsKey("returnType") ? (string)methodObj["returnType"] : typeName;
 
         var isNetworkMethod = methodObj.ContainsKey("isNetworkMethod") && (bool)methodObj["isNetworkMethod"];
@@ -143,6 +147,13 @@ namespace StackExchange.StacMan
             }
         }
 
+        if (minApiVersion != "2.0")
+        {
+#>
+            ValidateMinApiVersion("<#= minApiVersion #>");
+<#
+        }
+
         if (hasPaging)
         {
 #>
@@ -164,7 +175,7 @@ namespace StackExchange.StacMan
         {
 #>
 
-            var ub = new ApiUrlBuilder(String.Format("<#= urlTemplate #>", <#=
+            var ub = new ApiUrlBuilder(Version, String.Format("<#= urlTemplate #>", <#=
                 String.Join(", ", urlParams.Select(p =>
                     {
                         var param = requiredParams.Single(rp => rp.Name == p);
@@ -180,7 +191,7 @@ namespace StackExchange.StacMan
         {
 #>
 
-            var ub = new ApiUrlBuilder("<#= url #>", useHttps: <#= authRequired ? "true" : "false" #>);
+            var ub = new ApiUrlBuilder(Version, "<#= url #>", useHttps: <#= authRequired ? "true" : "false" #>);
 
 <#
         }
@@ -193,10 +204,15 @@ namespace StackExchange.StacMan
         }
 #>
 
-            return CreateApiTask<<#= returnTypeName #>>(ub, "<#= GetBackoffKey(url) #>");
+            return CreateApiTask<<#= returnTypeName #>>(ub, HttpMethod.<#= httpMethod #>, "<#= GetBackoffKey(url) #>");
         }
 <#
-        var summary = String.Format("{0}{1} (API Method: \"{2}\")", description, authRequired ? " [auth required]" : "", url);
+        var summary = String.Format("{0}{1} (API Method: \"{2}\"){3}",
+            description,
+            authRequired ? " [auth required]" : "",
+            url,
+            minApiVersion != "2.0" ? (" -- introduced in API version " + minApiVersion) : "");
+
         interfaceSignatures.Add(new InterfaceSignature(methodName, interfaceParamsString, returnTypeName, summary));
     }
 #>
@@ -228,6 +244,8 @@ manager.Process(true);
 #>
 
 <#+
+static Regex OverloadRegex = new Regex("\\(overload.*\\)$", RegexOptions.Compiled);
+
 class InterfaceSignature
 {
     public InterfaceSignature(string methodName, string paramsString, string returnTypeName, string summary)

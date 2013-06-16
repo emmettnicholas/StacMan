@@ -44,5 +44,11 @@ namespace StackExchange.StacMan
         [Field("tag_name")]
         public string TagName { get; internal set; }
 
+        /// <summary>
+        /// user_id -- introduced in API version 2.1
+        /// </summary>
+        [Field("user_id")]
+        public int UserId { get; internal set; }
+
     }
 }

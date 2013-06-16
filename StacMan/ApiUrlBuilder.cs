@@ -9,13 +9,13 @@ namespace StackExchange.StacMan
 {
     internal class ApiUrlBuilder
     {
-        public ApiUrlBuilder(string relativeUrl, bool useHttps = false)
+        public ApiUrlBuilder(string apiVersion, string relativeUrl, bool useHttps = false)
         {
-            BaseUrl = String.Format("{0}://api.stackexchange.com/2.0{1}{2}", useHttps ? "https" : "http", relativeUrl.StartsWith("/") ? "" : "/", relativeUrl);
+            BaseUrl = String.Format("{0}://api.stackexchange.com/{1}{2}{3}", useHttps ? "https" : "http", apiVersion, relativeUrl.StartsWith("/") ? "" : "/", relativeUrl);
             QueryStringParameters = new NameValueCollection();
         }
 
-        private readonly string BaseUrl;
+        public readonly string BaseUrl;
         private readonly NameValueCollection QueryStringParameters;
         
         public void AddParameter(string name, object value)
@@ -36,12 +36,17 @@ namespace StackExchange.StacMan
                 AddParameter(name, String.Join(";", values));
         }
 
+        public string QueryString()
+        {
+            return String.Join("&", QueryStringParameters.AllKeys.Select(key => String.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(QueryStringParameters[key]))));
+        }
+
         public override string ToString()
         {
             var url = BaseUrl;
 
             if (QueryStringParameters.Count > 0)
-                url += "?" + String.Join("&", QueryStringParameters.AllKeys.Select(key => String.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(QueryStringParameters[key]))));
+                url += "?" + QueryString();
 
             return url;
         }

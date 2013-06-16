@@ -20,15 +20,18 @@ namespace StackExchange.StacMan
         /// Initializes a new instance of the <see cref="StacManClient"/> class.
         /// </summary>
         /// <param name="key">Your app's Stack Exchange API V2 key (optional)</param>
-        public StacManClient(string key = null)
+        /// <param name="version">Stack Exchange API version, e.g. "2.0" or "2.1"</param>
+        public StacManClient(string key = null, string version = "2.0")
         {
             Key = key;
+            Version = version;
             ApiTimeoutMs = 5000;
             MaxSimultaneousRequests = 10;
             RespectBackoffs = true;
         }
 
         private readonly string Key;
+        private readonly string Version;
 
         private readonly IDictionary<string, DateTime> BackoffUntil = new Dictionary<string, DateTime>();
 
@@ -56,9 +59,9 @@ namespace StackExchange.StacMan
 
         private readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
 
-        private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, string backoffKey) where T : StacManType
+        private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey) where T : StacManType
         {
-            var request = new ApiRequest<T>(this, ub, backoffKey);
+            var request = new ApiRequest<T>(this, ub, httpMethod, backoffKey);
 
             if (ActiveRequests >= MaxSimultaneousRequests || QueuedRequests.Count > 0)
             {
@@ -138,16 +141,13 @@ namespace StackExchange.StacMan
             }
         }
 
-        private void GetApiResponse<T>(ApiUrlBuilder ub, string backoffKey, Action<StacManResponse<T>> callback) where T : StacManType
+        private void GetApiResponse<T>(ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey, Action<StacManResponse<T>> callback) where T : StacManType
         {
             var response = new StacManResponse<T>();
 
             ub.AddParameter("key", Key);
 
-            response.ApiUrl = ub.ToString();
-
-            FetchApiResponse(response.ApiUrl,
-                rawData =>
+            Action<string> successCallback = rawData =>
                 {
                     try
                     {
@@ -166,19 +166,31 @@ namespace StackExchange.StacMan
                     }
 
                     callback(response);
-                },
-                ex =>
+                };
+
+            Action<Exception> errorCallback = ex =>
                 {
                     response.Success = false;
                     response.Error = ex;
                     callback(response);
-                });
+                };
+
+            if (httpMethod == HttpMethod.POST)
+            {
+                response.ApiUrl = ub.BaseUrl;
+                FetchApiResponseWithPOST(response.ApiUrl, ub.QueryString(), successCallback, errorCallback);
+            }
+            else
+            {
+                response.ApiUrl = ub.ToString();
+                FetchApiResponseWithGET(response.ApiUrl, successCallback, errorCallback);
+            }
         }
 
         /// <summary>
         /// this is "internal protected virtual" so it can be mocked in unit tests
         /// </summary>
-        internal protected virtual void FetchApiResponse(string url, Action<string> success, Action<Exception> error)
+        internal protected virtual void FetchApiResponseWithGET(string url, Action<string> success, Action<Exception> error)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Timeout = ApiTimeoutMs;
@@ -197,6 +209,62 @@ namespace StackExchange.StacMan
                         {
                             success(reader.ReadToEnd());
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        error(ex);
+                    }
+                },
+                request);
+        }
+
+        /// <summary>
+        /// this is "internal protected virtual" so it can be mocked in unit tests
+        /// </summary>
+        internal protected virtual void FetchApiResponseWithPOST(string url, string data, Action<string> success, Action<Exception> error)
+        {
+            var postData = System.Text.Encoding.UTF8.GetBytes(data);
+
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Timeout = ApiTimeoutMs;
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = postData.Length;
+            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            request.UserAgent = "StacMan";
+            
+            request.BeginGetRequestStream(
+                asyncResult =>
+                {
+                    try
+                    {
+                        var req = (HttpWebRequest)asyncResult.AsyncState;
+
+                        using (var requestStream = req.EndGetRequestStream(asyncResult))
+                        {
+                            requestStream.Write(postData, 0, postData.Length);
+                        }
+
+                        req.BeginGetResponse(
+                            asyncResult2 =>
+                            {
+                                try
+                                {
+                                    var req2 = (HttpWebRequest)asyncResult2.AsyncState;
+
+                                    using (var response = (HttpWebResponse)req2.EndGetResponse(asyncResult2))
+                                    using (var stream = response.GetResponseStream())
+                                    using (var reader = new StreamReader(stream))
+                                    {
+                                        success(reader.ReadToEnd());
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    error(ex);
+                                }
+                            },
+                            req);
                     }
                     catch (Exception ex)
                     {

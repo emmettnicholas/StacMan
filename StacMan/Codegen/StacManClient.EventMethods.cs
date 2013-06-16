@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/events", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/events", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -35,7 +35,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<Event>(ub, "/events");
+            return CreateApiTask<Event>(ub, HttpMethod.GET, "/events");
         }
     }
 

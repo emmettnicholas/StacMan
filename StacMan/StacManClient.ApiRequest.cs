@@ -7,6 +7,12 @@ namespace StackExchange.StacMan
 {
     public partial class StacManClient
     {
+        private enum HttpMethod
+        {
+            GET,
+            POST
+        }
+
         private interface IApiRequest
         {
             void GetResponse(Action callback);
@@ -15,15 +21,17 @@ namespace StackExchange.StacMan
 
         private class ApiRequest<T> : IApiRequest where T : StacManType
         {
-            public ApiRequest(StacManClient client, ApiUrlBuilder ub, string backoffKey)
+            public ApiRequest(StacManClient client, ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey)
             {
                 Client = client;
                 UrlBuilder = ub;
+                HttpMethod = httpMethod;
                 BackoffKey = backoffKey;
             }
 
             private readonly StacManClient Client;
             private readonly ApiUrlBuilder UrlBuilder;
+            private readonly HttpMethod HttpMethod;
 
             private readonly TaskCompletionSource<StacManResponse<T>> Tcs = new TaskCompletionSource<StacManResponse<T>>();
 
@@ -36,7 +44,7 @@ namespace StackExchange.StacMan
             {
                 try
                 {
-                    Client.GetApiResponse<T>(UrlBuilder, BackoffKey, response =>
+                    Client.GetApiResponse<T>(UrlBuilder, HttpMethod, BackoffKey, response =>
                         {
                             try
                             {

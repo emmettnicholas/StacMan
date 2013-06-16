@@ -25,14 +25,14 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/privileges", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/privileges", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, "/privileges");
+            return CreateApiTask<Privilege>(ub, HttpMethod.GET, "/privileges");
         }
     }
 

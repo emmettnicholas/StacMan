@@ -14,10 +14,10 @@ namespace StackExchange.StacMan.Tests
         [TestMethod]
         public void Users_get_all_test()
         {
-            var mock = new Mock<StacManClient>(null);
+            var mock = new Mock<StacManClient>(null, null);
 
             //http://api.stackexchange.com/2.0/users?pagesize=1&order=desc&min=1&max=1000&sort=reputation&inname=doug&site=webapps
-            mock.FakeFetch(response: @"{""items"":[{""user_id"":183,""user_type"":""registered"",""creation_date"":1277932837,""display_name"":""Doug Harris"",""profile_image"":""http://www.gravatar.com/avatar/731e7de87c241fce562d03b23770b5cf?d=identicon&r=PG"",""reputation"":545,""reputation_change_day"":0,""reputation_change_week"":0,""reputation_change_month"":0,""reputation_change_quarter"":0,""reputation_change_year"":15,""age"":92,""last_access_date"":1332536617,""last_modified_date"":1332297406,""is_employee"":false,""link"":""http://webapps.stackexchange.com/users/183/doug-harris"",""website_url"":""http://delicious.com/dharris"",""location"":""Washington, DC"",""account_id"":46903,""badge_counts"":{""gold"":1,""silver"":4,""bronze"":8},""accept_rate"":25}],""quota_remaining"":-210785,""quota_max"":300,""has_more"":true}");
+            mock.FakeGET(response: @"{""items"":[{""user_id"":183,""user_type"":""registered"",""creation_date"":1277932837,""display_name"":""Doug Harris"",""profile_image"":""http://www.gravatar.com/avatar/731e7de87c241fce562d03b23770b5cf?d=identicon&r=PG"",""reputation"":545,""reputation_change_day"":0,""reputation_change_week"":0,""reputation_change_month"":0,""reputation_change_quarter"":0,""reputation_change_year"":15,""age"":92,""last_access_date"":1332536617,""last_modified_date"":1332297406,""is_employee"":false,""link"":""http://webapps.stackexchange.com/users/183/doug-harris"",""website_url"":""http://delicious.com/dharris"",""location"":""Washington, DC"",""account_id"":46903,""badge_counts"":{""gold"":1,""silver"":4,""bronze"":8},""accept_rate"":25}],""quota_remaining"":-210785,""quota_max"":300,""has_more"":true}");
 
             var client = mock.Object;
 
@@ -53,10 +53,10 @@ namespace StackExchange.StacMan.Tests
         [TestMethod]
         public void Users_get_associated_test()
         {
-            var mock = new Mock<StacManClient>(null);
+            var mock = new Mock<StacManClient>(null, null);
 
             //http://api.stackexchange.com/2.0/users/1998/associated?pagesize=2
-            mock.FakeFetch(response: @"{""items"":[{""site_name"":""Stack Overflow"",""site_url"":""http://stackoverflow.com"",""user_id"":2749,""reputation"":4365,""account_id"":1998,""creation_date"":1219613204,""badge_counts"":{""gold"":1,""silver"":13,""bronze"":26},""last_access_date"":1334611626,""answer_count"":144,""question_count"":20},{""site_name"":""Server Fault"",""site_url"":""http://serverfault.com"",""user_id"":31532,""reputation"":101,""account_id"":1998,""creation_date"":1263334764,""badge_counts"":{""gold"":0,""silver"":0,""bronze"":3},""last_access_date"":1334610908,""answer_count"":0,""question_count"":0}],""quota_remaining"":-212787,""quota_max"":300,""has_more"":true}");
+            mock.FakeGET(response: @"{""items"":[{""site_name"":""Stack Overflow"",""site_url"":""http://stackoverflow.com"",""user_id"":2749,""reputation"":4365,""account_id"":1998,""creation_date"":1219613204,""badge_counts"":{""gold"":1,""silver"":13,""bronze"":26},""last_access_date"":1334611626,""answer_count"":144,""question_count"":20},{""site_name"":""Server Fault"",""site_url"":""http://serverfault.com"",""user_id"":31532,""reputation"":101,""account_id"":1998,""creation_date"":1263334764,""badge_counts"":{""gold"":0,""silver"":0,""bronze"":3},""last_access_date"":1334610908,""answer_count"":0,""question_count"":0}],""quota_remaining"":-212787,""quota_max"":300,""has_more"":true}");
 
             var client = mock.Object;
 

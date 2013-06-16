@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/users", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/users", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return CreateApiTask<User>(ub, "/users");
+            return CreateApiTask<User>(ub, HttpMethod.GET, "/users");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Users.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -54,7 +54,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -71,7 +71,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, "/_users");
+            return CreateApiTask<User>(ub, HttpMethod.GET, "/_users");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetMe(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Users.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -81,7 +81,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/me", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -99,7 +99,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, "/_users");
+            return CreateApiTask<User>(ub, HttpMethod.GET, "/_users");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetAnswers(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -109,7 +109,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/answers", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/answers", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -124,7 +124,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/_users/answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/_users/answers");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetMyAnswers(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -134,7 +134,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/answers", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/answers", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -150,7 +150,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/_users/answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/_users/answers");
         }
 
         Task<StacManResponse<Badge>> IUserMethods.GetBadges(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.UserSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, DateTime? mindate, DateTime? maxdate, Order? order)
@@ -160,7 +160,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/badges", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/badges", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -179,7 +179,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Badge>(ub, "/_users/badges");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/_users/badges");
         }
 
         Task<StacManResponse<Badge>> IUserMethods.GetMyBadges(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.UserSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, DateTime? mindate, DateTime? maxdate, Order? order)
@@ -189,7 +189,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder("/me/badges", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/badges", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -209,7 +209,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Badge>(ub, "/_users/badges");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/_users/badges");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -219,7 +219,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -234,7 +234,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/_users/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/_users/comments");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetMyComments(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -244,7 +244,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/comments", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/comments", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -260,7 +260,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/_users/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/_users/comments");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetCommentsToUser(string site, IEnumerable<int> ids, int toid, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -270,7 +270,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/comments/{1}", String.Join(";", ids), toid), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/comments/{1}", String.Join(";", ids), toid), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -285,7 +285,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/_users/comments/{toid}");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/_users/comments/{toid}");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetMyCommentsToUser(string site, string access_token, int toid, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -295,7 +295,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/me/comments/{0}", toid), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/me/comments/{0}", toid), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -311,7 +311,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/_users/comments/{toid}");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/_users/comments/{toid}");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetFavorites(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.FavoriteSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -321,7 +321,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/favorites", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/favorites", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -336,7 +336,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/favorites");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/favorites");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyFavorites(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.FavoriteSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -346,7 +346,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/favorites", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/favorites", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -362,7 +362,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/favorites");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/favorites");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetCommentsMentionedIn(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -372,7 +372,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/mentioned", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/mentioned", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -387,7 +387,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/_users/mentioned");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/_users/mentioned");
         }
 
         Task<StacManResponse<Comment>> IUserMethods.GetMyCommentsMentionedIn(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -397,7 +397,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/mentioned", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/mentioned", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -413,7 +413,110 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/_users/mentioned");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/_users/mentioned");
+        }
+
+        Task<StacManResponse<AccountMerge>> IUserMethods.GetMerges(IEnumerable<int> ids, string filter, int? page, int? pagesize)
+        {
+            ValidateEnumerable(ids, "ids");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/merges", String.Join(";", ids)), useHttps: false);
+
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<AccountMerge>(ub, HttpMethod.GET, "/_users/merges");
+        }
+
+        Task<StacManResponse<AccountMerge>> IUserMethods.GetMyMerges(string access_token, string filter, int? page, int? pagesize)
+        {
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, "/me/merges", useHttps: true);
+
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<AccountMerge>(ub, HttpMethod.GET, "/_users/merges");
+        }
+
+        Task<StacManResponse<Notification>> IUserMethods.GetNotifications(string site, string access_token, int id, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/notifications", id), useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<Notification>(ub, HttpMethod.GET, "/_users/notifications");
+        }
+
+        Task<StacManResponse<Notification>> IUserMethods.GetMyNotifications(string site, string access_token, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, "/me/notifications", useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<Notification>(ub, HttpMethod.GET, "/_users/notifications");
+        }
+
+        Task<StacManResponse<Notification>> IUserMethods.GetUnreadNotifications(string site, string access_token, int id, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/notifications/unread", id), useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<Notification>(ub, HttpMethod.GET, "/_users/notifications/unread");
+        }
+
+        Task<StacManResponse<Notification>> IUserMethods.GetMyUnreadNotifications(string site, string access_token, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, "/me/notifications/unread", useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<Notification>(ub, HttpMethod.GET, "/_users/notifications/unread");
         }
 
         Task<StacManResponse<Privilege>> IUserMethods.GetPrivileges(string site, int id, string filter, int? page, int? pagesize)
@@ -421,14 +524,14 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/privileges", id), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/privileges", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, "/_users/privileges");
+            return CreateApiTask<Privilege>(ub, HttpMethod.GET, "/_users/privileges");
         }
 
         Task<StacManResponse<Privilege>> IUserMethods.GetMyPrivileges(string site, string access_token, string filter, int? page, int? pagesize)
@@ -437,7 +540,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/privileges", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/privileges", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -445,7 +548,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, "/_users/privileges");
+            return CreateApiTask<Privilege>(ub, HttpMethod.GET, "/_users/privileges");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetQuestions(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -455,7 +558,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/questions", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -470,7 +573,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyQuestions(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -480,7 +583,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/questions", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/questions", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -496,7 +599,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetFeaturedQuestions(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -506,7 +609,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -521,7 +624,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/featured");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyFeaturedQuestions(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -531,7 +634,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/questions/featured", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/questions/featured", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -547,7 +650,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/featured");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetQuestionsWithNoAnswers(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -557,7 +660,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -572,7 +675,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/featured");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyQuestionsWithNoAnswers(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -582,7 +685,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/questions/featured", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/questions/featured", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -598,7 +701,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/featured");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/featured");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetQuestionsWithUnaccepted(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -608,7 +711,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/questions/unaccepted", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/unaccepted", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -623,7 +726,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/unaccepted");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/unaccepted");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyQuestionsWithUnaccepted(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -633,7 +736,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/questions/unaccepted", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/questions/unaccepted", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -649,7 +752,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/unaccepted");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/unaccepted");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetUnansweredQuestions(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -659,7 +762,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/questions/unanswered", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/unanswered", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -674,7 +777,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/unanswered");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/unanswered");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyUnansweredQuestions(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -684,7 +787,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/me/questions/unanswered", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/questions/unanswered", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -700,7 +803,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/questions/unanswered");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/questions/unanswered");
         }
 
         Task<StacManResponse<Reputation>> IUserMethods.GetReputation(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
@@ -709,7 +812,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/reputation", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/reputation", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -718,7 +821,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<Reputation>(ub, "/_users/reputation");
+            return CreateApiTask<Reputation>(ub, HttpMethod.GET, "/_users/reputation");
         }
 
         Task<StacManResponse<Reputation>> IUserMethods.GetMyReputation(string site, string access_token, string filter)
@@ -726,13 +829,84 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
 
-            var ub = new ApiUrlBuilder("/me/reputation", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/reputation", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Reputation>(ub, "/_users/reputation");
+            return CreateApiTask<Reputation>(ub, HttpMethod.GET, "/_users/reputation");
+        }
+
+        Task<StacManResponse<ReputationHistory>> IUserMethods.GetReputationHistory(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateEnumerable(ids, "ids");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/reputation-history", String.Join(";", ids)), useHttps: false);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<ReputationHistory>(ub, HttpMethod.GET, "/_users/reputation-history");
+        }
+
+        Task<StacManResponse<ReputationHistory>> IUserMethods.GetMyReputationHistory(string site, string access_token, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, "/me/reputation-history", useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<ReputationHistory>(ub, HttpMethod.GET, "/_users/reputation-history");
+        }
+
+        Task<StacManResponse<ReputationHistory>> IUserMethods.GetReputationHistoryFull(string site, string access_token, int id, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/reputation-history/full", id), useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<ReputationHistory>(ub, HttpMethod.GET, "/_users/reputation-history/full");
+        }
+
+        Task<StacManResponse<ReputationHistory>> IUserMethods.GetMyReputationHistoryFull(string site, string access_token, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, "/me/reputation-history/full", useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<ReputationHistory>(ub, HttpMethod.GET, "/_users/reputation-history/full");
         }
 
         Task<StacManResponse<SuggestedEdit>> IUserMethods.GetSuggestedEdits(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
@@ -742,7 +916,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/suggested-edits", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/suggested-edits", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -755,7 +929,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, "/_users/suggested-edits");
+            return CreateApiTask<SuggestedEdit>(ub, HttpMethod.GET, "/_users/suggested-edits");
         }
 
         Task<StacManResponse<SuggestedEdit>> IUserMethods.GetMySuggestedEdits(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
@@ -765,7 +939,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder("/me/suggested-edits", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/suggested-edits", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -779,7 +953,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<SuggestedEdit>(ub, "/_users/suggested-edits");
+            return CreateApiTask<SuggestedEdit>(ub, HttpMethod.GET, "/_users/suggested-edits");
         }
 
         Task<StacManResponse<Tag>> IUserMethods.GetTags(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Tags.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -789,7 +963,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/tags", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -806,7 +980,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, "/_users/tags");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/_users/tags");
         }
 
         Task<StacManResponse<Tag>> IUserMethods.GetMyTags(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Tags.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -816,7 +990,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/me/tags", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/tags", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -834,7 +1008,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Tag>(ub, "/_users/tags");
+            return CreateApiTask<Tag>(ub, HttpMethod.GET, "/_users/tags");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetTopAnswers(string site, int id, IEnumerable<string> tags, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -844,7 +1018,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/tags/{1}/top-answers", id, String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-answers", id, String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -859,7 +1033,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/_users/tags/{tags}/top-answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/_users/tags/{tags}/top-answers");
         }
 
         Task<StacManResponse<Answer>> IUserMethods.GetMyTopAnswers(string site, string access_token, IEnumerable<string> tags, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -870,7 +1044,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/me/tags/{0}/top-answers", String.Join(";", tags)), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-answers", String.Join(";", tags)), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -886,7 +1060,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Answer>(ub, "/_users/tags/{tags}/top-answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/_users/tags/{tags}/top-answers");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetTopQuestions(string site, int id, IEnumerable<string> tags, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -896,7 +1070,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/tags/{1}/top-questions", id, String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-questions", id, String.Join(";", tags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -911,7 +1085,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/tags/{tags}/top-questions");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/tags/{tags}/top-questions");
         }
 
         Task<StacManResponse<Question>> IUserMethods.GetMyTopQuestions(string site, string access_token, IEnumerable<string> tags, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -922,7 +1096,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/me/tags/{0}/top-questions", String.Join(";", tags)), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-questions", String.Join(";", tags)), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -938,7 +1112,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Question>(ub, "/_users/tags/{tags}/top-questions");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/_users/tags/{tags}/top-questions");
         }
 
         Task<StacManResponse<UserTimeline>> IUserMethods.GetTimelines(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
@@ -947,7 +1121,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/timeline", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/timeline", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -956,7 +1130,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<UserTimeline>(ub, "/_users/timeline");
+            return CreateApiTask<UserTimeline>(ub, HttpMethod.GET, "/_users/timeline");
         }
 
         Task<StacManResponse<UserTimeline>> IUserMethods.GetMyTimeline(string site, string access_token, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
@@ -965,7 +1139,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/timeline", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/timeline", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -975,7 +1149,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return CreateApiTask<UserTimeline>(ub, "/_users/timeline");
+            return CreateApiTask<UserTimeline>(ub, HttpMethod.GET, "/_users/timeline");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetTopAnswerTags(string site, int id, string filter, int? page, int? pagesize)
@@ -983,14 +1157,31 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/top-answer-tags", id), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-answer-tags", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, "/_users/top-answer-tags");
+            return CreateApiTask<TopTag>(ub, HttpMethod.GET, "/_users/top-answer-tags");
+        }
+
+        Task<StacManResponse<TopTag>> IUserMethods.GetTopAnswerTags(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateEnumerable(ids, "ids");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-answer-tags", String.Join(";", ids)), useHttps: false);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<TopTag>(ub, HttpMethod.GET, "/_users/top-answer-tags");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetMyTopAnswerTags(string site, string access_token, string filter, int? page, int? pagesize)
@@ -999,7 +1190,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/top-answer-tags", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/top-answer-tags", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1007,7 +1198,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, "/_users/top-answer-tags");
+            return CreateApiTask<TopTag>(ub, HttpMethod.GET, "/_users/top-answer-tags");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetTopQuestionTags(string site, int id, string filter, int? page, int? pagesize)
@@ -1015,14 +1206,31 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/top-question-tags", id), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-question-tags", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, "/_users/top-question-tags");
+            return CreateApiTask<TopTag>(ub, HttpMethod.GET, "/_users/top-question-tags");
+        }
+
+        Task<StacManResponse<TopTag>> IUserMethods.GetTopQuestionTags(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateEnumerable(ids, "ids");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-question-tags", String.Join(";", ids)), useHttps: false);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<TopTag>(ub, HttpMethod.GET, "/_users/top-question-tags");
         }
 
         Task<StacManResponse<TopTag>> IUserMethods.GetMyTopQuestionTags(string site, string access_token, string filter, int? page, int? pagesize)
@@ -1031,7 +1239,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/top-question-tags", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/top-question-tags", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1039,7 +1247,41 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<TopTag>(ub, "/_users/top-question-tags");
+            return CreateApiTask<TopTag>(ub, HttpMethod.GET, "/_users/top-question-tags");
+        }
+
+        Task<StacManResponse<WritePermission>> IUserMethods.GetWritePermissions(string site, int id, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/write-permissions", id), useHttps: false);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<WritePermission>(ub, HttpMethod.GET, "/_users/write-permissions");
+        }
+
+        Task<StacManResponse<WritePermission>> IUserMethods.GetMyWritePermissions(string site, string access_token, string filter, int? page, int? pagesize)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+
+            var ub = new ApiUrlBuilder(Version, "/me/write-permissions", useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+
+            return CreateApiTask<WritePermission>(ub, HttpMethod.GET, "/_users/write-permissions");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetModerators(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Users.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -1048,7 +1290,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/users/moderators", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/users/moderators", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1065,7 +1307,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, "/users/moderators");
+            return CreateApiTask<User>(ub, HttpMethod.GET, "/users/moderators");
         }
 
         Task<StacManResponse<User>> IUserMethods.GetElectedModerators(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Users.Sort? sort, int? min, int? max, DateTime? mindate, DateTime? maxdate, string minname, string maxname, Order? order)
@@ -1074,7 +1316,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder("/users/moderators/elected", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/users/moderators/elected", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1091,7 +1333,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxname);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<User>(ub, "/users/moderators/elected");
+            return CreateApiTask<User>(ub, HttpMethod.GET, "/users/moderators/elected");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetInbox(string site, string access_token, int id, string filter, int? page, int? pagesize)
@@ -1100,7 +1342,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/inbox", id), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/inbox", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1108,7 +1350,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, "/_users/inbox");
+            return CreateApiTask<InboxItem>(ub, HttpMethod.GET, "/_users/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetMyInbox(string site, string access_token, string filter, int? page, int? pagesize)
@@ -1117,7 +1359,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/inbox", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/inbox", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1125,7 +1367,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, "/_users/inbox");
+            return CreateApiTask<InboxItem>(ub, HttpMethod.GET, "/_users/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetInboxUnread(string site, string access_token, int id, string filter, int? page, int? pagesize, DateTime? since)
@@ -1134,7 +1376,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/inbox/unread", id), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/inbox/unread", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1143,7 +1385,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, "/_users/inbox/unread");
+            return CreateApiTask<InboxItem>(ub, HttpMethod.GET, "/_users/inbox/unread");
         }
 
         Task<StacManResponse<InboxItem>> IUserMethods.GetMyInboxUnread(string site, string access_token, string filter, int? page, int? pagesize, DateTime? since)
@@ -1152,7 +1394,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/inbox/unread", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/inbox/unread", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1161,7 +1403,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, "/_users/inbox/unread");
+            return CreateApiTask<InboxItem>(ub, HttpMethod.GET, "/_users/inbox/unread");
         }
 
         Task<StacManResponse<NetworkUser>> IUserMethods.GetAssociated(IEnumerable<int> ids, string filter, int? page, int? pagesize)
@@ -1169,13 +1411,13 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(String.Format("/users/{0}/associated", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/associated", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<NetworkUser>(ub, "/_users/associated");
+            return CreateApiTask<NetworkUser>(ub, HttpMethod.GET, "/_users/associated");
         }
 
         Task<StacManResponse<NetworkUser>> IUserMethods.GetMyAssociated(string access_token, string filter, int? page, int? pagesize)
@@ -1183,14 +1425,14 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/me/associated", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/me/associated", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<NetworkUser>(ub, "/_users/associated");
+            return CreateApiTask<NetworkUser>(ub, HttpMethod.GET, "/_users/associated");
         }
     }
 
@@ -1275,6 +1517,36 @@ namespace StackExchange.StacMan
         Task<StacManResponse<Comment>> GetMyCommentsMentionedIn(string site, string access_token, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null);
 
         /// <summary>
+        /// Get the merges a user's accounts has undergone. (API Method: "/users/{ids}/merges") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<AccountMerge>> GetMerges(IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get the merges the authenticated user's accounts has undergone. [auth required] (API Method: "/me/merges") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<AccountMerge>> GetMyMerges(string access_token, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get a user's notifications. [auth required] (API Method: "/users/{id}/notifications") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Notification>> GetNotifications(string site, string access_token, int id, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get the authenticated user's notifications. [auth required] (API Method: "/me/notifications") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Notification>> GetMyNotifications(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get a user's unread notifications. [auth required] (API Method: "/users/{id}/notifications/unread") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Notification>> GetUnreadNotifications(string site, string access_token, int id, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get the authenticated user's unread notifications. [auth required] (API Method: "/me/notifications/unread") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Notification>> GetMyUnreadNotifications(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
         /// Get the privileges the given user has on the site. (API Method: "/users/{id}/privileges")
         /// </summary>
         Task<StacManResponse<Privilege>> GetPrivileges(string site, int id, string filter = null, int? page = null, int? pagesize = null);
@@ -1345,6 +1617,26 @@ namespace StackExchange.StacMan
         Task<StacManResponse<Reputation>> GetMyReputation(string site, string access_token, string filter = null);
 
         /// <summary>
+        /// Get a history of a user's reputation, excluding private events. (API Method: "/users/{ids}/reputation-history") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<ReputationHistory>> GetReputationHistory(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get a history of the authenticated user's reputation, excluding private events. [auth required] (API Method: "/me/reputation-history") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<ReputationHistory>> GetMyReputationHistory(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get a full history of a user's reputation. [auth required] (API Method: "/users/{id}/reputation-history/full") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<ReputationHistory>> GetReputationHistoryFull(string site, string access_token, int id, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get a full history of the authenticated user's reputation. [auth required] (API Method: "/me/reputation-history/full") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<ReputationHistory>> GetMyReputationHistoryFull(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
         /// Get the suggested edits provided by the users identified by a set of ids. (API Method: "/users/{ids}/suggested-edits")
         /// </summary>
         Task<StacManResponse<SuggestedEdit>> GetSuggestedEdits(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, SuggestedEdits.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, Order? order = null);
@@ -1400,6 +1692,11 @@ namespace StackExchange.StacMan
         Task<StacManResponse<TopTag>> GetTopAnswerTags(string site, int id, string filter = null, int? page = null, int? pagesize = null);
 
         /// <summary>
+        /// Get the top tags (by score) that users identified by a set of ids have posted answers in. (API Method: "/users/{ids}/top-answer-tags") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<TopTag>> GetTopAnswerTags(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
         /// Get the top tags (by score) the authenticated user has posted answers in. [auth required] (API Method: "/me/top-answer-tags")
         /// </summary>
         Task<StacManResponse<TopTag>> GetMyTopAnswerTags(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
@@ -1410,9 +1707,24 @@ namespace StackExchange.StacMan
         Task<StacManResponse<TopTag>> GetTopQuestionTags(string site, int id, string filter = null, int? page = null, int? pagesize = null);
 
         /// <summary>
+        /// Get the top tags (by score) that users identified by a set of ids have asked questions in. (API Method: "/users/{ids}/top-question-tags") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<TopTag>> GetTopQuestionTags(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
         /// Get the top tags (by score) the authenticated user has asked questions in. [auth required] (API Method: "/me/top-question-tags")
         /// </summary>
         Task<StacManResponse<TopTag>> GetMyTopQuestionTags(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get the write access a user has via the API. (API Method: "/users/{id}/write-permissions") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<WritePermission>> GetWritePermissions(string site, int id, string filter = null, int? page = null, int? pagesize = null);
+
+        /// <summary>
+        /// Get the write access the authenticated user has via the API. [auth required] (API Method: "/me/write-permissions") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<WritePermission>> GetMyWritePermissions(string site, string access_token, string filter = null, int? page = null, int? pagesize = null);
 
         /// <summary>
         /// Get the users who have moderation powers on the site. (API Method: "/users/moderators")

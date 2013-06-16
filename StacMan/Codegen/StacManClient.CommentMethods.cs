@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/comments", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/comments", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -41,7 +41,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/comments");
         }
 
         Task<StacManResponse<Comment>> ICommentMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
@@ -51,7 +51,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(String.Format("/comments/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/comments/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -66,7 +66,41 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, "/comments/{ids}");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/comments/{ids}");
+        }
+
+        Task<StacManResponse<Comment>> ICommentMethods.Delete(string site, string access_token, int id, string filter, bool? preview)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateMinApiVersion("2.1");
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/comments/{0}/delete", id), useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("preview", preview);
+
+            return CreateApiTask<Comment>(ub, HttpMethod.POST, "/comments/{id}/delete");
+        }
+
+        Task<StacManResponse<Comment>> ICommentMethods.Edit(string site, string access_token, int id, string body, string filter, bool? preview)
+        {
+            ValidateString(site, "site");
+            ValidateString(access_token, "access_token");
+            ValidateString(body, "body");
+            ValidateMinApiVersion("2.1");
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/comments/{0}/edit", id), useHttps: true);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("access_token", access_token);
+            ub.AddParameter("body", body);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("preview", preview);
+
+            return CreateApiTask<Comment>(ub, HttpMethod.POST, "/comments/{id}/edit");
         }
     }
 
@@ -84,6 +118,16 @@ namespace StackExchange.StacMan
         /// Get comments identified by a set of ids. (API Method: "/comments/{ids}")
         /// </summary>
         Task<StacManResponse<Comment>> GetByIds(string site, IEnumerable<int> ids, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Comments.Sort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null);
+
+        /// <summary>
+        /// Delete a comment identified by its id. [auth required] (API Method: "/comments/{id}/delete") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Comment>> Delete(string site, string access_token, int id, string filter = null, bool? preview = null);
+
+        /// <summary>
+        /// Edit a comment identified by its id. [auth required] (API Method: "/comments/{id}/edit") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Comment>> Edit(string site, string access_token, int id, string body, string filter = null, bool? preview = null);
 
     }
 }

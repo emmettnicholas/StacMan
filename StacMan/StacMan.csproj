@@ -50,6 +50,9 @@
     <Compile Include="Codegen\AccessToken.cs">
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="Codegen\AccountMerge.cs">
+      <DependentUpon>Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="Codegen\Answer.cs">
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
@@ -83,6 +86,12 @@
     <Compile Include="Codegen\NetworkUser.cs">
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="Codegen\Notice.cs">
+      <DependentUpon>Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Codegen\Notification.cs">
+      <DependentUpon>Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="Codegen\Post.cs">
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
@@ -99,6 +108,9 @@
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
     <Compile Include="Codegen\Reputation.cs">
+      <DependentUpon>Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Codegen\ReputationHistory.cs">
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
     <Compile Include="Codegen\Revision.cs">
@@ -138,6 +150,9 @@
       <DependentUpon>Methods.tt</DependentUpon>
     </Compile>
     <Compile Include="Codegen\StacManClient.InfoMethods.cs">
+      <DependentUpon>Methods.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Codegen\StacManClient.NotificationMethods.cs">
       <DependentUpon>Methods.tt</DependentUpon>
     </Compile>
     <Compile Include="Codegen\StacManClient.PostMethods.cs">
@@ -197,12 +212,16 @@
     <Compile Include="Codegen\Wrapper.cs">
       <DependentUpon>Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="Codegen\WritePermission.cs">
+      <DependentUpon>Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="Comments\Sort.cs" />
     <Compile Include="Events\EventType.cs" />
     <Compile Include="Exceptions\StackExchangeApiException.cs" />
     <Compile Include="Filters.BuiltIn.cs" />
     <Compile Include="Filters\FilterType.cs" />
     <Compile Include="InboxItems\ItemType.cs" />
+    <Compile Include="Notifications\NotificationType.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Posts\Sort.cs" />
     <Compile Include="Questions\AllSort.cs" />
@@ -213,6 +232,7 @@
     <Compile Include="Questions\Sort.cs" />
     <Compile Include="QuestionTimelines\TimelineType.cs" />
     <Compile Include="ReflectionCache.cs" />
+    <Compile Include="ReputationHistories\ReputationHistoryType.cs" />
     <Compile Include="Reputations\VoteType.cs" />
     <Compile Include="Revisions\RevisionType.cs" />
     <Compile Include="Sites\SiteState.cs" />

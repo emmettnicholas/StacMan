@@ -24,17 +24,17 @@ namespace StackExchange.StacMan
         {
             ValidateEnumerable(filters, "filters");
 
-            var ub = new ApiUrlBuilder(String.Format("/filters/{0}", String.Join(";", filters)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/filters/{0}", String.Join(";", filters)), useHttps: false);
 
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Filter>(ub, "/filters/{filters}");
+            return CreateApiTask<Filter>(ub, HttpMethod.GET, "/filters/{filters}");
         }
 
         Task<StacManResponse<Filter>> IFilterMethods.Create(string filter, IEnumerable<string> include, IEnumerable<string> exclude, string @base, bool? @unsafe)
         {
 
-            var ub = new ApiUrlBuilder("/filters/create", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/filters/create", useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("include", include);
@@ -42,7 +42,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("base", @base);
             ub.AddParameter("unsafe", @unsafe);
 
-            return CreateApiTask<Filter>(ub, "/filters/create");
+            return CreateApiTask<Filter>(ub, HttpMethod.GET, "/filters/create");
         }
     }
 

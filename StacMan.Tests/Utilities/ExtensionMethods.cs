@@ -15,9 +15,9 @@ namespace StackExchange.StacMan.Tests.Utilities
             return UnixEpochDateTimeUtc.AddSeconds(secondsSince1970);
         }
 
-        public static void FakeFetch(this Mock<StacManClient> mock, string response = null, Exception throws = null)
+        public static void FakeGET(this Mock<StacManClient> mock, string response = null, Exception throws = null)
         {
-            mock.Setup(c => c.FetchApiResponse(It.IsAny<string>(), It.IsAny<Action<string>>(), It.IsAny<Action<Exception>>()))
+            mock.Setup(c => c.FetchApiResponseWithGET(It.IsAny<string>(), It.IsAny<Action<string>>(), It.IsAny<Action<Exception>>()))
                 .Callback<string, Action<string>, Action<Exception>>((url, success, error) =>
                     {
                         if (throws != null)
@@ -27,9 +27,9 @@ namespace StackExchange.StacMan.Tests.Utilities
                     });
         }
 
-        public static void FakeFetchForRegex(this Mock<StacManClient> mock, string regex, string response = null, Exception throws = null)
+        public static void FakeGETForUrlPattern(this Mock<StacManClient> mock, string regex, string response = null, Exception throws = null)
         {
-            mock.Setup(c => c.FetchApiResponse(It.IsRegex(regex), It.IsAny<Action<string>>(), It.IsAny<Action<Exception>>()))
+            mock.Setup(c => c.FetchApiResponseWithGET(It.IsRegex(regex), It.IsAny<Action<string>>(), It.IsAny<Action<Exception>>()))
                 .Callback<string, Action<string>, Action<Exception>>((url, success, error) =>
                     {
                         if (throws != null)
@@ -37,6 +37,18 @@ namespace StackExchange.StacMan.Tests.Utilities
                         else
                             success(response);
                     });
+        }
+
+        public static void FakePOST(this Mock<StacManClient> mock, string response = null, Exception throws = null)
+        {
+            mock.Setup(c => c.FetchApiResponseWithPOST(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Action<string>>(), It.IsAny<Action<Exception>>()))
+                .Callback<string, string, Action<string>, Action<Exception>>((url, data, success, error) =>
+                {
+                    if (throws != null)
+                        error(throws);
+                    else
+                        success(response);
+                });
         }
     }
 }

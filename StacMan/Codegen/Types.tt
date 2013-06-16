@@ -4,6 +4,7 @@
 <#@ output extension=".ignore" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Web.Script.Serialization" #>
 <# // To debug, uncomment the next two lines
 // System.Diagnostics.Debugger.Launch();
@@ -47,6 +48,15 @@ namespace StackExchange.StacMan
     foreach (var field in fieldsObj)
     {
         var fieldName = field.Key;
+        var fieldMinApiVersion = "2.0";
+
+        var fieldVersionMatch = VersionRegex.Match(fieldName);
+        if (fieldVersionMatch.Success)
+        {
+            fieldName = VersionRegex.Replace(fieldName, "");
+            fieldMinApiVersion = fieldVersionMatch.Groups["version"].Value;
+        }
+
         var propertyName = Prettify(fieldName);
 
         // member names cannot be the same as their enclosing type (this only affects "filter")
@@ -56,7 +66,7 @@ namespace StackExchange.StacMan
         var propertyTypeName = field.Value;
 #>
         /// <summary>
-        /// <#= fieldName #>
+        /// <#= fieldName #><#= fieldMinApiVersion != "2.0" ? String.Format(" -- introduced in API version {0}", fieldMinApiVersion) : "" #>
         /// </summary>
         [Field("<#= fieldName #>")]
         public <#= propertyTypeName #> <#= propertyName #> { get; internal set; }
@@ -73,6 +83,8 @@ manager.Process(true);
 #>
 
 <#+
+static Regex VersionRegex = new Regex("\\((?<version>.*)\\)$", RegexOptions.Compiled);
+
 // convert "foo_bar" to "FooBar"
 string Prettify(string name)
 {

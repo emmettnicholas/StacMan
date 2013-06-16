@@ -25,14 +25,14 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/inbox", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/inbox", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<InboxItem>(ub, "/inbox");
+            return CreateApiTask<InboxItem>(ub, HttpMethod.GET, "/inbox");
         }
 
         Task<StacManResponse<InboxItem>> IInboxMethods.GetUnread(string access_token, string filter, int? page, int? pagesize, DateTime? since)
@@ -40,7 +40,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder("/inbox/unread", useHttps: true);
+            var ub = new ApiUrlBuilder(Version, "/inbox/unread", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
@@ -48,7 +48,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return CreateApiTask<InboxItem>(ub, "/inbox/unread");
+            return CreateApiTask<InboxItem>(ub, HttpMethod.GET, "/inbox/unread");
         }
     }
 

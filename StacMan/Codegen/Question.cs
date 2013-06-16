@@ -51,6 +51,12 @@ namespace StackExchange.StacMan
         public DateTime? BountyClosesDate { get; internal set; }
 
         /// <summary>
+        /// close_vote_count -- introduced in API version 2.1
+        /// </summary>
+        [Field("close_vote_count")]
+        public int CloseVoteCount { get; internal set; }
+
+        /// <summary>
         /// closed_date
         /// </summary>
         [Field("closed_date")]
@@ -79,6 +85,12 @@ namespace StackExchange.StacMan
         /// </summary>
         [Field("creation_date")]
         public DateTime CreationDate { get; internal set; }
+
+        /// <summary>
+        /// delete_vote_count -- introduced in API version 2.1
+        /// </summary>
+        [Field("delete_vote_count")]
+        public int DeleteVoteCount { get; internal set; }
 
         /// <summary>
         /// down_vote_count
@@ -135,6 +147,12 @@ namespace StackExchange.StacMan
         public MigrationInfo MigratedTo { get; internal set; }
 
         /// <summary>
+        /// notice -- introduced in API version 2.1
+        /// </summary>
+        [Field("notice")]
+        public Notice Notice { get; internal set; }
+
+        /// <summary>
         /// owner
         /// </summary>
         [Field("owner")]
@@ -151,6 +169,12 @@ namespace StackExchange.StacMan
         /// </summary>
         [Field("question_id")]
         public int QuestionId { get; internal set; }
+
+        /// <summary>
+        /// reopen_vote_count -- introduced in API version 2.1
+        /// </summary>
+        [Field("reopen_vote_count")]
+        public int ReopenVoteCount { get; internal set; }
 
         /// <summary>
         /// score

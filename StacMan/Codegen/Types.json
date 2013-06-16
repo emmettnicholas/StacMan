@@ -19,6 +19,11 @@
         "expires_on_date": "DateTime?",
         "scope": "string[]"
     },
+    "account_merge": {
+        "merge_date(2.1)": "DateTime",
+        "new_account_id(2.1)": "int",
+        "old_account_id(2.1)": "int"
+    },
     "answer": {
         "answer_id": "int",
         "body": "string",
@@ -34,6 +39,7 @@
         "owner": "ShallowUser",
         "question_id": "int",
         "score": "int",
+        "tags(2.1)": "string[]",
         "title": "string",
         "up_vote_count": "int"
     },
@@ -54,6 +60,7 @@
     },
     "comment": {
         "body": "string",
+        "body_markdown(2.1)": "string",
         "comment_id": "int",
         "creation_date": "DateTime",
         "edited": "bool",
@@ -127,6 +134,19 @@
         "user_id": "int",
         "user_type": "Users.UserType"
     },
+    "notice": {
+        "body(2.1)": "string",
+        "creation_date(2.1)": "DateTime",
+        "owner_user_id(2.1)": "int"
+    },
+    "notification": {
+        "body(2.1)": "string",
+        "creation_date(2.1)": "DateTime",
+        "is_unread(2.1)": "bool",
+        "notification_type(2.1)": "Notifications.NotificationType",
+        "post_id(2.1)": "int?",
+        "site(2.1)": "Site"
+    },
     "post": {
         "body": "string",
         "comments": "Comment[]",
@@ -134,6 +154,7 @@
         "down_vote_count": "int",
         "last_activity_date": "DateTime",
         "last_edit_date": "DateTime?",
+        "link(2.1)": "string",
         "owner": "ShallowUser",
         "post_id": "int",
         "post_type": "Posts.PostType",
@@ -152,11 +173,13 @@
         "body": "string",
         "bounty_amount": "int?",
         "bounty_closes_date": "DateTime?",
+        "close_vote_count(2.1)": "int",
         "closed_date": "DateTime?",
         "closed_reason": "string",
         "comments": "Comment[]",
         "community_owned_date": "DateTime?",
         "creation_date": "DateTime",
+        "delete_vote_count(2.1)": "int",
         "down_vote_count": "int",
         "favorite_count": "int",
         "is_answered": "bool",
@@ -166,9 +189,11 @@
         "locked_date": "DateTime?",
         "migrated_from": "MigrationInfo",
         "migrated_to": "MigrationInfo",
+        "notice(2.1)": "Notice",
         "owner": "ShallowUser",
         "protected_date": "DateTime?",
         "question_id": "int",
+        "reopen_vote_count(2.1)": "int",
         "score": "int",
         "tags": "string[]",
         "title": "string",
@@ -203,6 +228,13 @@
         "user_id": "int",
         "vote_type": "Reputations.VoteType"
     },
+    "reputation_history": {
+        "creation_date(2.1)": "DateTime",
+        "post_id(2.1)": "int?",
+        "reputation_change(2.1)": "int",
+        "reputation_history_type(2.1)": "ReputationHistories.ReputationHistoryType",
+        "user_id(2.1)": "int"
+    },
     "revision": {
         "body": "string",
         "comment": "string",
@@ -236,6 +268,7 @@
         "audience": "string",
         "closed_beta_date": "DateTime?",
         "favicon_url": "string",
+        "high_resolution_icon_url(2.1)": "string",
         "icon_url": "string",
         "launch_date": "DateTime",
         "logo_url": "string",
@@ -302,7 +335,8 @@
         "answer_score": "int",
         "question_count": "int",
         "question_score": "int",
-        "tag_name": "string"	
+        "tag_name": "string",
+        "user_id(2.1)": "int"
     },
     "user": {
         "about_me": "string",
@@ -346,5 +380,14 @@
         "timeline_type": "UserTimelines.TimelineType",
         "title": "string",
         "user_id": "int"
+    },
+    "write_permission": {
+        "can_add(2.1)": "bool",
+        "can_delete(2.1)": "bool",
+        "can_edit(2.1)": "bool",
+        "max_daily_actions(2.1)": "int",
+        "min_seconds_between_actions(2.1)": "int",
+        "object_type(2.1)": "string",
+        "user_id(2.1)": "int"
     }
 }

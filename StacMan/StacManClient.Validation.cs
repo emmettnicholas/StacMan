@@ -6,6 +6,15 @@ namespace StackExchange.StacMan
 {
     public partial class StacManClient
     {
+        private void ValidateMinApiVersion(string minApiVersion)
+        {
+            double clientApiVersion;
+            double methodApiVersion;
+
+            if (Double.TryParse(Version, out clientApiVersion) && Double.TryParse(minApiVersion, out methodApiVersion) && methodApiVersion > clientApiVersion)
+                throw new InvalidOperationException("method introduced in API version " + minApiVersion);
+        }
+
         private void ValidatePaging(int? page, int? pagesize)
         {
             if (page.HasValue && page.Value < 1)

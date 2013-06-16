@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/search", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/search", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -44,7 +44,46 @@ namespace StackExchange.StacMan
             ub.AddParameter("nottagged", nottagged);
             ub.AddParameter("inttitle", inttitle);
 
-            return CreateApiTask<Question>(ub, "/search");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/search");
+        }
+
+        Task<StacManResponse<Question>> ISearchMethods.GetMatchesAdvanced(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string q, bool? accepted, int? answers, string body, bool? closed, bool? migrated, bool? notice, string nottagged, string tagged, string title, int? user, string url, int? views, bool? wiki)
+        {
+            ValidateString(site, "site");
+            ValidateMinApiVersion("2.1");
+            ValidatePaging(page, pagesize);
+            ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
+
+            var ub = new ApiUrlBuilder(Version, "/search/advanced", useHttps: false);
+
+            ub.AddParameter("site", site);
+            ub.AddParameter("filter", filter);
+            ub.AddParameter("page", page);
+            ub.AddParameter("pagesize", pagesize);
+            ub.AddParameter("fromdate", fromdate);
+            ub.AddParameter("todate", todate);
+            ub.AddParameter("sort", sort);
+            ub.AddParameter("min", mindate);
+            ub.AddParameter("max", maxdate);
+            ub.AddParameter("min", min);
+            ub.AddParameter("max", max);
+            ub.AddParameter("order", order);
+            ub.AddParameter("q", q);
+            ub.AddParameter("accepted", accepted);
+            ub.AddParameter("answers", answers);
+            ub.AddParameter("body", body);
+            ub.AddParameter("closed", closed);
+            ub.AddParameter("migrated", migrated);
+            ub.AddParameter("notice", notice);
+            ub.AddParameter("nottagged", nottagged);
+            ub.AddParameter("tagged", tagged);
+            ub.AddParameter("title", title);
+            ub.AddParameter("user", user);
+            ub.AddParameter("url", url);
+            ub.AddParameter("views", views);
+            ub.AddParameter("wiki", wiki);
+
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/search/advanced");
         }
 
         Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string inttitle)
@@ -53,7 +92,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder("/similar", useHttps: false);
+            var ub = new ApiUrlBuilder(Version, "/similar", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -71,7 +110,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("nottagged", nottagged);
             ub.AddParameter("inttitle", inttitle);
 
-            return CreateApiTask<Question>(ub, "/similar");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/similar");
         }
     }
 
@@ -84,6 +123,11 @@ namespace StackExchange.StacMan
         /// Search the site for questions meeting certain criteria. (API Method: "/search")
         /// </summary>
         Task<StacManResponse<Question>> GetMatches(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string inttitle = null);
+
+        /// <summary>
+        /// Search the site for questions using most of the on-site search options. (API Method: "/search/advanced") -- introduced in API version 2.1
+        /// </summary>
+        Task<StacManResponse<Question>> GetMatchesAdvanced(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string q = null, bool? accepted = null, int? answers = null, string body = null, bool? closed = null, bool? migrated = null, bool? notice = null, string nottagged = null, string tagged = null, string title = null, int? user = null, string url = null, int? views = null, bool? wiki = null);
 
         /// <summary>
         /// Search the site based on similarity to a title. (API Method: "/similar")
