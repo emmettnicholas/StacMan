@@ -46,7 +46,9 @@ foreach (var typeName in typesObj.Keys)
 #>
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace StackExchange.StacMan
 {
@@ -179,8 +181,14 @@ namespace StackExchange.StacMan
                 String.Join(", ", urlParams.Select(p =>
                     {
                         var param = requiredParams.Single(rp => rp.Name == p);
-                        if (param.Type.StartsWith("IEnumerable"))
+                        if (param.Type == "IEnumerable<string>")
+                        {
+                            return "String.Join(\";\", " + param.Name + ".Select(HttpUtility.UrlEncode))";
+                        }
+                        else if (param.Type.StartsWith("IEnumerable"))
+                        {
                             return "String.Join(\";\", " + param.Name + ")";
+                        }
                         return param.Name;
                     }))
                 #>), useHttps: <#= authRequired ? "true" : "false" #>);

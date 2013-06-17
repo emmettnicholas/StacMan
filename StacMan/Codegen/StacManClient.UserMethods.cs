@@ -6,7 +6,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace StackExchange.StacMan
 {
@@ -1018,7 +1020,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-answers", id, String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-answers", id, String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1044,7 +1046,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-answers", String.Join(";", tags)), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-answers", String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1070,7 +1072,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-questions", id, String.Join(";", tags)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-questions", id, String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1096,7 +1098,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-questions", String.Join(";", tags)), useHttps: true);
+            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-questions", String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);

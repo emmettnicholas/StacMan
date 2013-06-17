@@ -6,7 +6,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace StackExchange.StacMan
 {
@@ -24,7 +26,7 @@ namespace StackExchange.StacMan
         {
             ValidateEnumerable(filters, "filters");
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/filters/{0}", String.Join(";", filters)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/filters/{0}", String.Join(";", filters.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("filter", filter);
 

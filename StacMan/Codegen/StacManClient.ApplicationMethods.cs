@@ -6,7 +6,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace StackExchange.StacMan
 {
@@ -25,7 +27,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/apps/{0}/de-authenticate", String.Join(";", accessTokens)), useHttps: false);
+            var ub = new ApiUrlBuilder(Version, String.Format("/apps/{0}/de-authenticate", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
