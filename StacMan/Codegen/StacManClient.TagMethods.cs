@@ -6,7 +6,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace StackExchange.StacMan
 {
@@ -54,7 +56,9 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/info", String.Join(";", tags)), useHttps: false);
+            var urlEncodedTags = tags.Select(HttpUtility.UrlEncode);
+
+            var ub = new ApiUrlBuilder(Version, String.Format("/tags/{0}/info", String.Join(";", urlEncodedTags)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
