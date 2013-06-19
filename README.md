@@ -15,7 +15,7 @@
 
     using StackExchange.StacMan;
     ...
-    var client = new StacManClient(key: "my-app-key");
+    var client = new StacManClient(key: "my-app-key", version: "2.1");
 
 **Synchronous**
 
