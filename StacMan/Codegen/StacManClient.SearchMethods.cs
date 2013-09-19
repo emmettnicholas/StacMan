@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Question>> ISearchMethods.GetMatches(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string inttitle)
+        Task<StacManResponse<Question>> ISearchMethods.GetMatches(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string intitle)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
             ub.AddParameter("nottagged", nottagged);
-            ub.AddParameter("inttitle", inttitle);
+            ub.AddParameter("intitle", intitle);
 
             return CreateApiTask<Question>(ub, HttpMethod.GET, "/search");
         }
@@ -88,7 +88,7 @@ namespace StackExchange.StacMan
             return CreateApiTask<Question>(ub, HttpMethod.GET, "/search/advanced");
         }
 
-        Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string inttitle)
+        Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string intitle)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -110,7 +110,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
             ub.AddParameter("nottagged", nottagged);
-            ub.AddParameter("inttitle", inttitle);
+            ub.AddParameter("intitle", intitle);
 
             return CreateApiTask<Question>(ub, HttpMethod.GET, "/similar");
         }
@@ -124,7 +124,7 @@ namespace StackExchange.StacMan
         /// <summary>
         /// Search the site for questions meeting certain criteria. (API Method: "/search")
         /// </summary>
-        Task<StacManResponse<Question>> GetMatches(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string inttitle = null);
+        Task<StacManResponse<Question>> GetMatches(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string intitle = null);
 
         /// <summary>
         /// Search the site for questions using most of the on-site search options. (API Method: "/search/advanced") -- introduced in API version 2.1
@@ -134,7 +134,7 @@ namespace StackExchange.StacMan
         /// <summary>
         /// Search the site based on similarity to a title. (API Method: "/similar")
         /// </summary>
-        Task<StacManResponse<Question>> GetSimilar(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string inttitle = null);
+        Task<StacManResponse<Question>> GetSimilar(string site, string filter = null, int? page = null, int? pagesize = null, DateTime? fromdate = null, DateTime? todate = null, Questions.SearchSort? sort = null, DateTime? mindate = null, DateTime? maxdate = null, int? min = null, int? max = null, Order? order = null, string tagged = null, string nottagged = null, string intitle = null);
 
     }
 }
