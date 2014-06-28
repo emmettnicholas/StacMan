@@ -455,7 +455,7 @@
             "optional": {
                 "tagged": "string",
                 "nottagged": "string",
-                "inttitle": "string"
+                "intitle": "string"
             },
             "returnType": "Question"
         },
@@ -493,7 +493,7 @@
             "optional": {
                 "tagged": "string",
                 "nottagged": "string",
-                "inttitle": "string"
+                "intitle": "string"
             },
             "returnType": "Question"
         }
