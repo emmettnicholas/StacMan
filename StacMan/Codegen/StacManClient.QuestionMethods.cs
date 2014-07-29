@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/questions", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/questions", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -54,7 +54,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/questions/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/questions/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -79,7 +79,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/questions/{0}/answers", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/questions/{0}/answers", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -104,7 +104,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/questions/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/questions/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -129,7 +129,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/questions/{0}/linked", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/questions/{0}/linked", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -154,7 +154,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/questions/{0}/related", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/questions/{0}/related", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -178,7 +178,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/questions/{0}/timeline", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/questions/{0}/timeline", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -196,7 +196,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/questions/featured", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/questions/featured", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -221,7 +221,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/questions/unanswered", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/questions/unanswered", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -246,7 +246,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/questions/no-answers", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/questions/no-answers", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);

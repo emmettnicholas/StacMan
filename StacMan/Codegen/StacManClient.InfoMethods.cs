@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
         {
             ValidateString(site, "site");
 
-            var ub = new ApiUrlBuilder(host, Version, "/info", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/info", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);

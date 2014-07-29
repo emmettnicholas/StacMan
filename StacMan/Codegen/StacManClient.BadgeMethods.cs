@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype);
 
-            var ub = new ApiUrlBuilder(host, Version, "/badges", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/badges", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -56,7 +56,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/badges/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/badges/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -82,7 +82,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(host, Version, "/badges/name", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/badges/name", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -106,7 +106,7 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, "/badges/recipients", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/badges/recipients", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -124,7 +124,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/badges/{0}/recipients", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/badges/{0}/recipients", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -142,7 +142,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(host, Version, "/badges/tags", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/badges/tags", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);

@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, "/notifications", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/notifications", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, "/notifications/unread", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/notifications/unread", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);

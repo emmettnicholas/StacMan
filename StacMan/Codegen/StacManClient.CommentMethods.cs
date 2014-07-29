@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/comments", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/comments", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -53,7 +53,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/comments/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/comments/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -77,7 +77,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidateMinApiVersion("2.1");
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/comments/{0}/delete", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/comments/{0}/delete", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -94,7 +94,7 @@ namespace StackExchange.StacMan
             ValidateString(body, "body");
             ValidateMinApiVersion("2.1");
 
-            var ub = new ApiUrlBuilder(host, Version, String.Format("/comments/{0}/edit", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/comments/{0}/edit", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);

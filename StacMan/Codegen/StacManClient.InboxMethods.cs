@@ -27,7 +27,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, "/inbox", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/inbox", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
@@ -42,7 +42,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, "/inbox/unread", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/inbox/unread", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);

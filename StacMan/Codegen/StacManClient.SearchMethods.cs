@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/search", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/search", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -56,7 +56,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/search/advanced", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/search/advanced", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -94,7 +94,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(host, Version, "/similar", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/similar", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);

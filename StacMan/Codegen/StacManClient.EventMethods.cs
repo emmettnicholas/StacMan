@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(host, Version, "/events", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/events", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
