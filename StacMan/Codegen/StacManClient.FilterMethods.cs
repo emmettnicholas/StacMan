@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
         {
             ValidateEnumerable(filters, "filters");
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/filters/{0}", String.Join(";", filters.Select(HttpUtility.UrlEncode))), useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, String.Format("/filters/{0}", String.Join(";", filters.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("filter", filter);
 
@@ -36,7 +36,7 @@ namespace StackExchange.StacMan
         Task<StacManResponse<Filter>> IFilterMethods.Create(string filter, IEnumerable<string> include, IEnumerable<string> exclude, string @base, bool? @unsafe)
         {
 
-            var ub = new ApiUrlBuilder(Version, "/filters/create", useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, "/filters/create", useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("include", include);

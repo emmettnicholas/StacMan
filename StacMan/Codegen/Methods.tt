@@ -177,7 +177,7 @@ namespace StackExchange.StacMan
         {
 #>
 
-            var ub = new ApiUrlBuilder(Version, String.Format("<#= urlTemplate #>", <#=
+            var ub = new ApiUrlBuilder(host, Version, String.Format("<#= urlTemplate #>", <#=
                 String.Join(", ", urlParams.Select(p =>
                     {
                         var param = requiredParams.Single(rp => rp.Name == p);
@@ -199,7 +199,7 @@ namespace StackExchange.StacMan
         {
 #>
 
-            var ub = new ApiUrlBuilder(Version, "<#= url #>", useHttps: <#= authRequired ? "true" : "false" #>);
+            var ub = new ApiUrlBuilder(host, Version, "<#= url #>", useHttps: <#= authRequired ? "true" : "false" #>);
 
 <#
         }

@@ -27,7 +27,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/access-tokens/{0}/invalidate", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, String.Format("/access-tokens/{0}/invalidate", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
@@ -36,12 +36,18 @@ namespace StackExchange.StacMan
             return CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/access-tokens/{accessTokens}/invalidate");
         }
 
+        public void SetHost(string host)
+        {
+            this.host = host;
+        }
+        private string host;
+
         Task<StacManResponse<AccessToken>> IAccessTokenMethods.Get(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/access-tokens/{0}", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, String.Format("/access-tokens/{0}", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);

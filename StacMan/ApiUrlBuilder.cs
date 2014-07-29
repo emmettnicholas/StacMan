@@ -9,9 +9,10 @@ namespace StackExchange.StacMan
 {
     internal class ApiUrlBuilder
     {
-        public ApiUrlBuilder(string apiVersion, string relativeUrl, bool useHttps = false)
+        public ApiUrlBuilder(string host, string apiVersion, string relativeUrl, bool useHttps = false)
         {
-            BaseUrl = String.Format("{0}://api.stackexchange.com/{1}{2}{3}", useHttps ? "https" : "http", apiVersion, relativeUrl.StartsWith("/") ? "" : "/", relativeUrl);
+            if (string.IsNullOrWhiteSpace(host)) host = "api.stackexchange.com";
+            BaseUrl = String.Format("{0}://{1}/{2}{3}{4}", useHttps ? "https" : "http", host, apiVersion, relativeUrl.StartsWith("/") ? "" : "/", relativeUrl);
             QueryStringParameters = new NameValueCollection();
         }
 

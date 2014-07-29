@@ -27,7 +27,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/apps/{0}/de-authenticate", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, String.Format("/apps/{0}/de-authenticate", String.Join(";", accessTokens.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
