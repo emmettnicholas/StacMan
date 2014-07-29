@@ -5,3 +5,5 @@ TestResults/
 *.nupkg
 _ReSharper.*
 *.csproj.user
+*.sln.ide
+NuGet.CommandLine.*

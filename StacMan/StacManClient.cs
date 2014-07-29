@@ -30,6 +30,15 @@ namespace StackExchange.StacMan
             RespectBackoffs = true;
         }
 
+        /// <summary>
+        /// Provide a custom url inspector and manipulator to be applied to all requests
+        /// </summary>
+        public void SetUrlManager(Func<string, string> urlManager)
+        {
+            this.urlManager = urlManager;
+        }
+        private Func<string, string> urlManager;
+
         private readonly string Key;
         private readonly string Version;
 
@@ -192,6 +201,7 @@ namespace StackExchange.StacMan
         /// </summary>
         internal protected virtual void FetchApiResponseWithGET(string url, Action<string> success, Action<Exception> error)
         {
+            if (urlManager != null) url = urlManager(url);
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Timeout = ApiTimeoutMs;
             request.Method = "GET";
@@ -241,6 +251,7 @@ namespace StackExchange.StacMan
         /// </summary>
         internal protected virtual void FetchApiResponseWithPOST(string url, string data, Action<string> success, Action<Exception> error)
         {
+            if (urlManager != null) url = urlManager(url);
             var postData = System.Text.Encoding.UTF8.GetBytes(data);
 
             var request = (HttpWebRequest)WebRequest.Create(url);
