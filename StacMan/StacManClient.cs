@@ -184,16 +184,33 @@ namespace StackExchange.StacMan
                     callback(response);
                 };
 
+
+            var urlManager = this.urlManager; // snapshot
             if (httpMethod == HttpMethod.POST)
             {
-                response.ApiUrl = ub.BaseUrl;
-                FetchApiResponseWithPOST(response.ApiUrl, ub.QueryString(), successCallback, errorCallback);
+                var url = ub.BaseUrl;
+                if (urlManager != null) url = urlManager(url);
+                response.ApiUrl = url;
+                FetchApiResponseWithPOST(url, ub.QueryString(), successCallback, errorCallback);
             }
             else
             {
-                response.ApiUrl = ub.ToString();
-                FetchApiResponseWithGET(response.ApiUrl, successCallback, errorCallback);
+                var url = ub.ToString();
+                if (urlManager != null) url = urlManager(url);
+                response.ApiUrl = url;
+                FetchApiResponseWithGET(url, successCallback, errorCallback);
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the user-agent to use from this client (if not set, StacMan is used)
+        /// </summary>
+        public string UserAgent { get; set; }
+
+        private string GetUserAgent()
+        {
+            var ua = UserAgent;
+            return string.IsNullOrWhiteSpace(ua) ? "StacMan" : ua;
         }
 
         /// <summary>
@@ -201,12 +218,11 @@ namespace StackExchange.StacMan
         /// </summary>
         internal protected virtual void FetchApiResponseWithGET(string url, Action<string> success, Action<Exception> error)
         {
-            if (urlManager != null) url = urlManager(url);
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Timeout = ApiTimeoutMs;
             request.Method = "GET";
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            request.UserAgent = "StacMan";
+            request.UserAgent = GetUserAgent();
 
             request.BeginGetResponse(
                 asyncResult =>
@@ -251,7 +267,6 @@ namespace StackExchange.StacMan
         /// </summary>
         internal protected virtual void FetchApiResponseWithPOST(string url, string data, Action<string> success, Action<Exception> error)
         {
-            if (urlManager != null) url = urlManager(url);
             var postData = System.Text.Encoding.UTF8.GetBytes(data);
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -260,7 +275,7 @@ namespace StackExchange.StacMan
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = postData.Length;
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            request.UserAgent = "StacMan";
+            request.UserAgent = GetUserAgent();
             
             request.BeginGetRequestStream(
                 asyncResult =>

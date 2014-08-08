@@ -21,6 +21,7 @@ namespace StackExchange.StacMan.Tests
         public void BasicTestWithManager()
         {
             var client = new StacManClient();
+            client.UserAgent = GetType().Name;
             List<string> urls = new List<string>();
             client.SetUrlManager(x =>
             {
