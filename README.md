@@ -12,56 +12,56 @@
     PM> Install-Package StacMan
 
 ## Example Usage
-
-    using StackExchange.StacMan;
-    ...
-    var client = new StacManClient(key: "my-app-key", version: "2.1");
-
+```c#
+using StackExchange.StacMan;
+...
+var client = new StacManClient(key: "my-app-key", version: "2.1");
+```
 **Synchronous**
+```c#
+var response = client.Questions.GetAll("stackoverflow",
+    page: 1,
+    pagesize: 10,
+    sort: Questions.AllSort.Creation,
+    order: Order.Desc,
+    filter: "!mDO35lQRaz").Result;
 
-    var response = client.Questions.GetAll("stackoverflow",
-        page: 1,
-        pagesize: 10,
-        sort: Questions.AllSort.Creation,
-        order: Order.Desc,
-        filter: "!mDO35lQRaz").Result;
-
-    foreach (var question in response.Data.Items)
-    {
-        Console.WriteLine(question.Title);
-    }
-
+foreach (var question in response.Data.Items)
+{
+    Console.WriteLine(question.Title);
+}
+```
 **Asynchronous**
+```c#
+var task = client.Questions.GetAll("stackoverflow",
+    page: 1,
+    pagesize: 10,
+    sort: Questions.AllSort.Creation,
+    order: Order.Desc,
+    filter: "!mDO35lQRaz");
 
-    var task = client.Questions.GetAll("stackoverflow",
-        page: 1,
-        pagesize: 10,
-        sort: Questions.AllSort.Creation,
-        order: Order.Desc,
-        filter: "!mDO35lQRaz");
-
-    task.ContinueWith(t =>
-        {
-            foreach (var user in t.Result.Data.Items)
-            {
-                Console.WriteLine(question.Title);
-            }
-        });
-
-**Asynchronous (C# 5)**
-
-    var response = await client.Questions.GetAll("stackoverflow",
-        page: 1,
-        pagesize: 10,
-        sort: Questions.AllSort.Creation,
-        order: Order.Desc,
-        filter: "!mDO35lQRaz");
-
-    foreach (var user in response.Data.Items)
+task.ContinueWith(t =>
     {
-        Console.WriteLine(question.Title);
-    }
+        foreach (var user in t.Result.Data.Items)
+        {
+            Console.WriteLine(question.Title);
+        }
+    });
+```
+**Asynchronous (C# 5)**
+```c#
+var response = await client.Questions.GetAll("stackoverflow",
+    page: 1,
+    pagesize: 10,
+    sort: Questions.AllSort.Creation,
+    order: Order.Desc,
+    filter: "!mDO35lQRaz");
 
+foreach (var user in response.Data.Items)
+{
+    Console.WriteLine(question.Title);
+}
+```
 ## Filters
 
 StacMan supports the Stack Exhchange API's concept of [filters](http://api.stackexchange.com/docs/filters), which allow applications to specify which fields are included/excluded in the API response.
