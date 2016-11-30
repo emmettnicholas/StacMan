@@ -69,7 +69,7 @@ namespace StackExchange.StacMan
                 if (min.HasValue)
                     throw new ArgumentException("min must be null when sort=" + sortActual.ToString().ToLower(), "min");
                 if (max.HasValue)
-                    throw new ArgumentException("min must be null when sort=" + sortActual.ToString().ToLower(), "max");
+                    throw new ArgumentException("max must be null when sort=" + sortActual.ToString().ToLower(), "max");
             }
 
             if (!sortsBySortType.ContainsKey(SortType.String) || !sortsBySortType[SortType.String].Contains(sortActual))
