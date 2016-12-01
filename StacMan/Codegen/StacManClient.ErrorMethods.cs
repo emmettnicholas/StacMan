@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
         {
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/errors", useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, "/errors", useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
@@ -38,7 +38,7 @@ namespace StackExchange.StacMan
         Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter)
         {
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/errors/{0}", id), useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, String.Format("/errors/{0}", id), useHttps: false);
 
             ub.AddParameter("filter", filter);
 

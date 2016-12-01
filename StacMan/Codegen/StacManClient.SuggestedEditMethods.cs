@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, "/suggested-edits", useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, "/suggested-edits", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -51,7 +51,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/suggested-edits/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(host, Version, String.Format("/suggested-edits/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
