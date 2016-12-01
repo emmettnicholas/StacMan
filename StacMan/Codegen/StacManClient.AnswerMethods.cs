@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/answers", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/answers", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -53,7 +53,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/answers/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/answers/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -78,7 +78,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/answers/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/answers/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);

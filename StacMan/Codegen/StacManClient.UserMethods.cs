@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, "/users", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/users", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -56,7 +56,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -83,7 +83,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, "/me", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -111,7 +111,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/answers", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/answers", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -136,7 +136,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/answers", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/answers", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -162,7 +162,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/badges", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/badges", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -191,7 +191,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, minrank: minrank, maxrank: maxrank, minname: minname, maxname: maxname, mintype: mintype, maxtype: maxtype, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, "/me/badges", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/badges", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -221,7 +221,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -246,7 +246,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/comments", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/comments", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -272,7 +272,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/comments/{1}", String.Join(";", ids), toid), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/comments/{1}", String.Join(";", ids), toid), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -297,7 +297,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/me/comments/{0}", toid), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/me/comments/{0}", toid), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -323,7 +323,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/favorites", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/favorites", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -348,7 +348,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/favorites", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/favorites", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -374,7 +374,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/mentioned", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/mentioned", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -399,7 +399,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/mentioned", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/mentioned", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -424,7 +424,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/merges", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/merges", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
@@ -439,7 +439,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/merges", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/merges", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);
@@ -456,7 +456,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/notifications", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/notifications", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -474,7 +474,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/notifications", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/notifications", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -492,7 +492,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/notifications/unread", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/notifications/unread", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -510,7 +510,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/notifications/unread", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/notifications/unread", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -526,7 +526,7 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/privileges", id), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/privileges", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -542,7 +542,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/privileges", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/privileges", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -560,7 +560,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/questions", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -585,7 +585,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/questions", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/questions", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -611,7 +611,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -636,7 +636,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/questions/featured", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/questions/featured", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -662,7 +662,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/questions/featured", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -687,7 +687,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/questions/featured", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/questions/featured", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -713,7 +713,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/unaccepted", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/questions/unaccepted", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -738,7 +738,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/questions/unaccepted", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/questions/unaccepted", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -764,7 +764,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/questions/unanswered", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/questions/unanswered", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -789,7 +789,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/me/questions/unanswered", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/questions/unanswered", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -814,7 +814,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/reputation", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/reputation", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -831,7 +831,7 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
 
-            var ub = new ApiUrlBuilder(Version, "/me/reputation", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/reputation", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -847,7 +847,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/reputation-history", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/reputation-history", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -864,7 +864,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/reputation-history", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/reputation-history", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -882,7 +882,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/reputation-history/full", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/reputation-history/full", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -900,7 +900,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/reputation-history/full", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/reputation-history/full", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -918,7 +918,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/suggested-edits", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/suggested-edits", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -941,7 +941,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, "/me/suggested-edits", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/suggested-edits", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -965,7 +965,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/tags", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -992,7 +992,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, "/me/tags", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/tags", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1020,7 +1020,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-answers", id, String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/tags/{1}/top-answers", id, String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1046,7 +1046,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-answers", String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/me/tags/{0}/top-answers", String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1072,7 +1072,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/tags/{1}/top-questions", id, String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/tags/{1}/top-questions", id, String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1098,7 +1098,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/me/tags/{0}/top-questions", String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/me/tags/{0}/top-questions", String.Join(";", tags.Select(HttpUtility.UrlEncode))), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1123,7 +1123,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/timeline", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/timeline", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1141,7 +1141,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/timeline", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/timeline", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1159,7 +1159,7 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-answer-tags", id), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/top-answer-tags", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1176,7 +1176,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-answer-tags", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/top-answer-tags", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1192,7 +1192,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/top-answer-tags", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/top-answer-tags", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1208,7 +1208,7 @@ namespace StackExchange.StacMan
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-question-tags", id), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/top-question-tags", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1225,7 +1225,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/top-question-tags", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/top-question-tags", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1241,7 +1241,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/top-question-tags", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/top-question-tags", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1258,7 +1258,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/write-permissions", id), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/write-permissions", id), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1275,7 +1275,7 @@ namespace StackExchange.StacMan
             ValidateMinApiVersion("2.1");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/write-permissions", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/write-permissions", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1292,7 +1292,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, "/users/moderators", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/users/moderators", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1318,7 +1318,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, min: min, max: max, mindate: mindate, maxdate: maxdate, minname: minname, maxname: maxname);
 
-            var ub = new ApiUrlBuilder(Version, "/users/moderators/elected", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/users/moderators/elected", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -1344,7 +1344,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/inbox", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/inbox", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1361,7 +1361,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/inbox", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/inbox", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1378,7 +1378,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/inbox/unread", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/inbox/unread", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1396,7 +1396,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/inbox/unread", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/inbox/unread", useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -1413,7 +1413,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/users/{0}/associated", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/users/{0}/associated", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
@@ -1427,7 +1427,7 @@ namespace StackExchange.StacMan
             ValidateString(access_token, "access_token");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/me/associated", useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/me/associated", useHttps: true);
 
             ub.AddParameter("access_token", access_token);
             ub.AddParameter("filter", filter);

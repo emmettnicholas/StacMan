@@ -9,12 +9,13 @@ namespace StackExchange.StacMan
 {
     internal class ApiUrlBuilder
     {
-        public ApiUrlBuilder(string apiVersion, string relativeUrl, bool useHttps = false)
+        public ApiUrlBuilder(Func<string,string> urlManager, string apiVersion, string relativeUrl, bool useHttps = false)
         {
             BaseUrl = String.Format("{0}://api.stackexchange.com/{1}{2}{3}", useHttps ? "https" : "http", apiVersion, relativeUrl.StartsWith("/") ? "" : "/", relativeUrl);
             QueryStringParameters = new NameValueCollection();
+            this.urlManager = urlManager;
         }
-
+        private readonly Func<string, string> urlManager;
         public readonly string BaseUrl;
         private readonly NameValueCollection QueryStringParameters;
         
@@ -48,6 +49,7 @@ namespace StackExchange.StacMan
             if (QueryStringParameters.Count > 0)
                 url += "?" + QueryString();
 
+            if (urlManager != null) url = urlManager(url);
             return url;
         }
     }

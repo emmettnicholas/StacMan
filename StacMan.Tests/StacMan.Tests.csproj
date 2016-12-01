@@ -51,6 +51,7 @@
     <Compile Include="ApiVersion21Tests.cs" />
     <Compile Include="BackoffTests.cs" />
     <Compile Include="InfoMethodTests.cs" />
+    <Compile Include="IntegrationTests.cs" />
     <Compile Include="QuestionMethodTests.cs" />
     <Compile Include="SiteMethodTests.cs" />
     <Compile Include="TagMethodTests.cs" />

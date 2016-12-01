@@ -28,7 +28,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, "/posts", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/posts", useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -53,7 +53,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/posts/{0}", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/posts/{0}", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -78,7 +78,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate, min: min, max: max);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/posts/{0}/comments", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/posts/{0}/comments", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -103,7 +103,7 @@ namespace StackExchange.StacMan
             ValidateString(body, "body");
             ValidateMinApiVersion("2.1");
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/posts/{0}/comments/add", id), useHttps: true);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/posts/{0}/comments/add", id), useHttps: true);
 
             ub.AddParameter("site", site);
             ub.AddParameter("access_token", access_token);
@@ -120,7 +120,7 @@ namespace StackExchange.StacMan
             ValidateEnumerable(ids, "ids");
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/posts/{0}/revisions", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/posts/{0}/revisions", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
@@ -139,7 +139,7 @@ namespace StackExchange.StacMan
             ValidatePaging(page, pagesize);
             ValidateSortMinMax(sort, mindate: mindate, maxdate: maxdate);
 
-            var ub = new ApiUrlBuilder(Version, String.Format("/posts/{0}/suggested-edits", String.Join(";", ids)), useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, String.Format("/posts/{0}/suggested-edits", String.Join(";", ids)), useHttps: false);
 
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);

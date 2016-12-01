@@ -26,7 +26,7 @@ namespace StackExchange.StacMan
         {
             ValidatePaging(page, pagesize);
 
-            var ub = new ApiUrlBuilder(Version, "/sites", useHttps: false);
+            var ub = new ApiUrlBuilder(urlManager, Version, "/sites", useHttps: false);
 
             ub.AddParameter("filter", filter);
             ub.AddParameter("page", page);
