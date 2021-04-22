@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,68 +18,68 @@ namespace StackExchange.StacMan
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// body_markdown -- introduced in API version 2.1
         /// </summary>
-        [Field("body_markdown")]
-        public string BodyMarkdown { get; internal set; }
+        [JsonPropertyName("body_markdown")]
+        public string BodyMarkdown { get; init; }
 
         /// <summary>
         /// comment_id
         /// </summary>
-        [Field("comment_id")]
-        public int CommentId { get; internal set; }
+        [JsonPropertyName("comment_id")]
+        public int CommentId { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// edited
         /// </summary>
-        [Field("edited")]
-        public bool Edited { get; internal set; }
+        [JsonPropertyName("edited")]
+        public bool Edited { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// owner
         /// </summary>
-        [Field("owner")]
-        public ShallowUser Owner { get; internal set; }
+        [JsonPropertyName("owner")]
+        public ShallowUser Owner { get; init; }
 
         /// <summary>
         /// post_id
         /// </summary>
-        [Field("post_id")]
-        public int PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int PostId { get; init; }
 
         /// <summary>
         /// post_type
         /// </summary>
-        [Field("post_type")]
-        public Posts.PostType PostType { get; internal set; }
+        [JsonPropertyName("post_type")]
+        public Posts.PostType PostType { get; init; }
 
         /// <summary>
         /// reply_to_user
         /// </summary>
-        [Field("reply_to_user")]
-        public ShallowUser ReplyToUser { get; internal set; }
+        [JsonPropertyName("reply_to_user")]
+        public ShallowUser ReplyToUser { get; init; }
 
         /// <summary>
         /// score
         /// </summary>
-        [Field("score")]
-        public int Score { get; internal set; }
+        [JsonPropertyName("score")]
+        public int Score { get; init; }
 
     }
 }

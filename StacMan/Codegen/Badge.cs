@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,50 +18,50 @@ namespace StackExchange.StacMan
         /// <summary>
         /// award_count
         /// </summary>
-        [Field("award_count")]
-        public int AwardCount { get; internal set; }
+        [JsonPropertyName("award_count")]
+        public int AwardCount { get; init; }
 
         /// <summary>
         /// badge_id
         /// </summary>
-        [Field("badge_id")]
-        public int BadgeId { get; internal set; }
+        [JsonPropertyName("badge_id")]
+        public int BadgeId { get; init; }
 
         /// <summary>
         /// badge_type
         /// </summary>
-        [Field("badge_type")]
-        public Badges.BadgeType BadgeType { get; internal set; }
+        [JsonPropertyName("badge_type")]
+        public Badges.BadgeType BadgeType { get; init; }
 
         /// <summary>
         /// description
         /// </summary>
-        [Field("description")]
-        public string Description { get; internal set; }
+        [JsonPropertyName("description")]
+        public string Description { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// name
         /// </summary>
-        [Field("name")]
-        public string Name { get; internal set; }
+        [JsonPropertyName("name")]
+        public string Name { get; init; }
 
         /// <summary>
         /// rank
         /// </summary>
-        [Field("rank")]
-        public Badges.Rank Rank { get; internal set; }
+        [JsonPropertyName("rank")]
+        public Badges.Rank Rank { get; init; }
 
         /// <summary>
         /// user
         /// </summary>
-        [Field("user")]
-        public ShallowUser User { get; internal set; }
+        [JsonPropertyName("user")]
+        public ShallowUser User { get; init; }
 
     }
 }

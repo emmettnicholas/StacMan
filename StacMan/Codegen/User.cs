@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,170 +18,170 @@ namespace StackExchange.StacMan
         /// <summary>
         /// about_me
         /// </summary>
-        [Field("about_me")]
-        public string AboutMe { get; internal set; }
+        [JsonPropertyName("about_me")]
+        public string AboutMe { get; init; }
 
         /// <summary>
         /// accept_rate
         /// </summary>
-        [Field("accept_rate")]
-        public int? AcceptRate { get; internal set; }
+        [JsonPropertyName("accept_rate")]
+        public int? AcceptRate { get; init; }
 
         /// <summary>
         /// account_id
         /// </summary>
-        [Field("account_id")]
-        public int AccountId { get; internal set; }
+        [JsonPropertyName("account_id")]
+        public int AccountId { get; init; }
 
         /// <summary>
         /// age
         /// </summary>
-        [Field("age")]
-        public int? Age { get; internal set; }
+        [JsonPropertyName("age")]
+        public int? Age { get; init; }
 
         /// <summary>
         /// answer_count
         /// </summary>
-        [Field("answer_count")]
-        public int AnswerCount { get; internal set; }
+        [JsonPropertyName("answer_count")]
+        public int AnswerCount { get; init; }
 
         /// <summary>
         /// badge_counts
         /// </summary>
-        [Field("badge_counts")]
-        public BadgeCount BadgeCounts { get; internal set; }
+        [JsonPropertyName("badge_counts")]
+        public BadgeCount BadgeCounts { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// display_name
         /// </summary>
-        [Field("display_name")]
-        public string DisplayName { get; internal set; }
+        [JsonPropertyName("display_name")]
+        public string DisplayName { get; init; }
 
         /// <summary>
         /// down_vote_count
         /// </summary>
-        [Field("down_vote_count")]
-        public int DownVoteCount { get; internal set; }
+        [JsonPropertyName("down_vote_count")]
+        public int DownVoteCount { get; init; }
 
         /// <summary>
         /// is_employee
         /// </summary>
-        [Field("is_employee")]
-        public bool IsEmployee { get; internal set; }
+        [JsonPropertyName("is_employee")]
+        public bool IsEmployee { get; init; }
 
         /// <summary>
         /// last_access_date
         /// </summary>
-        [Field("last_access_date")]
-        public DateTime LastAccessDate { get; internal set; }
+        [JsonPropertyName("last_access_date")]
+        public DateTime LastAccessDate { get; init; }
 
         /// <summary>
         /// last_modified_date
         /// </summary>
-        [Field("last_modified_date")]
-        public DateTime? LastModifiedDate { get; internal set; }
+        [JsonPropertyName("last_modified_date")]
+        public DateTime? LastModifiedDate { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// location
         /// </summary>
-        [Field("location")]
-        public string Location { get; internal set; }
+        [JsonPropertyName("location")]
+        public string Location { get; init; }
 
         /// <summary>
         /// profile_image
         /// </summary>
-        [Field("profile_image")]
-        public string ProfileImage { get; internal set; }
+        [JsonPropertyName("profile_image")]
+        public string ProfileImage { get; init; }
 
         /// <summary>
         /// question_count
         /// </summary>
-        [Field("question_count")]
-        public int QuestionCount { get; internal set; }
+        [JsonPropertyName("question_count")]
+        public int QuestionCount { get; init; }
 
         /// <summary>
         /// reputation
         /// </summary>
-        [Field("reputation")]
-        public int Reputation { get; internal set; }
+        [JsonPropertyName("reputation")]
+        public int Reputation { get; init; }
 
         /// <summary>
         /// reputation_change_day
         /// </summary>
-        [Field("reputation_change_day")]
-        public int ReputationChangeDay { get; internal set; }
+        [JsonPropertyName("reputation_change_day")]
+        public int ReputationChangeDay { get; init; }
 
         /// <summary>
         /// reputation_change_month
         /// </summary>
-        [Field("reputation_change_month")]
-        public int ReputationChangeMonth { get; internal set; }
+        [JsonPropertyName("reputation_change_month")]
+        public int ReputationChangeMonth { get; init; }
 
         /// <summary>
         /// reputation_change_quarter
         /// </summary>
-        [Field("reputation_change_quarter")]
-        public int ReputationChangeQuarter { get; internal set; }
+        [JsonPropertyName("reputation_change_quarter")]
+        public int ReputationChangeQuarter { get; init; }
 
         /// <summary>
         /// reputation_change_week
         /// </summary>
-        [Field("reputation_change_week")]
-        public int ReputationChangeWeek { get; internal set; }
+        [JsonPropertyName("reputation_change_week")]
+        public int ReputationChangeWeek { get; init; }
 
         /// <summary>
         /// reputation_change_year
         /// </summary>
-        [Field("reputation_change_year")]
-        public int ReputationChangeYear { get; internal set; }
+        [JsonPropertyName("reputation_change_year")]
+        public int ReputationChangeYear { get; init; }
 
         /// <summary>
         /// timed_penalty_date
         /// </summary>
-        [Field("timed_penalty_date")]
-        public DateTime? TimedPenaltyDate { get; internal set; }
+        [JsonPropertyName("timed_penalty_date")]
+        public DateTime? TimedPenaltyDate { get; init; }
 
         /// <summary>
         /// up_vote_count
         /// </summary>
-        [Field("up_vote_count")]
-        public int UpVoteCount { get; internal set; }
+        [JsonPropertyName("up_vote_count")]
+        public int UpVoteCount { get; init; }
 
         /// <summary>
         /// user_id
         /// </summary>
-        [Field("user_id")]
-        public int UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; init; }
 
         /// <summary>
         /// user_type
         /// </summary>
-        [Field("user_type")]
-        public Users.UserType UserType { get; internal set; }
+        [JsonPropertyName("user_type")]
+        public Users.UserType UserType { get; init; }
 
         /// <summary>
         /// view_count
         /// </summary>
-        [Field("view_count")]
-        public int ViewCount { get; internal set; }
+        [JsonPropertyName("view_count")]
+        public int ViewCount { get; init; }
 
         /// <summary>
         /// website_url
         /// </summary>
-        [Field("website_url")]
-        public string WebsiteUrl { get; internal set; }
+        [JsonPropertyName("website_url")]
+        public string WebsiteUrl { get; init; }
 
     }
 }

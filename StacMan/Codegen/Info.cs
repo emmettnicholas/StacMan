@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,86 +18,86 @@ namespace StackExchange.StacMan
         /// <summary>
         /// answers_per_minute
         /// </summary>
-        [Field("answers_per_minute")]
-        public decimal AnswersPerMinute { get; internal set; }
+        [JsonPropertyName("answers_per_minute")]
+        public decimal AnswersPerMinute { get; init; }
 
         /// <summary>
         /// api_revision
         /// </summary>
-        [Field("api_revision")]
-        public string ApiRevision { get; internal set; }
+        [JsonPropertyName("api_revision")]
+        public string ApiRevision { get; init; }
 
         /// <summary>
         /// badges_per_minute
         /// </summary>
-        [Field("badges_per_minute")]
-        public decimal BadgesPerMinute { get; internal set; }
+        [JsonPropertyName("badges_per_minute")]
+        public decimal BadgesPerMinute { get; init; }
 
         /// <summary>
         /// new_active_users
         /// </summary>
-        [Field("new_active_users")]
-        public int NewActiveUsers { get; internal set; }
+        [JsonPropertyName("new_active_users")]
+        public int NewActiveUsers { get; init; }
 
         /// <summary>
         /// questions_per_minute
         /// </summary>
-        [Field("questions_per_minute")]
-        public decimal QuestionsPerMinute { get; internal set; }
+        [JsonPropertyName("questions_per_minute")]
+        public decimal QuestionsPerMinute { get; init; }
 
         /// <summary>
         /// site
         /// </summary>
-        [Field("site")]
-        public Site Site { get; internal set; }
+        [JsonPropertyName("site")]
+        public Site Site { get; init; }
 
         /// <summary>
         /// total_accepted
         /// </summary>
-        [Field("total_accepted")]
-        public int TotalAccepted { get; internal set; }
+        [JsonPropertyName("total_accepted")]
+        public int TotalAccepted { get; init; }
 
         /// <summary>
         /// total_answers
         /// </summary>
-        [Field("total_answers")]
-        public int TotalAnswers { get; internal set; }
+        [JsonPropertyName("total_answers")]
+        public int TotalAnswers { get; init; }
 
         /// <summary>
         /// total_badges
         /// </summary>
-        [Field("total_badges")]
-        public int TotalBadges { get; internal set; }
+        [JsonPropertyName("total_badges")]
+        public int TotalBadges { get; init; }
 
         /// <summary>
         /// total_comments
         /// </summary>
-        [Field("total_comments")]
-        public int TotalComments { get; internal set; }
+        [JsonPropertyName("total_comments")]
+        public int TotalComments { get; init; }
 
         /// <summary>
         /// total_questions
         /// </summary>
-        [Field("total_questions")]
-        public int TotalQuestions { get; internal set; }
+        [JsonPropertyName("total_questions")]
+        public int TotalQuestions { get; init; }
 
         /// <summary>
         /// total_unanswered
         /// </summary>
-        [Field("total_unanswered")]
-        public int TotalUnanswered { get; internal set; }
+        [JsonPropertyName("total_unanswered")]
+        public int TotalUnanswered { get; init; }
 
         /// <summary>
         /// total_users
         /// </summary>
-        [Field("total_users")]
-        public int TotalUsers { get; internal set; }
+        [JsonPropertyName("total_users")]
+        public int TotalUsers { get; init; }
 
         /// <summary>
         /// total_votes
         /// </summary>
-        [Field("total_votes")]
-        public int TotalVotes { get; internal set; }
+        [JsonPropertyName("total_votes")]
+        public int TotalVotes { get; init; }
 
     }
 }

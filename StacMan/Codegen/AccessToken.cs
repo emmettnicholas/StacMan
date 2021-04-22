@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,26 +18,26 @@ namespace StackExchange.StacMan
         /// <summary>
         /// access_token
         /// </summary>
-        [Field("access_token")]
-        public string AccessTokenName { get; internal set; }
+        [JsonPropertyName("access_token")]
+        public string AccessTokenName { get; init; }
 
         /// <summary>
         /// account_id
         /// </summary>
-        [Field("account_id")]
-        public int AccountId { get; internal set; }
+        [JsonPropertyName("account_id")]
+        public int AccountId { get; init; }
 
         /// <summary>
         /// expires_on_date
         /// </summary>
-        [Field("expires_on_date")]
-        public DateTime? ExpiresOnDate { get; internal set; }
+        [JsonPropertyName("expires_on_date")]
+        public DateTime? ExpiresOnDate { get; init; }
 
         /// <summary>
         /// scope
         /// </summary>
-        [Field("scope")]
-        public string[] Scope { get; internal set; }
+        [JsonPropertyName("scope")]
+        public string[] Scope { get; init; }
 
     }
 }

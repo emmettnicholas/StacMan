@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// post_count
         /// </summary>
-        [Field("post_count")]
-        public int PostCount { get; internal set; }
+        [JsonPropertyName("post_count")]
+        public int PostCount { get; init; }
 
         /// <summary>
         /// score
         /// </summary>
-        [Field("score")]
-        public int Score { get; internal set; }
+        [JsonPropertyName("score")]
+        public int Score { get; init; }
 
         /// <summary>
         /// user
         /// </summary>
-        [Field("user")]
-        public ShallowUser User { get; internal set; }
+        [JsonPropertyName("user")]
+        public ShallowUser User { get; init; }
 
     }
 }

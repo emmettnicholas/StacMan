@@ -3,24 +3,21 @@ Manager by Damien Guard
 http://damieng.com/blog/2009/11/06/multiple-outputs-from-t4-made-easy-revisited
 */ #>
 
-<#@ assembly name="System.Core"
-#><#@ assembly name="System.Data.Linq"
-#><#@ assembly name="EnvDTE"
-#><#@ assembly name="System.Xml"
-#><#@ assembly name="System.Xml.Linq"
-#><#@ import namespace="System"
-#><#@ import namespace="System.CodeDom"
-#><#@ import namespace="System.CodeDom.Compiler"
-#><#@ import namespace="System.Collections.Generic"
-#><#@ import namespace="System.Data.Linq"
-#><#@ import namespace="System.Data.Linq.Mapping"
-#><#@ import namespace="System.IO"
-#><#@ import namespace="System.Linq"
-#><#@ import namespace="System.Reflection"
-#><#@ import namespace="System.Text"
-#><#@ import namespace="System.Xml.Linq"
-#><#@ import namespace="Microsoft.VisualStudio.TextTemplating"
-#><#+
+<#@ assembly name="System.Collections"#>
+<#@ assembly name="System.Core"#>
+<#@ assembly name="System.Data.Linq"#>
+<#@ assembly name="System.Linq"#>
+<#@ assembly name="System.Xml"#>
+<#@ assembly name="System.Xml.Linq"#>
+<#@ assembly name="EnvDTE"#>
+<#@ import namespace="System"#>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ import namespace="System.IO"#>
+<#@ import namespace="System.Linq"#>
+<#@ import namespace="System.Text"#>
+<#@ import namespace="EnvDTE"#>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating"#>
+<#+
 
 // Manager class records the various blocks so it can split them up
 class Manager {
@@ -160,9 +157,9 @@ class Manager {
         private static void ProjectSync(EnvDTE.ProjectItem templateProjectItem, IEnumerable<String> keepFileNames) {
             var keepFileNameSet = new HashSet<String>(keepFileNames);
             var projectFiles = new Dictionary<String, EnvDTE.ProjectItem>();
-            var originalFilePrefix = Path.GetFileNameWithoutExtension(templateProjectItem.get_FileNames(0)) + ".";
+            var originalFilePrefix = Path.GetFileNameWithoutExtension(templateProjectItem.FileNames[0]) + ".";
             foreach(EnvDTE.ProjectItem projectItem in templateProjectItem.ProjectItems)
-                projectFiles.Add(projectItem.get_FileNames(0), projectItem);
+                projectFiles.Add(projectItem.FileNames[0], projectItem);
 
             // Remove unused items from the project
             foreach(var pair in projectFiles)
