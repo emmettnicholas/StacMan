@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,68 +18,68 @@ namespace StackExchange.StacMan
         /// <summary>
         /// approval_date
         /// </summary>
-        [Field("approval_date")]
-        public DateTime? ApprovalDate { get; internal set; }
+        [JsonPropertyName("approval_date")]
+        public DateTime? ApprovalDate { get; init; }
 
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// comment
         /// </summary>
-        [Field("comment")]
-        public string Comment { get; internal set; }
+        [JsonPropertyName("comment")]
+        public string Comment { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// post_id
         /// </summary>
-        [Field("post_id")]
-        public int PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int PostId { get; init; }
 
         /// <summary>
         /// post_type
         /// </summary>
-        [Field("post_type")]
-        public Posts.PostType PostType { get; internal set; }
+        [JsonPropertyName("post_type")]
+        public Posts.PostType PostType { get; init; }
 
         /// <summary>
         /// proposing_user
         /// </summary>
-        [Field("proposing_user")]
-        public ShallowUser ProposingUser { get; internal set; }
+        [JsonPropertyName("proposing_user")]
+        public ShallowUser ProposingUser { get; init; }
 
         /// <summary>
         /// rejection_date
         /// </summary>
-        [Field("rejection_date")]
-        public DateTime? RejectionDate { get; internal set; }
+        [JsonPropertyName("rejection_date")]
+        public DateTime? RejectionDate { get; init; }
 
         /// <summary>
         /// suggested_edit_id
         /// </summary>
-        [Field("suggested_edit_id")]
-        public int SuggestedEditId { get; internal set; }
+        [JsonPropertyName("suggested_edit_id")]
+        public int SuggestedEditId { get; init; }
 
         /// <summary>
         /// tags
         /// </summary>
-        [Field("tags")]
-        public string[] Tags { get; internal set; }
+        [JsonPropertyName("tags")]
+        public string[] Tags { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
     }
 }

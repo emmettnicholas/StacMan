@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// filter
         /// </summary>
-        [Field("filter")]
-        public string FilterName { get; internal set; }
+        [JsonPropertyName("filter")]
+        public string FilterName { get; init; }
 
         /// <summary>
         /// filter_type
         /// </summary>
-        [Field("filter_type")]
-        public Filters.FilterType FilterType { get; internal set; }
+        [JsonPropertyName("filter_type")]
+        public Filters.FilterType FilterType { get; init; }
 
         /// <summary>
         /// included_fields
         /// </summary>
-        [Field("included_fields")]
-        public string[] IncludedFields { get; internal set; }
+        [JsonPropertyName("included_fields")]
+        public string[] IncludedFields { get; init; }
 
     }
 }

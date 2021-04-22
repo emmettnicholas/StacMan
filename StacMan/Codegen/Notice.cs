@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// body -- introduced in API version 2.1
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// creation_date -- introduced in API version 2.1
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// owner_user_id -- introduced in API version 2.1
         /// </summary>
-        [Field("owner_user_id")]
-        public int OwnerUserId { get; internal set; }
+        [JsonPropertyName("owner_user_id")]
+        public int OwnerUserId { get; init; }
 
     }
 }

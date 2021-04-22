@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,44 +18,44 @@ namespace StackExchange.StacMan
         /// <summary>
         /// can_add -- introduced in API version 2.1
         /// </summary>
-        [Field("can_add")]
-        public bool CanAdd { get; internal set; }
+        [JsonPropertyName("can_add")]
+        public bool CanAdd { get; init; }
 
         /// <summary>
         /// can_delete -- introduced in API version 2.1
         /// </summary>
-        [Field("can_delete")]
-        public bool CanDelete { get; internal set; }
+        [JsonPropertyName("can_delete")]
+        public bool CanDelete { get; init; }
 
         /// <summary>
         /// can_edit -- introduced in API version 2.1
         /// </summary>
-        [Field("can_edit")]
-        public bool CanEdit { get; internal set; }
+        [JsonPropertyName("can_edit")]
+        public bool CanEdit { get; init; }
 
         /// <summary>
         /// max_daily_actions -- introduced in API version 2.1
         /// </summary>
-        [Field("max_daily_actions")]
-        public int MaxDailyActions { get; internal set; }
+        [JsonPropertyName("max_daily_actions")]
+        public int MaxDailyActions { get; init; }
 
         /// <summary>
         /// min_seconds_between_actions -- introduced in API version 2.1
         /// </summary>
-        [Field("min_seconds_between_actions")]
-        public int MinSecondsBetweenActions { get; internal set; }
+        [JsonPropertyName("min_seconds_between_actions")]
+        public int MinSecondsBetweenActions { get; init; }
 
         /// <summary>
         /// object_type -- introduced in API version 2.1
         /// </summary>
-        [Field("object_type")]
-        public string ObjectType { get; internal set; }
+        [JsonPropertyName("object_type")]
+        public string ObjectType { get; init; }
 
         /// <summary>
         /// user_id -- introduced in API version 2.1
         /// </summary>
-        [Field("user_id")]
-        public int UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; init; }
 
     }
 }

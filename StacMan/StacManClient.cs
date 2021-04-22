@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -57,7 +55,14 @@ namespace StackExchange.StacMan
         /// </summary>
         public bool RespectBackoffs { get; set; }
 
-        private readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
+        private readonly JsonSerializerOptions JsonSerializerOptions = new()
+        {
+            Converters =
+            {
+                new JsonStringEnumMemberConverter(namingPolicy: null, allowIntegerValues: false),
+                new UnixEpochDateConverter(),
+            }
+        };
 
         private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey) where T : StacManType
         {
@@ -152,7 +157,19 @@ namespace StackExchange.StacMan
                     try
                     {
                         response.RawData = rawData;
-                        response.Data = ParseApiResponse<Wrapper<T>>(Serializer.Deserialize<Dictionary<string, object>>(response.RawData), backoffKey);
+                        response.Data = JsonSerializer.Deserialize<Wrapper<T>>(rawData, JsonSerializerOptions);
+                        if (response.Data is null)
+                        {
+                            throw new JsonException($"Failed to deserialize response from {ub} as {typeof(Wrapper<T>).Name}.");
+                        }
+                        var backoff = response.Data.Backoff;
+                        if (backoff.HasValue)
+                        {
+                            lock (BackoffUntil)
+                            {
+                                BackoffUntil[backoffKey] = DateTime.Now.AddSeconds(backoff.Value);
+                            }
+                        }
 
                         if (response.Data.ErrorId.HasValue)
                             throw new Exceptions.StackExchangeApiException(response.Data.ErrorId.Value, response.Data.ErrorName, response.Data.ErrorMessage);
@@ -310,69 +327,6 @@ namespace StackExchange.StacMan
                 request);
         }
 
-        private T ParseApiResponse<T>(Dictionary<string, object> jsonObject, string backoffKey) where T : StacManType
-        {
-            var ret = (T)Activator.CreateInstance(typeof(T));
-            var apiFieldsByName = ReflectionCache.ApiFieldsByName<T>.Value;
 
-            foreach (var fieldName in jsonObject.Keys)
-            {
-                if (!apiFieldsByName.ContainsKey(fieldName))
-                    throw new Exception(String.Format("\"{0}\" field is unrecognized", fieldName));
-
-                var property = apiFieldsByName[fieldName];
-                object value;
-
-                if (property.PropertyType == typeof(DateTime) || Nullable.GetUnderlyingType(property.PropertyType) == typeof(DateTime))
-                {
-                    value = Convert.ToInt64(jsonObject[fieldName]).ToDateTime();
-                }
-                else if (property.PropertyType == typeof(Guid) || Nullable.GetUnderlyingType(property.PropertyType) == typeof(Guid))
-                {
-                    value = Guid.Parse((string)jsonObject[fieldName]);
-                }
-                else if (property.PropertyType.IsEnum)
-                {
-                    value = Enum.Parse(property.PropertyType, ((string)jsonObject[fieldName]).Replace("_", String.Empty), true);
-                }
-                else if (property.PropertyType.BaseType == typeof(StacManType))
-                {
-                    value = ReflectionCache.StacManClientParseApiResponse
-                        .MakeGenericMethod(property.PropertyType)
-                        .Invoke(this, new object[] { (Dictionary<string, object>)jsonObject[fieldName], backoffKey });
-                }
-                else if (property.PropertyType.IsArray)
-                {
-                    var elementType = property.PropertyType.GetElementType();
-
-                    Func<object, object> selector;
-                    if (elementType.BaseType == typeof(StacManType))
-                        selector = o => ReflectionCache.StacManClientParseApiResponse.MakeGenericMethod(elementType).Invoke(this, new object[] { o, backoffKey });
-                    else
-                        selector = o => Convert.ChangeType(o, elementType.BaseType);
-
-                    var objArr = ((ArrayList)jsonObject[fieldName]).Cast<object>().Select(selector).ToArray();
-
-                    value = Array.CreateInstance(elementType, objArr.Length);
-                    Array.Copy(objArr, (Array)value, objArr.Length);
-                }
-                else
-                {
-                    value = Convert.ChangeType(jsonObject[fieldName], Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
-                }
-
-                if (fieldName == "backoff")
-                {
-                    lock (BackoffUntil)
-                    {
-                        BackoffUntil[backoffKey] = DateTime.Now.AddSeconds((int)value);
-                    }
-                }
-
-                property.SetValue(ret, value, null);
-            }
-
-            return ret;
-        }
     }
 }

@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// merge_date -- introduced in API version 2.1
         /// </summary>
-        [Field("merge_date")]
-        public DateTime MergeDate { get; internal set; }
+        [JsonPropertyName("merge_date")]
+        public DateTime MergeDate { get; init; }
 
         /// <summary>
         /// new_account_id -- introduced in API version 2.1
         /// </summary>
-        [Field("new_account_id")]
-        public int NewAccountId { get; internal set; }
+        [JsonPropertyName("new_account_id")]
+        public int NewAccountId { get; init; }
 
         /// <summary>
         /// old_account_id -- introduced in API version 2.1
         /// </summary>
-        [Field("old_account_id")]
-        public int OldAccountId { get; internal set; }
+        [JsonPropertyName("old_account_id")]
+        public int OldAccountId { get; init; }
 
     }
 }

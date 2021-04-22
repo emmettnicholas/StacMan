@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,44 +18,44 @@ namespace StackExchange.StacMan
         /// <summary>
         /// count
         /// </summary>
-        [Field("count")]
-        public int Count { get; internal set; }
+        [JsonPropertyName("count")]
+        public int Count { get; init; }
 
         /// <summary>
         /// has_synonyms
         /// </summary>
-        [Field("has_synonyms")]
-        public bool HasSynonyms { get; internal set; }
+        [JsonPropertyName("has_synonyms")]
+        public bool HasSynonyms { get; init; }
 
         /// <summary>
         /// is_moderator_only
         /// </summary>
-        [Field("is_moderator_only")]
-        public bool IsModeratorOnly { get; internal set; }
+        [JsonPropertyName("is_moderator_only")]
+        public bool IsModeratorOnly { get; init; }
 
         /// <summary>
         /// is_required
         /// </summary>
-        [Field("is_required")]
-        public bool IsRequired { get; internal set; }
+        [JsonPropertyName("is_required")]
+        public bool IsRequired { get; init; }
 
         /// <summary>
         /// last_activity_date
         /// </summary>
-        [Field("last_activity_date")]
-        public DateTime? LastActivityDate { get; internal set; }
+        [JsonPropertyName("last_activity_date")]
+        public DateTime? LastActivityDate { get; init; }
 
         /// <summary>
         /// name
         /// </summary>
-        [Field("name")]
-        public string Name { get; internal set; }
+        [JsonPropertyName("name")]
+        public string Name { get; init; }
 
         /// <summary>
         /// user_id
         /// </summary>
-        [Field("user_id")]
-        public int? UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int? UserId { get; init; }
 
     }
 }

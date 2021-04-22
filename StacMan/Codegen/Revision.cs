@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,98 +18,98 @@ namespace StackExchange.StacMan
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// comment
         /// </summary>
-        [Field("comment")]
-        public string Comment { get; internal set; }
+        [JsonPropertyName("comment")]
+        public string Comment { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// is_rollback
         /// </summary>
-        [Field("is_rollback")]
-        public bool IsRollback { get; internal set; }
+        [JsonPropertyName("is_rollback")]
+        public bool IsRollback { get; init; }
 
         /// <summary>
         /// last_body
         /// </summary>
-        [Field("last_body")]
-        public string LastBody { get; internal set; }
+        [JsonPropertyName("last_body")]
+        public string LastBody { get; init; }
 
         /// <summary>
         /// last_tags
         /// </summary>
-        [Field("last_tags")]
-        public string[] LastTags { get; internal set; }
+        [JsonPropertyName("last_tags")]
+        public string[] LastTags { get; init; }
 
         /// <summary>
         /// last_title
         /// </summary>
-        [Field("last_title")]
-        public string LastTitle { get; internal set; }
+        [JsonPropertyName("last_title")]
+        public string LastTitle { get; init; }
 
         /// <summary>
         /// post_id
         /// </summary>
-        [Field("post_id")]
-        public int PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int PostId { get; init; }
 
         /// <summary>
         /// post_type
         /// </summary>
-        [Field("post_type")]
-        public Posts.PostType PostType { get; internal set; }
+        [JsonPropertyName("post_type")]
+        public Posts.PostType PostType { get; init; }
 
         /// <summary>
         /// revision_guid
         /// </summary>
-        [Field("revision_guid")]
-        public Guid RevisionGuid { get; internal set; }
+        [JsonPropertyName("revision_guid")]
+        public Guid RevisionGuid { get; init; }
 
         /// <summary>
         /// revision_number
         /// </summary>
-        [Field("revision_number")]
-        public int RevisionNumber { get; internal set; }
+        [JsonPropertyName("revision_number")]
+        public int RevisionNumber { get; init; }
 
         /// <summary>
         /// revision_type
         /// </summary>
-        [Field("revision_type")]
-        public Revisions.RevisionType RevisionType { get; internal set; }
+        [JsonPropertyName("revision_type")]
+        public Revisions.RevisionType RevisionType { get; init; }
 
         /// <summary>
         /// set_community_wiki
         /// </summary>
-        [Field("set_community_wiki")]
-        public bool SetCommunityWiki { get; internal set; }
+        [JsonPropertyName("set_community_wiki")]
+        public bool SetCommunityWiki { get; init; }
 
         /// <summary>
         /// tags
         /// </summary>
-        [Field("tags")]
-        public string[] Tags { get; internal set; }
+        [JsonPropertyName("tags")]
+        public string[] Tags { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
         /// <summary>
         /// user
         /// </summary>
-        [Field("user")]
-        public ShallowUser User { get; internal set; }
+        [JsonPropertyName("user")]
+        public ShallowUser User { get; init; }
 
     }
 }

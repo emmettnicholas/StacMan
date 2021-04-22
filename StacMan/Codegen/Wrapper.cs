@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,74 +18,74 @@ namespace StackExchange.StacMan
         /// <summary>
         /// backoff
         /// </summary>
-        [Field("backoff")]
-        public int? Backoff { get; internal set; }
+        [JsonPropertyName("backoff")]
+        public int? Backoff { get; init; }
 
         /// <summary>
         /// error_id
         /// </summary>
-        [Field("error_id")]
-        public int? ErrorId { get; internal set; }
+        [JsonPropertyName("error_id")]
+        public int? ErrorId { get; init; }
 
         /// <summary>
         /// error_message
         /// </summary>
-        [Field("error_message")]
-        public string ErrorMessage { get; internal set; }
+        [JsonPropertyName("error_message")]
+        public string ErrorMessage { get; init; }
 
         /// <summary>
         /// error_name
         /// </summary>
-        [Field("error_name")]
-        public string ErrorName { get; internal set; }
+        [JsonPropertyName("error_name")]
+        public string ErrorName { get; init; }
 
         /// <summary>
         /// has_more
         /// </summary>
-        [Field("has_more")]
-        public bool HasMore { get; internal set; }
+        [JsonPropertyName("has_more")]
+        public bool HasMore { get; init; }
 
         /// <summary>
         /// items
         /// </summary>
-        [Field("items")]
-        public T[] Items { get; internal set; }
+        [JsonPropertyName("items")]
+        public T[] Items { get; init; }
 
         /// <summary>
         /// page
         /// </summary>
-        [Field("page")]
-        public int Page { get; internal set; }
+        [JsonPropertyName("page")]
+        public int Page { get; init; }
 
         /// <summary>
         /// page_size
         /// </summary>
-        [Field("page_size")]
-        public int PageSize { get; internal set; }
+        [JsonPropertyName("page_size")]
+        public int PageSize { get; init; }
 
         /// <summary>
         /// quota_max
         /// </summary>
-        [Field("quota_max")]
-        public int QuotaMax { get; internal set; }
+        [JsonPropertyName("quota_max")]
+        public int QuotaMax { get; init; }
 
         /// <summary>
         /// quota_remaining
         /// </summary>
-        [Field("quota_remaining")]
-        public int QuotaRemaining { get; internal set; }
+        [JsonPropertyName("quota_remaining")]
+        public int QuotaRemaining { get; init; }
 
         /// <summary>
         /// total
         /// </summary>
-        [Field("total")]
-        public int Total { get; internal set; }
+        [JsonPropertyName("total")]
+        public int Total { get; init; }
 
         /// <summary>
         /// type
         /// </summary>
-        [Field("type")]
-        public string Type { get; internal set; }
+        [JsonPropertyName("type")]
+        public string Type { get; init; }
 
     }
 }

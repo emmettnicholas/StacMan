@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,44 +18,44 @@ namespace StackExchange.StacMan
         /// <summary>
         /// accept_rate
         /// </summary>
-        [Field("accept_rate")]
-        public int? AcceptRate { get; internal set; }
+        [JsonPropertyName("accept_rate")]
+        public int? AcceptRate { get; init; }
 
         /// <summary>
         /// display_name
         /// </summary>
-        [Field("display_name")]
-        public string DisplayName { get; internal set; }
+        [JsonPropertyName("display_name")]
+        public string DisplayName { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// profile_image
         /// </summary>
-        [Field("profile_image")]
-        public string ProfileImage { get; internal set; }
+        [JsonPropertyName("profile_image")]
+        public string ProfileImage { get; init; }
 
         /// <summary>
         /// reputation
         /// </summary>
-        [Field("reputation")]
-        public int? Reputation { get; internal set; }
+        [JsonPropertyName("reputation")]
+        public int? Reputation { get; init; }
 
         /// <summary>
         /// user_id
         /// </summary>
-        [Field("user_id")]
-        public int? UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int? UserId { get; init; }
 
         /// <summary>
         /// user_type
         /// </summary>
-        [Field("user_type")]
-        public Users.UserType UserType { get; internal set; }
+        [JsonPropertyName("user_type")]
+        public Users.UserType UserType { get; init; }
 
     }
 }

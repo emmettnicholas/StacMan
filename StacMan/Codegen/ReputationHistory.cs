@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,32 +18,32 @@ namespace StackExchange.StacMan
         /// <summary>
         /// creation_date -- introduced in API version 2.1
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// post_id -- introduced in API version 2.1
         /// </summary>
-        [Field("post_id")]
-        public int? PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int? PostId { get; init; }
 
         /// <summary>
         /// reputation_change -- introduced in API version 2.1
         /// </summary>
-        [Field("reputation_change")]
-        public int ReputationChange { get; internal set; }
+        [JsonPropertyName("reputation_change")]
+        public int ReputationChange { get; init; }
 
         /// <summary>
         /// reputation_history_type -- introduced in API version 2.1
         /// </summary>
-        [Field("reputation_history_type")]
-        public ReputationHistories.ReputationHistoryType ReputationHistoryType { get; internal set; }
+        [JsonPropertyName("reputation_history_type")]
+        public ReputationHistories.ReputationHistoryType ReputationHistoryType { get; init; }
 
         /// <summary>
         /// user_id -- introduced in API version 2.1
         /// </summary>
-        [Field("user_id")]
-        public int UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; init; }
 
     }
 }

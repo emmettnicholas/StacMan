@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// link_color
         /// </summary>
-        [Field("link_color")]
-        public string LinkColor { get; internal set; }
+        [JsonPropertyName("link_color")]
+        public string LinkColor { get; init; }
 
         /// <summary>
         /// tag_background_color
         /// </summary>
-        [Field("tag_background_color")]
-        public string TagBackgroundColor { get; internal set; }
+        [JsonPropertyName("tag_background_color")]
+        public string TagBackgroundColor { get; init; }
 
         /// <summary>
         /// tag_foreground_color
         /// </summary>
-        [Field("tag_foreground_color")]
-        public string TagForegroundColor { get; internal set; }
+        [JsonPropertyName("tag_foreground_color")]
+        public string TagForegroundColor { get; init; }
 
     }
 }

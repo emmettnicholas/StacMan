@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,32 +18,32 @@ namespace StackExchange.StacMan
         /// <summary>
         /// applied_count
         /// </summary>
-        [Field("applied_count")]
-        public int AppliedCount { get; internal set; }
+        [JsonPropertyName("applied_count")]
+        public int AppliedCount { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// from_tag
         /// </summary>
-        [Field("from_tag")]
-        public string FromTag { get; internal set; }
+        [JsonPropertyName("from_tag")]
+        public string FromTag { get; init; }
 
         /// <summary>
         /// last_applied_date
         /// </summary>
-        [Field("last_applied_date")]
-        public DateTime? LastAppliedDate { get; internal set; }
+        [JsonPropertyName("last_applied_date")]
+        public DateTime? LastAppliedDate { get; init; }
 
         /// <summary>
         /// to_tag
         /// </summary>
-        [Field("to_tag")]
-        public string ToTag { get; internal set; }
+        [JsonPropertyName("to_tag")]
+        public string ToTag { get; init; }
 
     }
 }

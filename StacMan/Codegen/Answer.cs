@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,104 +18,104 @@ namespace StackExchange.StacMan
         /// <summary>
         /// answer_id
         /// </summary>
-        [Field("answer_id")]
-        public int AnswerId { get; internal set; }
+        [JsonPropertyName("answer_id")]
+        public int AnswerId { get; init; }
 
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// comments
         /// </summary>
-        [Field("comments")]
-        public Comment[] Comments { get; internal set; }
+        [JsonPropertyName("comments")]
+        public Comment[] Comments { get; init; }
 
         /// <summary>
         /// community_owned_date
         /// </summary>
-        [Field("community_owned_date")]
-        public DateTime? CommunityOwnedDate { get; internal set; }
+        [JsonPropertyName("community_owned_date")]
+        public DateTime? CommunityOwnedDate { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// down_vote_count
         /// </summary>
-        [Field("down_vote_count")]
-        public int DownVoteCount { get; internal set; }
+        [JsonPropertyName("down_vote_count")]
+        public int DownVoteCount { get; init; }
 
         /// <summary>
         /// is_accepted
         /// </summary>
-        [Field("is_accepted")]
-        public bool IsAccepted { get; internal set; }
+        [JsonPropertyName("is_accepted")]
+        public bool IsAccepted { get; init; }
 
         /// <summary>
         /// last_activity_date
         /// </summary>
-        [Field("last_activity_date")]
-        public DateTime LastActivityDate { get; internal set; }
+        [JsonPropertyName("last_activity_date")]
+        public DateTime LastActivityDate { get; init; }
 
         /// <summary>
         /// last_edit_date
         /// </summary>
-        [Field("last_edit_date")]
-        public DateTime? LastEditDate { get; internal set; }
+        [JsonPropertyName("last_edit_date")]
+        public DateTime? LastEditDate { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// locked_date
         /// </summary>
-        [Field("locked_date")]
-        public DateTime? LockedDate { get; internal set; }
+        [JsonPropertyName("locked_date")]
+        public DateTime? LockedDate { get; init; }
 
         /// <summary>
         /// owner
         /// </summary>
-        [Field("owner")]
-        public ShallowUser Owner { get; internal set; }
+        [JsonPropertyName("owner")]
+        public ShallowUser Owner { get; init; }
 
         /// <summary>
         /// question_id
         /// </summary>
-        [Field("question_id")]
-        public int QuestionId { get; internal set; }
+        [JsonPropertyName("question_id")]
+        public int QuestionId { get; init; }
 
         /// <summary>
         /// score
         /// </summary>
-        [Field("score")]
-        public int Score { get; internal set; }
+        [JsonPropertyName("score")]
+        public int Score { get; init; }
 
         /// <summary>
         /// tags -- introduced in API version 2.1
         /// </summary>
-        [Field("tags")]
-        public string[] Tags { get; internal set; }
+        [JsonPropertyName("tags")]
+        public string[] Tags { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
         /// <summary>
         /// up_vote_count
         /// </summary>
-        [Field("up_vote_count")]
-        public int UpVoteCount { get; internal set; }
+        [JsonPropertyName("up_vote_count")]
+        public int UpVoteCount { get; init; }
 
     }
 }
