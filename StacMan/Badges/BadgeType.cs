@@ -1,4 +1,6 @@
-﻿namespace StackExchange.StacMan.Badges
+﻿using System.Text.Json.Serialization;
+
+namespace StackExchange.StacMan.Badges
 {
     /// <summary>
     /// badge_type
@@ -8,11 +10,13 @@
         /// <summary>
         /// name
         /// </summary>
+        [JsonPropertyName("name")]
         Named,
 
         /// <summary>
         /// tag_based
         /// </summary>
+        [JsonPropertyName("tag_based")]
         TagBased
     }
 }

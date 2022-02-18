@@ -1,294 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3C310AC6-6229-41FB-B33F-8381CF4FECBF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>Stack Exchange</Company>
+    <Description>Stack Exchange APIv2 .NET client</Description>
     <RootNamespace>StackExchange.StacMan</RootNamespace>
-    <AssemblyName>StacMan</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <Version>1.1.0.0</Version>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\StacMan.xml</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Answers\Sort.cs" />
-    <Compile Include="ApiUrlBuilder.cs" />
-    <Compile Include="Badges\AllSort.cs" />
-    <Compile Include="Badges\Sort.cs" />
-    <Compile Include="Badges\BadgeType.cs" />
-    <Compile Include="Badges\UserSort.cs" />
-    <Compile Include="Badges\Rank.cs" />
-    <Compile Include="Codegen\AccessToken.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\AccountMerge.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Answer.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Badge.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\BadgeCount.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Comment.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Error.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Event.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Filter.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\InboxItem.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Info.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\MigrationInfo.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\NetworkUser.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Notice.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Notification.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Post.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Privilege.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Question.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\QuestionTimeline.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\RelatedSite.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Reputation.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\ReputationHistory.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Revision.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\ShallowUser.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Site.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.AccessTokenMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.AnswerMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.ApplicationMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.BadgeMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.CommentMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.ErrorMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.EventMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.FilterMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.InboxMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.InfoMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.NotificationMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.PostMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.PrivilegeMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.QuestionMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.RevisionMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.SearchMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.SiteMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.SuggestedEditMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.TagMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\StacManClient.UserMethods.cs">
-      <DependentUpon>Methods.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Styling.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\SuggestedEdit.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Tag.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\TagScore.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\TagSynonym.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\TagWiki.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\TopTag.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\User.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\UserTimeline.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\Wrapper.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Codegen\WritePermission.cs">
-      <DependentUpon>Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Comments\Sort.cs" />
-    <Compile Include="Events\EventType.cs" />
-    <Compile Include="Exceptions\StackExchangeApiException.cs" />
-    <Compile Include="Filters.BuiltIn.cs" />
-    <Compile Include="Filters\FilterType.cs" />
-    <Compile Include="InboxItems\ItemType.cs" />
-    <Compile Include="Notifications\NotificationType.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Posts\Sort.cs" />
-    <Compile Include="Questions\AllSort.cs" />
-    <Compile Include="Posts\PostType.cs" />
-    <Compile Include="Questions\FavoriteSort.cs" />
-    <Compile Include="Questions\RelatedSort.cs" />
-    <Compile Include="Questions\SearchSort.cs" />
-    <Compile Include="Questions\Sort.cs" />
-    <Compile Include="QuestionTimelines\TimelineType.cs" />
-    <Compile Include="ReflectionCache.cs" />
-    <Compile Include="ReputationHistories\ReputationHistoryType.cs" />
-    <Compile Include="Reputations\VoteType.cs" />
-    <Compile Include="Revisions\RevisionType.cs" />
-    <Compile Include="Sites\SiteState.cs" />
-    <Compile Include="SortAttribute.cs" />
-    <Compile Include="StacManClient.ApiRequest.cs">
+    <Compile Update="StacManClient.*.cs">
       <DependentUpon>StacManClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="StacManClient.Validation.cs">
-      <DependentUpon>StacManClient.cs</DependentUpon>
+    <Compile Update="Codegen\*.cs">
+      <DependentUpon Condition="$([MSBuild]::ValueOrDefault('%(Filename)', '').EndsWith('Methods'))">Methods.tt</DependentUpon>
+      <DependentUpon Condition="!$([MSBuild]::ValueOrDefault('%(Filename)', '').EndsWith('Methods'))">Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="SuggestedEdits\Sort.cs" />
-    <Compile Include="TagSynonyms\Sort.cs" />
-    <Compile Include="Tags\Period.cs" />
-    <Compile Include="Tags\Sort.cs" />
-    <Compile Include="UserTimelines\TimelineType.cs" />
-    <Compile Include="Users\Sort.cs" />
-    <Compile Include="Users\UserType.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
-    <Compile Include="FieldAttribute.cs" />
-    <Compile Include="StacManResponse.cs" />
-    <Compile Include="StacManType.cs" />
-    <Compile Include="StacManClient.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Codegen\Methods.ignore">
-      <AutoGen>True</AutoGen>
+    <None Update="Codegen\Methods.ignore">
+      <DependentUpon>Methods.tt</DependentUpon>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Methods.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
     </None>
-    <None Include="Codegen\Methods.json" />
-    <None Include="Codegen\Methods.tt">
+    <None Update="Codegen\Methods.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Methods.ignore</LastGenOutput>
     </None>
-    <None Include="Codegen\Manager.ttinclude" />
-    <None Include="Codegen\Types.ignore">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <None Update="Codegen\Types.ignore">
       <DependentUpon>Types.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </None>
-    <None Include="Codegen\Types.json" />
-    <None Include="Codegen\Types.tt">
+    <None Update="Codegen\Types.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Types.ignore</LastGenOutput>
     </None>
   </ItemGroup>
+
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <PackageReference Include="IsExternalInit" Version="1.0.2" PrivateAssets="all" />
+    <PackageReference Include="Macross.Json.Extensions" Version="2.2.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.2" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="StacMan.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
 </Project>

@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,38 +18,38 @@ namespace StackExchange.StacMan
         /// <summary>
         /// body -- introduced in API version 2.1
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// creation_date -- introduced in API version 2.1
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// is_unread -- introduced in API version 2.1
         /// </summary>
-        [Field("is_unread")]
-        public bool IsUnread { get; internal set; }
+        [JsonPropertyName("is_unread")]
+        public bool IsUnread { get; init; }
 
         /// <summary>
         /// notification_type -- introduced in API version 2.1
         /// </summary>
-        [Field("notification_type")]
-        public Notifications.NotificationType NotificationType { get; internal set; }
+        [JsonPropertyName("notification_type")]
+        public Notifications.NotificationType NotificationType { get; init; }
 
         /// <summary>
         /// post_id -- introduced in API version 2.1
         /// </summary>
-        [Field("post_id")]
-        public int? PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int? PostId { get; init; }
 
         /// <summary>
         /// site -- introduced in API version 2.1
         /// </summary>
-        [Field("site")]
-        public Site Site { get; internal set; }
+        [JsonPropertyName("site")]
+        public Site Site { get; init; }
 
     }
 }

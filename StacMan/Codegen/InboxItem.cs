@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,62 +18,62 @@ namespace StackExchange.StacMan
         /// <summary>
         /// answer_id
         /// </summary>
-        [Field("answer_id")]
-        public int? AnswerId { get; internal set; }
+        [JsonPropertyName("answer_id")]
+        public int? AnswerId { get; init; }
 
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// comment_id
         /// </summary>
-        [Field("comment_id")]
-        public int? CommentId { get; internal set; }
+        [JsonPropertyName("comment_id")]
+        public int? CommentId { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// is_unread
         /// </summary>
-        [Field("is_unread")]
-        public bool IsUnread { get; internal set; }
+        [JsonPropertyName("is_unread")]
+        public bool IsUnread { get; init; }
 
         /// <summary>
         /// item_type
         /// </summary>
-        [Field("item_type")]
-        public InboxItems.ItemType ItemType { get; internal set; }
+        [JsonPropertyName("item_type")]
+        public InboxItems.ItemType ItemType { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// question_id
         /// </summary>
-        [Field("question_id")]
-        public int? QuestionId { get; internal set; }
+        [JsonPropertyName("question_id")]
+        public int? QuestionId { get; init; }
 
         /// <summary>
         /// site
         /// </summary>
-        [Field("site")]
-        public Site Site { get; internal set; }
+        [JsonPropertyName("site")]
+        public Site Site { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
     }
 }

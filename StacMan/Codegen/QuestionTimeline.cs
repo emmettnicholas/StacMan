@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,62 +18,62 @@ namespace StackExchange.StacMan
         /// <summary>
         /// comment_id
         /// </summary>
-        [Field("comment_id")]
-        public int? CommentId { get; internal set; }
+        [JsonPropertyName("comment_id")]
+        public int? CommentId { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// down_vote_count
         /// </summary>
-        [Field("down_vote_count")]
-        public int? DownVoteCount { get; internal set; }
+        [JsonPropertyName("down_vote_count")]
+        public int? DownVoteCount { get; init; }
 
         /// <summary>
         /// owner
         /// </summary>
-        [Field("owner")]
-        public ShallowUser Owner { get; internal set; }
+        [JsonPropertyName("owner")]
+        public ShallowUser Owner { get; init; }
 
         /// <summary>
         /// post_id
         /// </summary>
-        [Field("post_id")]
-        public int? PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int? PostId { get; init; }
 
         /// <summary>
         /// question_id
         /// </summary>
-        [Field("question_id")]
-        public int QuestionId { get; internal set; }
+        [JsonPropertyName("question_id")]
+        public int QuestionId { get; init; }
 
         /// <summary>
         /// revision_guid
         /// </summary>
-        [Field("revision_guid")]
-        public Guid? RevisionGuid { get; internal set; }
+        [JsonPropertyName("revision_guid")]
+        public Guid? RevisionGuid { get; init; }
 
         /// <summary>
         /// timeline_type
         /// </summary>
-        [Field("timeline_type")]
-        public QuestionTimelines.TimelineType TimelineType { get; internal set; }
+        [JsonPropertyName("timeline_type")]
+        public QuestionTimelines.TimelineType TimelineType { get; init; }
 
         /// <summary>
         /// up_vote_count
         /// </summary>
-        [Field("up_vote_count")]
-        public int? UpVoteCount { get; internal set; }
+        [JsonPropertyName("up_vote_count")]
+        public int? UpVoteCount { get; init; }
 
         /// <summary>
         /// user
         /// </summary>
-        [Field("user")]
-        public ShallowUser User { get; internal set; }
+        [JsonPropertyName("user")]
+        public ShallowUser User { get; init; }
 
     }
 }

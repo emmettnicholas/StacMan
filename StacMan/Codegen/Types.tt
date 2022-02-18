@@ -1,9 +1,7 @@
-﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ include file="Manager.ttinclude" #>
 <#@ assembly name="System.Web.Extensions" #>
 <#@ output extension=".ignore" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="System.Text" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Web.Script.Serialization" #>
 <# // To debug, uncomment the next two lines
@@ -33,6 +31,7 @@ foreach (var typeName in typesObj.Keys)
 #>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -68,8 +67,8 @@ namespace StackExchange.StacMan
         /// <summary>
         /// <#= fieldName #><#= fieldMinApiVersion != "2.0" ? String.Format(" -- introduced in API version {0}", fieldMinApiVersion) : "" #>
         /// </summary>
-        [Field("<#= fieldName #>")]
-        public <#= propertyTypeName #> <#= propertyName #> { get; internal set; }
+        [JsonPropertyName("<#= fieldName #>")]
+        public <#= propertyTypeName #> <#= propertyName #> { get; init; }
 
 <#
     }

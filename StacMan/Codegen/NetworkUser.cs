@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,68 +18,68 @@ namespace StackExchange.StacMan
         /// <summary>
         /// account_id
         /// </summary>
-        [Field("account_id")]
-        public int AccountId { get; internal set; }
+        [JsonPropertyName("account_id")]
+        public int AccountId { get; init; }
 
         /// <summary>
         /// answer_count
         /// </summary>
-        [Field("answer_count")]
-        public int AnswerCount { get; internal set; }
+        [JsonPropertyName("answer_count")]
+        public int AnswerCount { get; init; }
 
         /// <summary>
         /// badge_counts
         /// </summary>
-        [Field("badge_counts")]
-        public BadgeCount BadgeCounts { get; internal set; }
+        [JsonPropertyName("badge_counts")]
+        public BadgeCount BadgeCounts { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// last_access_date
         /// </summary>
-        [Field("last_access_date")]
-        public DateTime LastAccessDate { get; internal set; }
+        [JsonPropertyName("last_access_date")]
+        public DateTime LastAccessDate { get; init; }
 
         /// <summary>
         /// question_count
         /// </summary>
-        [Field("question_count")]
-        public int QuestionCount { get; internal set; }
+        [JsonPropertyName("question_count")]
+        public int QuestionCount { get; init; }
 
         /// <summary>
         /// reputation
         /// </summary>
-        [Field("reputation")]
-        public int Reputation { get; internal set; }
+        [JsonPropertyName("reputation")]
+        public int Reputation { get; init; }
 
         /// <summary>
         /// site_name
         /// </summary>
-        [Field("site_name")]
-        public string SiteName { get; internal set; }
+        [JsonPropertyName("site_name")]
+        public string SiteName { get; init; }
 
         /// <summary>
         /// site_url
         /// </summary>
-        [Field("site_url")]
-        public string SiteUrl { get; internal set; }
+        [JsonPropertyName("site_url")]
+        public string SiteUrl { get; init; }
 
         /// <summary>
         /// user_id
         /// </summary>
-        [Field("user_id")]
-        public int UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; init; }
 
         /// <summary>
         /// user_type
         /// </summary>
-        [Field("user_type")]
-        public Users.UserType UserType { get; internal set; }
+        [JsonPropertyName("user_type")]
+        public Users.UserType UserType { get; init; }
 
     }
 }

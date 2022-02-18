@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,50 +18,50 @@ namespace StackExchange.StacMan
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// on_date
         /// </summary>
-        [Field("on_date")]
-        public DateTime OnDate { get; internal set; }
+        [JsonPropertyName("on_date")]
+        public DateTime OnDate { get; init; }
 
         /// <summary>
         /// post_id
         /// </summary>
-        [Field("post_id")]
-        public int PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int PostId { get; init; }
 
         /// <summary>
         /// post_type
         /// </summary>
-        [Field("post_type")]
-        public Posts.PostType PostType { get; internal set; }
+        [JsonPropertyName("post_type")]
+        public Posts.PostType PostType { get; init; }
 
         /// <summary>
         /// reputation_change
         /// </summary>
-        [Field("reputation_change")]
-        public int ReputationChange { get; internal set; }
+        [JsonPropertyName("reputation_change")]
+        public int ReputationChange { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
         /// <summary>
         /// user_id
         /// </summary>
-        [Field("user_id")]
-        public int UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; init; }
 
         /// <summary>
         /// vote_type
         /// </summary>
-        [Field("vote_type")]
-        public Reputations.VoteType VoteType { get; internal set; }
+        [JsonPropertyName("vote_type")]
+        public Reputations.VoteType VoteType { get; init; }
 
     }
 }

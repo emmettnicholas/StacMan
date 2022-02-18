@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// on_date
         /// </summary>
-        [Field("on_date")]
-        public DateTime OnDate { get; internal set; }
+        [JsonPropertyName("on_date")]
+        public DateTime OnDate { get; init; }
 
         /// <summary>
         /// other_site
         /// </summary>
-        [Field("other_site")]
-        public Site OtherSite { get; internal set; }
+        [JsonPropertyName("other_site")]
+        public Site OtherSite { get; init; }
 
         /// <summary>
         /// question_id
         /// </summary>
-        [Field("question_id")]
-        public int QuestionId { get; internal set; }
+        [JsonPropertyName("question_id")]
+        public int QuestionId { get; init; }
 
     }
 }

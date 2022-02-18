@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,44 +18,44 @@ namespace StackExchange.StacMan
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// body_last_edit_date
         /// </summary>
-        [Field("body_last_edit_date")]
-        public DateTime? BodyLastEditDate { get; internal set; }
+        [JsonPropertyName("body_last_edit_date")]
+        public DateTime? BodyLastEditDate { get; init; }
 
         /// <summary>
         /// excerpt
         /// </summary>
-        [Field("excerpt")]
-        public string Excerpt { get; internal set; }
+        [JsonPropertyName("excerpt")]
+        public string Excerpt { get; init; }
 
         /// <summary>
         /// excerpt_last_edit_date
         /// </summary>
-        [Field("excerpt_last_edit_date")]
-        public DateTime? ExcerptLastEditDate { get; internal set; }
+        [JsonPropertyName("excerpt_last_edit_date")]
+        public DateTime? ExcerptLastEditDate { get; init; }
 
         /// <summary>
         /// last_body_editor
         /// </summary>
-        [Field("last_body_editor")]
-        public ShallowUser LastBodyEditor { get; internal set; }
+        [JsonPropertyName("last_body_editor")]
+        public ShallowUser LastBodyEditor { get; init; }
 
         /// <summary>
         /// last_excerpt_editor
         /// </summary>
-        [Field("last_excerpt_editor")]
-        public ShallowUser LastExcerptEditor { get; internal set; }
+        [JsonPropertyName("last_excerpt_editor")]
+        public ShallowUser LastExcerptEditor { get; init; }
 
         /// <summary>
         /// tag_name
         /// </summary>
-        [Field("tag_name")]
-        public string TagName { get; internal set; }
+        [JsonPropertyName("tag_name")]
+        public string TagName { get; init; }
 
     }
 }

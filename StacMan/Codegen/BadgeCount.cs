@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,20 +18,20 @@ namespace StackExchange.StacMan
         /// <summary>
         /// bronze
         /// </summary>
-        [Field("bronze")]
-        public int Bronze { get; internal set; }
+        [JsonPropertyName("bronze")]
+        public int Bronze { get; init; }
 
         /// <summary>
         /// gold
         /// </summary>
-        [Field("gold")]
-        public int Gold { get; internal set; }
+        [JsonPropertyName("gold")]
+        public int Gold { get; init; }
 
         /// <summary>
         /// silver
         /// </summary>
-        [Field("silver")]
-        public int Silver { get; internal set; }
+        [JsonPropertyName("silver")]
+        public int Silver { get; init; }
 
     }
 }

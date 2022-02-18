@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,26 +18,26 @@ namespace StackExchange.StacMan
         /// <summary>
         /// api_site_parameter
         /// </summary>
-        [Field("api_site_parameter")]
-        public string ApiSiteParameter { get; internal set; }
+        [JsonPropertyName("api_site_parameter")]
+        public string ApiSiteParameter { get; init; }
 
         /// <summary>
         /// name
         /// </summary>
-        [Field("name")]
-        public string Name { get; internal set; }
+        [JsonPropertyName("name")]
+        public string Name { get; init; }
 
         /// <summary>
         /// relation
         /// </summary>
-        [Field("relation")]
-        public string Relation { get; internal set; }
+        [JsonPropertyName("relation")]
+        public string Relation { get; init; }
 
         /// <summary>
         /// site_url
         /// </summary>
-        [Field("site_url")]
-        public string SiteUrl { get; internal set; }
+        [JsonPropertyName("site_url")]
+        public string SiteUrl { get; init; }
 
     }
 }

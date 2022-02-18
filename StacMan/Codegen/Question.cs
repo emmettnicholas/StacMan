@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,194 +18,194 @@ namespace StackExchange.StacMan
         /// <summary>
         /// accepted_answer_id
         /// </summary>
-        [Field("accepted_answer_id")]
-        public int? AcceptedAnswerId { get; internal set; }
+        [JsonPropertyName("accepted_answer_id")]
+        public int? AcceptedAnswerId { get; init; }
 
         /// <summary>
         /// answer_count
         /// </summary>
-        [Field("answer_count")]
-        public int AnswerCount { get; internal set; }
+        [JsonPropertyName("answer_count")]
+        public int AnswerCount { get; init; }
 
         /// <summary>
         /// answers
         /// </summary>
-        [Field("answers")]
-        public Answer[] Answers { get; internal set; }
+        [JsonPropertyName("answers")]
+        public Answer[] Answers { get; init; }
 
         /// <summary>
         /// body
         /// </summary>
-        [Field("body")]
-        public string Body { get; internal set; }
+        [JsonPropertyName("body")]
+        public string Body { get; init; }
 
         /// <summary>
         /// bounty_amount
         /// </summary>
-        [Field("bounty_amount")]
-        public int? BountyAmount { get; internal set; }
+        [JsonPropertyName("bounty_amount")]
+        public int? BountyAmount { get; init; }
 
         /// <summary>
         /// bounty_closes_date
         /// </summary>
-        [Field("bounty_closes_date")]
-        public DateTime? BountyClosesDate { get; internal set; }
+        [JsonPropertyName("bounty_closes_date")]
+        public DateTime? BountyClosesDate { get; init; }
 
         /// <summary>
         /// close_vote_count -- introduced in API version 2.1
         /// </summary>
-        [Field("close_vote_count")]
-        public int CloseVoteCount { get; internal set; }
+        [JsonPropertyName("close_vote_count")]
+        public int CloseVoteCount { get; init; }
 
         /// <summary>
         /// closed_date
         /// </summary>
-        [Field("closed_date")]
-        public DateTime? ClosedDate { get; internal set; }
+        [JsonPropertyName("closed_date")]
+        public DateTime? ClosedDate { get; init; }
 
         /// <summary>
         /// closed_reason
         /// </summary>
-        [Field("closed_reason")]
-        public string ClosedReason { get; internal set; }
+        [JsonPropertyName("closed_reason")]
+        public string ClosedReason { get; init; }
 
         /// <summary>
         /// comments
         /// </summary>
-        [Field("comments")]
-        public Comment[] Comments { get; internal set; }
+        [JsonPropertyName("comments")]
+        public Comment[] Comments { get; init; }
 
         /// <summary>
         /// community_owned_date
         /// </summary>
-        [Field("community_owned_date")]
-        public DateTime? CommunityOwnedDate { get; internal set; }
+        [JsonPropertyName("community_owned_date")]
+        public DateTime? CommunityOwnedDate { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// delete_vote_count -- introduced in API version 2.1
         /// </summary>
-        [Field("delete_vote_count")]
-        public int DeleteVoteCount { get; internal set; }
+        [JsonPropertyName("delete_vote_count")]
+        public int DeleteVoteCount { get; init; }
 
         /// <summary>
         /// down_vote_count
         /// </summary>
-        [Field("down_vote_count")]
-        public int DownVoteCount { get; internal set; }
+        [JsonPropertyName("down_vote_count")]
+        public int DownVoteCount { get; init; }
 
         /// <summary>
         /// favorite_count
         /// </summary>
-        [Field("favorite_count")]
-        public int FavoriteCount { get; internal set; }
+        [JsonPropertyName("favorite_count")]
+        public int FavoriteCount { get; init; }
 
         /// <summary>
         /// is_answered
         /// </summary>
-        [Field("is_answered")]
-        public bool IsAnswered { get; internal set; }
+        [JsonPropertyName("is_answered")]
+        public bool IsAnswered { get; init; }
 
         /// <summary>
         /// last_activity_date
         /// </summary>
-        [Field("last_activity_date")]
-        public DateTime LastActivityDate { get; internal set; }
+        [JsonPropertyName("last_activity_date")]
+        public DateTime LastActivityDate { get; init; }
 
         /// <summary>
         /// last_edit_date
         /// </summary>
-        [Field("last_edit_date")]
-        public DateTime? LastEditDate { get; internal set; }
+        [JsonPropertyName("last_edit_date")]
+        public DateTime? LastEditDate { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// locked_date
         /// </summary>
-        [Field("locked_date")]
-        public DateTime? LockedDate { get; internal set; }
+        [JsonPropertyName("locked_date")]
+        public DateTime? LockedDate { get; init; }
 
         /// <summary>
         /// migrated_from
         /// </summary>
-        [Field("migrated_from")]
-        public MigrationInfo MigratedFrom { get; internal set; }
+        [JsonPropertyName("migrated_from")]
+        public MigrationInfo MigratedFrom { get; init; }
 
         /// <summary>
         /// migrated_to
         /// </summary>
-        [Field("migrated_to")]
-        public MigrationInfo MigratedTo { get; internal set; }
+        [JsonPropertyName("migrated_to")]
+        public MigrationInfo MigratedTo { get; init; }
 
         /// <summary>
         /// notice -- introduced in API version 2.1
         /// </summary>
-        [Field("notice")]
-        public Notice Notice { get; internal set; }
+        [JsonPropertyName("notice")]
+        public Notice Notice { get; init; }
 
         /// <summary>
         /// owner
         /// </summary>
-        [Field("owner")]
-        public ShallowUser Owner { get; internal set; }
+        [JsonPropertyName("owner")]
+        public ShallowUser Owner { get; init; }
 
         /// <summary>
         /// protected_date
         /// </summary>
-        [Field("protected_date")]
-        public DateTime? ProtectedDate { get; internal set; }
+        [JsonPropertyName("protected_date")]
+        public DateTime? ProtectedDate { get; init; }
 
         /// <summary>
         /// question_id
         /// </summary>
-        [Field("question_id")]
-        public int QuestionId { get; internal set; }
+        [JsonPropertyName("question_id")]
+        public int QuestionId { get; init; }
 
         /// <summary>
         /// reopen_vote_count -- introduced in API version 2.1
         /// </summary>
-        [Field("reopen_vote_count")]
-        public int ReopenVoteCount { get; internal set; }
+        [JsonPropertyName("reopen_vote_count")]
+        public int ReopenVoteCount { get; init; }
 
         /// <summary>
         /// score
         /// </summary>
-        [Field("score")]
-        public int Score { get; internal set; }
+        [JsonPropertyName("score")]
+        public int Score { get; init; }
 
         /// <summary>
         /// tags
         /// </summary>
-        [Field("tags")]
-        public string[] Tags { get; internal set; }
+        [JsonPropertyName("tags")]
+        public string[] Tags { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
         /// <summary>
         /// up_vote_count
         /// </summary>
-        [Field("up_vote_count")]
-        public int UpVoteCount { get; internal set; }
+        [JsonPropertyName("up_vote_count")]
+        public int UpVoteCount { get; init; }
 
         /// <summary>
         /// view_count
         /// </summary>
-        [Field("view_count")]
-        public int ViewCount { get; internal set; }
+        [JsonPropertyName("view_count")]
+        public int ViewCount { get; init; }
 
     }
 }

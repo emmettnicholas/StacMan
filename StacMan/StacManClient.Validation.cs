@@ -8,10 +8,9 @@ namespace StackExchange.StacMan
     {
         private void ValidateMinApiVersion(string minApiVersion)
         {
-            double clientApiVersion;
-            double methodApiVersion;
-
-            if (Double.TryParse(Version, out clientApiVersion) && Double.TryParse(minApiVersion, out methodApiVersion) && methodApiVersion > clientApiVersion)
+            var isVersionParsed = System.Version.TryParse(Version, out var clientApiVersion);
+            var isMinApiVersionParsed = System.Version.TryParse(minApiVersion, out var methodApiVersion);
+            if (isVersionParsed && isMinApiVersionParsed && methodApiVersion > clientApiVersion)
                 throw new InvalidOperationException("method introduced in API version " + minApiVersion);
         }
 

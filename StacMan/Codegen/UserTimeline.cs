@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,68 +18,68 @@ namespace StackExchange.StacMan
         /// <summary>
         /// badge_id
         /// </summary>
-        [Field("badge_id")]
-        public int? BadgeId { get; internal set; }
+        [JsonPropertyName("badge_id")]
+        public int? BadgeId { get; init; }
 
         /// <summary>
         /// comment_id
         /// </summary>
-        [Field("comment_id")]
-        public int? CommentId { get; internal set; }
+        [JsonPropertyName("comment_id")]
+        public int? CommentId { get; init; }
 
         /// <summary>
         /// creation_date
         /// </summary>
-        [Field("creation_date")]
-        public DateTime CreationDate { get; internal set; }
+        [JsonPropertyName("creation_date")]
+        public DateTime CreationDate { get; init; }
 
         /// <summary>
         /// detail
         /// </summary>
-        [Field("detail")]
-        public string Detail { get; internal set; }
+        [JsonPropertyName("detail")]
+        public string Detail { get; init; }
 
         /// <summary>
         /// link
         /// </summary>
-        [Field("link")]
-        public string Link { get; internal set; }
+        [JsonPropertyName("link")]
+        public string Link { get; init; }
 
         /// <summary>
         /// post_id
         /// </summary>
-        [Field("post_id")]
-        public int? PostId { get; internal set; }
+        [JsonPropertyName("post_id")]
+        public int? PostId { get; init; }
 
         /// <summary>
         /// post_type
         /// </summary>
-        [Field("post_type")]
-        public Posts.PostType PostType { get; internal set; }
+        [JsonPropertyName("post_type")]
+        public Posts.PostType PostType { get; init; }
 
         /// <summary>
         /// suggested_edit_id
         /// </summary>
-        [Field("suggested_edit_id")]
-        public int? SuggestedEditId { get; internal set; }
+        [JsonPropertyName("suggested_edit_id")]
+        public int? SuggestedEditId { get; init; }
 
         /// <summary>
         /// timeline_type
         /// </summary>
-        [Field("timeline_type")]
-        public UserTimelines.TimelineType TimelineType { get; internal set; }
+        [JsonPropertyName("timeline_type")]
+        public UserTimelines.TimelineType TimelineType { get; init; }
 
         /// <summary>
         /// title
         /// </summary>
-        [Field("title")]
-        public string Title { get; internal set; }
+        [JsonPropertyName("title")]
+        public string Title { get; init; }
 
         /// <summary>
         /// user_id
         /// </summary>
-        [Field("user_id")]
-        public int UserId { get; internal set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; init; }
 
     }
 }

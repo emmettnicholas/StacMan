@@ -5,6 +5,7 @@
 // </auto-generated>
 
 using System;
+using System.Text.Json.Serialization;
 
 namespace StackExchange.StacMan
 {
@@ -17,110 +18,110 @@ namespace StackExchange.StacMan
         /// <summary>
         /// aliases
         /// </summary>
-        [Field("aliases")]
-        public string[] Aliases { get; internal set; }
+        [JsonPropertyName("aliases")]
+        public string[] Aliases { get; init; }
 
         /// <summary>
         /// api_site_parameter
         /// </summary>
-        [Field("api_site_parameter")]
-        public string ApiSiteParameter { get; internal set; }
+        [JsonPropertyName("api_site_parameter")]
+        public string ApiSiteParameter { get; init; }
 
         /// <summary>
         /// audience
         /// </summary>
-        [Field("audience")]
-        public string Audience { get; internal set; }
+        [JsonPropertyName("audience")]
+        public string Audience { get; init; }
 
         /// <summary>
         /// closed_beta_date
         /// </summary>
-        [Field("closed_beta_date")]
-        public DateTime? ClosedBetaDate { get; internal set; }
+        [JsonPropertyName("closed_beta_date")]
+        public DateTime? ClosedBetaDate { get; init; }
 
         /// <summary>
         /// favicon_url
         /// </summary>
-        [Field("favicon_url")]
-        public string FaviconUrl { get; internal set; }
+        [JsonPropertyName("favicon_url")]
+        public string FaviconUrl { get; init; }
 
         /// <summary>
         /// high_resolution_icon_url -- introduced in API version 2.1
         /// </summary>
-        [Field("high_resolution_icon_url")]
-        public string HighResolutionIconUrl { get; internal set; }
+        [JsonPropertyName("high_resolution_icon_url")]
+        public string HighResolutionIconUrl { get; init; }
 
         /// <summary>
         /// icon_url
         /// </summary>
-        [Field("icon_url")]
-        public string IconUrl { get; internal set; }
+        [JsonPropertyName("icon_url")]
+        public string IconUrl { get; init; }
 
         /// <summary>
         /// launch_date
         /// </summary>
-        [Field("launch_date")]
-        public DateTime LaunchDate { get; internal set; }
+        [JsonPropertyName("launch_date")]
+        public DateTime LaunchDate { get; init; }
 
         /// <summary>
         /// logo_url
         /// </summary>
-        [Field("logo_url")]
-        public string LogoUrl { get; internal set; }
+        [JsonPropertyName("logo_url")]
+        public string LogoUrl { get; init; }
 
         /// <summary>
         /// markdown_extensions
         /// </summary>
-        [Field("markdown_extensions")]
-        public string[] MarkdownExtensions { get; internal set; }
+        [JsonPropertyName("markdown_extensions")]
+        public string[] MarkdownExtensions { get; init; }
 
         /// <summary>
         /// name
         /// </summary>
-        [Field("name")]
-        public string Name { get; internal set; }
+        [JsonPropertyName("name")]
+        public string Name { get; init; }
 
         /// <summary>
         /// open_beta_date
         /// </summary>
-        [Field("open_beta_date")]
-        public DateTime? OpenBetaDate { get; internal set; }
+        [JsonPropertyName("open_beta_date")]
+        public DateTime? OpenBetaDate { get; init; }
 
         /// <summary>
         /// related_sites
         /// </summary>
-        [Field("related_sites")]
-        public RelatedSite[] RelatedSites { get; internal set; }
+        [JsonPropertyName("related_sites")]
+        public RelatedSite[] RelatedSites { get; init; }
 
         /// <summary>
         /// site_state
         /// </summary>
-        [Field("site_state")]
-        public Sites.SiteState SiteState { get; internal set; }
+        [JsonPropertyName("site_state")]
+        public Sites.SiteState SiteState { get; init; }
 
         /// <summary>
         /// site_type
         /// </summary>
-        [Field("site_type")]
-        public string SiteType { get; internal set; }
+        [JsonPropertyName("site_type")]
+        public string SiteType { get; init; }
 
         /// <summary>
         /// site_url
         /// </summary>
-        [Field("site_url")]
-        public string SiteUrl { get; internal set; }
+        [JsonPropertyName("site_url")]
+        public string SiteUrl { get; init; }
 
         /// <summary>
         /// styling
         /// </summary>
-        [Field("styling")]
-        public Styling Styling { get; internal set; }
+        [JsonPropertyName("styling")]
+        public Styling Styling { get; init; }
 
         /// <summary>
         /// twitter_account
         /// </summary>
-        [Field("twitter_account")]
-        public string TwitterAccount { get; internal set; }
+        [JsonPropertyName("twitter_account")]
+        public string TwitterAccount { get; init; }
 
     }
 }
