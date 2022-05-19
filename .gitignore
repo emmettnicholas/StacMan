@@ -7,3 +7,4 @@ _ReSharper.*
 *.csproj.user
 *.sln.ide
 NuGet.CommandLine.*
+/.vs
