@@ -369,13 +369,23 @@ namespace StackExchange.StacMan
                 {
                     var elementType = property.PropertyType.GetElementType();
 
+
+                    object[] objArr;
                     Func<object, object> selector;
                     if (elementType.BaseType == typeof(StacManType))
+                    {
                         selector = o => ReflectionCache.StacManClientParseApiResponse.MakeGenericMethod(elementType).Invoke(this, new object[] { o, backoffKey });
-                    else
-                        selector = o => Convert.ChangeType(o, elementType.BaseType);
 
-                    var objArr = ((JArray)jsonObject[fieldName]).Select(o=> o.ToObject<Dictionary<string, object>>()).Cast<object>().Select(selector).ToArray();
+                        objArr = ((JArray)jsonObject[fieldName]).Select(o => o.ToObject<Dictionary<string, object>>())
+                                                                .Select(selector).ToArray();
+                    }
+                    else
+                    {
+                        selector = o => Convert.ChangeType(o, elementType.BaseType);
+                        objArr = ((JArray)jsonObject[fieldName]).Select(o => ((JValue)o).Value)
+                                                                .Select(selector).ToArray();
+
+                    }
 
                     value = Array.CreateInstance(elementType, objArr.Length);
                     Array.Copy(objArr, (Array)value, objArr.Length);
