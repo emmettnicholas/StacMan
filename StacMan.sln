@@ -1,22 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30626.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacMan", "StacMan\StacMan.csproj", "{3C310AC6-6229-41FB-B33F-8381CF4FECBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StacMan", "StacMan\StacMan.csproj", "{3C310AC6-6229-41FB-B33F-8381CF4FECBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacMan.Tests", "StacMan.Tests\StacMan.Tests.csproj", "{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StacMan.Tests", "StacMan.Tests\StacMan.Tests.csproj", "{5FBD3A5B-93AE-43B7-9566-C7D08A71C8E9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{940A5141-7F86-40E6-BB3D-046EE0A79FB7}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 		StacMan.vsmdi = StacMan.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{35579271-4F3D-47C8-B6B2-EA4B672D52B4}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
 Global
@@ -39,6 +34,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35
+		SolutionGuid = {03B8E1E4-6E0A-475B-A79E-5174D4ABB49A}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = StacMan.vsmdi

@@ -2,6 +2,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0</TargetFrameworks>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>StacMan</PackageId>
+		<Version>1.1.2</Version>
+		<Authors>Emmett Nicholas;Marc Gravell</Authors>
+		<Description>StacMan is a .NET client for Stack Exchange API v2</Description>
+		<Copyright>Copyright 2012</Copyright>
+		<PackageProjectUrl>https://github.com/StackExchange/StacMan</PackageProjectUrl>
+		<PackageIconUrl>http://i.stack.imgur.com/M3cQG.png</PackageIconUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
