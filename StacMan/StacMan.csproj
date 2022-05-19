@@ -10,6 +10,13 @@
 		<Copyright>Copyright 2012</Copyright>
 		<PackageProjectUrl>https://github.com/StackExchange/StacMan</PackageProjectUrl>
 		<PackageIconUrl>http://i.stack.imgur.com/M3cQG.png</PackageIconUrl>
+		<RootNamespace>StackExchange.StacMan</RootNamespace>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<RepositoryUrl>https://github.com/StackExchange/StacMan.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Stack;Exchange;Overflow;API;StackExchange;StackOverflow</PackageTags>
+		<PackageReleaseNotes>- 1.1.2: adds support for per-request url inspection and manipulation via SetUrlManager</PackageReleaseNotes>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
