@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Site>> ISiteMethods.GetAll(string filter, int? page, int? pagesize)
+        Task<StacManResponse<Site>> ISiteMethods.GetAll(string filter, int? page, int? pagesize)
         {
             ValidatePaging(page, pagesize);
 
@@ -32,7 +32,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return await CreateApiTask<Site>(ub, HttpMethod.GET, "/sites");
+            return CreateApiTask<Site>(ub, HttpMethod.GET, "/sites");
         }
     }
 

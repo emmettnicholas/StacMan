@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Question>> ISearchMethods.GetMatches(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string intitle)
+        Task<StacManResponse<Question>> ISearchMethods.GetMatches(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string intitle)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -46,10 +46,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("nottagged", nottagged);
             ub.AddParameter("intitle", intitle);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/search");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/search");
         }
 
-        async Task<StacManResponse<Question>> ISearchMethods.GetMatchesAdvanced(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string q, bool? accepted, int? answers, string body, bool? closed, bool? migrated, bool? notice, string nottagged, string tagged, string title, int? user, string url, int? views, bool? wiki)
+        Task<StacManResponse<Question>> ISearchMethods.GetMatchesAdvanced(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string q, bool? accepted, int? answers, string body, bool? closed, bool? migrated, bool? notice, string nottagged, string tagged, string title, int? user, string url, int? views, bool? wiki)
         {
             ValidateString(site, "site");
             ValidateMinApiVersion("2.1");
@@ -85,10 +85,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("views", views);
             ub.AddParameter("wiki", wiki);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/search/advanced");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/search/advanced");
         }
 
-        async Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string intitle)
+        Task<StacManResponse<Question>> ISearchMethods.GetSimilar(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.SearchSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged, string nottagged, string intitle)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -112,7 +112,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("nottagged", nottagged);
             ub.AddParameter("intitle", intitle);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/similar");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/similar");
         }
     }
 

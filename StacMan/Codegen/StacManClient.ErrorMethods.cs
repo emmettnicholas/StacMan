@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Error>> IErrorMethods.GetAll(string filter, int? page, int? pagesize)
+        Task<StacManResponse<Error>> IErrorMethods.GetAll(string filter, int? page, int? pagesize)
         {
             ValidatePaging(page, pagesize);
 
@@ -32,17 +32,17 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return await CreateApiTask<Error>(ub, HttpMethod.GET, "/errors");
+            return CreateApiTask<Error>(ub, HttpMethod.GET, "/errors");
         }
 
-        async Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter)
+        Task<StacManResponse<Error>> IErrorMethods.Simulate(int id, string filter)
         {
 
             var ub = new ApiUrlBuilder(Version, String.Format("/errors/{0}", id), useHttps: false);
 
             ub.AddParameter("filter", filter);
 
-            return await CreateApiTask<Error>(ub, HttpMethod.GET, "/errors/{id}");
+            return CreateApiTask<Error>(ub, HttpMethod.GET, "/errors/{id}");
         }
     }
 

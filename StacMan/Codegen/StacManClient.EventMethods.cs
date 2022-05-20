@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Event>> IEventMethods.GetRecent(string site, string access_token, string filter, int? page, int? pagesize, DateTime? since)
+        Task<StacManResponse<Event>> IEventMethods.GetRecent(string site, string access_token, string filter, int? page, int? pagesize, DateTime? since)
         {
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
@@ -37,7 +37,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("pagesize", pagesize);
             ub.AddParameter("since", since);
 
-            return await CreateApiTask<Event>(ub, HttpMethod.GET, "/events");
+            return CreateApiTask<Event>(ub, HttpMethod.GET, "/events");
         }
     }
 

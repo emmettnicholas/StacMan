@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Badge>> IBadgeMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order, string inname)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order, string inname)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -46,10 +46,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return await CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges");
         }
 
-        async Task<StacManResponse<Badge>> IBadgeMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.AllSort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Badges.BadgeType? mintype, Badges.BadgeType? maxtype, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -73,10 +73,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxtype);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/{ids}");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/{ids}");
         }
 
-        async Task<StacManResponse<Badge>> IBadgeMethods.GetNamed(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetNamed(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -98,10 +98,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return await CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/name");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/name");
         }
 
-        async Task<StacManResponse<Badge>> IBadgeMethods.GetRecent(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetRecent(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -115,10 +115,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return await CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/recipients");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/recipients");
         }
 
-        async Task<StacManResponse<Badge>> IBadgeMethods.GetRecentByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetRecentByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -133,10 +133,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return await CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/{ids}/recipients");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/{ids}/recipients");
         }
 
-        async Task<StacManResponse<Badge>> IBadgeMethods.GetTagBased(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
+        Task<StacManResponse<Badge>> IBadgeMethods.GetTagBased(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Badges.Sort? sort, Badges.Rank? minrank, Badges.Rank? maxrank, string minname, string maxname, Order? order, string inname)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -158,7 +158,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("inname", inname);
 
-            return await CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/tags");
+            return CreateApiTask<Badge>(ub, HttpMethod.GET, "/badges/tags");
         }
     }
 

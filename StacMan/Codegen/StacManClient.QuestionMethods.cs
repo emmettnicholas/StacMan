@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.AllSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
+        Task<StacManResponse<Question>> IQuestionMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.AllSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -44,10 +44,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions");
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Question>> IQuestionMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -69,10 +69,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}");
         }
 
-        async Task<StacManResponse<Answer>> IQuestionMethods.GetAnswers(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Answer>> IQuestionMethods.GetAnswers(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Answers.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -94,10 +94,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Answer>(ub, HttpMethod.GET, "/questions/{ids}/answers");
+            return CreateApiTask<Answer>(ub, HttpMethod.GET, "/questions/{ids}/answers");
         }
 
-        async Task<StacManResponse<Comment>> IQuestionMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Comment>> IQuestionMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -119,10 +119,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Comment>(ub, HttpMethod.GET, "/questions/{ids}/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/questions/{ids}/comments");
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetLinked(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.RelatedSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Question>> IQuestionMethods.GetLinked(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.RelatedSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -144,10 +144,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}/linked");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}/linked");
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetRelated(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.RelatedSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Question>> IQuestionMethods.GetRelated(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.RelatedSort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -169,10 +169,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}/related");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/{ids}/related");
         }
 
-        async Task<StacManResponse<QuestionTimeline>> IQuestionMethods.GetTimelines(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
+        Task<StacManResponse<QuestionTimeline>> IQuestionMethods.GetTimelines(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -187,10 +187,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return await CreateApiTask<QuestionTimeline>(ub, HttpMethod.GET, "/questions/{ids}/timeline");
+            return CreateApiTask<QuestionTimeline>(ub, HttpMethod.GET, "/questions/{ids}/timeline");
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetFeatured(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
+        Task<StacManResponse<Question>> IQuestionMethods.GetFeatured(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -212,10 +212,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/featured");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/featured");
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetUnanswered(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
+        Task<StacManResponse<Question>> IQuestionMethods.GetUnanswered(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -237,10 +237,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/unanswered");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/unanswered");
         }
 
-        async Task<StacManResponse<Question>> IQuestionMethods.GetWithNoAnswers(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
+        Task<StacManResponse<Question>> IQuestionMethods.GetWithNoAnswers(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Questions.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order, string tagged)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -262,7 +262,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("order", order);
             ub.AddParameter("tagged", tagged);
 
-            return await CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/no-answers");
+            return CreateApiTask<Question>(ub, HttpMethod.GET, "/questions/no-answers");
         }
     }
 

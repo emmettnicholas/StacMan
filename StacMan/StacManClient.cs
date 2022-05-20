@@ -66,7 +66,7 @@ namespace StackExchange.StacMan
         /// </summary>
         public bool RespectBackoffs { get; set; }
         
-        private async Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey) where T : StacManType
+        private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey) where T : StacManType
         {
             var request = new ApiRequest<T>(this, ub, httpMethod, backoffKey);
 
@@ -83,7 +83,7 @@ namespace StackExchange.StacMan
                 SendRequest(request);
             }
 
-            return await request.Task;
+            return request.Task;
         }
 
         private void ProcessQueue()

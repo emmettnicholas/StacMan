@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        async Task<StacManResponse<Post>> IPostMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Posts.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Post>> IPostMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Posts.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -43,10 +43,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Post>(ub, HttpMethod.GET, "/posts");
+            return CreateApiTask<Post>(ub, HttpMethod.GET, "/posts");
         }
 
-        async Task<StacManResponse<Post>> IPostMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Posts.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Post>> IPostMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Posts.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -68,10 +68,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Post>(ub, HttpMethod.GET, "/posts/{ids}");
+            return CreateApiTask<Post>(ub, HttpMethod.GET, "/posts/{ids}");
         }
 
-        async Task<StacManResponse<Comment>> IPostMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        Task<StacManResponse<Comment>> IPostMethods.GetComments(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -93,10 +93,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<Comment>(ub, HttpMethod.GET, "/posts/{ids}/comments");
+            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/posts/{ids}/comments");
         }
 
-        async Task<StacManResponse<Comment>> IPostMethods.AddComment(string site, string access_token, int id, string body, string filter, bool? preview)
+        Task<StacManResponse<Comment>> IPostMethods.AddComment(string site, string access_token, int id, string body, string filter, bool? preview)
         {
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
@@ -111,10 +111,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("filter", filter);
             ub.AddParameter("preview", preview);
 
-            return await CreateApiTask<Comment>(ub, HttpMethod.POST, "/posts/{id}/comments/add");
+            return CreateApiTask<Comment>(ub, HttpMethod.POST, "/posts/{id}/comments/add");
         }
 
-        async Task<StacManResponse<Revision>> IPostMethods.GetRevisions(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
+        Task<StacManResponse<Revision>> IPostMethods.GetRevisions(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -129,10 +129,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("fromdate", fromdate);
             ub.AddParameter("todate", todate);
 
-            return await CreateApiTask<Revision>(ub, HttpMethod.GET, "/posts/{ids}/revisions");
+            return CreateApiTask<Revision>(ub, HttpMethod.GET, "/posts/{ids}/revisions");
         }
 
-        async Task<StacManResponse<SuggestedEdit>> IPostMethods.GetSuggestedEdits(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
+        Task<StacManResponse<SuggestedEdit>> IPostMethods.GetSuggestedEdits(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, SuggestedEdits.Sort? sort, DateTime? mindate, DateTime? maxdate, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -152,7 +152,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", maxdate);
             ub.AddParameter("order", order);
 
-            return await CreateApiTask<SuggestedEdit>(ub, HttpMethod.GET, "/posts/{ids}/suggested-edits");
+            return CreateApiTask<SuggestedEdit>(ub, HttpMethod.GET, "/posts/{ids}/suggested-edits");
         }
     }
 
