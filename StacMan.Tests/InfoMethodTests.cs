@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class InfoMethodTests
     {
         [TestMethod]
-        public void Info_get_test()
+        public async Task Info_get_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -21,7 +22,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Info.Get("english").Result;
+            var result = await client.Info.Get("english");
             Assert.IsTrue(result.Success);
             
             var info = result.Data.Items.Single();

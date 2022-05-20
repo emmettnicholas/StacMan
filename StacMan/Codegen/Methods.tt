@@ -129,7 +129,7 @@ namespace StackExchange.StacMan
                 .Concat(optionalParams.Select(p => p.Type + " " + p.VariableName + " = null")));
 #>
 
-        Task<StacManResponse<<#= returnTypeName #>>> <#= interfaceName#>.<#= methodName #>(<#= paramsString #>)
+        async Task<StacManResponse<<#= returnTypeName #>>> <#= interfaceName#>.<#= methodName #>(<#= paramsString #>)
         {
 <#
         foreach (var param in requiredParams)
@@ -211,7 +211,7 @@ namespace StackExchange.StacMan
         }
 #>
 
-            return CreateApiTask<<#= returnTypeName #>>(ub, HttpMethod.<#= httpMethod #>, "<#= GetBackoffKey(url) #>");
+            return await CreateApiTask<<#= returnTypeName #>>(ub, HttpMethod.<#= httpMethod #>, "<#= GetBackoffKey(url) #>");
         }
 <#
         var summary = String.Format("{0}{1} (API Method: \"{2}\"){3}",

@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StackExchange.StacMan.Tests.Utilities
 {
     public static class Assert2
     {
-        public static void Throws<T>(Action func) where T : Exception
+        public static async Task Throws<T>(Func<Task> func) where T : Exception
         {
             try
             {
-                func();
+                await func();
                 Assert.Fail("An exception of type {0} was expected, but not thrown", typeof(T));
             }
             catch (T) { }
         }
 
-        public static void ThrowsArgumentException(Action func, string paramName)
+        public static async Task ThrowsArgumentException(Func<Task> func, string paramName)
         {
             try
             {
-                func();
+                await func();
                 Assert.Fail("An ArgumentException for param {0} was exepcted, but not thrown", paramName);
             }
             catch (ArgumentException ex)
@@ -32,11 +33,11 @@ namespace StackExchange.StacMan.Tests.Utilities
             }
         }
 
-        public static void ThrowsArgumentNullException(Action func, string paramName)
+        public static async Task ThrowsArgumentNullException(Func<Task> func, string paramName)
         {
             try
             {
-                func();
+                await func();
                 Assert.Fail("An ArgumentNullException for param {0} was exepcted, but not thrown", paramName);
             }
             catch (ArgumentNullException ex)

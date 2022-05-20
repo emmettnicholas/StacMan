@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class UserMethodTests
     {
         [TestMethod]
-        public void Users_get_all_test()
+        public async Task Users_get_all_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -21,7 +22,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Users.GetAll("webapps", pagesize: 1, order: Order.Desc, min: 1, max: 1000, sort: Users.Sort.Reputation, inname: "doug").Result;
+            var result = await client.Users.GetAll("webapps", pagesize: 1, order: Order.Desc, min: 1, max: 1000, sort: Users.Sort.Reputation, inname: "doug");
             Assert.IsTrue(result.Success);
 
             var user = result.Data.Items.Single();
@@ -51,7 +52,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Users_get_associated_test()
+        public async Task Users_get_associated_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -60,7 +61,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Users.GetAssociated(new int[] { 1998 }, pagesize: 2).Result;
+            var result = await client.Users.GetAssociated(new int[] { 1998 }, pagesize: 2);
             Assert.IsTrue(result.Success);
 
             var networkUser = result.Data.Items.First();

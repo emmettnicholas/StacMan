@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class SiteMethodTests
     {
         [TestMethod]
-        public void Sites_get_all_test()
+        public async Task Sites_get_all_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -21,7 +22,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Sites.GetAll(filter: "default", page: 1, pagesize: 1).Result;
+            var result = await client.Sites.GetAll(filter: "default", page: 1, pagesize: 1);
             Assert.IsTrue(result.Success);
 
             var site = result.Data.Items.Single();

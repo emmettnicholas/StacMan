@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Notification>> INotificationMethods.Get(string access_token, string filter, int? page, int? pagesize)
+        async Task<StacManResponse<Notification>> INotificationMethods.Get(string access_token, string filter, int? page, int? pagesize)
         {
             ValidateString(access_token, "access_token");
             ValidateMinApiVersion("2.1");
@@ -35,10 +35,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Notification>(ub, HttpMethod.GET, "/notifications");
+            return await CreateApiTask<Notification>(ub, HttpMethod.GET, "/notifications");
         }
 
-        Task<StacManResponse<Notification>> INotificationMethods.GetUnread(string access_token, string filter, int? page, int? pagesize)
+        async Task<StacManResponse<Notification>> INotificationMethods.GetUnread(string access_token, string filter, int? page, int? pagesize)
         {
             ValidateString(access_token, "access_token");
             ValidateMinApiVersion("2.1");
@@ -51,7 +51,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Notification>(ub, HttpMethod.GET, "/notifications/unread");
+            return await CreateApiTask<Notification>(ub, HttpMethod.GET, "/notifications/unread");
         }
     }
 

@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Privilege>> IPrivilegeMethods.GetAll(string site, string filter, int? page, int? pagesize)
+        async Task<StacManResponse<Privilege>> IPrivilegeMethods.GetAll(string site, string filter, int? page, int? pagesize)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -34,7 +34,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<Privilege>(ub, HttpMethod.GET, "/privileges");
+            return await CreateApiTask<Privilege>(ub, HttpMethod.GET, "/privileges");
         }
     }
 

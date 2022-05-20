@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Filter>> IFilterMethods.Read(IEnumerable<string> filters, string filter)
+        async Task<StacManResponse<Filter>> IFilterMethods.Read(IEnumerable<string> filters, string filter)
         {
             ValidateEnumerable(filters, "filters");
 
@@ -30,10 +30,10 @@ namespace StackExchange.StacMan
 
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Filter>(ub, HttpMethod.GET, "/filters/{filters}");
+            return await CreateApiTask<Filter>(ub, HttpMethod.GET, "/filters/{filters}");
         }
 
-        Task<StacManResponse<Filter>> IFilterMethods.Create(string filter, IEnumerable<string> include, IEnumerable<string> exclude, string @base, bool? @unsafe)
+        async Task<StacManResponse<Filter>> IFilterMethods.Create(string filter, IEnumerable<string> include, IEnumerable<string> exclude, string @base, bool? @unsafe)
         {
 
             var ub = new ApiUrlBuilder(Version, "/filters/create", useHttps: false);
@@ -44,7 +44,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("base", @base);
             ub.AddParameter("unsafe", @unsafe);
 
-            return CreateApiTask<Filter>(ub, HttpMethod.GET, "/filters/create");
+            return await CreateApiTask<Filter>(ub, HttpMethod.GET, "/filters/create");
         }
     }
 

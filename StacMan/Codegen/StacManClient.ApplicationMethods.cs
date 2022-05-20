@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<AccessToken>> IApplicationMethods.Deauthenticate(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
+        async Task<StacManResponse<AccessToken>> IApplicationMethods.Deauthenticate(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
@@ -33,7 +33,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/apps/{accessTokens}/de-authenticate");
+            return await CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/apps/{accessTokens}/de-authenticate");
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class TagMethodTests
     {
         [TestMethod]
-        public void Tags_get_all_test()
+        public async Task Tags_get_all_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -21,7 +22,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Tags.GetAll("gaming", page: 3, pagesize: 2, order: Order.Desc, sort: Tags.Sort.Popular).Result;
+            var result = await client.Tags.GetAll("gaming", page: 3, pagesize: 2, order: Order.Desc, sort: Tags.Sort.Popular);
             Assert.IsTrue(result.Success);
 
             var tag = result.Data.Items.Skip(1).First();

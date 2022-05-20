@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Info>> IInfoMethods.Get(string site, string filter)
+        async Task<StacManResponse<Info>> IInfoMethods.Get(string site, string filter)
         {
             ValidateString(site, "site");
 
@@ -31,7 +31,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("site", site);
             ub.AddParameter("filter", filter);
 
-            return CreateApiTask<Info>(ub, HttpMethod.GET, "/info");
+            return await CreateApiTask<Info>(ub, HttpMethod.GET, "/info");
         }
     }
 

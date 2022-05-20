@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class BackoffTests
     {
         [TestMethod]
-        public void Backoff_test()
+        public async Task Backoff_test()
         {
             var mockSlow = new Mock<StacManClient>(null, null);
             var mockFast = new Mock<StacManClient>(null, null);
@@ -23,20 +24,21 @@ namespace StackExchange.StacMan.Tests
 
             var clientSlow = mockSlow.Object;
             var clientFast = mockFast.Object;
-
-            Action<StacManClient, Action<long>> measure = (client, verifyElapsedMs) =>
-            {
-                var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-                var result = client.Users.GetAll("stackoverflow", pagesize: 1).Result;
-                var result2 = client.Users.GetAll("stackoverflow", pagesize: 1).Result;
-                verifyElapsedMs(stopwatch.ElapsedMilliseconds);
-            };
-
-            measure(clientSlow, elapsedMs => Assert.IsTrue(elapsedMs >= 1000));
-            measure(clientFast, elapsedMs => Assert.IsTrue(elapsedMs < 1000));
+            
+            await Measure(clientSlow, elapsedMs => Assert.IsTrue(elapsedMs >= 1000));
+            await Measure(clientFast, elapsedMs => Assert.IsTrue(elapsedMs < 1000));
 
             clientSlow.RespectBackoffs = false;
-            measure(clientSlow, elapsedMs => Assert.IsTrue(elapsedMs < 1000));
+            await Measure(clientSlow, elapsedMs => Assert.IsTrue(elapsedMs < 1000));
+
+            async Task Measure(StacManClient client, Action<long> verifyElapsedMs)
+            {
+                var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+                var result = await client.Users.GetAll("stackoverflow", pagesize: 1);
+                var result2 = await client.Users.GetAll("stackoverflow", pagesize: 1);
+                verifyElapsedMs(stopwatch.ElapsedMilliseconds);
+            }
         }
+        
     }
 }

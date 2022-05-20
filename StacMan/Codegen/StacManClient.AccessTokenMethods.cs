@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<AccessToken>> IAccessTokenMethods.Invalidate(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
+        async Task<StacManResponse<AccessToken>> IAccessTokenMethods.Invalidate(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
@@ -33,10 +33,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/access-tokens/{accessTokens}/invalidate");
+            return await CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/access-tokens/{accessTokens}/invalidate");
         }
 
-        Task<StacManResponse<AccessToken>> IAccessTokenMethods.Get(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
+        async Task<StacManResponse<AccessToken>> IAccessTokenMethods.Get(IEnumerable<string> accessTokens, string filter, int? page, int? pagesize)
         {
             ValidateEnumerable(accessTokens, "accessTokens");
             ValidatePaging(page, pagesize);
@@ -47,7 +47,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("page", page);
             ub.AddParameter("pagesize", pagesize);
 
-            return CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/access-tokens/{accessTokens}");
+            return await CreateApiTask<AccessToken>(ub, HttpMethod.GET, "/access-tokens/{accessTokens}");
         }
     }
 

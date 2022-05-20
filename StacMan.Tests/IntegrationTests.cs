@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StackExchange.StacMan.Tests
 {
@@ -8,17 +9,17 @@ namespace StackExchange.StacMan.Tests
     public class IntegrationTests
     {
         [TestMethod]
-        public void BasicTestNoManager()
+        public async Task BasicTestNoManager()
         {
             var client = new StacManClient();
 
-            var sites = client.Sites.GetAll(pagesize: 50).Result;
+            var sites = await client.Sites.GetAll(pagesize: 50);
             Assert.AreEqual("http://api.stackexchange.com/2.0/sites?pagesize=50", sites.ApiUrl);
             Assert.AreEqual(50, sites.Data.Items.Count());
             Assert.IsTrue(sites.Data.HasMore);
         }
         [TestMethod]
-        public void BasicTestWithManager()
+        public async Task BasicTestWithManager()
         {
             var client = new StacManClient();
             client.UserAgent = GetType().Name;
@@ -30,7 +31,7 @@ namespace StackExchange.StacMan.Tests
                 return x;
             });
 
-            var sites = client.Sites.GetAll(pagesize: 50).Result;
+            var sites = await client.Sites.GetAll(pagesize: 50);
             Assert.AreEqual("http://api.stackexchange.com/2.0/sites?pagesize=50", sites.ApiUrl);
             Assert.AreEqual(50, sites.Data.Items.Count());
             Assert.IsTrue(sites.Data.HasMore);

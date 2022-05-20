@@ -22,7 +22,7 @@ namespace StackExchange.StacMan
             get { return this; }
         }
 
-        Task<StacManResponse<Comment>> ICommentMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        async Task<StacManResponse<Comment>> ICommentMethods.GetAll(string site, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidatePaging(page, pagesize);
@@ -43,10 +43,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/comments");
+            return await CreateApiTask<Comment>(ub, HttpMethod.GET, "/comments");
         }
 
-        Task<StacManResponse<Comment>> ICommentMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
+        async Task<StacManResponse<Comment>> ICommentMethods.GetByIds(string site, IEnumerable<int> ids, string filter, int? page, int? pagesize, DateTime? fromdate, DateTime? todate, Comments.Sort? sort, DateTime? mindate, DateTime? maxdate, int? min, int? max, Order? order)
         {
             ValidateString(site, "site");
             ValidateEnumerable(ids, "ids");
@@ -68,10 +68,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("max", max);
             ub.AddParameter("order", order);
 
-            return CreateApiTask<Comment>(ub, HttpMethod.GET, "/comments/{ids}");
+            return await CreateApiTask<Comment>(ub, HttpMethod.GET, "/comments/{ids}");
         }
 
-        Task<StacManResponse<Comment>> ICommentMethods.Delete(string site, string access_token, int id, string filter, bool? preview)
+        async Task<StacManResponse<Comment>> ICommentMethods.Delete(string site, string access_token, int id, string filter, bool? preview)
         {
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
@@ -84,10 +84,10 @@ namespace StackExchange.StacMan
             ub.AddParameter("filter", filter);
             ub.AddParameter("preview", preview);
 
-            return CreateApiTask<Comment>(ub, HttpMethod.POST, "/comments/{id}/delete");
+            return await CreateApiTask<Comment>(ub, HttpMethod.POST, "/comments/{id}/delete");
         }
 
-        Task<StacManResponse<Comment>> ICommentMethods.Edit(string site, string access_token, int id, string body, string filter, bool? preview)
+        async Task<StacManResponse<Comment>> ICommentMethods.Edit(string site, string access_token, int id, string body, string filter, bool? preview)
         {
             ValidateString(site, "site");
             ValidateString(access_token, "access_token");
@@ -102,7 +102,7 @@ namespace StackExchange.StacMan
             ub.AddParameter("filter", filter);
             ub.AddParameter("preview", preview);
 
-            return CreateApiTask<Comment>(ub, HttpMethod.POST, "/comments/{id}/edit");
+            return await CreateApiTask<Comment>(ub, HttpMethod.POST, "/comments/{id}/edit");
         }
     }
 
