@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class QuestionMethodTests
     {
         [TestMethod]
-        public void Questions_get_all_test()
+        public async Task Questions_get_all_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -21,7 +22,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Questions.GetAll("gaming", pagesize: 1, fromdate: new DateTime(2012, 2, 1, 0, 0, 0, DateTimeKind.Utc), order: Order.Desc, sort: Questions.AllSort.Activity, tagged: "starcraft-2").Result;
+            var result = await client.Questions.GetAll("gaming", pagesize: 1, fromdate: new DateTime(2012, 2, 1, 0, 0, 0, DateTimeKind.Utc), order: Order.Desc, sort: Questions.AllSort.Activity, tagged: "starcraft-2");
             Assert.IsTrue(result.Success);
 
             var question = result.Data.Items.Single();
@@ -45,7 +46,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Questions_by_id_test()
+        public async Task Questions_by_id_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -54,7 +55,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Questions.GetByIds("gaming", new int[] { 13332 }, order: Order.Desc, sort: Questions.Sort.Activity).Result;
+            var result = await client.Questions.GetByIds("gaming", new int[] { 13332 }, order: Order.Desc, sort: Questions.Sort.Activity);
             Assert.IsTrue(result.Success);
 
             var question = result.Data.Items.Single();

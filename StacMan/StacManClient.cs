@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace StackExchange.StacMan
 {
@@ -65,9 +65,7 @@ namespace StackExchange.StacMan
         /// <para>Default is true.</para>
         /// </summary>
         public bool RespectBackoffs { get; set; }
-
-        private readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
-
+        
         private Task<StacManResponse<T>> CreateApiTask<T>(ApiUrlBuilder ub, HttpMethod httpMethod, string backoffKey) where T : StacManType
         {
             var request = new ApiRequest<T>(this, ub, httpMethod, backoffKey);
@@ -161,7 +159,7 @@ namespace StackExchange.StacMan
                     try
                     {
                         response.RawData = rawData;
-                        response.Data = ParseApiResponse<Wrapper<T>>(Serializer.Deserialize<Dictionary<string, object>>(response.RawData), backoffKey);
+                        response.Data = ParseApiResponse<Wrapper<T>>(JsonConvert.DeserializeObject<Dictionary<string, object>>(response.RawData), backoffKey);
 
                         if (response.Data.ErrorId.HasValue)
                             throw new Exceptions.StackExchangeApiException(response.Data.ErrorId.Value, response.Data.ErrorName, response.Data.ErrorMessage);
@@ -365,19 +363,29 @@ namespace StackExchange.StacMan
                 {
                     value = ReflectionCache.StacManClientParseApiResponse
                         .MakeGenericMethod(property.PropertyType)
-                        .Invoke(this, new object[] { (Dictionary<string, object>)jsonObject[fieldName], backoffKey });
+                        .Invoke(this, new object[] { ((JObject)jsonObject[fieldName]).ToObject<Dictionary<string, object>>(), backoffKey });
                 }
                 else if (property.PropertyType.IsArray)
                 {
                     var elementType = property.PropertyType.GetElementType();
 
+
+                    object[] objArr;
                     Func<object, object> selector;
                     if (elementType.BaseType == typeof(StacManType))
+                    {
                         selector = o => ReflectionCache.StacManClientParseApiResponse.MakeGenericMethod(elementType).Invoke(this, new object[] { o, backoffKey });
-                    else
-                        selector = o => Convert.ChangeType(o, elementType.BaseType);
 
-                    var objArr = ((ArrayList)jsonObject[fieldName]).Cast<object>().Select(selector).ToArray();
+                        objArr = ((JArray)jsonObject[fieldName]).Select(o => o.ToObject<Dictionary<string, object>>())
+                                                                .Select(selector).ToArray();
+                    }
+                    else
+                    {
+                        selector = o => Convert.ChangeType(o, elementType.BaseType);
+                        objArr = ((JArray)jsonObject[fieldName]).Select(o => ((JValue)o).Value)
+                                                                .Select(selector).ToArray();
+
+                    }
 
                     value = Array.CreateInstance(elementType, objArr.Length);
                     Array.Copy(objArr, (Array)value, objArr.Length);

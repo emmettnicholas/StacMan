@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,14 +13,14 @@ namespace StackExchange.StacMan.Tests
     public class StacManResponseTests
     {
         [TestMethod]
-        public void Api_web_exception_response()
+        public async Task Api_web_exception_response()
         {
             var mock = new Mock<StacManClient>(null, null);
             var client = mock.Object;
 
             mock.FakeGET(throws: new System.Net.WebException("timeout"));
             
-            var response = client.Users.GetAll("gaming.stackexchange.com").Result;
+            var response = await client.Users.GetAll("gaming.stackexchange.com");
             
             Assert.IsFalse(response.Success);
             Assert.IsNull(response.Data);
@@ -30,7 +31,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Test_response_debugging_properties()
+        public async Task Test_response_debugging_properties()
         {
             var mock = new Mock<StacManClient>("myappkey", null);
 
@@ -39,7 +40,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var response = client.SuggestedEdits.GetAll("superuser", pagesize: 2).Result;
+            var response = await client.SuggestedEdits.GetAll("superuser", pagesize: 2);
             Assert.IsTrue(response.ApiUrl.Contains("site=superuser"));
             Assert.IsTrue(response.ApiUrl.Contains("pagesize=2"));
             Assert.IsTrue(response.ApiUrl.Contains("key=myappkey"));
@@ -48,7 +49,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Stack_Exchange_API_Exception_response()
+        public async Task Stack_Exchange_API_Exception_response()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -57,7 +58,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var response = client.Inbox.Get("foo").Result;
+            var response = await client.Inbox.Get("foo");
 
             Assert.IsFalse(response.Success);
             Assert.IsTrue(response.ReceivedApiResponse);

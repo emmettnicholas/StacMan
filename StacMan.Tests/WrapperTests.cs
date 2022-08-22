@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class WrapperTests
     {
         [TestMethod]
-        public void Wrapper_fields_test()
+        public async Task Wrapper_fields_test()
         {
             var mock = new Mock<StacManClient>(null, null);
 
@@ -23,7 +24,7 @@ namespace StackExchange.StacMan.Tests
             mock.FakeGETForUrlPattern("badges", @"{""total"":1713,""page_size"":5,""page"":2,""type"":""badge"",""items"":[{""badge_id"":460},{""badge_id"":461},{""badge_id"":462},{""badge_id"":463},{""badge_id"":464}],""quota_remaining"":273,""quota_max"":300,""has_more"":true}");
 
             var client = mock.Object;
-            var result = client.Badges.GetAll("stackoverflow", page: 2, pagesize: 5, filter: "!*bOpvmsY(F)").Result;
+            var result = await client.Badges.GetAll("stackoverflow", page: 2, pagesize: 5, filter: "!*bOpvmsY(F)");
             var wrapper = result.Data;
 
             Assert.AreEqual(1713, wrapper.Total);

@@ -42,7 +42,7 @@
 
     task.ContinueWith(t =>
         {
-            foreach (var user in t.Result.Data.Items)
+            foreach (var question in t.Result.Data.Items)
             {
                 Console.WriteLine(question.Title);
             }
@@ -57,7 +57,7 @@
         order: Order.Desc,
         filter: "!mDO35lQRaz");
 
-    foreach (var user in response.Data.Items)
+    foreach (var question in response.Data.Items)
     {
         Console.WriteLine(question.Title);
     }

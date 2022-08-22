@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using StackExchange.StacMan.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ namespace StackExchange.StacMan.Tests
     public class ApiVersion21Tests
     {
         [TestMethod]
-        public void Answer_tags_test()
+        public async Task Answer_tags_test()
         {
             var mock20 = new Mock<StacManClient>(null, "2.0");
             var mock21 = new Mock<StacManClient>(null, "2.1");
@@ -25,8 +26,8 @@ namespace StackExchange.StacMan.Tests
             var client20 = mock20.Object;
             var client21 = mock21.Object;
 
-            var result20 = client20.Answers.GetAll("stackoverflow.com", pagesize: 1, order: Order.Desc, sort: Answers.Sort.Activity, filter: "!9hnGsz84b").Result;
-            var result21 = client21.Answers.GetAll("stackoverflow.com", pagesize: 1, order: Order.Desc, sort: Answers.Sort.Activity, filter: "!9hnGsz84b").Result;
+            var result20 = await client20.Answers.GetAll("stackoverflow.com", pagesize: 1, order: Order.Desc, sort: Answers.Sort.Activity, filter: "!9hnGsz84b");
+            var result21 = await client21.Answers.GetAll("stackoverflow.com", pagesize: 1, order: Order.Desc, sort: Answers.Sort.Activity, filter: "!9hnGsz84b");
 
             Assert.IsTrue(result20.Success);
             Assert.IsTrue(result21.Success);
@@ -40,7 +41,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Merge_get_test()
+        public async Task Merge_get_test()
         {
             var mock = new Mock<StacManClient>(null, "2.1");
 
@@ -49,7 +50,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Users.GetMerges(new int[] { 1450259 }).Result;
+            var result = await client.Users.GetMerges(new int[] { 1450259 });
             Assert.IsTrue(result.Success);
 
             var merge = result.Data.Items.Single();
@@ -63,7 +64,7 @@ namespace StackExchange.StacMan.Tests
         /// http://api.stackexchange.com/docs/change-log
         /// </summary>
         [TestMethod]
-        public void User_top_answer_tags_vectorized_test()
+        public async Task User_top_answer_tags_vectorized_test()
         {
             var mock = new Mock<StacManClient>(null, "2.1");
 
@@ -74,8 +75,8 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Users.GetTopAnswerTags("stackoverflow", 1, pagesize: 3).Result;
-            var resultVectorized = client.Users.GetTopAnswerTags("stackoverflow.com", new int[] { 1, 3 }, pagesize: 3).Result;
+            var result = await client.Users.GetTopAnswerTags("stackoverflow", 1, pagesize: 3);
+            var resultVectorized = await client.Users.GetTopAnswerTags("stackoverflow.com", new int[] { 1, 3 }, pagesize: 3);
 
             Assert.IsTrue(result.Success);
             Assert.IsTrue(resultVectorized.Success);
@@ -85,17 +86,17 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Api_version_mismatch_test()
+        public async Task Api_version_mismatch_test()
         {
             var mock = new Mock<StacManClient>(null, "2.0");
 
             var client = mock.Object;
 
-            Assert2.Throws<InvalidOperationException>(() => client.Users.GetTopAnswerTags("stackoverflow.com", new int[] { 1, 3 }, pagesize: 3));
+            await Assert2.Throws<InvalidOperationException>(async () => await client.Users.GetTopAnswerTags("stackoverflow.com", new int[] { 1, 3 }, pagesize: 3));
         }
 
         [TestMethod]
-        public void Notice_test()
+        public async Task Notice_test()
         {
             var mock = new Mock<StacManClient>(null, "2.1");
 
@@ -104,7 +105,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Questions.GetByIds("stackoverflow", new int[] { 7399584 }, order: Order.Desc, sort: Questions.Sort.Activity, filter: "!9hnGsqOrt").Result;
+            var result = await client.Questions.GetByIds("stackoverflow", new int[] { 7399584 }, order: Order.Desc, sort: Questions.Sort.Activity, filter: "!9hnGsqOrt");
             Assert.IsTrue(result.Success);
 
             var question = result.Data.Items.Single();
@@ -115,7 +116,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Reputation_history_test()
+        public async Task Reputation_history_test()
         {
             var mock = new Mock<StacManClient>(null, "2.1");
 
@@ -124,7 +125,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Users.GetReputationHistory("stackoverflow", new int[] { 2749 }, pagesize: 3).Result;
+            var result = await client.Users.GetReputationHistory("stackoverflow", new int[] { 2749 }, pagesize: 3);
             Assert.IsTrue(result.Success);
 
             var second = result.Data.Items[1];
@@ -136,7 +137,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Comment_add_test()
+        public async Task Comment_add_test()
         {
             var mock = new Mock<StacManClient>(null, "2.1");
 
@@ -145,7 +146,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Posts.AddComment("stackoverflow", "access_token_123", 4490791, "This is a comment that I'm adding via the API!", preview: true).Result;
+            var result = await client.Posts.AddComment("stackoverflow", "access_token_123", 4490791, "This is a comment that I'm adding via the API!", preview: true);
             Assert.IsTrue(result.Success);
 
             var comment = result.Data.Items.Single();
@@ -153,7 +154,7 @@ namespace StackExchange.StacMan.Tests
         }
 
         [TestMethod]
-        public void Comment_delete_test()
+        public async Task Comment_delete_test()
         {
             var mock = new Mock<StacManClient>(null, "2.1");
 
@@ -162,7 +163,7 @@ namespace StackExchange.StacMan.Tests
 
             var client = mock.Object;
 
-            var result = client.Comments.Delete("stackoverflow", "access_token_123", 4721972).Result;
+            var result = await client.Comments.Delete("stackoverflow", "access_token_123", 4721972);
             Assert.IsTrue(result.Success);
 
             Assert.AreEqual(0, result.Data.Items.Length);
